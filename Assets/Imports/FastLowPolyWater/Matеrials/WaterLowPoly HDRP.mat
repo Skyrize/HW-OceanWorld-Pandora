@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterLowPoly HDRP
+  m_Shader: {fileID: 4800000, guid: 3313b7cc2ca176349a5301e7ff1d0fda, type: 3}
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT
+    _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - TransparentBackface
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: eaa1c5562af66424092dc5b1f37208e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 1
+    - _BlendMode: 0
+    - _ChromaticAberration: 0.1
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _Depth: 2
+    - _DepthRange: 0.379
+    - _DepthRange1: 0.379
+    - _Dist: 0.04
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 10
+    - _EnableFogOnTransparent: 1
+    - _Float0: 20.58
+    - _Gloss: 0.852
+    - _Lerp_: 0.998
+    - _LowPolyToFlat: 0.827
+    - _LowPolyToFlat1: 0.827
+    - _NoiseIntensity: 0.15
+    - _OpasityIntensity: 0.403
+    - _ReceivesSSR: 1
+    - _Refraction: 0
+    - _RenderQueueType: 5
+    - _RequireSplitLighting: 0
+    - _ScaleNoise: 0.1
+    - _SizeFoam: 0.05
+    - _Specular: 0.2
+    - _Speed: 0.2
+    - _SrcBlend: 1
+    - _StencilRef: 2
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 64
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 128
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 48
+    - _StencilWriteMaskDistortionVec: 64
+    - _StencilWriteMaskGBuffer: 51
+    - _StencilWriteMaskMV: 176
+    - _SurfaceType: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
+    - _WavesInXYZ: 0
+    - _ZTestDepthEqualForOpaque: 2
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 2
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _Color0: {r: 0.1078, g: 0.3022536, b: 0.35, a: 0}
+    - _Color1: {r: 1, g: 1, b: 1, a: 0}
+    - _ColorDepth: {r: 0.059650913, g: 0.10967999, b: 0.16078421, a: 1}
+    - _ColorFoam: {r: 1, g: 0.99311846, b: 0.86, a: 1}
+    - _Colorwater: {r: 0.105882265, g: 0.47985727, b: 0.5607843, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
