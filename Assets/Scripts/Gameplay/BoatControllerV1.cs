@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class BoatControllerV1 : MonoBehaviour
     [SerializeField] protected  float maxSpeed = 10;
     [SerializeField] protected  float steerSpeed = 1;
     [SerializeField] protected  float maxSteerAngle = 10;
+
+    [SerializeField] protected  float slideForce = 1;
     // [SerializeField] protected  float motorRPM = 0;
     // [SerializeField] protected  float maxMotorRPM = 10;
 
@@ -17,8 +20,7 @@ public class BoatControllerV1 : MonoBehaviour
     [SerializeField] protected Transform motor;
 
     [Header("Runtime")]
-    [SerializeField] protected float accelerationInput = 0;
-    [SerializeField] protected float steerInput = 0;
+    [SerializeField] protected Vector2 input = Vector2.zero;
 
     protected Quaternion baseRotation;
 
@@ -33,14 +35,14 @@ public class BoatControllerV1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        accelerationInput = Input.GetAxis("Vertical");
-        // accelerationInput = Mathf.Clamp(accelerationInput, 0, maxaccelerationInput);
-        steerInput = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxis("Vertical");
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.Normalize();
     }
 
     void Move()
     {
-        Vector3 accelerationForce = motor.forward * accelerationInput * acceleration;
+        Vector3 accelerationForce = motor.forward * input.y * acceleration;
 
         rb.AddForceAtPosition(accelerationForce, motor.position, ForceMode.Force);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
@@ -48,14 +50,25 @@ public class BoatControllerV1 : MonoBehaviour
 
     void Steer()
     {
-        Quaternion targetAngle = Quaternion.Euler(0, maxSteerAngle * -steerInput, 0);
-        motor.localRotation = Quaternion.Slerp(motor.localRotation, targetAngle, Time.deltaTime * steerSpeed);
+        Quaternion targetAngle = Quaternion.Euler(0, maxSteerAngle * -input.x, 0);
+        float steerSpeed = targetAngle == Quaternion.identity ? Mathf.Pow(1 + this.steerSpeed, 2) : this.steerSpeed;
+
+        motor.localRotation = Quaternion.Slerp(motor.localRotation, targetAngle, Time.fixedDeltaTime * steerSpeed);
+    }
+
+    void Slide()
+    {
+        Vector3 forwardVelocity = transform.forward * rb.velocity.magnitude;
+        Vector3 slideVelocity = Vector3.Lerp(rb.velocity, forwardVelocity, Time.fixedDeltaTime * slideForce);
+
+        rb.velocity = slideVelocity;
     }
 
     private void FixedUpdate() {
         
         // Steer Force
-        Move();
         Steer();
+        Move();
+        Slide();
     }
 }
