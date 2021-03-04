@@ -41,6 +41,8 @@ public class ColliderEvent : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private CollisionEvent onCollide = new CollisionEvent();
+    [SerializeField] private CollisionEvent onStay = new CollisionEvent();
+    [SerializeField] private CollisionEvent onExit = new CollisionEvent();
 
     public void ValidateType(string type)
     {
@@ -89,7 +91,7 @@ public class ColliderEvent : MonoBehaviour
         return target.GetComponentInChildren(Type.GetType(componentType)) != null;
     }
 
-    public void FilterCollision(GameObject target)
+    public void FilterCollision(GameObject target, CollisionEvent eventToCall)
     {
         if (useTagFilter && !HasTag(target)) {
             return;
@@ -106,13 +108,25 @@ public class ColliderEvent : MonoBehaviour
         if (useChildComponentFilter && !HasChildComponent(target)) {
             return;
         }
-        onCollide.Invoke(target);
+        eventToCall.Invoke(target);
     }
     
     private void OnCollisionEnter(Collision other) {
-        FilterCollision(other.gameObject);
+        FilterCollision(other.gameObject, onCollide);
+    }
+    private void OnCollisionStay(Collision other) {
+        FilterCollision(other.gameObject, onStay);
+    }
+    private void OnCollisionExit(Collision other) {
+        FilterCollision(other.gameObject, onExit);
     }
     private void OnTriggerEnter(Collider other) {
-        FilterCollision(other.gameObject);
+        FilterCollision(other.gameObject, onCollide);
+    }
+    private void OnTriggerStay(Collider other) {
+        FilterCollision(other.gameObject, onStay);
+    }
+    private void OnTriggerExit(Collider other) {
+        FilterCollision(other.gameObject, onExit);
     }
 }
