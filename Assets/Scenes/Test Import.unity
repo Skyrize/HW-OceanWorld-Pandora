@@ -472,7 +472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71e644e8cfbe794cba125cdf7e53218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events: []
+  events:
+  - name: 
+    timer: 0
+    evt:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &1400154206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,13 +493,15 @@ MonoBehaviour:
   useTagFilter: 0
   useLayerFilter: 0
   useComponentFilter: 0
-  useParentComponentFilter: 0
-  useChildrenComponentFilter: 0
+  useParentComponentFilter: 1
+  useChildComponentFilter: 0
   tags: []
   layerMask:
     serializedVersion: 2
     m_Bits: 1
   componentType: ColliderEvent
-  onTouch:
+  parentComponentType: Transform
+  childComponentType: Transform
+  onCollide:
     m_PersistentCalls:
       m_Calls: []
