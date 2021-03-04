@@ -21,7 +21,7 @@ public class RotationAnimation : TweenAnimation
         animation.SetLoops(loops, loopType);
         // animation.SetEase(generalEase);
         animation.Pause();
-        return new GeneratedAnimation(animation, Name);
+        return new GeneratedAnimation(animation, name);
     }
 
 }

@@ -52,5 +52,48 @@ public class TweenAnimator : MonoBehaviour
         Debug.LogWarning("Cant find animation named '" + animationName + "' !");
     }
 
+    public void Play(TweenAnimation animation)
+    {
+        foreach (GeneratedAnimation anim in generatedAnimations)
+        {
+            if (anim.Name == animation.name) {
+                anim.Play();
+                return;
+            }
+        }
+        Debug.LogWarning("Cant find animation named '" + animation.name + "' !");
+    }
+    
+    public void Rewind(int animationIndex)
+    {
+        if (animationIndex < 0 || animationIndex >= generatedAnimations.Count) {
+            throw new System.Exception("Index out of bound");
+        }
+        generatedAnimations[animationIndex].Rewind();
+    }
+
+    public void Rewind(string animationName)
+    {
+        foreach (GeneratedAnimation anim in generatedAnimations)
+        {
+            if (anim.Name == animationName) {
+                anim.Rewind();
+                return;
+            }
+        }
+        Debug.LogWarning("Cant find animation named '" + animationName + "' !");
+    }
+
+    public void Rewind(TweenAnimation animation)
+    {
+        foreach (GeneratedAnimation anim in generatedAnimations)
+        {
+            if (anim.Name == animation.name) {
+                anim.Rewind();
+                return;
+            }
+        }
+        Debug.LogWarning("Cant find animation named '" + animation.name + "' !");
+    }
     
 }

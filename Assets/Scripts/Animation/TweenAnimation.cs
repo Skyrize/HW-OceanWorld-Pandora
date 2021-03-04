@@ -23,22 +23,21 @@ public class GeneratedAnimation
     {
         animation.Restart();
     }
+
+    public void Rewind()
+    {
+        animation.PlayBackwards();
+    }
 }
 
 public abstract class TweenAnimation : ScriptableObject
 {
     [Header("Settings (Tween Animation):")]
-    [SerializeField] protected string _name = "default name";
     [SerializeField] protected float duration = 1f;
     [SerializeField] protected Ease generalEase = Ease.Linear;
     [SerializeField] protected bool reverse = true;
     [SerializeField] protected int loops = 0;
     [SerializeField] protected LoopType loopType = LoopType.Yoyo;
-    public string Name {
-        get {
-            return _name;
-        }
-    }
 
     public abstract GeneratedAnimation GenerateAnimation(Transform target);
 }
