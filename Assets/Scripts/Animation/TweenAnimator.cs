@@ -32,6 +32,38 @@ public class TweenAnimator : MonoBehaviour
         }
     }
 
+    public void Restart(int animationIndex)
+    {
+        if (animationIndex < 0 || animationIndex >= generatedAnimations.Count) {
+            throw new System.Exception("Index out of bound");
+        }
+        generatedAnimations[animationIndex].Restart();
+    }
+
+    public void Restart(string animationName)
+    {
+        foreach (GeneratedAnimation anim in generatedAnimations)
+        {
+            if (anim.Name == animationName) {
+                anim.Restart();
+                return;
+            }
+        }
+        Debug.LogWarning("Cant find animation named '" + animationName + "' !");
+    }
+
+    public void Restart(TweenAnimation animation)
+    {
+        foreach (GeneratedAnimation anim in generatedAnimations)
+        {
+            if (anim.Name == animation.name) {
+                anim.Restart();
+                return;
+            }
+        }
+        Debug.LogWarning("Cant find animation named '" + animation.name + "' !");
+    }
+    
     public void Play(int animationIndex)
     {
         if (animationIndex < 0 || animationIndex >= generatedAnimations.Count) {

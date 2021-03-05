@@ -21,6 +21,11 @@ public class GeneratedAnimation
 
     public void Play()
     {
+        animation.PlayForward();
+    }
+
+    public void Restart()
+    {
         animation.Restart();
     }
 

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] protected float scrollSpeed = 200f;
+    [SerializeField] protected float zoomMin = 15f;
+    [SerializeField] protected float zoomMax = 100f;
     [Header("References")]
     [SerializeField] protected Camera cam = null;
 
@@ -21,6 +25,35 @@ public class CameraController : MonoBehaviour
         Vector3 move = target.position - ray.direction * distance;
         move.y = cam.transform.position.y;
         cam.transform.position = move;
+    }
+
+    private void OrthographicZoom(float input)
+    {
+        float zoom = -input * scrollSpeed;
+        cam.orthographicSize += zoom;
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, zoomMin, zoomMax);
+    }
+
+    private void PerspectiveZoom(float input)
+    {
+        Vector3 camPos = cam.transform.forward;
+        Vector3 zoomDirection = -input * scrollSpeed * cam.transform.forward;
+        
+        cam.transform.Translate(zoomDirection, Space.World);
+        camPos.y = Mathf.Clamp(camPos.y, zoomMin, zoomMax);
+        transform.position = camPos;
+    }
+
+    public void Zoom(float input)
+    {
+        if (input == 0)
+            return;
+
+        if (cam.orthographic) {
+            OrthographicZoom(input);
+        } else {
+            PerspectiveZoom(input);
+        }
     }
 
     // Update is called once per frame
