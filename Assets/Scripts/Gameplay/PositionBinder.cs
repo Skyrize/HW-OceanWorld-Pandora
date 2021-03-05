@@ -18,13 +18,5 @@ public class PositionBinder : MonoBehaviour
     {
         if (target)
             this.transform.position = target.position;
-        if (Input.GetKeyDown(KeyCode.T)) {
-            toggle = !toggle;
-            if (toggle) {
-                GetComponent<TweenAnimator>().Play(0);
-            } else {
-                GetComponent<TweenAnimator>().Rewind(0);
-            }
-        }
     }
 }
