@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
 
         m_content[collectable.Name] += collectable.Count;
         TotalWeight += collectable.Weight;
+        
+        ResourcePickupUI.Instance.PopMessage($"+{collectable.Count} {collectable.Name}");
 
         Destroy(obj);
     }
