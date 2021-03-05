@@ -9,6 +9,11 @@ public class Inventory : MonoBehaviour
 
     [HideInInspector] public float TotalWeight;
 
+    /// <summary>
+    /// Adds an object to the inventory
+    /// </summary>
+    /// <param name="obj">The item to add</param>
+    /// <exception cref="NullReferenceException">The item is not a collectible</exception>
     public void Collect(GameObject obj)
     {
         var collectable = obj.GetComponent<Collectable>();
@@ -23,9 +28,14 @@ public class Inventory : MonoBehaviour
         TotalWeight += collectable.Weight;
 
         Destroy(obj);
-        DebugPrintInventory();
     }
 
+    /// <summary>
+    /// Removes an object from the inventory
+    /// </summary>
+    /// <param name="objectName">The object name</param>
+    /// <param name="count">How many items to remove, defaults to 1</param>
+    /// <exception cref="KeyNotFoundException">The object was not found in the inventory</exception>
     public void Remove(string objectName, uint count = 1)
     {
         if (!m_content.ContainsKey(objectName))
@@ -37,6 +47,9 @@ public class Inventory : MonoBehaviour
             m_content.Remove(objectName);
     }
 
+    /// <summary>
+    /// Prints the inventory content, only available in editor mode
+    /// </summary>
     private void DebugPrintInventory()
     {
 #if UNITY_EDITOR
