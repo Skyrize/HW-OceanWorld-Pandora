@@ -11,13 +11,22 @@ public class EnnemyManager : MonoBehaviour, IHitable
 
     private MeshRenderer sophisticatedBlinkEngineV2;
 
+    public WeaponManager canon;
+    public GameObject player;
+
     void Start()
     {
         sophisticatedBlinkEngineV2 = GetComponent<MeshRenderer>();
+        canon.TargetType = Utils.Tags.PLAYER;
+
+        player = Utils.FindGameObject(Utils.Tags.PLAYER);
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            canon.ShootAt(player.transform.position);
+
         if (!IsBlinking) { sophisticatedBlinkEngineV2.enabled = true; return; }
 
         blinkDuration -= Time.deltaTime;
@@ -32,9 +41,9 @@ public class EnnemyManager : MonoBehaviour, IHitable
 
     private bool IsBlinking => blinkDuration > 0;
 
-    public void hitBy(Projectile p)
+    public void HitBy(Projectile p)
     {
-        print($"I was hit by a { p.Type }!");
+        print($"I, ennemy, was hit by a { p.Type } !");
         blinkDuration = 2f;
     }
 }

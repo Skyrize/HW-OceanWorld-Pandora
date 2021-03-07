@@ -21,22 +21,17 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void OnHit(Collider collider)
     {
-
-    }
-
-    protected virtual void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(TargetType))
-            collision.gameObject
+        if (collider.gameObject.CompareTag(TargetType))
+            collider.gameObject
                 .GetComponent<IHitable>()
-                .hitBy(this);
+                .HitBy(this);
     }
 }
 
 public enum ProjectileType
 {
     CANONBALL,
+    BULLET,
 }

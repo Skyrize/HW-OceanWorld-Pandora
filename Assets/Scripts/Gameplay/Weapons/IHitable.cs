@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHitable
 {
-    void hitBy(Projectile p);
+    void HitBy(Projectile p);
 }

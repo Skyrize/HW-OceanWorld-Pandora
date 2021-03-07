@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public GameObject projectileContainer;
+    private GameObject projectileContainer;
     public GameObject projectilePrefab;
 
     public string TargetType { get; set; }
@@ -17,6 +17,7 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         lastShot = shotDelay;
+        projectileContainer = Utils.FindGameObject(Utils.Tags.PROJECTILE_CONTAINER);
     }
 
     void Update()
@@ -33,11 +34,6 @@ public class WeaponManager : MonoBehaviour
         lastShot = 0;
         var projectileObject = Instantiate(projectilePrefab, projectileContainer.transform);
         var projectileScript = projectileObject.GetComponent<Projectile>();
-
-        print(weaponOffset);
-        print(transform.position);
-        print(Utils.Copy(transform.position)
-            + transform.TransformDirection(weaponOffset));
 
         projectileScript.Origin = transform.position
             + transform.TransformDirection(weaponOffset); 

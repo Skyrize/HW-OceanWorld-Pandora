@@ -6,9 +6,9 @@ public class PlayerWeaponsManager : MonoBehaviour, IHitable
 {
     public WeaponManager canon;
 
-    public void hitBy(Projectile p)
+    public void HitBy(Projectile p)
     {
-        throw new System.NotImplementedException();
+        print($"I, Player, was hit by a { p.Type }");
     }
 
     void Start()

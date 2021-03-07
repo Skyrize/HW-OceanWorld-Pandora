@@ -20,9 +20,9 @@ public class Canonball : Projectile
             * ComputeParabolic(Origin, Target);
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
+        base.OnHit(collision.collider);
 
         Instantiate(explosionPrefab,
             transform.position,
