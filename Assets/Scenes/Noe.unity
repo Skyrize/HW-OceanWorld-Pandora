@@ -339,8 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   maxSpeed: 5
-  steerSpeed: 1
-  maxSteerAngle: 30
+  steerSpeed: 3
+  maxSteerAngle: 40
   slideForce: 1
   rb: {fileID: 151412908}
   motor: {fileID: 189455884}
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ee26f5fe7279e4e8ea7c55057535a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimalSpeed: 2
   agent: {fileID: 151412907}
 --- !u!1 &153284569
 GameObject:
@@ -669,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ee26f5fe7279e4e8ea7c55057535a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimalSpeed: 1
   agent: {fileID: 521113647}
 --- !u!114 &521113646
 MonoBehaviour:
@@ -1117,6 +1119,8 @@ GameObject:
   - component: {fileID: 1093836931}
   - component: {fileID: 1093836933}
   - component: {fileID: 1093836935}
+  - component: {fileID: 1093836937}
+  - component: {fileID: 1093836936}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -1182,7 +1186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093836930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5821285, y: 0.8474598, z: -2.4387722}
+  m_LocalPosition: {x: 5.03, y: 0.8474598, z: -2.4387722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 625549296}
@@ -1204,13 +1208,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   maxSpeed: 5
-  steerSpeed: 1
-  maxSteerAngle: 30
+  steerSpeed: 3
+  maxSteerAngle: 40
   slideForce: 1
   rb: {fileID: 1093836932}
   motor: {fileID: 267024522}
   controller: {fileID: 1093836933}
   input: {x: 0, y: 0}
+--- !u!114 &1093836936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093836930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706fbe10ba347144aa51ba303cba276d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1093836937}
+--- !u!114 &1093836937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093836930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b0e05696d5da44c8a1856c84104cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!1 &1297710875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710461143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0100002, y: 0, z: 0.9000001}
+  m_LocalPosition: {x: 1.4578719, y: 0, z: 0.9000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628620404}
@@ -1955,8 +1985,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1765124169
 BoxCollider:
@@ -2147,7 +2177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972345219}
   m_Layer: 0
-  m_Name: V2
+  m_Name: V1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

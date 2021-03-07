@@ -12,12 +12,16 @@ enum DIRECTION
 
 public class AIController : Controller
 {
+    [Header("AI")]
+    public float minimalSpeed = 1f;
+
+    [Header("References")]
     public NavMeshAgent agent;
+
     private NavMeshPath path;
     private int currentCornerIdx = 0;
     private bool destinationReached = true;
 
-    private static float MINIMAL_SPEED = 1f;
     private DIRECTION rotatingSide = DIRECTION.NONE;
 
     void checkNextCorner(bool shouldUpdateInputManagement)
@@ -88,7 +92,6 @@ public class AIController : Controller
         simulatedInput.y = 0;
         if (simulatedInput.z < 0) // we need to go backward
         {
-            print(rotatingSide);
             if (rotatingSide == DIRECTION.NONE)
             {
                 rotatingSide = simulatedInput.x < 0 ? DIRECTION.LEFT : DIRECTION.RIGHT;
@@ -96,7 +99,7 @@ public class AIController : Controller
             simulatedInput.x = rotatingSide == DIRECTION.RIGHT ? 1 : -1;
             simulatedInput.z = 0;
         }
-        if (simulatedInput.z <= 0f && currentSpeed < MINIMAL_SPEED)
+        if (simulatedInput.z <= 0f && currentSpeed < minimalSpeed)
         {
             simulatedInput.z = 1f;
         }
