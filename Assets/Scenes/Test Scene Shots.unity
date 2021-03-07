@@ -197,7 +197,7 @@ BoxCollider:
   m_GameObject: {fileID: 227173876}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804b3f6acc0c0ae40b6fbe9d402ad7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1025546208}
+  projectilePrefab: {fileID: 1207050095}
   weaponOffset: {x: 0, y: 1, z: 1}
   shotDelay: 1
 --- !u!1 &434260074
@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canon: {fileID: 1025546209}
+  player: {fileID: 0}
 --- !u!1 &966430605
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +619,7 @@ BoxCollider:
   m_GameObject: {fileID: 1025546208}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
