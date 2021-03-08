@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DebugManager : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private bool _debug = true;
+    public bool debug { get { return _debug; } }
     [Header("References")]
     [SerializeField] private GameObject debugArrowPrefab = null;
     static private DebugManager _instance = null;

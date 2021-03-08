@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8684240458796964956}
   - component: {fileID: 8684240458796194940}
   - component: {fileID: 8684240458795065020}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8684240458796194942}
   - component: {fileID: 8684240458795065022}
   - component: {fileID: 8684240458797090526}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TMP_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
