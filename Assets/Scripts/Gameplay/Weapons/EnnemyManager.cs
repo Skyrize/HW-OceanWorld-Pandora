@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Should get ridden of
+/// </summary>
 public class EnnemyManager : MonoBehaviour, IHitable
 {
     private float blinkDuration;
@@ -17,9 +20,8 @@ public class EnnemyManager : MonoBehaviour, IHitable
     void Start()
     {
         sophisticatedBlinkEngineV2 = GetComponent<MeshRenderer>();
-        canon.TargetType = Utils.Tags.PLAYER;
 
-        player = Utils.FindGameObject(Utils.Tags.PLAYER);
+        player = GameObject.FindGameObjectWithTag(Utils.Tags.PLAYER);
     }
 
     void Update()

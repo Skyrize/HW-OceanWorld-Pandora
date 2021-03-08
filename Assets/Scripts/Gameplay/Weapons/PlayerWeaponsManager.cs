@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Should get ridden of
+/// </summary>
 public class PlayerWeaponsManager : MonoBehaviour, IHitable
 {
     public WeaponManager canon;
@@ -9,11 +12,6 @@ public class PlayerWeaponsManager : MonoBehaviour, IHitable
     public void HitBy(Projectile p)
     {
         print($"I, Player, was hit by a { p.Type }");
-    }
-
-    void Start()
-    {
-        canon.TargetType = Utils.Tags.ENNEMY;
     }
 
     void Update()

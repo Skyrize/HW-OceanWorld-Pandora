@@ -26,17 +26,6 @@ public class Utils
         }
     }
 
-    public static Vector3 Copy(Vector3 v)
-    {
-        return new Vector3(
-            v.x,
-            v.y,
-            v.z);
-    }
-
-    public static GameObject FindGameObject(string tag) => GameObject.FindGameObjectWithTag(tag);
-    public static GameObject[] FindGameObjects(string tag) => GameObject.FindGameObjectsWithTag(tag);
-
     public sealed class Tags
     {
         public static readonly string PLAYER = "Player";

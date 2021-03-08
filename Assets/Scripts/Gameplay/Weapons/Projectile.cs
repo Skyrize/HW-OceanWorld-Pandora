@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Vector3 Origin { get; set; }
-    public Vector3 Target { get; set; }
-    public string TargetType { get; set; }
-    public ProjectileType Type { get; set; }
+    public Vector3 Origin;
+    public Vector3 Target;
+    public ProjectileType Type;
 
     public virtual void Start()
     {
-        if (Origin == null) Destroy(gameObject);
-        else transform.position = Origin;
-
-        if (Target == null)
-            Destroy(gameObject);
-
-        if (TargetType == null)
-            Destroy(gameObject);
+        transform.position = Origin;
     }
 
     protected virtual void OnHit(Collider collider)
     {
-        if (collider.gameObject.CompareTag(TargetType))
+        IHitable hitable = collider.gameObject.GetComponent<IHitable>();
+        if (hitable != null)
             collider.gameObject
                 .GetComponent<IHitable>()
                 .HitBy(this);

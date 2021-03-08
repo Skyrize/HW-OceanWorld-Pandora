@@ -7,8 +7,6 @@ public class WeaponManager : MonoBehaviour
     private GameObject projectileContainer;
     public GameObject projectilePrefab;
 
-    public string TargetType { get; set; }
-
     public Vector3 weaponOffset = new Vector3(0, 1.25f, .2f);
 
     public float shotDelay = 1;
@@ -17,7 +15,7 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         lastShot = shotDelay;
-        projectileContainer = Utils.FindGameObject(Utils.Tags.PROJECTILE_CONTAINER);
+        projectileContainer = GameObject.FindGameObjectWithTag(Utils.Tags.PROJECTILE_CONTAINER);
     }
 
     void Update()
@@ -38,15 +36,9 @@ public class WeaponManager : MonoBehaviour
         projectileScript.Origin = transform.position
             + transform.TransformDirection(weaponOffset); 
         projectileScript.Target = target;
-        projectileScript.TargetType = TargetType;
 
         projectileObject.SetActive(true);
     }
 
     public bool CanShoot => lastShot >= shotDelay;
-}
-
-public enum ShootType
-{
-    CANONBALL,
 }
