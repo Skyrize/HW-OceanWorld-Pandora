@@ -7,18 +7,6 @@ public class MerchantManager : MonoBehaviour
 {
     public Inventory inventoryPlayer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void EnterInMerchant(GameObject obj)
     {
         if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
@@ -27,11 +15,12 @@ public class MerchantManager : MonoBehaviour
 
     public void ExitMerchant()
     {
-        if (!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
+        Debug.Log("exit");
+        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
-    public void ClientBuyItem(Collectable item, float price)
+    public void ClientBuyItem(Collectible item, float price)
     {
         if (inventoryPlayer.Money >= price)
         {
@@ -40,7 +29,7 @@ public class MerchantManager : MonoBehaviour
         }
     }
 
-    public void ClientSellItem(Collectable item, float price)
+    public void ClientSellItem(Collectible item, float price)
     {
         if(inventoryPlayer.m_content.ContainsKey(item) && inventoryPlayer.m_content[item] > 0)
         {

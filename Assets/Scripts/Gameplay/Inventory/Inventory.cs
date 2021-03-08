@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/InventoryPlayer")]
 public class Inventory : ScriptableObject
 {
-    public readonly Dictionary<Collectable, uint> m_content = new Dictionary<Collectable, uint>();
+    public readonly Dictionary<Collectible, uint> m_content = new Dictionary<Collectible, uint>();
     public float Money { get; set; }
 
     [HideInInspector] public float TotalWeight;
@@ -18,7 +18,7 @@ public class Inventory : ScriptableObject
     /// <param name="objectName">The to remove</param>
     /// <param name="count">How many items to remove, defaults to 1</param>
     /// <exception cref="KeyNotFoundException">The object was not found in the inventory</exception>
-    public void RemoveItemFromInventory(Collectable item, uint count = 1)
+    public void RemoveItemFromInventory(Collectible item, uint count = 1)
     {
         if (!m_content.ContainsKey(item))
             throw new KeyNotFoundException("Object is not in inventory");
@@ -33,7 +33,7 @@ public class Inventory : ScriptableObject
     /// Add a collectable to the inventory
     /// </summary>
     /// <param name="item"></param>
-    public void AddItemToInventory(Collectable item)
+    public void AddItemToInventory(Collectible item)
     {
         if (!m_content.ContainsKey(item))
             m_content.Add(item, 0);

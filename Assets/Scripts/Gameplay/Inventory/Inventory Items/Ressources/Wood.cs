@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wood : Collectable
+public class Wood : Collectible
 {
     public override string Name
     {

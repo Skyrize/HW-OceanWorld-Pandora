@@ -894,7 +894,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  componentType: Collectable
+  componentType: Collectible
   parentComponentType: Transform
   childComponentType: Transform
   onCollide:

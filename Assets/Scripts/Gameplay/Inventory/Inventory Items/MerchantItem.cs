@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MerchantItem : MonoBehaviour
 {
-    public Collectable item;
+    public Collectible item;
     public MerchantManager merchant;
     public float price;
 

@@ -7,18 +7,6 @@ public class Player : MonoBehaviour
 {
     public Inventory inventory;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Adds an object to the inventory
     /// </summary>
@@ -26,18 +14,18 @@ public class Player : MonoBehaviour
     /// <exception cref="NullReferenceException">The item is not a collectible</exception>
     public void CollectItem(GameObject obj)
     {
-        Collectable collectable = obj.GetComponent<Collectable>();
-        if (collectable == null)
+        Collectible collectible = obj.GetComponent<Collectible>();
+        if (collectible == null)
             throw new NullReferenceException("Collider is not collectable");
-        inventory.AddItemToInventory(collectable);
+        inventory.AddItemToInventory(collectible);
         Destroy(obj);
     }
 
     public void RemoveItem(GameObject obj)
     {
-        Collectable collectable = obj.GetComponent<Collectable>();
-        if (collectable == null)
+        Collectible collectible = obj.GetComponent<Collectible>();
+        if (collectible == null)
             throw new NullReferenceException("Collider is not throwable");
-        inventory.RemoveItemFromInventory(collectable);
+        inventory.RemoveItemFromInventory(collectible);
     }
 }

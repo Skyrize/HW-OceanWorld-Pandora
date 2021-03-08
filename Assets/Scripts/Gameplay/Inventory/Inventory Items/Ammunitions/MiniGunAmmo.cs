@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGunAmmo : Collectable
+public class MiniGunAmmo : Collectible
 {
     public override string Name
     {
