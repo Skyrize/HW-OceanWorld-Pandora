@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54675b6541556d45a4f2a762bf75632, type: 3}
   m_Name: Crew View Camera Rotation
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.5
   generalEase: 1
   reverse: 0
   loops: 0
