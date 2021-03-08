@@ -5,19 +5,36 @@ using UnityEngine;
 public class Canonball : Projectile
 {
     public GameObject explosionPrefab;
-    private static readonly float speed = 1;
     
     private Rigidbody body;
+
+    private float maxRange;
+    private readonly float baseVelocity = 10f;
+    private readonly float maxSideAngle = 45f;
 
     public override void Start()
     {
         base.Start();
         Type = ProjectileType.CANONBALL;
 
+        maxRange = MaxRange;
         body = GetComponent<Rigidbody>();
 
-        body.velocity = speed
-            * ComputeParabolic(Origin, Target);
+        transform.LookAt(Target);
+        transform.Rotate(Vector3.right * ZRotatingAngle);
+
+        body.velocity = transform.TransformDirection(Vector3.forward * baseVelocity);
+    }
+
+    private float ZRotatingAngle
+    {
+        get
+        {
+            if (IsInRange)
+                return -45f;
+
+            return .5f * Mathf.Asin(Gravity * Range / V2) * Mathf.Rad2Deg;
+        }
     }
 
     protected void OnCollisionEnter(Collision collision)
@@ -34,16 +51,11 @@ public class Canonball : Projectile
         Destroy(gameObject);
     }
 
-    protected Vector3 ComputeParabolic(Vector3 origin, Vector3 target)
-    {
-        var distance = target - origin;
+    private bool IsInRange => Range > maxRange;
+    private float MaxRange => Mathf.Abs(Mathf.Pow(baseVelocity, 2) / Physics.gravity.y);
 
-        var distanceXZ = distance;
-        distanceXZ.y = 0f;
+    private float Range => Vector3.Distance(Origin, Target);
+    private float Gravity => Physics.gravity.y;
 
-        var result = distanceXZ.normalized * distanceXZ.magnitude;
-        result.y = distance.y + .5f * Mathf.Abs(Physics.gravity.y);
-
-        return result;
-    }
+    private float V2 => Mathf.Pow(baseVelocity, 2);
 }

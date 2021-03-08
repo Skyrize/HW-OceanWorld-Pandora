@@ -30,7 +30,10 @@ public class WeaponManager : MonoBehaviour
             return;
 
         lastShot = 0;
-        var projectileObject = Instantiate(projectilePrefab, projectileContainer.transform);
+        var projectileObject = Instantiate(projectilePrefab, 
+            transform.position, 
+            transform.rotation, 
+            projectileContainer.transform);
         var projectileScript = projectileObject.GetComponent<Projectile>();
 
         projectileScript.Origin = transform.position
