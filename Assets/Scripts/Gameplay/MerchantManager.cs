@@ -21,7 +21,14 @@ public class MerchantManager : MonoBehaviour
 
     public void EnterInMerchant(GameObject obj)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant");
+        if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
+    }
+
+    public void ExitMerchant()
+    {
+        if (!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
     public void ClientBuyItem(Collectable item, float price)
