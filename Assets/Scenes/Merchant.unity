@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 578.38, y: 426.4}
+  m_AnchoredPosition: {x: 592.51, y: 427.36}
   m_SizeDelta: {x: 194.49567, y: 149.19986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122345591
@@ -722,7 +722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 789.38, y: 276.72}
+  m_AnchoredPosition: {x: 820, y: 276.72}
   m_SizeDelta: {x: 199.24786, y: 150.15665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233316722
@@ -1008,7 +1008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: BUY
 --- !u!222 &366155945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1370,7 +1370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 789.38, y: 426.88}
+  m_AnchoredPosition: {x: 820, y: 426.88}
   m_SizeDelta: {x: 199.24786, y: 150.15665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &558295572
@@ -1503,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 97.248, y: 398}
+  m_AnchoredPosition: {x: 97.248, y: 441.84}
   m_SizeDelta: {x: 194.49567, y: 180.31345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664070456
@@ -2590,7 +2590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: SELL
 --- !u!222 &1261328623
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2904,7 +2904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1459168792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3148,7 +3148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: BUY
 --- !u!222 &1522818528
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3226,7 +3226,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: BUY
 --- !u!222 &1542115272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3616,7 +3616,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: BUY
 --- !u!222 &1932840674
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3666,7 +3666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 578.38, y: 276.72}
+  m_AnchoredPosition: {x: 592.51, y: 277.68}
   m_SizeDelta: {x: 194.49176, y: 150.15665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968319734
@@ -4041,7 +4041,7 @@ PrefabInstance:
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
@@ -4051,7 +4051,7 @@ PrefabInstance:
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
@@ -4101,12 +4101,12 @@ PrefabInstance:
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 53.820465
       objectReference: {fileID: 0}
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -37.901848
       objectReference: {fileID: 0}
     - target: {fileID: 8846087735605790465, guid: 24843e1bb7a110e41becf4413f881ef5,
         type: 3}

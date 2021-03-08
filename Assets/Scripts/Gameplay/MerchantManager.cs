@@ -26,7 +26,6 @@ public class MerchantManager : MonoBehaviour
 
     public void ClientBuyItem(Collectable item, float price)
     {
-        Debug.Log("we sell : " + item.Name + price);
         if (inventoryPlayer.Money >= price)
         {
             inventoryPlayer.AddItemToInventory(item);
