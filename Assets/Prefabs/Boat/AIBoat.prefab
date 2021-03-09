@@ -14,6 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimalSpeed: 3
   agent: {fileID: 3548607261234545950}
+--- !u!114 &695538793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc018f9eb08948445b49b1c05f40bf3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionRange: 25
+--- !u!114 &695538799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863fe2187b1ccc049b0e782b6d6a42ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 695538792}
+  target: {fileID: 0}
+  vision: {fileID: 695538793}
+  updateTimeout: 0.1
 --- !u!1001 &3375620843262020523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29,17 +58,17 @@ PrefabInstance:
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6450343
+      value: 3.072906
       objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.1525402
       objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.11
+      value: 7.4487724
       objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
@@ -89,7 +118,7 @@ PrefabInstance:
     - target: {fileID: 2299002694482284213, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}

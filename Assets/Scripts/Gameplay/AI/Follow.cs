@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class Follow : MonoBehaviour
 {
     public AIController controller;
-    public GameObject target;
+    public AIVision vision;
+
     public float updateTimeout = 0.1f;
 
     private float updateTime = 0f;
@@ -20,9 +21,9 @@ public class Follow : MonoBehaviour
     void Update()
     {
         updateTime -= Time.deltaTime;
-        if (updateTime <= 0f)
+        if (updateTime <= 0f && vision.lastKnownPlayerPos.HasValue)
         {
-            controller.setTarget(target.transform.position);
+            controller.setTarget(vision.lastKnownPlayerPos.Value);
             updateTime = updateTimeout;
         }
     }
