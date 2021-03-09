@@ -250,8 +250,14 @@ PrefabInstance:
     - target: {fileID: 1052080390428628398, guid: a1e9738f0a2931a4d95bef6949621364,
         type: 3}
       propertyPath: m_Name
-      value: Chest
+      value: Chest Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1052080390428628399, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: c917602ae03c09b4daf52c40020e5bc2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e9738f0a2931a4d95bef6949621364, type: 3}
 --- !u!4 &3359526831356859114 stripped

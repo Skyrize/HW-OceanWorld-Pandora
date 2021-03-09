@@ -221,6 +221,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1052080390428628399, guid: a1e9738f0a2931a4d95bef6949621364,
         type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: ce27b8f397b94e44581081f603bcf1c1,
+        type: 2}
+    - target: {fileID: 1052080390428628399, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
       propertyPath: _Name
       value: Cannon
       objectReference: {fileID: 0}

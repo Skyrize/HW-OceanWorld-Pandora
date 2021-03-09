@@ -6,9 +6,4 @@ public class ItemHolder : MonoBehaviour
 {
     public Item item = null;
 
-    private void Awake() {
-        if (item) {
-            item.Name = gameObject.name;
-        }
-    }
 }

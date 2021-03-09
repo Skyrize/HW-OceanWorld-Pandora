@@ -33,7 +33,7 @@ public class MerchantManager : MonoBehaviour
 
     public void ClientSellItem(Item item, float price)
     {
-        InventoryStorage storage = inventoryPlayer.m_content.Find((stored) => { return item.Name == stored.item.Name;});
+        InventoryStorage storage = inventoryPlayer.m_content.Find((stored) => { return item == stored.item;});
         if(storage != null && storage.count > 0)
         {
             inventoryPlayer.RemoveItemFromInventory(item);

@@ -217,8 +217,14 @@ PrefabInstance:
     - target: {fileID: 1052080390428628398, guid: a1e9738f0a2931a4d95bef6949621364,
         type: 3}
       propertyPath: m_Name
-      value: Cannon Large
+      value: Cannon Large Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1052080390428628399, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: c23562bac77ad464f848b69a43e3c0b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e9738f0a2931a4d95bef6949621364, type: 3}
 --- !u!1 &4913335805336349845 stripped

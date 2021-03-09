@@ -32,7 +32,7 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
     /// <exception cref="KeyNotFoundException">The object was not found in the inventory</exception>
     public void RemoveItemFromInventory(Item item, uint count = 1)
     {
-        T storage = m_content.Find((stored) => { return item.Name == stored.item.Name;});
+        T storage = m_content.Find((stored) => { return item == stored.item;});
         if (storage == null)
             throw new KeyNotFoundException("Object is not in inventory");
 
@@ -48,7 +48,7 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
     /// <param name="item"></param>
     public void AddItemToInventory(Item item, uint count = 1)
     {
-        T storage = m_content.Find((stored) => { return item.Name == stored.item.Name;});
+        T storage = m_content.Find((stored) => { return item == stored.item;});
         if (storage == null) {
             T newItem = (T)Activator.CreateInstance(typeof(T));;
             newItem.item = item;
@@ -62,7 +62,7 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
         TotalWeight += item.Weight;
         
         if(ResourcePickupUI.Instance)
-            ResourcePickupUI.Instance.PopMessage($"+{count} {item.Name}");
+            ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");
     }
 
 //     /// <summary>
