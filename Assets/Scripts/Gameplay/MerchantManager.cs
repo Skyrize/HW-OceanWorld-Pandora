@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MerchantManager : MonoBehaviour
 {
-    public Inventory inventoryPlayer;
+    public PlayerInventory inventoryPlayer;
+    public MerchantInventory merchantInventory;
 
     public void EnterInMerchant(GameObject obj)
     {
@@ -20,21 +21,24 @@ public class MerchantManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
-    public void ClientBuyItem(Collectible item, float price)
+    public void ClientBuyItem(Item item, float price, uint count)
     {
         if (inventoryPlayer.Money >= price)
         {
-            inventoryPlayer.AddItemToInventory(item);
-            inventoryPlayer.Money -= price;
+            inventoryPlayer.AddItemToInventory(item, count);
+            inventoryPlayer.Money -= price * count;
         }
+        //TODO : add to merchant inventory (NOT MANDATORY)
     }
 
-    public void ClientSellItem(Collectible item, float price)
+    public void ClientSellItem(Item item, float price)
     {
-        if(inventoryPlayer.m_content.ContainsKey(item) && inventoryPlayer.m_content[item] > 0)
+        InventoryStorage storage = inventoryPlayer.m_content.Find((stored) => { return item.Name == stored.item.Name;});
+        if(storage != null && storage.count > 0)
         {
             inventoryPlayer.RemoveItemFromInventory(item);
             inventoryPlayer.Money += price;
         }
+        //TODO : remove from merchant inventory (NOT MANDATORY)
     }
 }

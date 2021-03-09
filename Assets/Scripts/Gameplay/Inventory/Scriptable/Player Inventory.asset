@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbebe4f3d8f183445b5905e12f24a500, type: 3}
-  m_Name: InventoryPlayer
+  m_Script: {fileID: 11500000, guid: b45d70f48f1390e4bae3da4b4b85ccb8, type: 3}
+  m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  TotalWeight: 202
+  TotalWeight: 0
+  _content:
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
