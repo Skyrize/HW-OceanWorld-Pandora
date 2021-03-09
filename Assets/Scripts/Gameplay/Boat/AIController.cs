@@ -21,6 +21,7 @@ public class AIController : Controller
     private NavMeshPath path;
     private int currentCornerIdx = 0;
     private bool destinationReached = true;
+    private Vector3? lastTarget;
 
     private DIRECTION rotatingSide = DIRECTION.NONE;
 
@@ -42,6 +43,11 @@ public class AIController : Controller
 
     public void setTarget(Vector3 target)
     {
+        if (lastTarget.HasValue && target == lastTarget)
+        {
+            return;
+        }
+        lastTarget = target;
         path = new NavMeshPath();
         currentCornerIdx = 0;
         if (!agent.CalculatePath(target, path))

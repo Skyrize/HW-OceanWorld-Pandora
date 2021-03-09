@@ -82,7 +82,12 @@ PrefabInstance:
     - target: {fileID: 2299002694482284212, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_Name
-      value: Boat
+      value: PlayerBoat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299002694482284212, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
