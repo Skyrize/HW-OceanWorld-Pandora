@@ -80,15 +80,14 @@ public class AIController : Controller
         Vector3 localDiff = Quaternion.AngleAxis(-transform.rotation.eulerAngles.y, Vector3.up) * diff;
         return localDiff;
     }
+
     public override Vector3 getInput(float currentSpeed)
     {
         if (destinationReached)
         {
             return new Vector3(0, 0, 0);
         }
-        Vector3 simulatedInput = getRelativeDirection();
-        simulatedInput.x = Mathf.Clamp(simulatedInput.x, -1, 1);
-        simulatedInput.z = Mathf.Clamp(simulatedInput.z, -1, 1);
+        Vector3 simulatedInput = getRelativeDirection().normalized;
         simulatedInput.y = 0;
         if (simulatedInput.z < 0) // we need to go backward
         {
@@ -99,7 +98,7 @@ public class AIController : Controller
             simulatedInput.x = rotatingSide == DIRECTION.RIGHT ? 1 : -1;
             simulatedInput.z = 0;
         }
-        if (simulatedInput.z <= 0f && currentSpeed < minimalSpeed)
+        if (currentSpeed < minimalSpeed)
         {
             simulatedInput.z = 1f;
         }

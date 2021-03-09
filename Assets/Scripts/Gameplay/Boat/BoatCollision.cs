@@ -5,9 +5,9 @@ using UnityEngine;
 public class BoatCollision : MonoBehaviour
 {
     public float damageOnCollision = 5f;
-    public BoatStats stats;
+    public HealthComponent stats;
     private void OnCollisionEnter(Collision collision)
     {
-        stats.damage(damageOnCollision);
+        stats.ReduceHealth(damageOnCollision);
     }
 }
