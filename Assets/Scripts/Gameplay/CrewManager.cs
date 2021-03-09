@@ -12,15 +12,27 @@ public class CrewManager : MonoBehaviour
     void Start()
     {
         events = GetComponent<EventBinder>();
+        Exit();
+    }
+
+
+    public void Enter()
+    {
+        events.CallEvent("Enter");
+    }
+
+    public void Exit()
+    {
+        events.CallEvent("Exit");
     }
 
     public void Toggle()
     {
         toggle = !toggle;
         if (toggle) {
-            events.CallEvent("Enter");
+            Enter();
         } else {
-            events.CallEvent("Exit");
+            Exit();
         }
     }
 

@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] protected float zoomMax = 100f;
     [Header("References")]
     [SerializeField] protected Camera cam = null;
+    [Header("Runtime")]
+    [SerializeField] public bool blockZoom = false;
 
     protected Plane seeLevel = new Plane(Vector3.up, Vector3.zero);
     // Start is called before the first frame update
@@ -17,6 +19,12 @@ public class CameraController : MonoBehaviour
     {
         cam = Camera.main;
     }
+
+    public void BlockZoom(bool value)
+    {
+        blockZoom = value;
+    }
+
     void Focus(Transform target)
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -46,7 +54,7 @@ public class CameraController : MonoBehaviour
 
     public void Zoom(float input)
     {
-        if (input == 0)
+        if (input == 0 || blockZoom)
             return;
 
         if (cam.orthographic) {
