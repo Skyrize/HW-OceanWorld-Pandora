@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatControllerV1 : MonoBehaviour
+public class BoatController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected  float acceleration = 1;
@@ -18,6 +18,7 @@ public class BoatControllerV1 : MonoBehaviour
     [Header("References")]
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected Transform motor;
+    [SerializeField] protected Controller controller;
 
     [Header("Runtime")]
     [SerializeField] protected Vector2 input = Vector2.zero;
@@ -35,8 +36,9 @@ public class BoatControllerV1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input.y = Input.GetAxis("Vertical");
-        input.x = Input.GetAxisRaw("Horizontal");
+        Vector3 controllerInput = controller.getInput(rb.velocity.magnitude).normalized;
+        input.y = controllerInput.z;
+        input.x = controllerInput.x;
         input.Normalize();
     }
 
