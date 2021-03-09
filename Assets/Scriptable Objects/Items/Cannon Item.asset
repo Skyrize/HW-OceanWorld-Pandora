@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ad1bcb4b2df64e8a51fd356853f06, type: 3}
   m_Name: Cannon Item
   m_EditorClassIdentifier: 
-  Weight: 2830
-  Name: Default Name
+  weight: 2800
+  placable: 1
+  prefab: {fileID: 5811017166200061455, guid: 8653aebcb198e094b9e0a2318a654f52, type: 3}
+  icon: {fileID: 21300000, guid: 4ed1fceb144d4fe4ea746e77ad8bd3df, type: 3}

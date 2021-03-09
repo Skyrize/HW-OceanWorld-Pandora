@@ -25,7 +25,7 @@ public class MerchantManager : MonoBehaviour
     {
         if (inventoryPlayer.Money >= price)
         {
-            inventoryPlayer.AddItemToInventory(item, count);
+            inventoryPlayer.Add(item, count);
             inventoryPlayer.Money -= price * count;
         }
         //TODO : add to merchant inventory (NOT MANDATORY)
@@ -33,10 +33,10 @@ public class MerchantManager : MonoBehaviour
 
     public void ClientSellItem(Item item, float price)
     {
-        InventoryStorage storage = inventoryPlayer.m_content.Find((stored) => { return item == stored.item;});
+        InventoryStorage storage = inventoryPlayer.GetStoredItem(item);
         if(storage != null && storage.count > 0)
         {
-            inventoryPlayer.RemoveItemFromInventory(item);
+            inventoryPlayer.Remove(item);
             inventoryPlayer.Money += price;
         }
         //TODO : remove from merchant inventory (NOT MANDATORY)

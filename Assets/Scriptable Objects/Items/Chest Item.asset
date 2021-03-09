@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ad1bcb4b2df64e8a51fd356853f06, type: 3}
   m_Name: Chest Item
   m_EditorClassIdentifier: 
-  Weight: 25
-  Name: Chest
+  weight: 25
+  placable: 1
+  prefab: {fileID: 3359526831356859119, guid: a2321a44a3c947848b8244ad7eb61752, type: 3}
+  icon: {fileID: 21300000, guid: 1f4e1d241dec7b546b04e872c3f4a721, type: 3}

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         Item item = obj.GetComponent<Item>();
         if (item == null)
             throw new NullReferenceException("Collider is not collectable");
-        inventory.AddItemToInventory(item);
+        inventory.Add(item);
         Destroy(obj);
     }
 
@@ -26,6 +26,6 @@ public class Player : MonoBehaviour
         Item item = obj.GetComponent<Item>();
         if (item == null)
             throw new NullReferenceException("Collider is not throwable");
-        inventory.RemoveItemFromInventory(item);
+        inventory.Remove(item);
     }
 }

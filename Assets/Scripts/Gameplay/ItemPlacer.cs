@@ -17,17 +17,18 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected Color invalidGhostColor = new Color(1, 0, 0, 0.5f);
     [SerializeField] protected Color validGhostColor = new Color(0, 1, 0, 0.5f);
     [Header("References")]
-    [SerializeField] protected TMP_InventoryItem currentItem = null;
-    [SerializeField] public TMP_InventoryItem CurrentItem {
+    [SerializeField] protected PlacableInventoryUI placableInventoryUI = null;
+    [SerializeField] protected InventoryStorage currentStored = null;
+    [SerializeField] public InventoryStorage CurrentItem {
         get {
-            return currentItem;
+            return currentStored;
         }
         set {
             if (ghostPlacer) {
                 ClearGhost();
             }
-            currentItem = value;
-            if (currentItem != null) {
+            currentStored = value;
+            if (currentStored != null) {
                 GenerateGhost();
             }
         }
@@ -40,6 +41,20 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected bool activated = false;
     [SerializeField] protected bool canPlace = false;
     [SerializeField] protected PlacerToolMode mode = PlacerToolMode.REMOVE;
+    [SerializeField] protected PlacerToolMode Mode {
+        set {
+            this.mode = value;
+            switch (mode)
+            {
+                case PlacerToolMode.GHOST:
+                    InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
+                break;
+                case PlacerToolMode.REMOVE:
+                    InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
+                break;
+            }
+        }
+    }
     [SerializeField] protected Vector3 worldOrigin = Vector3.zero;
     [SerializeField] protected Vector3 worldHalfExtents = Vector3.zero;
     RaycastHit hit;
@@ -47,6 +62,12 @@ public class ItemPlacer : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        placableInventoryUI.onSelected.AddListener(SelectPlacableItem);
+    }
+
+    public void SelectPlacableItem(InventoryStorage item)
+    {
+        CurrentItem = item;
     }
 
     private void OnEnable() {
@@ -57,19 +78,18 @@ public class ItemPlacer : MonoBehaviour
 
     public void Activate()
     {
-        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
         activated = true;
     }
 
     public void Desactivate()
     {
-        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
         activated = false;
+        CurrentItem = null;
     }
 
     public void ClearGhost()
     {
-        mode = PlacerToolMode.REMOVE;
+        Mode = PlacerToolMode.REMOVE;
         Destroy(ghostPlacer);
         ghostPlacer = null;
         InputManager.Instance.RemoveKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
@@ -79,8 +99,8 @@ public class ItemPlacer : MonoBehaviour
 
     public void GenerateGhost()
     {
-        mode = PlacerToolMode.GHOST;
-        ghostPlacer = Instantiate(currentItem.item, Vector3.one * 1000, Quaternion.identity);
+        Mode = PlacerToolMode.GHOST;
+        ghostPlacer = Instantiate(currentStored.item.prefab, Vector3.one * 1000, Quaternion.identity);
         ghostPlacer.layer = LayerMask.NameToLayer("GhostPlacer");
         InputManager.Instance.AddKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, ClearGhost);
@@ -97,8 +117,12 @@ public class ItemPlacer : MonoBehaviour
             //TODO : add UI message ?
             return;
         }
-        GameObject placedItem = GameObject.Instantiate(currentItem.item, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
+        GameObject placedItem = GameObject.Instantiate(currentStored.item.prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
         placedItem.transform.parent = hit.collider.transform;
+        if (placableInventoryUI.PlaceItem(currentStored)) {
+            ClearGhost();
+        }
+
         //TODO : activate cannon ?
         //TODO : bind to Input ?
         //TODO : Add UI for task management
@@ -172,6 +196,10 @@ public class ItemPlacer : MonoBehaviour
 
     void RemoveAtMouse()
     {
+        if (currentRemovable == null)
+            return;
+        Item item = currentRemovable.GetComponent<ItemHolder>().item;
+        placableInventoryUI.RemoveItem(item);
         //TODO : put back in inventory
         Destroy(currentRemovable);
         currentRemovable = null;

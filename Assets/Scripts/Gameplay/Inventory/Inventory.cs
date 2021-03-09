@@ -3,6 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class InventoryStorageEvent : UnityEvent<InventoryStorage>
+{
+}
 
 [Serializable]
 public class InventoryStorage {
@@ -14,6 +20,9 @@ public class InventoryStorage {
         this.item = item;
         this.count = count;
     }
+    public InventoryStorage()
+    {
+    }
 }
 
 public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
@@ -23,32 +32,37 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
 
     [HideInInspector] public float TotalWeight;
 
-
     /// <summary>
     /// Removes an object from the inventory
     /// </summary>
     /// <param name="objectName">The to remove</param>
     /// <param name="count">How many items to remove, defaults to 1</param>
     /// <exception cref="KeyNotFoundException">The object was not found in the inventory</exception>
-    public void RemoveItemFromInventory(Item item, uint count = 1)
+    /// <exception cref="ArgumentException">Count was greater than the remaining count of the item</exception>
+    public void Remove(Item item, uint count = 1)
     {
-        T storage = m_content.Find((stored) => { return item == stored.item;});
+        T storage = GetStoredItem(item);
         if (storage == null)
             throw new KeyNotFoundException("Object is not in inventory");
 
         storage.count -= count;
+        if (storage.count < 0) {
+            storage.count = 0;
+            throw new ArgumentException("Trying to remove more item than remaining count");
+        }
 
-        if (storage.count == 0)
+        if (storage.count == 0) {
             m_content.Remove(storage);
+        }
     }
 
     /// <summary>
     /// Add a collectable to the inventory
     /// </summary>
     /// <param name="item"></param>
-    public void AddItemToInventory(Item item, uint count = 1)
+    public void Add(Item item, uint count = 1)
     {
-        T storage = m_content.Find((stored) => { return item == stored.item;});
+        T storage = GetStoredItem(item);
         if (storage == null) {
             T newItem = (T)Activator.CreateInstance(typeof(T));;
             newItem.item = item;
@@ -59,10 +73,16 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
 
         storage.count += count;
         
-        TotalWeight += item.Weight;
+        TotalWeight += item.weight;
         
-        if(ResourcePickupUI.Instance)
+        if(ResourcePickupUI.Instance) {
             ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");
+        }
+    }
+
+    public T GetStoredItem(Item item)
+    {
+        return m_content.Find((stored) => { return item == stored.item;});
     }
 
 //     /// <summary>

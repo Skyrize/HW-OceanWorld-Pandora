@@ -11,6 +11,6 @@ public class MerchantStorage : InventoryStorage
 [CreateAssetMenu(menuName = "Inventory/Merchant")]
 public class MerchantInventory : Inventory<MerchantStorage>
 {
-    public List<MerchantStorage> _content = new List<MerchantStorage>();
-    override public List<MerchantStorage> m_content { get { return _content; } }
+    public List<MerchantStorage> goods = new List<MerchantStorage>();
+    override public List<MerchantStorage> m_content { get { return goods; } }
 }
