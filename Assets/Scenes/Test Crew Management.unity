@@ -481,7 +481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &440966048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3203,7 +3203,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1718858754}
-  - component: {fileID: 1718858755}
   m_Layer: 5
   m_Name: Crew Management UI
   m_TagString: Untagged
@@ -3232,23 +3231,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1718858755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718858753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6cd1dbdc33ad7b489698bc41aba1bef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
-  CrewPanelContent: {fileID: 1289407574}
-  CrewMemberCardPrefab: {fileID: 6238041942671343727, guid: ece55450a14b6284ba198689ee3b55a8,
-    type: 3}
-  currentCrewMember: {fileID: 0}
 --- !u!1 &1765124168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,6 +3515,7 @@ GameObject:
   - component: {fileID: 2022311352}
   - component: {fileID: 2022311351}
   - component: {fileID: 2022311353}
+  - component: {fileID: 2022311354}
   m_Layer: 5
   m_Name: Crew Panel
   m_TagString: Untagged
@@ -3623,6 +3606,23 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &2022311354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022311349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cd1dbdc33ad7b489698bc41aba1bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
+  CrewPanelContent: {fileID: 1289407574}
+  CrewMemberCardPrefab: {fileID: 6238041942671343727, guid: ece55450a14b6284ba198689ee3b55a8,
+    type: 3}
+  currentCrewMember: {fileID: 0}
 --- !u!1 &2062093913
 GameObject:
   m_ObjectHideFlags: 0
