@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerInventory inventory;
+    [Header("References")]
+    [SerializeField] protected PlayerInventory inventoryAsset = null;
+    [Header("Runtime")]
+    public PlayerInventory inventory = null;
+
+    private void Awake() {
+        inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
+    }
 
     /// <summary>
     /// Adds an object to the inventory

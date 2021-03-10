@@ -62,7 +62,7 @@ public class ItemPlacer : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        placableInventoryUI.onSelected.AddListener(SelectPlacableItem);
+        placableInventoryUI.onSelect.AddListener(SelectPlacableItem);
     }
 
     public void SelectPlacableItem(InventoryStorage item)

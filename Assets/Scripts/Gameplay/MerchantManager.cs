@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MerchantManager : MonoBehaviour
 {
-    public PlayerInventory inventoryPlayer;
-    public MerchantInventory merchantInventory;
+    [Header("References")]
+    public Player player;
+    [SerializeField] protected MerchantInventory inventoryAsset;
+    [Header("Runtime")]
+    public MerchantInventory inventory;
+
+    private void Awake() {
+        
+        inventory = ClonableSO.Clone<MerchantInventory>(inventoryAsset);
+    }
 
     public void EnterInMerchant(GameObject obj)
     {
@@ -23,21 +31,21 @@ public class MerchantManager : MonoBehaviour
 
     public void ClientBuyItem(Item item, float price, uint count)
     {
-        if (inventoryPlayer.Money >= price)
+        if (player.inventory.Money >= price)
         {
-            inventoryPlayer.Add(item, count);
-            inventoryPlayer.Money -= price * count;
+            player.inventory.Add(item, count);
+            player.inventory.Money -= price * count;
         }
         //TODO : add to merchant inventory (NOT MANDATORY)
     }
 
     public void ClientSellItem(Item item, float price)
     {
-        InventoryStorage storage = inventoryPlayer.GetStoredItem(item);
+        InventoryStorage storage = player.inventory.GetStoredItem(item);
         if(storage != null && storage.count > 0)
         {
-            inventoryPlayer.Remove(item);
-            inventoryPlayer.Money += price;
+            player.inventory.Remove(item);
+            player.inventory.Money += price;
         }
         //TODO : remove from merchant inventory (NOT MANDATORY)
     }

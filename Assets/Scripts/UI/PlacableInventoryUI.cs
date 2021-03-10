@@ -5,17 +5,27 @@ using UnityEngine;
 public class PlacableInventoryUI : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] public InventoryStorageEvent onSelected = new InventoryStorageEvent();
+    [SerializeField] public InventoryStorageEvent onSelect = new InventoryStorageEvent();
     [Header("References")]
     [SerializeField] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform placableObjectBarContent = null;
     [SerializeField] protected GameObject placableObjectButtonPrefab = null;
     [Header("Runtime")]
     [SerializeField] List<SelectableObjectButtonUI> buttons = new List<SelectableObjectButtonUI>();
+
+    private void Awake() {
+        var player = GameObject.FindObjectOfType<Player>();
+
+        if (player) {
+            this.playerInventory = player.inventory;
+        } else {
+            throw new MissingReferenceException("No Player in scene to hold an inventory. It is need to ensure you don't modify an asset while using inventory.");
+        }
+    }
     
     public void SelectPlacableItem(InventoryStorage stored)
     {
-        onSelected.Invoke(stored);
+        onSelect.Invoke(stored);
     }
 
     public bool PlaceItem(InventoryStorage stored)
@@ -45,7 +55,7 @@ public class PlacableInventoryUI : MonoBehaviour
     {
         SelectableObjectButtonUI target = buttons.Find((button) => button.Stored == stored);
 
-        target.Stored = stored;
+        target.UpdateUI(stored);
     }
 
     public void RemoveButton(InventoryStorage stored)
@@ -60,8 +70,8 @@ public class PlacableInventoryUI : MonoBehaviour
     {
         SelectableObjectButtonUI buttonUI = GameObject.Instantiate(placableObjectButtonPrefab, placableObjectBarContent).GetComponent<SelectableObjectButtonUI>(); // TODO: easy but dirty. Maybe add them along when adding to inventory
 
-        buttonUI.Stored = stored;
-        buttonUI.onSelected.AddListener(this.SelectPlacableItem);
+        buttonUI.UpdateUI(stored);
+        buttonUI.onSelect.AddListener(this.SelectPlacableItem);
         buttons.Add(buttonUI);
     }
 
@@ -90,15 +100,4 @@ public class PlacableInventoryUI : MonoBehaviour
         ClearUI();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

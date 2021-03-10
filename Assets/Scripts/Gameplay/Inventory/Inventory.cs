@@ -10,6 +10,7 @@ public class InventoryStorageEvent : UnityEvent<InventoryStorage>
 {
 }
 
+// TODO : check if Instantiate does deep copy this struct
 [Serializable]
 public class InventoryStorage {
     public Item item = null;
@@ -25,9 +26,9 @@ public class InventoryStorage {
     }
 }
 
-public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
+public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
 {
-    virtual public List<T> m_content { get; }
+    abstract public List<T> m_content { get; }
     public float Money { get; set; }
 
     [HideInInspector] public float TotalWeight;
@@ -83,6 +84,16 @@ public abstract class Inventory<T> : ScriptableObject where T : InventoryStorage
     public T GetStoredItem(Item item)
     {
         return m_content.Find((stored) => { return item == stored.item;});
+    }
+
+    override protected ClonableSO Clone()
+    {
+        Inventory<T> clone = base.Clone() as Inventory<T>;
+
+        for (int i = 0; i != clone.m_content.Count; i++) {
+            clone.m_content[i].item = ClonableSO.Clone<Item>(clone.m_content[i].item);
+        }
+        return clone;
     }
 
 //     /// <summary>

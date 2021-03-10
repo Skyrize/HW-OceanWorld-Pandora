@@ -8,7 +8,8 @@ public class ItemEvent : UnityEvent<Item>
 {
 }
 
-public class Item : ScriptableObject
+[CreateAssetMenu(menuName = "Item/Item")]
+public class Item : ClonableSO
 {
     [Header("Settings")]
     [Min(0f)] public float weight = 1.0f;
