@@ -642,7 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458ae06585f67a54cb35c9e18b334cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryPlayer: {fileID: 0}
+  player: {fileID: 1850574816}
+  inventoryAsset: {fileID: 11400000, guid: 520cf7595afd42b41925fe96ff42d002, type: 2}
+  inventory: {fileID: 0}
 --- !u!114 &1844779995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21950d4b36e774598a028ab39aff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: fc4a7d157738295439e102402847d3fc, type: 2}
+  inventoryAsset: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966, type: 2}
+  inventory: {fileID: 0}
 --- !u!114 &1850574817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +897,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  componentType: Collectible
+  componentType: Item
   parentComponentType: Transform
   childComponentType: Transform
   onCollide:

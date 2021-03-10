@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected PlayerInventory inventoryAsset = null;
-    [Header("Runtime")]
-    public PlayerInventory inventory = null;
+    [HideInInspector] public PlayerInventory inventory = null;
 
     private void Awake() {
         inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);

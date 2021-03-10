@@ -791,6 +791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49702fdfc67c06a4cb87e6b6b861e421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Origin: {x: 0, y: 0, z: 0}
+  Target: {x: 0, y: 0, z: 0}
+  Type: 0
   explosionPrefab: {fileID: 434260074}
 --- !u!54 &1207050101
 Rigidbody:
@@ -1058,6 +1061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae26e8adc0f920646970328987b4aaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Origin: {x: 0, y: 0, z: 0}
+  Target: {x: 0, y: 0, z: 0}
+  Type: 0
 --- !u!1 &1978275795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1077,6 @@ GameObject:
   - component: {fileID: 1978275798}
   - component: {fileID: 1978275797}
   - component: {fileID: 1978275796}
-  - component: {fileID: 1978275802}
   - component: {fileID: 1978275801}
   m_Layer: 0
   m_Name: Player
@@ -1185,26 +1190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canon: {fileID: 227173881}
---- !u!114 &1978275802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978275795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c410945f770bf7418700f4d0994bf35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 1
-  maxSpeed: 10
-  steerSpeed: 1
-  maxSteerAngle: 10
-  slideForce: 1
-  rb: {fileID: 0}
-  motor: {fileID: 1998048320}
-  input: {x: 0, y: 0}
 --- !u!1 &1998048319
 GameObject:
   m_ObjectHideFlags: 0

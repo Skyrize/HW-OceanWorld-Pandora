@@ -7,7 +7,7 @@ public class CrewUI : MonoBehaviour
     // [Header("Events")]
     // [SerializeField] public CrewMemberEvent onSelect = new CrewMemberEvent();
     [Header("References")]
-    [SerializeField] protected PlayerInventory playerInventory = null;
+    [HideInInspector] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform CrewPanelContent = null;
     [SerializeField] protected GameObject CrewMemberCardPrefab = null;
     [Header("Runtime")]

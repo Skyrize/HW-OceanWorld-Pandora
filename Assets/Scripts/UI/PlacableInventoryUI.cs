@@ -7,7 +7,7 @@ public class PlacableInventoryUI : MonoBehaviour
     [Header("Events")]
     [SerializeField] public InventoryStorageEvent onSelect = new InventoryStorageEvent();
     [Header("References")]
-    [SerializeField] protected PlayerInventory playerInventory = null;
+    [HideInInspector] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform placableObjectBarContent = null;
     [SerializeField] protected GameObject placableObjectButtonPrefab = null;
     [Header("Runtime")]
