@@ -20,3 +20,6 @@ MonoBehaviour:
     count: 5
   - item: {fileID: 11400000, guid: c23562bac77ad464f848b69a43e3c0b9, type: 2}
     count: 5
+  crewMembers:
+  - {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}

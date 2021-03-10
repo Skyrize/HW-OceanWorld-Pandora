@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class UIHealthBar : MonoBehaviour
+public class BarUI : MonoBehaviour
 {
-    Image image;
+    [Header("References")]
+    [SerializeField] protected Image image;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,7 @@ public class UIHealthBar : MonoBehaviour
         }
     }
 
-    public void UpdateHealth(float ratio)
+    public void UpdateRatio(float ratio)
     {
         if (!image) {
             image = GetComponent<Image>();

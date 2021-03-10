@@ -7,32 +7,24 @@ using UnityEngine.UI;
 public class SelectableObjectButtonUI : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] public InventoryStorageEvent onSelected = new InventoryStorageEvent();
+    [SerializeField] public InventoryStorageEvent onSelect = new InventoryStorageEvent();
     [Header("References")]
     [SerializeField] protected InventoryStorage stored = null;
-    [SerializeField] public InventoryStorage Stored {
-        get {
-            return stored;
-        }
-        set {
-            stored = value;
-            if (stored != null) {
-                UpdateUI();
-            }
-        }
-    }
     [SerializeField] protected Image iconPlacement = null;
     [SerializeField] protected TMPro.TMP_Text countText = null;
 
+    public InventoryStorage Stored { get {return stored; } }
+
     public void Select()
     {
-        onSelected.Invoke(stored);
+        onSelect.Invoke(stored);
     }
 
-    private void UpdateUI()
+    public void UpdateUI(InventoryStorage stored)
     {
-        iconPlacement.sprite = stored.item.icon;
-        countText.text = "x" + stored.count.ToString();
+        this.stored = stored;
+        iconPlacement.sprite = this.stored.item.icon;
+        countText.text = "x" + this.stored.count.ToString();
     }
 
     // Start is called before the first frame update
