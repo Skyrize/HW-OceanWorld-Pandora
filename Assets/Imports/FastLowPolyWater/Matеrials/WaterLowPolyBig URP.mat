@@ -35,7 +35,7 @@ Material:
     - _ChromaticAberration: 0.1
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Depth: 1.9
+    - _Depth: 3
     - _Depth1: 2
     - _DepthRange: 0.457
     - _DepthRange1: 0
@@ -85,7 +85,7 @@ Material:
     m_Colors:
     - _Color0: {r: 0.15294108, g: 0.49964565, b: 0.5294118, a: 0}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}
-    - _ColorDepth: {r: 0.04705879, g: 0.12602234, b: 0.16078427, a: 1}
+    - _ColorDepth: {r: 0.04705877, g: 0.12602231, b: 0.16078424, a: 1}
     - _ColorFoam: {r: 1, g: 0.99311846, b: 0.86, a: 1}
     - _Colorwater: {r: 0.23160389, g: 0.5137584, b: 0.5607843, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
