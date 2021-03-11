@@ -5,21 +5,23 @@ using UnityEngine;
 /// <summary>
 /// Should get ridden of
 /// </summary>
-public class EnnemyManager : MonoBehaviour, IHitable
+public class EnnemyManager : MonoBehaviour
 {
     private float blinkDuration;
 
     private float lastBlink = 0;
     private float blinkInterval = .2f;
 
-    private MeshRenderer sophisticatedBlinkEngineV2;
+    // private MeshRenderer sophisticatedBlinkEngineV2;
 
-    public WeaponManager canon;
+    [SerializeField] protected Weaponry weapons = null;
     public GameObject player;
 
     void Start()
     {
-        sophisticatedBlinkEngineV2 = GetComponent<MeshRenderer>();
+        if (!weapons)
+            weapons = GetComponent<Weaponry>();
+        // sophisticatedBlinkEngineV2 = GetComponent<MeshRenderer>();
 
         player = GameObject.FindGameObjectWithTag(Utils.Tags.PLAYER);
     }
@@ -27,25 +29,25 @@ public class EnnemyManager : MonoBehaviour, IHitable
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            canon.ShootAt(player.transform.position);
+            weapons.ShootAt(player.transform.position);
 
-        if (!IsBlinking) { sophisticatedBlinkEngineV2.enabled = true; return; }
+        // if (!IsBlinking) { sophisticatedBlinkEngineV2.enabled = true; return; }
 
-        blinkDuration -= Time.deltaTime;
-        lastBlink += Time.deltaTime;
+        // blinkDuration -= Time.deltaTime;
+        // lastBlink += Time.deltaTime;
 
-        if (lastBlink < blinkInterval)
-            return;
+        // if (lastBlink < blinkInterval)
+        //     return;
            
-        sophisticatedBlinkEngineV2.enabled = !sophisticatedBlinkEngineV2.enabled;
-        lastBlink = 0;
+        // sophisticatedBlinkEngineV2.enabled = !sophisticatedBlinkEngineV2.enabled;
+        // lastBlink = 0;
     }
 
     private bool IsBlinking => blinkDuration > 0;
 
-    public void HitBy(Projectile p)
+    public void GetHit()
     {
-        print($"I, ennemy, was hit by a { p.Type } !");
+        // print($"I, ennemy, was hit by a { p.Type } !");
         blinkDuration = 2f;
     }
 }

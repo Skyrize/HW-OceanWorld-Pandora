@@ -31,18 +31,18 @@ public class Item : ClonableSO
         return Name.GetHashCode();
     }
     
-    private void OnValidate() {
+    protected void OnValidate() {
         if (prefab) {
-            ItemHolder holder = prefab.GetComponent<ItemHolder>();
+            ItemObject holder = prefab.GetComponent<ItemObject>();
 
             if (!holder) {
-                holder = prefab.AddComponent<ItemHolder>();
+                holder = prefab.AddComponent<ItemObject>();
             }
             if (!holder.item)
                 holder.item = this;
 
-            Name = name;
         }
+        Name = name;
     }
 
     override protected ClonableSO Clone()

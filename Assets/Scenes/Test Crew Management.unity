@@ -1784,8 +1784,9 @@ GameObject:
   - component: {fileID: 1093836932}
   - component: {fileID: 1093836931}
   - component: {fileID: 1093836935}
+  - component: {fileID: 1093836933}
   m_Layer: 0
-  m_Name: Boat
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1851,6 +1852,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1093836933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093836930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac16a8e9815ca264da38fe28824c4d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadFromChilds: 1
+  weapons: []
 --- !u!4 &1093836934
 Transform:
   m_ObjectHideFlags: 0
@@ -1881,6 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21950d4b36e774598a028ab39aff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponry: {fileID: 1093836933}
   inventoryAsset: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966, type: 2}
   inventory: {fileID: 0}
 --- !u!1 &1130765015
@@ -3198,6 +3214,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 1093836935}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - name: Exit
     timer: 0
     evt:
@@ -3247,6 +3274,17 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1093836935}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!4 &1518431406
 Transform:
@@ -3501,6 +3539,7 @@ MonoBehaviour:
   invalidGhostColor: {r: 1, g: 0, b: 0, a: 0.5}
   validGhostColor: {r: 0, g: 1, b: 0, a: 0.5}
   placableInventoryUI: {fileID: 942638119}
+  player: {fileID: 0}
   currentStored:
     item: {fileID: 0}
     count: 0
@@ -4126,14 +4165,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710461143}
-  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2, y: 0, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628620404}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1710461146
 MonoBehaviour:
   m_ObjectHideFlags: 0

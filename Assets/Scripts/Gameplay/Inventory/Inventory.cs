@@ -100,17 +100,9 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
     {
         List<T> items = new List<T>();
 
-        Debug.Log("Fetching type " + type.ToString());
         foreach (T stored in m_content)
         {
-            if (stored.item.GetType() == type) {
                 items.Add(stored);
-                
-                Debug.Log("Matched type !" + stored.item.GetType().ToString());
-            } else {
-                Debug.Log("Not Matched type .." + stored.item.GetType().ToString());
-                
-            }
         }
         return items;
     }

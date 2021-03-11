@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ItemObject))]
 public class Projectile : MonoBehaviour
 {
-    public Vector3 Origin;
-    public Vector3 Target;
-    public ProjectileType Type;
-
+    [Header("References")]
+    [HideInInspector] protected Ammunition ammunitionAsset = null;
+    
     public virtual void Start()
     {
-        transform.position = Origin;
+        ammunitionAsset = GetComponent<ItemObject>().item as Ammunition;
     }
 
-    protected virtual void OnHit(Collider collider)
+    public void Hit(GameObject target)
     {
-        IHitable hitable = collider.gameObject.GetComponent<IHitable>();
-        if (hitable != null)
-            collider.gameObject
-                .GetComponent<IHitable>()
-                .HitBy(this);
+        HealthComponent health = target.GetComponentInParent<HealthComponent>();
+        health.ReduceHealth(ammunitionAsset.damages);
+        Destroy(gameObject);
     }
-}
 
-public enum ProjectileType
-{
-    CANONBALL,
-    BULLET,
+    private void Update() {
+        //TODO : remove (replaced by hit water + animation)
+        if (transform.position.y < -10) {
+            Destroy(gameObject);
+        }
+    }
 }

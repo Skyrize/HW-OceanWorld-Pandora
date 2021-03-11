@@ -2,46 +2,92 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ItemObject))]
 public class WeaponManager : MonoBehaviour
 {
-    private GameObject projectileContainer;
-    public GameObject projectilePrefab;
+    [Header("TMP_OldCannonball shoot")]
+    public bool TMP_followTarget = true;
+    private float maxRange;
+    private readonly float baseVelocity = 10f;
+    private readonly float maxSideAngle = 45f;
 
-    public Vector3 weaponOffset = new Vector3(0, 1.25f, .2f);
+    private bool IsInRange => Range > maxRange;
+    private float MaxRange => Mathf.Abs(Mathf.Pow(baseVelocity, 2) / Physics.gravity.y);
+    private Vector3 Target = Vector3.zero;
 
-    public float shotDelay = 1;
-    private float lastShot;
+    private float Range => Vector3.Distance(spawnPoint.position, Target);
+    private float Gravity => Physics.gravity.y;
 
-    private void Start()
+    private float V2 => Mathf.Pow(baseVelocity, 2);
+
+    
+    private float ZRotatingAngle
     {
-        lastShot = shotDelay;
-        projectileContainer = GameObject.FindGameObjectWithTag(Utils.Tags.PROJECTILE_CONTAINER);
+        get
+        {
+            if (IsInRange)
+                return -45f;
+
+            return .5f * Mathf.Asin(Gravity * Range / V2) * Mathf.Rad2Deg;
+        }
     }
 
-    void Update()
+    [Header("References")]
+    [HideInInspector] protected Weapon weaponAsset;
+    [SerializeField] protected Transform spawnPoint = null;
+    [Header("Runtime")]
+    [SerializeField] bool canShoot = true;
+    private WaitForSeconds reloadTimer = null;
+
+    private void Awake() {
+        weaponAsset = GetComponent<ItemObject>().item as Weapon;
+        if (!weaponAsset)
+            throw new System.Exception($"ItemObject on WeaponManager '{gameObject.name}' has an invalid item (null or not Weapon).");
+        reloadTimer = new WaitForSeconds(1.0f / weaponAsset.shotPerSecond);
+    }
+
+    IEnumerator Reload()
     {
-        if (!CanShoot)
-            lastShot += Time.deltaTime;
+        yield return reloadTimer;
+        canShoot = true;
+        //TODO : add event for sound binding
+    }
+
+    public void TMP_FollowTargetShoot(GameObject projectile, Vector3 target)
+    {
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        Target = target;
+        maxRange = MaxRange;
+
+        projectile.transform.LookAt(Target);
+        projectile.transform.Rotate(Vector3.right * ZRotatingAngle);
+
+        projectileRb.velocity = projectile.transform.TransformDirection(Vector3.forward * baseVelocity);
+    }
+
+    public void TMP_DirectShoot(GameObject projectile, Vector3 target)
+    {
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        
+        projectileRb.AddForce(spawnPoint.forward * weaponAsset.power, ForceMode.Impulse);
     }
 
     public void ShootAt(Vector3 target)
     {
-        if (!CanShoot)
+        //TODO : reject shoot if angle is too large
+        if (!canShoot)
             return;
+        var projectile = Instantiate(weaponAsset.ammunitionAsset.prefab, 
+            spawnPoint.position, 
+            spawnPoint.rotation);
 
-        lastShot = 0;
-        var projectileObject = Instantiate(projectilePrefab, 
-            transform.position, 
-            transform.rotation, 
-            projectileContainer.transform);
-        var projectileScript = projectileObject.GetComponent<Projectile>();
-
-        projectileScript.Origin = transform.position
-            + transform.TransformDirection(weaponOffset); 
-        projectileScript.Target = target;
-
-        projectileObject.SetActive(true);
+        if (TMP_followTarget) {
+            TMP_FollowTargetShoot(projectile, target);
+        } else {
+            TMP_DirectShoot(projectile, target);
+        }
+        canShoot = false;
+        StartCoroutine(Reload());
     }
 
-    public bool CanShoot => lastShot >= shotDelay;
 }

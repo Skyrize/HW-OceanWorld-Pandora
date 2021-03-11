@@ -10,6 +10,10 @@ public enum PlacerToolMode
 
 public class ItemPlacer : MonoBehaviour
 {
+    //TODO : maybe implement to replace static ref
+    // [Header("Events")]
+    // [SerializeField] public ItemEvent onPlace = new ItemEvent();
+    // [SerializeField] public ItemEvent onRemove = new ItemEvent();
     [Header("Settings")]
     [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] protected LayerMask placableMask = 1;
@@ -18,6 +22,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected Color validGhostColor = new Color(0, 1, 0, 0.5f);
     [Header("References")]
     [SerializeField] protected PlacableInventoryUI placableInventoryUI = null;
+    [SerializeField] protected Player player = null; //TODO : move to anotherScript
     [SerializeField] protected InventoryStorage currentStored = null;
     [SerializeField] public InventoryStorage CurrentItem {
         get {
@@ -63,6 +68,13 @@ public class ItemPlacer : MonoBehaviour
     {
         cam = Camera.main;
         placableInventoryUI.onSelect.AddListener(SelectPlacableItem);
+
+        //TODO : move to anotherScript
+        this.player = GameObject.FindObjectOfType<Player>();
+
+        if (!player) {
+            throw new MissingReferenceException("No Player in scene to hold an inventory. It is need to ensure you don't modify an asset while using inventory.");
+        }
     }
 
     public void SelectPlacableItem(InventoryStorage item)
@@ -107,6 +119,18 @@ public class ItemPlacer : MonoBehaviour
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, PlaceFromGhost);
     }
 
+    //TODO : move to anotherScript
+    public void PlaceWeapon(WeaponManager weapon)
+    {
+        player.weaponry.weapons.Add(weapon);
+    }
+
+    //TODO : move to anotherScript
+    public void RemoveWeapon(WeaponManager weapon)
+    {
+        player.weaponry.weapons.Remove(weapon);
+    }
+
     public void PlaceFromGhost()
     {
         if (!onBoat) {
@@ -119,6 +143,8 @@ public class ItemPlacer : MonoBehaviour
         }
         GameObject placedItem = GameObject.Instantiate(currentStored.item.prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
         placedItem.transform.parent = hit.collider.transform;
+        PlaceWeapon(placedItem.GetComponent<WeaponManager>());
+        
         if (placableInventoryUI.PlaceItem(currentStored)) {
             ClearGhost();
         }
@@ -129,6 +155,18 @@ public class ItemPlacer : MonoBehaviour
         //TODO : Recalculate nashmesh after place ?
         //TODO : remove from inventory
         //TODO : Clear if no other item in inventory ? (if icon for many items, otherwise clear no matter what and remove UI)
+    }
+
+    void RemoveAtMouse()
+    {
+        if (currentRemovable == null)
+            return;
+        Item item = currentRemovable.GetComponent<ItemObject>().item;
+        RemoveWeapon(currentRemovable.GetComponent<WeaponManager>());
+        placableInventoryUI.RemoveItem(item);
+        //TODO : put back in inventory
+        Destroy(currentRemovable);
+        currentRemovable = null;
     }
 
     public void RotateGhost()
@@ -192,17 +230,6 @@ public class ItemPlacer : MonoBehaviour
                 TestGhostPlacing();
                 
         }
-    }
-
-    void RemoveAtMouse()
-    {
-        if (currentRemovable == null)
-            return;
-        Item item = currentRemovable.GetComponent<ItemHolder>().item;
-        placableInventoryUI.RemoveItem(item);
-        //TODO : put back in inventory
-        Destroy(currentRemovable);
-        currentRemovable = null;
     }
 
     GameObject currentRemovable = null;

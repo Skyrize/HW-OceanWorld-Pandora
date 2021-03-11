@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemHolder : MonoBehaviour
+public class ItemObject : MonoBehaviour
 {
     public Item item = null;
 
