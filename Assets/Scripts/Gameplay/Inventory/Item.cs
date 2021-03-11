@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
 
 [System.Serializable]
 public class ItemEvent : UnityEvent<Item>
@@ -42,7 +41,7 @@ public class Item : ClonableSO
             if (!holder.item)
                 holder.item = this;
 
-            Name = new UnityEditor.SerializedObject(this).FindProperty("m_Name").stringValue;
+            Name = name;
         }
     }
 
