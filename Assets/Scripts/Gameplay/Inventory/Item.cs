@@ -12,13 +12,18 @@ public class ItemEvent : UnityEvent<Item>
 public class Item : ClonableSO
 {
     [Header("Settings")]
-    [Min(0f)] public float weight = 1.0f;
+    [Min(0f)]
+    [SerializeField] protected float weight = 1.0f;
+    public float Weight => weight;
 
     [Header("References")]
-    public GameObject prefab;
-    public Sprite icon;
+    [SerializeField] protected GameObject prefab;
+    public GameObject Prefab => prefab;
+    [SerializeField] protected Sprite icon;
+    public Sprite Icon => icon;
 
-    public string Name = "default";
+    protected string _name = "default";
+    public string Name => _name;
 
     public bool Equals(Item other)
     {
@@ -38,18 +43,19 @@ public class Item : ClonableSO
             if (!holder) {
                 holder = prefab.AddComponent<ItemObject>();
             }
-            if (!holder.item)
-                holder.item = this;
+            if (!holder.Item) {
+                holder.DONOTCALL_SetItem(this);
+            }
 
         }
-        Name = name;
+        _name = name;
     }
 
     override protected ClonableSO Clone()
     {
         var clone = base.Clone() as Item;
 
-        clone.Name = this.Name;
+        clone._name = this.Name;
         return clone;
     }
     

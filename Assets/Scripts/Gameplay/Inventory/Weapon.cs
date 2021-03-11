@@ -6,9 +6,12 @@ using UnityEngine;
 public class Weapon : Item
 {
     [Header("Settings")]
-    public float shotPerSecond = 2f;
-    public float power = 100f;
+    [SerializeField] protected float shotsPerSecond = 2f;
+    public float ShotsPerSecond => shotsPerSecond;
+    [SerializeField] protected float power = 100f;
+    public float Power => power;
     [Header("References")]
-    public Ammunition ammunitionAsset;
+    [SerializeField] protected Ammunition ammunitionAsset = null;
+    public Ammunition AmmunitionAsset => ammunitionAsset;
 
 }

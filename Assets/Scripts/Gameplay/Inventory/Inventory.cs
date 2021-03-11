@@ -74,7 +74,7 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
 
         storage.count += count;
         
-        TotalWeight += item.weight;
+        TotalWeight += item.Weight;
         
         if(ResourcePickupUI.Instance) {
             ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");
@@ -102,7 +102,9 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
 
         foreach (T stored in m_content)
         {
+            if (stored.item.GetType() == type) {
                 items.Add(stored);
+            }
         }
         return items;
     }

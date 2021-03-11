@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public Item item = null;
+    [SerializeField] protected Item item = null;
+    public Item Item => item;
 
-    private void OnValidate() {
-        if (item && !item.prefab) {
-            item.prefab = this.gameObject;
-        }
+    public void DONOTCALL_SetItem(Item item)
+    {
+        this.item = item;
     }
 }

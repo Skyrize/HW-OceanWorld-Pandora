@@ -237,7 +237,7 @@ PrefabInstance:
     - target: {fileID: 9125838271023397030, guid: fa843081cee3f4b4b8bc3d3ee0f462af,
         type: 3}
       propertyPath: m_Name
-      value: Cannon Large Prefab Variant
+      value: Cannon Large Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 9125838271023397030, guid: fa843081cee3f4b4b8bc3d3ee0f462af,
         type: 3}

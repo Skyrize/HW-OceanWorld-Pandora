@@ -9,7 +9,7 @@ public class WeaponManager : MonoBehaviour
     public bool TMP_followTarget = true;
     private float maxRange;
     private readonly float baseVelocity = 10f;
-    private readonly float maxSideAngle = 45f;
+    // private readonly float maxSideAngle = 45f;
 
     private bool IsInRange => Range > maxRange;
     private float MaxRange => Mathf.Abs(Mathf.Pow(baseVelocity, 2) / Physics.gravity.y);
@@ -40,10 +40,10 @@ public class WeaponManager : MonoBehaviour
     private WaitForSeconds reloadTimer = null;
 
     private void Awake() {
-        weaponAsset = GetComponent<ItemObject>().item as Weapon;
+        weaponAsset = GetComponent<ItemObject>().Item as Weapon;
         if (!weaponAsset)
             throw new System.Exception($"ItemObject on WeaponManager '{gameObject.name}' has an invalid item (null or not Weapon).");
-        reloadTimer = new WaitForSeconds(1.0f / weaponAsset.shotPerSecond);
+        reloadTimer = new WaitForSeconds(1.0f / weaponAsset.ShotsPerSecond);
     }
 
     IEnumerator Reload()
@@ -69,7 +69,7 @@ public class WeaponManager : MonoBehaviour
     {
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
         
-        projectileRb.AddForce(spawnPoint.forward * weaponAsset.power, ForceMode.Impulse);
+        projectileRb.AddForce(spawnPoint.forward * weaponAsset.Power, ForceMode.Impulse);
     }
 
     public void ShootAt(Vector3 target)
@@ -77,7 +77,7 @@ public class WeaponManager : MonoBehaviour
         //TODO : reject shoot if angle is too large
         if (!canShoot)
             return;
-        var projectile = Instantiate(weaponAsset.ammunitionAsset.prefab, 
+        var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab, 
             spawnPoint.position, 
             spawnPoint.rotation);
 

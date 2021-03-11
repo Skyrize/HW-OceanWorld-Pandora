@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb5615c444acd14c9fcda3fae67086f, type: 3}
   m_Name: Test Skill 2
   m_EditorClassIdentifier: 
-  Name: "Doigts de f\xE9e"
-  Description: Il vaut mieux ne pas savoir.
+  _name: Scorbut
+  description: Effective but classic way of losing your toes.

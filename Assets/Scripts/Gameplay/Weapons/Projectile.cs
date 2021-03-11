@@ -10,13 +10,13 @@ public class Projectile : MonoBehaviour
     
     public virtual void Start()
     {
-        ammunitionAsset = GetComponent<ItemObject>().item as Ammunition;
+        ammunitionAsset = GetComponent<ItemObject>().Item as Ammunition;
     }
 
     public void Hit(GameObject target)
     {
         HealthComponent health = target.GetComponentInParent<HealthComponent>();
-        health.ReduceHealth(ammunitionAsset.damages);
+        health.ReduceHealth(ammunitionAsset.Damages);
         Destroy(gameObject);
     }
 

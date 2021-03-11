@@ -20,9 +20,11 @@ public class Player : MonoBehaviour
 
     private void Awake() {
         inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
-        if (!weaponry)
+        if (!weaponry) {
             weaponry = GetComponent<Weaponry>();
-        InputManager.Instance.AddAxisEvent("Fire1", Shoot);
+            if (weaponry)
+                InputManager.Instance.AddAxisEvent("Fire1", Shoot);
+        }
     }
 
     /// <summary>
@@ -32,14 +34,14 @@ public class Player : MonoBehaviour
     /// <exception cref="NullReferenceException">The item is not a item</exception>
     public void CollectItem(GameObject obj)
     {
-        Item item = obj.GetComponent<ItemObject>().item;
+        Item item = obj.GetComponent<ItemObject>().Item;
         inventory.Add(item);
         Destroy(obj);
     }
 
     public void RemoveItem(GameObject obj)
     {
-        Item item = obj.GetComponent<ItemObject>().item;
+        Item item = obj.GetComponent<ItemObject>().Item;
         inventory.Remove(item);
     }
 

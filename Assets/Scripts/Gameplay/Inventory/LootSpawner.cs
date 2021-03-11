@@ -45,7 +45,7 @@ public class LootSpawner : MonoBehaviour
                 var rotationY = Random.Range(0, 360);
                 var rotation = Quaternion.Euler(new Vector3(0, rotationY, 0));
 
-                var obj = Instantiate(item.item.prefab, transform);
+                var obj = Instantiate(item.item.Prefab, transform);
                 var body = obj.GetComponent<Rigidbody>();
 
                 obj.transform.rotation = rotation;

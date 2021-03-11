@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8565db35df2f4458e18c013e9a9286, type: 3}
   m_Name: Test Crew 2
   m_EditorClassIdentifier: 
-  Name: Inigo Montoya
+  _name: Inigo Montoya
   skills:
   - {fileID: 11400000, guid: 967d48d571f29cb4ba120bdecfe05e91, type: 2}
   - {fileID: 11400000, guid: 67a0893fa9f1cb44787512524ed20fbd, type: 2}

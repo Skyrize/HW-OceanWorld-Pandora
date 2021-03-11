@@ -394,6 +394,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472613681}
   m_CullTransparentMesh: 0
+--- !u!1 &885686715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 885686717}
+  - component: {fileID: 885686716}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &885686716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885686715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ec81820780c62439749ee775e98b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseEvents:
+    leftButtonEvents:
+      onButtonDown:
+        m_PersistentCalls:
+          m_Calls: []
+      onButtonUp:
+        m_PersistentCalls:
+          m_Calls: []
+      onButton:
+        m_PersistentCalls:
+          m_Calls: []
+    rightButtonEvents:
+      onButtonDown:
+        m_PersistentCalls:
+          m_Calls: []
+      onButtonUp:
+        m_PersistentCalls:
+          m_Calls: []
+      onButton:
+        m_PersistentCalls:
+          m_Calls: []
+    middleButtonEvents:
+      onButtonDown:
+        m_PersistentCalls:
+          m_Calls: []
+      onButtonUp:
+        m_PersistentCalls:
+          m_Calls: []
+      onButton:
+        m_PersistentCalls:
+          m_Calls: []
+    scrollEvents:
+      axis: Mouse ScrollWheel
+      raw: 1
+      onAxisEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  keyEvents: []
+  axisEvents: []
+--- !u!4 &885686717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885686715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889983269
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21950d4b36e774598a028ab39aff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponry: {fileID: 0}
   inventoryAsset: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966, type: 2}
   inventory: {fileID: 0}
 --- !u!4 &1037679643
@@ -577,7 +660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037679641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1191.606, y: 498.53226, z: -242.70451}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

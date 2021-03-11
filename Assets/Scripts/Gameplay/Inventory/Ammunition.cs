@@ -6,5 +6,6 @@ using UnityEngine;
 public class Ammunition : Item
 {
     [Header("Settings")]
-    public float damages = 1.0f;
+    [SerializeField] protected float damages = 1.0f;
+    public float Damages => damages;
 }

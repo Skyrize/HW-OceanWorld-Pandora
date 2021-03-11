@@ -112,7 +112,7 @@ public class ItemPlacer : MonoBehaviour
     public void GenerateGhost()
     {
         Mode = PlacerToolMode.GHOST;
-        ghostPlacer = Instantiate(currentStored.item.prefab, Vector3.one * 1000, Quaternion.identity);
+        ghostPlacer = Instantiate(currentStored.item.Prefab, Vector3.one * 1000, Quaternion.identity);
         ghostPlacer.layer = LayerMask.NameToLayer("GhostPlacer");
         InputManager.Instance.AddKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, ClearGhost);
@@ -141,7 +141,7 @@ public class ItemPlacer : MonoBehaviour
             //TODO : add UI message ?
             return;
         }
-        GameObject placedItem = GameObject.Instantiate(currentStored.item.prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
+        GameObject placedItem = GameObject.Instantiate(currentStored.item.Prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
         placedItem.transform.parent = hit.collider.transform;
         PlaceWeapon(placedItem.GetComponent<WeaponManager>());
         
@@ -161,7 +161,7 @@ public class ItemPlacer : MonoBehaviour
     {
         if (currentRemovable == null)
             return;
-        Item item = currentRemovable.GetComponent<ItemObject>().item;
+        Item item = currentRemovable.GetComponent<ItemObject>().Item;
         RemoveWeapon(currentRemovable.GetComponent<WeaponManager>());
         placableInventoryUI.RemoveItem(item);
         //TODO : put back in inventory

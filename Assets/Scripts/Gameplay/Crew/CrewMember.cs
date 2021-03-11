@@ -13,7 +13,8 @@ public class CrewMemberEvent : UnityEvent<CrewMember>
 public class CrewMember : ClonableSO
 {
     [Header("Settings")]
-    public string Name = "default Name";
+    [SerializeField] protected string _name = "default Name";
+    public string Name => _name;
     public List<Skill> skills = new List<Skill>();
     [Header("References")]
     public GameObject prefab;

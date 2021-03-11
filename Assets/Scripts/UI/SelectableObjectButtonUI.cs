@@ -23,7 +23,7 @@ public class SelectableObjectButtonUI : MonoBehaviour
     public void UpdateUI(InventoryStorage stored)
     {
         this.stored = stored;
-        iconPlacement.sprite = this.stored.item.icon;
+        iconPlacement.sprite = this.stored.item.Icon;
         countText.text = "x" + this.stored.count.ToString();
     }
 
