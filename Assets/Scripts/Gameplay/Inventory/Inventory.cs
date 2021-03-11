@@ -83,7 +83,7 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
 
     public T GetStoredItem(Item item)
     {
-        return m_content.Find((stored) => { return item.GetType() == stored.item.GetType();});
+        return m_content.Find((stored) => { return item.Equals(stored.item); });;
     }
 
     override protected ClonableSO Clone()
