@@ -83,7 +83,7 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
 
     public T GetStoredItem(Item item)
     {
-        return m_content.Find((stored) => { return item == stored.item;});
+        return m_content.Find((stored) => { return item.GetType() == stored.item.GetType();});
     }
 
     override protected ClonableSO Clone()
@@ -100,10 +100,17 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
     {
         List<T> items = new List<T>();
 
+        Debug.Log("Fetching type " + type.ToString());
         foreach (T stored in m_content)
         {
-            if (stored.item.GetType() == typeof(T))
+            if (stored.item.GetType() == type) {
                 items.Add(stored);
+                
+                Debug.Log("Matched type !" + stored.item.GetType().ToString());
+            } else {
+                Debug.Log("Not Matched type .." + stored.item.GetType().ToString());
+                
+            }
         }
         return items;
     }

@@ -17,18 +17,6 @@ public class Item : ClonableSO
     [Header("References")]
     public GameObject prefab;
     public Sprite icon;
-
-    public override bool Equals(object obj)
-    {
-        Item other = obj as Item;
-        return other != null && other.name == this.name;
-    }
-
-    public override int GetHashCode()
-    {
-        if (name == null) return 0;
-        return name.GetHashCode();
-    }
     
     private void OnValidate() {
         if (prefab) {
