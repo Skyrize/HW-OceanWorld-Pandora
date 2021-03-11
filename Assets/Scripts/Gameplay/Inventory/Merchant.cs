@@ -8,7 +8,8 @@ public class Merchant : MonoBehaviour
     [Header("References")]
     public Player player;
     [SerializeField] protected MerchantInventory inventoryAsset;
-    [HideInInspector] public MerchantInventory inventory;
+    [Header("Runtime")]
+    [SerializeField] public MerchantInventory inventory;
 
     private void Awake() {
         

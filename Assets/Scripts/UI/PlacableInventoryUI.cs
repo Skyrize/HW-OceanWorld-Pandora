@@ -77,11 +77,8 @@ public class PlacableInventoryUI : MonoBehaviour
 
     public void BuildUI()
     {
-        foreach (InventoryStorage stored in playerInventory.items)
+        foreach (InventoryStorage stored in playerInventory.GetItemsOfType(typeof(Weapon)))
         {
-            if (stored.item.placable == false) {
-                continue;
-            }
             CreateButton(stored);
         }
     }

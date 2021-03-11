@@ -66,7 +66,7 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
         T storage = GetStoredItem(item);
         if (storage == null) {
             T newItem = (T)Activator.CreateInstance(typeof(T));;
-            newItem.item = item;
+            newItem.item = ClonableSO.Clone<Item>(item);
             newItem.count = count;
             m_content.Add(newItem);
             return;
@@ -94,6 +94,18 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
             clone.m_content[i].item = ClonableSO.Clone<Item>(clone.m_content[i].item);
         }
         return clone;
+    }
+
+    public List<T> GetItemsOfType(Type type)
+    {
+        List<T> items = new List<T>();
+
+        foreach (T stored in m_content)
+        {
+            if (stored.item.GetType() == typeof(T))
+                items.Add(stored);
+        }
+        return items;
     }
 
 //     /// <summary>

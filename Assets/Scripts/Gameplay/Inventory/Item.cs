@@ -13,7 +13,6 @@ public class Item : ClonableSO
 {
     [Header("Settings")]
     [Min(0f)] public float weight = 1.0f;
-    [Min(0f)] public bool placable = false;
 
     [Header("References")]
     public GameObject prefab;
@@ -29,5 +28,17 @@ public class Item : ClonableSO
     {
         if (name == null) return 0;
         return name.GetHashCode();
+    }
+    
+    private void OnValidate() {
+        if (prefab) {
+            ItemHolder holder = prefab.GetComponent<ItemHolder>();
+
+            if (!holder) {
+                holder = prefab.AddComponent<ItemHolder>();
+            }
+            if (!holder.item)
+                holder.item = this;
+        }
     }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ad1bcb4b2df64e8a51fd356853f06, type: 3}
-  m_Name: Chest Item
+  m_Script: {fileID: 11500000, guid: f5703a71c5e6b3247b2ea2fb98aac073, type: 3}
+  m_Name: Cannon Weapon
   m_EditorClassIdentifier: 
-  weight: 25
-  placable: 1
-  prefab: {fileID: 3359526831356859119, guid: a2321a44a3c947848b8244ad7eb61752, type: 3}
-  icon: {fileID: 21300000, guid: 1f4e1d241dec7b546b04e872c3f4a721, type: 3}
+  weight: 2800
+  prefab: {fileID: 5811017166200061455, guid: 8653aebcb198e094b9e0a2318a654f52, type: 3}
+  icon: {fileID: 21300000, guid: 4ed1fceb144d4fe4ea746e77ad8bd3df, type: 3}
+  prout: 0

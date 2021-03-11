@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected PlayerInventory inventoryAsset = null;
-    [HideInInspector] public PlayerInventory inventory = null;
+    [Header("Runtime")]
+    [SerializeField] public PlayerInventory inventory = null;
 
     private void Awake() {
         inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
@@ -20,18 +21,14 @@ public class Player : MonoBehaviour
     /// <exception cref="NullReferenceException">The item is not a item</exception>
     public void CollectItem(GameObject obj)
     {
-        Item item = obj.GetComponent<Item>();
-        if (item == null)
-            throw new NullReferenceException("Collider is not collectable");
+        Item item = obj.GetComponent<ItemHolder>().item;
         inventory.Add(item);
         Destroy(obj);
     }
 
     public void RemoveItem(GameObject obj)
     {
-        Item item = obj.GetComponent<Item>();
-        if (item == null)
-            throw new NullReferenceException("Collider is not throwable");
+        Item item = obj.GetComponent<ItemHolder>().item;
         inventory.Remove(item);
     }
 }

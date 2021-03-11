@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ad1bcb4b2df64e8a51fd356853f06, type: 3}
-  m_Name: Large Cannon Item
+  m_Script: {fileID: 11500000, guid: f5703a71c5e6b3247b2ea2fb98aac073, type: 3}
+  m_Name: Large Cannon Weapon
   m_EditorClassIdentifier: 
   weight: 3600
-  placable: 1
   prefab: {fileID: 4913335805336349845, guid: 0be12e9cc9dec3645ab8a14292056e7d, type: 3}
   icon: {fileID: 21300000, guid: b9de4a9f0d0d4a741b672699b2422bdf, type: 3}
+  prout: 0

@@ -889,15 +889,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTagFilter: 0
-  useLayerFilter: 0
-  useComponentFilter: 1
+  useLayerFilter: 1
+  useComponentFilter: 0
   useParentComponentFilter: 0
   useChildComponentFilter: 0
   tags: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  componentType: Item
+    m_Bits: 1024
+  componentType: ItemHoldr
   parentComponentType: Transform
   childComponentType: Transform
   onCollide:
@@ -943,6 +943,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 76130814809322506, guid: a4a29c4be263f8f4f8d0878a03545b81,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4,
+        type: 2}
+    - target: {fileID: 76130814809322506, guid: a4a29c4be263f8f4f8d0878a03545b81,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6183bea84be338945bf50d200c9d8817,
+        type: 2}
     - target: {fileID: 76130814809322506, guid: a4a29c4be263f8f4f8d0878a03545b81,
         type: 3}
       propertyPath: SpawnItems.Array.data[0].Prefab

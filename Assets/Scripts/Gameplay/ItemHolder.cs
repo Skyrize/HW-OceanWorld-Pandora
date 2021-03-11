@@ -6,4 +6,9 @@ public class ItemHolder : MonoBehaviour
 {
     public Item item = null;
 
+    private void OnValidate() {
+        if (item && !item.prefab) {
+            item.prefab = this.gameObject;
+        }
+    }
 }

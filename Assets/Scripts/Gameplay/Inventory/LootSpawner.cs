@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class SpawnItem
 {
-    public GameObject Prefab;
+    public Item item;
     public uint CountMin;
     public uint CountMax;
 }
@@ -32,9 +32,9 @@ public class LootSpawner : MonoBehaviour
     {
         foreach (var item in SpawnItems)
         {
-            if (!item.Prefab)
+            if (!item.item)
             {
-                Debug.LogWarning("Empty Prefab in Resource Spawner");
+                Debug.LogWarning("Empty item in Resource Spawner");
                 continue;
             }
 
@@ -45,7 +45,7 @@ public class LootSpawner : MonoBehaviour
                 var rotationY = Random.Range(0, 360);
                 var rotation = Quaternion.Euler(new Vector3(0, rotationY, 0));
 
-                var obj = Instantiate(item.Prefab, transform);
+                var obj = Instantiate(item.item.prefab, transform);
                 var body = obj.GetComponent<Rigidbody>();
 
                 obj.transform.rotation = rotation;
