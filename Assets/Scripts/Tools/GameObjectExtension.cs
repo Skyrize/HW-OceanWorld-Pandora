@@ -32,4 +32,19 @@ public static class GameObjectExtension {
         }
         return colors;
     }
+
+    public static void SetCollisionActive(this GameObject gameObject, bool activated)
+    {
+        var colliders = gameObject.GetComponents<Collider>();
+        var childColliders = gameObject.GetComponentsInChildren<Collider>();
+
+        foreach (var col in colliders)
+        {
+            col.enabled = activated;
+        }
+        foreach (var col in childColliders)
+        {
+            col.enabled = activated;
+        }
+    }
 }

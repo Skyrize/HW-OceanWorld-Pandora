@@ -26,6 +26,7 @@ public class ImageAlphaAnimation : TweenAnimation
         animation.SetLoops(loops, loopType);
         // animation.SetEase(generalEase);
         animation.Pause();
+        animation.SetUpdate(playWhenPause);
         return new GeneratedAnimation(animation, name);
     }
 }

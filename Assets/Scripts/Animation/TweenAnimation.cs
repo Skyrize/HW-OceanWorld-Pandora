@@ -41,8 +41,10 @@ public abstract class TweenAnimation : ScriptableObject
     [SerializeField] protected float duration = 1f;
     [SerializeField] protected Ease generalEase = Ease.Linear;
     [SerializeField] protected bool reverse = true;
+    [SerializeField] protected bool playWhenPause = true;
     [SerializeField] protected int loops = 0;
     [SerializeField] protected LoopType loopType = LoopType.Yoyo;
 
     public abstract GeneratedAnimation GenerateAnimation(Transform target);
+
 }

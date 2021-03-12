@@ -12,7 +12,6 @@ public class PositionBinder : MonoBehaviour
         
     }
 
-    public bool toggle = false;
     // Update is called once per frame
     void Update()
     {

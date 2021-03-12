@@ -7,12 +7,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 569250894651577145, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+    - target: {fileID: 969156373571932012, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+    - target: {fileID: 1323241275940062458, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323241275940062458, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323241275940062458, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2476807221743791892, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 71cdef6a0c2c4a241bbfb26e79c842d3,
         type: 2}
+    - target: {fileID: 3835032661844443792, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3918343665698984552, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: m_RootOrder
@@ -78,6 +108,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cannonball Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715140373247772491, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715140373247772491, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715140373247772491, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4912518276032737686, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}

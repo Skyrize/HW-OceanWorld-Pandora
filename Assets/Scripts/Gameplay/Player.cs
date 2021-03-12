@@ -15,15 +15,16 @@ public class Player : MonoBehaviour
     {
         if (input == 0 || !isActiveAndEnabled)
             return;
-        weaponry.ShootAt(Utils.MousePosition);
+        weaponry.ShootAt(Utils.MousePositionOcean);
     }
 
     private void Awake() {
         inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
         if (!weaponry) {
             weaponry = GetComponent<Weaponry>();
-            if (weaponry)
-                InputManager.Instance.AddAxisEvent("Fire1", Shoot);
+        }
+        if (weaponry) {
+            InputManager.Instance.AddAxisEvent("Fire1", Shoot);
         }
     }
 

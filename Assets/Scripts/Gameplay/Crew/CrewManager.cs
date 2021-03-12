@@ -12,6 +12,7 @@ public class CrewManager : MonoBehaviour
     void Start()
     {
         events = GetComponent<EventBinder>();
+        InputManager.Instance.AddKeyEvent(KeyCode.T, PressType.DOWN, Toggle);
         Exit();
     }
 

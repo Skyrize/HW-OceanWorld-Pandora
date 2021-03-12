@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2299002694143326425}
   - component: {fileID: 2299002694143326424}
   - component: {fileID: 2299002694143326427}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 12
+  m_Name: Motor Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,9 +105,11 @@ GameObject:
   - component: {fileID: 2299002694482284210}
   - component: {fileID: 2299002694482284213}
   - component: {fileID: 2299002694482284209}
-  - component: {fileID: 2299002694482284222}
   - component: {fileID: 1249033567537922302}
-  m_Layer: 0
+  - component: {fileID: 2584758412130715173}
+  - component: {fileID: 6360339680860309721}
+  - component: {fileID: 2561923885569818946}
+  m_Layer: 12
   m_Name: Boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,20 +191,6 @@ MonoBehaviour:
   motor: {fileID: 2299002695325882044}
   controller: {fileID: 0}
   input: {x: 0, y: 0}
---- !u!114 &2299002694482284222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299002694482284212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706fbe10ba347144aa51ba303cba276d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageOnCollision: 5
-  stats: {fileID: 1249033567537922302}
 --- !u!114 &1249033567537922302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +217,93 @@ MonoBehaviour:
   onLifeUpdate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2584758412130715173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299002694482284212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71e644e8cfbe794cba125cdf7e53218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - name: Collide
+    timer: 0
+    evt:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1249033567537922302}
+          m_MethodName: ReduceHealth
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &6360339680860309721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299002694482284212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f220890000e8d741bce12e941fc3818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useTagFilter: 0
+  useLayerFilter: 1
+  useComponentFilter: 0
+  useParentComponentFilter: 0
+  useChildComponentFilter: 0
+  tags: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 6144
+  componentType: Transform
+  parentComponentType: Transform
+  childComponentType: Transform
+  onCollide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2584758412130715173}
+        m_MethodName: CallEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Collide
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2561923885569818946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299002694482284212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac16a8e9815ca264da38fe28824c4d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadFromChilds: 1
+  weapons: []
 --- !u!1 &2299002695325882047
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2299002695325882044}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Motor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,8 +347,8 @@ GameObject:
   - component: {fileID: 2299002696024453573}
   - component: {fileID: 2299002696024453572}
   - component: {fileID: 2299002696024453575}
-  m_Layer: 0
-  m_Name: Capsule
+  m_Layer: 12
+  m_Name: Boat Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
