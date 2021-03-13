@@ -130,4 +130,5 @@
 
 # Custom
 *.json              eol=lf
+NavMesh.asset       binary
 LightingData.asset  binary
