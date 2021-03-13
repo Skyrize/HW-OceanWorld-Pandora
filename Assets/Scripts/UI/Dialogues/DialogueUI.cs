@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
     [Header("Data")]
-    public List<Character> characters;
-    public List<Dialogue> dialogues;
+    public DialoguesDatabase database;
 
     [Header("Actors")]
     public GameObject actorPrefab;
@@ -65,68 +66,35 @@ public class DialogueUI : MonoBehaviour
 
     private void ScrubActors()
     {
-        List<GameObject> toRemove = new List<GameObject>();
-        foreach (Transform child in left.transform) toRemove.Add(child.gameObject);
-        foreach (Transform child in right.transform) toRemove.Add(child.gameObject);
+        var toRemove = new List<UnityEngine.Object>();
+        foreach (Transform a in left.transform)
+            toRemove.Add(a.gameObject);
+        foreach (Transform a in right.transform)
+            toRemove.Add(a.gameObject);
 
-        toRemove.ForEach(g => Destroy(g));
+        toRemove.ForEach(a => Destroy(a));
     }
 
-    private void InstantiateActor(string name, bool isOnLeft)
+    private void InstantiateActor(string name, Transform zone)
     {
-        GameObject newActor = Instantiate(actorPrefab, isOnLeft ? left.transform : right.transform);
-        
-        Image newActorSprite = newActor.GetComponentInChildren<Image>();
-        newActorSprite.sprite = FindCharacter(name).sprite;
+        GameObject newActor = Instantiate(actorPrefab, zone);
 
+        newActor.GetComponent<Actor>().subject = database.FindCharacter(name);
         newActor.SetActive(true);
     }
 
     public void Summon(string dialogueId)
     {
-        current = FindDialogue(dialogueId);
+        current = database.FindDialogue(dialogueId);
 
         ScrubActors();
 
-        current.charactersLeft.ForEach(c => InstantiateActor(c, true));
-        current.charactersRight.ForEach(c => InstantiateActor(c, false));
+        current.charactersLeft.ForEach(c => InstantiateActor(c, left.transform));
+        current.charactersRight.ForEach(c => InstantiateActor(c, right.transform));
 
         lineIndex = -1;
         LineIndex++;
     }
 
-    private Dialogue FindDialogue(string id)
-    {
-        return dialogues.Find(d => d.identifier.Equals(id));
-    }
-
-    private Character FindCharacter(string name)
-    {
-        return characters.Find(c => c.name.Equals(name));
-    }
-
     private bool HasNextLine => current.lines.Count - 1 > lineIndex;
-}
-
-[Serializable]
-public struct Character
-{
-    public string name;
-    public Sprite sprite;
-}
-
-[Serializable]
-public struct Dialogue
-{
-    public string identifier;
-    public List<string> charactersLeft;
-    public List<string> charactersRight;
-    public List<Line> lines;
-}
-
-[Serializable]
-public struct Line
-{
-    public string name;
-    public string text;
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfDialogue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Dialogue>
+    <identifier>exemple</identifier>
+    <charactersLeft>
+      <string>Mariner</string>
+    </charactersLeft>
+    <charactersRight>
+      <string>Suit</string>
+    </charactersRight>
+    <lines>
+      <Line>
+        <name>Suit</name>
+        <text>Hey ! Help me !!</text>
+      </Line>
+      <Line>
+        <name>Mariner</name>
+        <text>…</text>
+      </Line>
+      <Line>
+        <name>Suit</name>
+        <text>Please help me !! I can reward you !!</text>
+      </Line>
+      <Line>
+        <name>Mariner</name>
+        <text>…Tsk. Hang on.</text>
+      </Line>
+    </lines>
+  </Dialogue>
+</ArrayOfDialogue>
