@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class Merchant : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] public PlayerInventory inventoryPlayer;
+    //public PlayerInventory inventoryPlayer { get => player.inventory; };
+    [SerializeField] public Player player;
     [SerializeField] public MerchantInventory inventoryMerchant;
 
-    public PlayerInventory InventoryPlayer { get => inventoryPlayer; }
+    public PlayerInventory InventoryPlayer { get => player.inventory; }
     public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
 
     public MerchantUI merchantUI;
@@ -33,28 +34,26 @@ public class Merchant : MonoBehaviour
 
     public void ClientBuyItem(Item item, float price, uint count=1)
     {
-        if (inventoryPlayer.Money >= price)
+        if (player.inventory.Money >= price)
         {
-            inventoryPlayer.Add(item, count);
-            inventoryMerchant.Remove(item, count);
+            player.inventory.Add(item);
+            inventoryMerchant.Remove(item);
 
-            inventoryPlayer.Money -= price * count;
+            player.inventory.Money -= price * count;
         }
         merchantUI.BuildUI();
-        //TODO : add to merchant inventory (NOT MANDATORY)
     }
 
     public void ClientSellItem(Item item, float price)
     {
-        InventoryStorage storage = inventoryPlayer.GetStoredItem(item);
+        InventoryStorage storage = player.inventory.GetStoredItem(item);
         if(storage != null && storage.count > 0)
         {
-            inventoryPlayer.Remove(item);
+            player.inventory.Remove(item);
             inventoryMerchant.Add(item);
-            inventoryPlayer.Money += price;
+            player.inventory.Money += price;
         }
 
         merchantUI.BuildUI();
-        //TODO : remove from merchant inventory (NOT MANDATORY)
     }
 }

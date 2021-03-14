@@ -9,6 +9,7 @@ public class MerchantUI : MonoBehaviour
 
     [SerializeField] protected RectTransform itemPanelContentMerchant = null;
     [SerializeField] protected RectTransform itemPanelContentPlayer = null;
+    [SerializeField] protected TMPro.TMP_Text moneyPlayer = null;
 
     [SerializeField] protected GameObject itemCardPrefab = null;
     [SerializeField] protected GameObject itemCardPrefabPlayer = null;
@@ -52,6 +53,7 @@ public class MerchantUI : MonoBehaviour
     public void BuildUI()
     {
         ClearUI();
+        SetMoney(playerInventory.Money);
         foreach (MerchantStorage item in merchantInventory.m_content)
             CreateCard(item, itemPanelContentMerchant);
 
@@ -71,6 +73,11 @@ public class MerchantUI : MonoBehaviour
     public void BuyItem(InventoryMerchantEventArgs e)
     {
         merchant.ClientSellItem(e.merchantStorage.item, e.merchantStorage.price);
+    }
+
+    public void SetMoney(float money)
+    {
+        moneyPlayer.SetText(money.ToString("0.00"));
     }
 
     private void OnEnable()
