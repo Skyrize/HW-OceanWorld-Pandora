@@ -196,6 +196,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Control Post Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5852669719509599901, guid: 582380263c341984d8d3a05468b58c34,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f5c07bbeed4cf04d8ae3a4a95679ed7,
+        type: 2}
     - target: {fileID: 6971148328908752840, guid: 582380263c341984d8d3a05468b58c34,
         type: 3}
       propertyPath: m_Materials.Array.size

@@ -21,6 +21,7 @@ MonoBehaviour:
       m_Calls: []
   employee: {fileID: 0}
   postPlace: {fileID: 3927295241128716738}
+  working: 0
   repairTime: 1
   repairAmount: 1
   consumeQuantity: 1
@@ -115,6 +116,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Repair Post Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5852669719509599901, guid: 582380263c341984d8d3a05468b58c34,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: b07f331563b1bda4cab7b647a011a6b2,
+        type: 2}
     - target: {fileID: 6971148328908752840, guid: 582380263c341984d8d3a05468b58c34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -141,7 +148,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents:
-    - {fileID: 5852669719509599901, guid: 582380263c341984d8d3a05468b58c34, type: 3}
     - {fileID: 5211890015136038993, guid: 582380263c341984d8d3a05468b58c34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 582380263c341984d8d3a05468b58c34, type: 3}
 --- !u!1 &7519462560788238287 stripped

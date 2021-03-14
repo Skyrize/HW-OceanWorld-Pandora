@@ -12,6 +12,7 @@ public class CrewUI : MonoBehaviour
     [SerializeField] protected GameObject CrewMemberCardPrefab = null;
     [Header("Runtime")]
     [SerializeField] protected CrewMember currentCrewMember = null;
+    [SerializeField] public CrewMember CurrentCrewMember => currentCrewMember;
     // [SerializeField] List<CrewMemberUI> crewMemberUIs = new List<CrewMemberUI>();
 
     public void GetPlayerInventory()
@@ -29,14 +30,16 @@ public class CrewUI : MonoBehaviour
         GetPlayerInventory();
     }
     
-    public void UnselectCrewMember(CrewMember crewMember)
+    public void UnselectCrewMember(CrewMember crewMember) // need that ?
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        currentCrewMember = null;
     }
 
     public void SelectCrewMember(CrewMember crewMember)
     {
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
+        currentCrewMember = crewMember;
     }
 
     public void CreateCard(CrewMember crewMember)
@@ -55,6 +58,7 @@ public class CrewUI : MonoBehaviour
     
     public void BuildUI()
     {
+        CreateCard(playerInventory.PlayerCharacter);
         foreach (CrewMember crewMember in playerInventory.crewMembers)
         {
             CreateCard(crewMember);

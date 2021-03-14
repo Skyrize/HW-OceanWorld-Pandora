@@ -29,14 +29,16 @@ public class Player : MonoBehaviour
         if (weaponry) {
             InputManager.Instance.AddAxisEvent("Fire1", Shoot);
         }
-        controlPost.SetEmployee(inventory.PlayerCharacter);
+        if (controlPost)
+            controlPost.ForceHire(inventory.PlayerCharacter);
     }
 
     private void Start() {
     }
 
     private void Update() {
-        repairStation.Use();
+        if (repairStation)
+            repairStation.Use();
     }
 
     /// <summary>

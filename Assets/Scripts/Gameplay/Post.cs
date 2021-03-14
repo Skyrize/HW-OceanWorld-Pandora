@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class PostEvent : UnityEvent<Post>
+{
+}
+
 public class Post : MonoBehaviour
 {
     [Header("Settings")]
@@ -13,7 +18,9 @@ public class Post : MonoBehaviour
     [SerializeField] public UnityEvent onFire = new UnityEvent();
     [Header("References")]
     [SerializeField] protected CrewMember employee = null;
+    [SerializeField] public CrewMember Employee => employee;
     [SerializeField] protected Transform postPlace = null;
+    [SerializeField] protected bool working = false;
 
     WaitForSeconds timer;
 
@@ -21,25 +28,40 @@ public class Post : MonoBehaviour
         timer = new WaitForSeconds(hireTime);
     }
 
-    IEnumerator _SetEmployee(CrewMember newEmployee)
+    void Hire()
     {
-        yield return timer;
-        employee = newEmployee;
         var employeeObject = Instantiate(employee.prefab, postPlace.position, postPlace.rotation, postPlace);
-
-        //TODO : Status in employee here ?
+        working = true;
+        
+        onHire.Invoke();
     }
 
-    void ClearEmployee()
+    IEnumerator _SetEmployee(CrewMember newEmployee)
     {
+        employee = newEmployee;
+        yield return timer;
+        Hire();
+    }
+
+    public void ForceHire(CrewMember newEmployee)
+    {
+        ClearEmployee();
+        employee = newEmployee;
+        Hire();
+    }
+
+    public void ClearEmployee()
+    {
+        onFire.Invoke();
         postPlace.ClearChilds(); // bof
         employee = null;
+        working = false;
     }
 
     public void SetEmployee(CrewMember newEmployee)
     {
         ClearEmployee();
-        onFire.Invoke();
+        //TODO : Status in employee here ?
         StartCoroutine(_SetEmployee(newEmployee));
     }
 
@@ -54,13 +76,13 @@ public class Post : MonoBehaviour
 
     public void Use(Vector3 target)
     {
-        if (employee)
+        if (working)
             _Use(target);
     }
 
     public void Use()
     {
-        if (employee)
+        if (working)
             _Use();
     }
 }

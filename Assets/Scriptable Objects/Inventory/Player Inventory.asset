@@ -20,7 +20,7 @@ MonoBehaviour:
     count: 5
   - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
     count: 5
-  playerCharacter: {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8, type: 2}
+  playerCharacter: {fileID: 11400000, guid: d96911bc4e008454390872ae7e79a49b, type: 2}
   crewMembers:
   - {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8, type: 2}
   - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}

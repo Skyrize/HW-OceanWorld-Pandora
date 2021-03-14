@@ -15,7 +15,7 @@ public class SelectCrewMemberButtonUI : MonoBehaviour
     public void UpdateUI(CrewMember crewMember)
     {
         this.crewMember = crewMember;
-        icon.sprite = this.crewMember.icon;
+        icon.sprite = this.crewMember != null ? this.crewMember.icon : null;
     }
 
     public void Select()

@@ -23,6 +23,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected Color validGhostColor = new Color(0, 1, 0, 0.5f);
     [Header("References")]
     [SerializeField] protected PlacableInventoryUI placableInventoryUI = null;
+    [SerializeField] protected PostManagerUI postManagerUI = null;
     [SerializeField] protected Player player = null; //TODO : move to anotherScript
     [SerializeField] protected InventoryStorage currentStored = null;
     [SerializeField] public InventoryStorage CurrentItem {
@@ -123,15 +124,21 @@ public class ItemPlacer : MonoBehaviour
     }
 
     //TODO : move to anotherScript
-    public void PlaceWeapon(WeaponManager weapon)
+    public void PlaceWeapon(GameObject weapon)
     {
-        player.weaponry.weapons.Add(weapon);
+        if (placableInventoryUI.PlaceItem(currentStored)) {
+            ClearGhost();
+        }
+        player.weaponry.weapons.Add(weapon.GetComponent<WeaponManager>());
+        postManagerUI.AddPost(weapon.GetComponent<WeaponManager>());
     }
 
     //TODO : move to anotherScript
-    public void RemoveWeapon(WeaponManager weapon)
+    public void RemoveWeapon(GameObject weapon)
     {
-        player.weaponry.weapons.Remove(weapon);
+        placableInventoryUI.RemoveItem(weapon.GetComponent<ItemObject>().Item);
+        player.weaponry.weapons.Remove(weapon.GetComponent<WeaponManager>());
+        postManagerUI.RemovePost(weapon.GetComponent<WeaponManager>());
     }
 
     public void PlaceFromGhost()
@@ -146,28 +153,14 @@ public class ItemPlacer : MonoBehaviour
         }
         GameObject placedItem = GameObject.Instantiate(currentStored.item.Prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
         placedItem.transform.parent = hit.collider.transform;
-        PlaceWeapon(placedItem.GetComponent<WeaponManager>());
-        
-        if (placableInventoryUI.PlaceItem(currentStored)) {
-            ClearGhost();
-        }
-
-        //TODO : activate cannon ?
-        //TODO : bind to Input ?
-        //TODO : Add UI for task management
-        //TODO : Recalculate nashmesh after place ?
-        //TODO : remove from inventory
-        //TODO : Clear if no other item in inventory ? (if icon for many items, otherwise clear no matter what and remove UI)
+        PlaceWeapon(placedItem);
     }
 
     void RemoveAtMouse()
     {
         if (currentRemovable == null)
             return;
-        Item item = currentRemovable.GetComponent<ItemObject>().Item;
-        RemoveWeapon(currentRemovable.GetComponent<WeaponManager>());
-        placableInventoryUI.RemoveItem(item);
-        //TODO : put back in inventory
+        RemoveWeapon(currentRemovable);
         Destroy(currentRemovable);
         currentRemovable = null;
     }
