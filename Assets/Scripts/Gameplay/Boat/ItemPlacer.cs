@@ -18,6 +18,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] protected LayerMask placableMask = 1;
     [SerializeField] protected LayerMask itemMask = 1;
+    [SerializeField] protected LayerMask removableItemMask = 1;
     [SerializeField] protected Color invalidGhostColor = new Color(1, 0, 0, 0.5f);
     [SerializeField] protected Color validGhostColor = new Color(0, 1, 0, 0.5f);
     [Header("References")]
@@ -70,6 +71,7 @@ public class ItemPlacer : MonoBehaviour
         placableInventoryUI.onSelect.AddListener(SelectPlacableItem);
 
         //TODO : move to anotherScript
+        if (!player)
         this.player = GameObject.FindObjectOfType<Player>();
 
         if (!player) {
@@ -172,7 +174,7 @@ public class ItemPlacer : MonoBehaviour
 
     public void RotateGhost()
     {
-        ghostPlacer.transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+        ghostPlacer.transform.Rotate(new Vector3(0, rotationSpeed * Time.unscaledDeltaTime, 0));
     }
 
     public void ValidateGhostPlacing()
@@ -255,7 +257,7 @@ public class ItemPlacer : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit removeHit;
 
-        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, itemMask)) {
+        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask)) {
             if (currentRemovable != removeHit.collider.gameObject) {
                 UnfocusRemovableItem();
                 FocusRemovableItem(removeHit.collider.gameObject);

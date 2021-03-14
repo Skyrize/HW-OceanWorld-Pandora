@@ -17,7 +17,7 @@ TagManager:
   - 
   - 
   - PlaceZone
-  - 
+  - ItemRemovable
   - Item
   - Building
   - Boat
