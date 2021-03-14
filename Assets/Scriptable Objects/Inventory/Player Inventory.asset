@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45d70f48f1390e4bae3da4b4b85ccb8, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  TotalWeight: 0
+  TotalWeight: 2807
   items:
   - item: {fileID: 11400000, guid: 6d0291fef4aabdb4db5bad728279f6a4, type: 2}
-    count: 5
-  - item: {fileID: 11400000, guid: b362ae32a8fd5974dabfe7e35679a837, type: 2}
-    count: 5
+    count: 4
   - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
     count: 5
   playerCharacter: {fileID: 11400000, guid: d96911bc4e008454390872ae7e79a49b, type: 2}

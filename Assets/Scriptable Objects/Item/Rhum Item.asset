@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   prefab: {fileID: 5133196628407848574, guid: fa8b236df840f1046b964a0e95b9031a, type: 3}
-  icon: {fileID: 0}
-  Name: Rhum Item
+  icon: {fileID: 21300000, guid: fa8b8d179c20e5b4cbf95186cdc8da17, type: 3}

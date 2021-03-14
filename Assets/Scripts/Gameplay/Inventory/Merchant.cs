@@ -6,17 +6,20 @@ using UnityEngine.SceneManagement;
 public class Merchant : MonoBehaviour
 {
     [Header("References")]
-    public Player player;
-    [SerializeField] protected MerchantInventory inventoryAsset;
-    [Header("Runtime")]
-    [SerializeField] public MerchantInventory inventory;
+    //public PlayerInventory inventoryPlayer { get => player.inventory; };
+    [SerializeField] public Player player;
+    [SerializeField] public MerchantInventory inventoryMerchant;
+
+    public PlayerInventory InventoryPlayer { get => player.inventory; }
+    public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
+
+    public MerchantUI merchantUI;
 
     private void Awake() {
-        
-        inventory = ClonableSO.Clone<MerchantInventory>(inventoryAsset);
+        inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
     }
 
-    public void EnterInMerchant(GameObject obj)
+    public void EnterInMerchant(GameObject obj) 
     {
         if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
             UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
@@ -29,14 +32,17 @@ public class Merchant : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
-    public void ClientBuyItem(Item item, float price, uint count)
+    public void ClientBuyItem(Item item, float price, uint count=1)
     {
-        if (player.inventory.Money >= price)
+        InventoryStorage storage = inventoryMerchant.GetStoredItem(item);
+        if (player.inventory.Money >= price && storage != null)
         {
-            player.inventory.Add(item, count);
+            player.inventory.Add(item);
+            inventoryMerchant.Remove(item);
+
             player.inventory.Money -= price * count;
         }
-        //TODO : add to merchant inventory (NOT MANDATORY)
+        merchantUI.BuildUI();
     }
 
     public void ClientSellItem(Item item, float price)
@@ -45,8 +51,10 @@ public class Merchant : MonoBehaviour
         if(storage != null && storage.count > 0)
         {
             player.inventory.Remove(item);
+            inventoryMerchant.Add(item);
             player.inventory.Money += price;
         }
-        //TODO : remove from merchant inventory (NOT MANDATORY)
+
+        merchantUI.BuildUI();
     }
 }

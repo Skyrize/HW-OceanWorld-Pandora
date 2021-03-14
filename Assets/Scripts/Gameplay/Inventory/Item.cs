@@ -16,6 +16,9 @@ public class Item : ClonableSO
     [SerializeField] protected float weight = 1.0f;
     public float Weight => weight;
 
+    [SerializeField] protected float price = 1.0f;
+    public float Price => price;
+
     [Header("References")]
     [SerializeField] protected GameObject prefab;
     public GameObject Prefab => prefab;
