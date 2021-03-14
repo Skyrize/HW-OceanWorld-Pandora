@@ -18,14 +18,40 @@ public class DialoguesDatabase : MonoBehaviour
     public List<Dialogue> Dialogues;
     public List<Character> Characters;
 
+    private StringReader reader;
+    private StringReader GetReader(string file)
+    {
+        if (reader != null)
+        {
+            reader.Close();
+            reader = null;
+        }
+
+        reader = new StringReader(file);
+        return reader;
+    }
+
     // Start is called before the first frame update
     void Start()
+    {
+        Init();
+    }
+
+    public void CheckInit()
+    {
+        if (Dialogues == null)
+            Init();
+    }
+
+    private void Init()
     {
         dialoguesFile = Resources.Load<TextAsset>("dialogues");
         charactersFile = Resources.Load<TextAsset>("characters");
 
-        Dialogues = (List<Dialogue>)new XmlSerializer(Dialogues.GetType()).Deserialize(new StringReader(dialoguesFile.text));
-        Characters = (List<Character>)new XmlSerializer(Characters.GetType()).Deserialize(new StringReader(charactersFile.text));
+        Dialogues = (List<Dialogue>)new XmlSerializer(Dialogues.GetType())
+            .Deserialize(GetReader(dialoguesFile.text));
+        Characters = (List<Character>)new XmlSerializer(Characters.GetType())
+            .Deserialize(GetReader(charactersFile.text));
     }
 
     public Dialogue FindDialogue(string id)

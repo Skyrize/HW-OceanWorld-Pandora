@@ -30,6 +30,7 @@ public class DialogueUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        database.CheckInit();
         Summon("exemple");
     }
 
@@ -88,12 +89,13 @@ public class DialogueUI : MonoBehaviour
         current = database.FindDialogue(dialogueId);
 
         ScrubActors();
-
         current.charactersLeft.ForEach(c => InstantiateActor(c, left.transform));
         current.charactersRight.ForEach(c => InstantiateActor(c, right.transform));
 
         lineIndex = -1;
         LineIndex++;
+
+        gameObject.SetActive(true);
     }
 
     private bool HasNextLine => current.lines.Count - 1 > lineIndex;
