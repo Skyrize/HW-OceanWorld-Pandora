@@ -32,17 +32,15 @@ public class MerchantUI : MonoBehaviour
     {
         MerchantForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantForSaleItemsUI>();
         cardUI.UpdateUI(item);
-        cardUI.MerchantOnSellItemEvent.AddListener(this.SellItem);
+        cardUI.MerchantOnSellItemEvent.AddListener(SellItem);
     }
 
-    public void CreateCardPlayer(InventoryStorage item, InventoryStorage itemPlayer, RectTransform container)
+    public void CreateCardPlayer(InventoryStorage item, RectTransform container)
     {
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
-        cardUI.InventoryItem = itemPlayer;
         cardUI.UpdateUI(item);
-        cardUI.MerchantOnSellItemEvent.AddListener(this.BuyItem);
+        cardUI.MerchantOnSellItemEvent.AddListener(BuyItem);
     }
-
 
     public void ClearUI()
     {
@@ -57,12 +55,12 @@ public class MerchantUI : MonoBehaviour
         foreach (InventoryStorage item in merchantInventory.m_content)
             CreateCard(item, itemPanelContentMerchant);
 
-        var query = from itemMerchant in merchantInventory.m_content
-                    join itemPlayer in playerInventory.m_content on itemMerchant.item.Name equals itemPlayer.item.Name
-                    select new { PlayerItem = itemPlayer, MerchantItem = itemMerchant };
+        var query = from itemMerchant in merchantInventory.items
+                    join itemPlayer in playerInventory.m_content on itemMerchant.Name equals itemPlayer.item.Name
+                    select new { PlayerItem = itemPlayer };
 
         foreach (var item in query)
-            CreateCardPlayer(item.MerchantItem, item.PlayerItem, itemPanelContentPlayer);        
+            CreateCardPlayer(item.PlayerItem, itemPanelContentPlayer);        
     }
 
     public void SellItem(InventoryStorage item)

@@ -10,6 +10,6 @@ public class PlayerForSaleItemsUI : MerchantItemUI
     public override void UpdateUI(InventoryStorage item)
     {
         base.UpdateUI(item);
-        quantityText.text = "Quantity :" + this.InventoryItem.count;
+        //quantityText.text = "Quantity :" + InventoryItem.count;
     }
 }
