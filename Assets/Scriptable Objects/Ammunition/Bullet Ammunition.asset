@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet Ammunition
   m_EditorClassIdentifier: 
   weight: 0
+  price: 15
   prefab: {fileID: 1976278532390955069, guid: 7d7c750fab6a0354f9e955588449ba70, type: 3}
   icon: {fileID: 0}
-  Name: Bullet Ammunition
   damages: 1
