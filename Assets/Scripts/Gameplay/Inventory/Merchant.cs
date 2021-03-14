@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Merchant : MonoBehaviour
 {
     [Header("References")]
-    //public PlayerInventory inventoryPlayer { get => player.inventory; };
     [SerializeField] public Player player;
     [SerializeField] public MerchantInventory inventoryMerchant;
 
@@ -27,12 +26,11 @@ public class Merchant : MonoBehaviour
 
     public void ExitMerchant()
     {
-        Debug.Log("exit");
         if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
-    public void ClientBuyItem(Item item, float price, uint count=1)
+    public void ClientBuyItem(Item item, float price)
     {
         InventoryStorage storage = inventoryMerchant.GetStoredItem(item);
         if (player.inventory.Money >= price && storage != null)
@@ -40,7 +38,7 @@ public class Merchant : MonoBehaviour
             player.inventory.Add(item);
             inventoryMerchant.Remove(item);
 
-            player.inventory.Money -= price * count;
+            player.inventory.Money -= price;
         }
         merchantUI.BuildUI();
     }

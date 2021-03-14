@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Scraps Item
   m_EditorClassIdentifier: 
   weight: 5
+  price: 5
   prefab: {fileID: 4719502925714124489, guid: b131ea4f6fb64074e933cd389a81bfc9, type: 3}
   icon: {fileID: 0}
