@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CannonBall Ammunition
   m_EditorClassIdentifier: 
   weight: 0
+  price: 20
   prefab: {fileID: 7971744387904044076, guid: 14b6205b428aab843852c67c37aea0d0, type: 3}
   icon: {fileID: 0}
-  Name: CannonBall Ammunition
   damages: 2.3
