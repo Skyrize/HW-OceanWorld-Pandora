@@ -5,6 +5,7 @@ using UnityEngine;
 public class Utils
 {
     private static Camera main = Camera.main;
+    public static Plane seaLevel = new Plane(Vector3.up, Vector3.zero);
 
     public static Camera Main 
     { 
@@ -23,6 +24,18 @@ public class Utils
         {
             Physics.Raycast(Main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit);
             return hit.point;
+        }
+    }
+
+    public static Vector3 MousePositionOcean
+    {
+        get
+        {
+            Ray ray = Main.ScreenPointToRay(Input.mousePosition);
+            float distance;
+            Utils.seaLevel.Raycast(ray, out distance);
+            Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, 1);
+            return ray.origin + ray.direction * distance;
         }
     }
 

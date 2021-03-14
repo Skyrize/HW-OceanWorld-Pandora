@@ -67,7 +67,6 @@ public class BoatController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        
         // Steer Force
         Steer();
         Move();

@@ -113,7 +113,8 @@ public class ItemPlacer : MonoBehaviour
     {
         Mode = PlacerToolMode.GHOST;
         ghostPlacer = Instantiate(currentStored.item.Prefab, Vector3.one * 1000, Quaternion.identity);
-        ghostPlacer.layer = LayerMask.NameToLayer("GhostPlacer");
+        ghostPlacer.SetCollisionActive(false);
+        ghostPlacer.name = "GhostPlacer : " + ghostPlacer.name;
         InputManager.Instance.AddKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, ClearGhost);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, PlaceFromGhost);

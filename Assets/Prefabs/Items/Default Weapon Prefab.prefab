@@ -42,6 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804b3f6acc0c0ae40b6fbe9d402ad7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TMP_followTarget: 1
   spawnPoint: {fileID: 1014712778}
   canShoot: 1
 --- !u!1001 &8087550158501621000
@@ -110,6 +111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Default Weapon Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072692627595723577, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e9738f0a2931a4d95bef6949621364, type: 3}
