@@ -870,7 +870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566139660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.383682, y: -11, z: -232.56097}
+  m_LocalPosition: {x: 136, y: -77, z: -232.56097}
   m_LocalScale: {x: 1.9512196, y: 1.9512196, z: 1.9512196}
   m_Children:
   - {fileID: 1200266879}
@@ -1123,8 +1123,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 492, y: 277}
-  m_SizeDelta: {x: 1920, y: 1080.9756}
+  m_AnchoredPosition: {x: 439, y: 248.5}
+  m_SizeDelta: {x: 1713.1707, y: 958.0488}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &795824044
 GameObject:
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414996787}
   m_HandleRect: {fileID: 414996786}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1323,7 +1323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1651, y: 1.7999268}
+  m_AnchoredPosition: {x: -1410, y: 1.7999268}
   m_SizeDelta: {x: 448, y: -257.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839507592
@@ -1521,8 +1521,6 @@ MonoBehaviour:
   itemPanelContentPlayer: {fileID: 1145087051}
   moneyPlayer: {fileID: 1200266880}
   itemCardPrefab: {fileID: 7988277201041331673, guid: 44f8dd28494e66247bd3972feaf22363,
-    type: 3}
-  itemCardPrefabPlayer: {fileID: 1141023271919716327, guid: 40965e30ec84aba499fe9c715342f020,
     type: 3}
 --- !u!114 &936063841
 MonoBehaviour:
@@ -2153,7 +2151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355, y: -259}
+  m_AnchoredPosition: {x: 332, y: -219}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1454111574
@@ -2717,7 +2715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 42.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2989,7 +2987,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 932848736}
   m_HandleRect: {fileID: 932848735}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3115,7 +3113,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 42.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

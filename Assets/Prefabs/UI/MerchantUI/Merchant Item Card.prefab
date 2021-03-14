@@ -119,7 +119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1967225115572982066}
+      - m_Target: {fileID: 2845659005955055847}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 7988277201041331672}
   - component: {fileID: 7988277201041331678}
   - component: {fileID: 7988277201041331679}
-  - component: {fileID: 1967225115572982066}
+  - component: {fileID: 2845659005955055847}
   m_Layer: 5
   m_Name: Merchant Item Card
   m_TagString: Untagged
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1967225115572982066
+--- !u!114 &2845659005955055847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7988277201041331673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fffe40000dc7d428bb09dd11168786, type: 3}
+  m_Script: {fileID: 11500000, guid: f369ecf5106a677478c5a6a05ee9b4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 7988277200441202387}
@@ -1050,4 +1050,6 @@ MonoBehaviour:
   item:
     item: {fileID: 0}
     count: 0
-    price: 0
+  MerchantOnSellItemEvent:
+    m_PersistentCalls:
+      m_Calls: []

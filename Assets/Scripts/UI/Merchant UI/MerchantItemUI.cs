@@ -10,6 +10,7 @@ public class MerchantItemUI : MonoBehaviour
     [SerializeField] protected TMPro.TMP_Text nameText = null;
     [SerializeField] protected TMPro.TMP_Text costText = null;
     [SerializeField] protected TMPro.TMP_Text quantityText = null;
+
     [SerializeField] protected Image image = null;
     [Header("Runtime")]
     [SerializeField] protected InventoryStorage item = null;
@@ -18,7 +19,7 @@ public class MerchantItemUI : MonoBehaviour
     public InventoryStorage Item { get { return item; } }
 
 
-    public virtual void UpdateUI(InventoryStorage item)
+    public void UpdateUI(InventoryStorage item)
     {
         this.item = item;
         nameText.text = "Name : " + this.item.item.Name;

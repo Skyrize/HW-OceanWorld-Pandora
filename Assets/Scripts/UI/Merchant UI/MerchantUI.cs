@@ -12,7 +12,6 @@ public class MerchantUI : MonoBehaviour
     [SerializeField] protected TMPro.TMP_Text moneyPlayer = null;
 
     [SerializeField] protected GameObject itemCardPrefab = null;
-    [SerializeField] protected GameObject itemCardPrefabPlayer = null;
 
     private MerchantInventory merchantInventory;
     private PlayerInventory playerInventory;
@@ -30,14 +29,14 @@ public class MerchantUI : MonoBehaviour
 
     public void CreateCard(InventoryStorage item, RectTransform container)
     {
-        MerchantForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantForSaleItemsUI>();
+        MerchantItemUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantItemUI>();
         cardUI.UpdateUI(item);
         cardUI.MerchantOnSellItemEvent.AddListener(SellItem);
     }
 
     public void CreateCardPlayer(InventoryStorage item, RectTransform container)
     {
-        PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
+        MerchantItemUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantItemUI>();
         cardUI.UpdateUI(item);
         cardUI.MerchantOnSellItemEvent.AddListener(BuyItem);
     }
