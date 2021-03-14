@@ -643,8 +643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1850574816}
-  inventoryAsset: {fileID: 11400000, guid: 520cf7595afd42b41925fe96ff42d002, type: 2}
-  inventory: {fileID: 0}
+  inventoryMerchant: {fileID: 0}
+  merchantUI: {fileID: 0}
 --- !u!114 &1844779995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,10 +675,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1844779994}
         m_MethodName: EnterInMerchant
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1850574811}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -874,6 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21950d4b36e774598a028ab39aff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponry: {fileID: 0}
   inventoryAsset: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966, type: 2}
   inventory: {fileID: 0}
 --- !u!114 &1850574817
