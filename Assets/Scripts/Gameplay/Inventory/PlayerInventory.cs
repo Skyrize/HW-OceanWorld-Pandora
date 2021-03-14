@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Player")]
-public class PlayerInventory : Inventory<InventoryStorage>
+public class PlayerInventory : Inventory
 {
-    public List<InventoryStorage> items = new List<InventoryStorage>();
+    [SerializeField] public List<InventoryStorage> items = new List<InventoryStorage>();
     public List<CrewMember> crewMembers = new List<CrewMember>();
     override public List<InventoryStorage> m_content { get { return items; } }
 

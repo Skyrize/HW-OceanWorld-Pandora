@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class MerchantStorage : InventoryStorage
-{
-    public float price;
-}
-
 [CreateAssetMenu(menuName = "Inventory/Merchant")]
-public class MerchantInventory : Inventory<MerchantStorage>
+public class MerchantInventory : Inventory
 {
-    public List<MerchantStorage> goods = new List<MerchantStorage>();
-    override public List<MerchantStorage> m_content { get { return goods; } }
+    public List<InventoryStorage> goods = new List<InventoryStorage>();
+    public List<Item> items = new List<Item>();
+    public float priceModifier;
+    override public List<InventoryStorage> m_content { get { return goods; } }
 }
