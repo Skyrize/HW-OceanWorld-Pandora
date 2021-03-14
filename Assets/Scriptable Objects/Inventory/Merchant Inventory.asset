@@ -16,10 +16,14 @@ MonoBehaviour:
   goods:
   - item: {fileID: 11400000, guid: 6d0291fef4aabdb4db5bad728279f6a4, type: 2}
     count: 1
-    price: 100
   - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
     count: 100
-    price: 1
   - item: {fileID: 11400000, guid: b362ae32a8fd5974dabfe7e35679a837, type: 2}
     count: 5
-    price: 5
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  priceModifier: 0

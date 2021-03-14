@@ -19,7 +19,7 @@ public class Merchant : MonoBehaviour
         inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
     }
 
-    public void EnterInMerchant(GameObject obj)
+    public void EnterInMerchant(GameObject obj) 
     {
         if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
             UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
@@ -34,7 +34,8 @@ public class Merchant : MonoBehaviour
 
     public void ClientBuyItem(Item item, float price, uint count=1)
     {
-        if (player.inventory.Money >= price)
+        InventoryStorage storage = inventoryMerchant.GetStoredItem(item);
+        if (player.inventory.Money >= price && storage != null)
         {
             player.inventory.Add(item);
             inventoryMerchant.Remove(item);

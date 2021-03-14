@@ -26,9 +26,9 @@ public class InventoryStorage {
     }
 }
 
-public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
+public abstract class Inventory : ClonableSO
 {
-    abstract public List<T> m_content { get; }
+    abstract public List<InventoryStorage> m_content { get; }
     public float Money { get; set; }
 
     [HideInInspector] public float TotalWeight;
@@ -42,7 +42,7 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
     /// <exception cref="ArgumentException">Count was greater than the remaining count of the item</exception>
     public void Remove(Item item, uint count = 1)
     {
-        T storage = GetStoredItem(item);
+        InventoryStorage storage = GetStoredItem(item);
         if (storage == null)
             throw new KeyNotFoundException("Object is not in inventory");
 
@@ -63,11 +63,10 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
     /// <param name="item"></param>
     public void Add(Item item, uint count = 1)
     {
-        T storage = GetStoredItem(item);
+        InventoryStorage storage = GetStoredItem(item);
         if (storage == null) {
-            T newItem = (T)Activator.CreateInstance(typeof(T));;
-            newItem.item = ClonableSO.Clone<Item>(item);
-            newItem.count = count;
+            InventoryStorage newItem = new InventoryStorage(item, count);
+            
             m_content.Add(newItem);
             return;
         }
@@ -81,14 +80,14 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
         }
     }
 
-    public T GetStoredItem(Item item)
+    public InventoryStorage GetStoredItem(Item item)
     {
         return m_content.Find((stored) => { return item.Equals(stored.item); });;
     }
 
     override protected ClonableSO Clone()
     {
-        Inventory<T> clone = base.Clone() as Inventory<T>;
+        Inventory clone = base.Clone() as Inventory;
 
         for (int i = 0; i != clone.m_content.Count; i++) {
             clone.m_content[i].item = ClonableSO.Clone<Item>(clone.m_content[i].item);
@@ -96,11 +95,11 @@ public abstract class Inventory<T> : ClonableSO where T : InventoryStorage
         return clone;
     }
 
-    public List<T> GetItemsOfType(Type type)
+    public List<InventoryStorage> GetItemsOfType(Type type)
     {
-        List<T> items = new List<T>();
+        List<InventoryStorage> items = new List<InventoryStorage>();
 
-        foreach (T stored in m_content)
+        foreach (InventoryStorage stored in m_content)
         {
             if (stored.item.GetType() == type) {
                 items.Add(stored);

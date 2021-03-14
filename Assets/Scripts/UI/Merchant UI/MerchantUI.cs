@@ -28,19 +28,19 @@ public class MerchantUI : MonoBehaviour
         GetInventory();
     }
 
-    public void CreateCard(MerchantStorage item, RectTransform container)
+    public void CreateCard(InventoryStorage item, RectTransform container)
     {
         MerchantForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantForSaleItemsUI>();
         cardUI.UpdateUI(item);
-        cardUI.Subscription(this.SellItem);
+        cardUI.MerchantOnSellItemEvent.AddListener(this.SellItem);
     }
 
-    public void CreateCardPlayer(MerchantStorage item, InventoryStorage itemPlayer, RectTransform container)
+    public void CreateCardPlayer(InventoryStorage item, InventoryStorage itemPlayer, RectTransform container)
     {
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
         cardUI.InventoryItem = itemPlayer;
         cardUI.UpdateUI(item);
-        cardUI.Subscription(this.BuyItem);
+        cardUI.MerchantOnSellItemEvent.AddListener(this.BuyItem);
     }
 
 
@@ -54,7 +54,7 @@ public class MerchantUI : MonoBehaviour
     {
         ClearUI();
         SetMoney(playerInventory.Money);
-        foreach (MerchantStorage item in merchantInventory.m_content)
+        foreach (InventoryStorage item in merchantInventory.m_content)
             CreateCard(item, itemPanelContentMerchant);
 
         var query = from itemMerchant in merchantInventory.m_content
@@ -65,14 +65,14 @@ public class MerchantUI : MonoBehaviour
             CreateCardPlayer(item.MerchantItem, item.PlayerItem, itemPanelContentPlayer);        
     }
 
-    public void SellItem(InventoryMerchantEventArgs e)
+    public void SellItem(InventoryStorage item)
     {
-        merchant.ClientBuyItem(e.merchantStorage.item, e.merchantStorage.price) ;
+        merchant.ClientBuyItem(item.item, item.item.Price) ;
     }
 
-    public void BuyItem(InventoryMerchantEventArgs e)
+    public void BuyItem(InventoryStorage item)
     {
-        merchant.ClientSellItem(e.merchantStorage.item, e.merchantStorage.price);
+        merchant.ClientSellItem(item.item, item.item.Price);
     }
 
     public void SetMoney(float money)

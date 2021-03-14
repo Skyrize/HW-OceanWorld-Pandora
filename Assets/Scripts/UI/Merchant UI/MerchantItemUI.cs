@@ -4,23 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class InventoryMerchantEventArgs : EventArgs
-{
-    public MerchantStorage merchantStorage;
-    public InventoryStorage inventoryStorage;
-
-    public InventoryMerchantEventArgs(MerchantStorage item)
-    {
-        merchantStorage = item;
-    }
-
-    public InventoryMerchantEventArgs(MerchantStorage itemMerchant, InventoryStorage itemPlayer)
-    {
-        merchantStorage = itemMerchant;
-        inventoryStorage = itemPlayer;
-    }
-}
-
 public class MerchantItemUI : MonoBehaviour
 {
     [Header("References")]
@@ -30,23 +13,23 @@ public class MerchantItemUI : MonoBehaviour
     [SerializeField] protected TMPro.TMP_Text quantityText = null;
     [SerializeField] protected Image image = null;
     [Header("Runtime")]
-    [SerializeField] protected MerchantStorage item = null;
+    [SerializeField] protected InventoryStorage item = null;
+    public InventoryStorageEvent MerchantOnSellItemEvent = new InventoryStorageEvent();
+
+    public InventoryStorage Item { get { return item; } }
 
 
-    public MerchantStorage Item { get { return item; } }
-
-    private void Start()
-    {
-        //button.onSelect.AddListener(Select);
-        //button.onUnselect.AddListener(Unselect);
-    }
-
-    public virtual void UpdateUI(MerchantStorage item)
+    public virtual void UpdateUI(InventoryStorage item)
     {
         this.item = item;
         //button.UpdateUI(this.crewMember);
         nameText.text = "Name : " + this.item.item.Name;
-        costText.text = "Cost : " + this.item.price;
+        costText.text = "Cost : " + this.item.item.Price;
         image.sprite = this.item.item.Icon;
+    }
+
+    public void OnClick()
+    {
+        MerchantOnSellItemEvent.Invoke(this.item);
     }
 }
