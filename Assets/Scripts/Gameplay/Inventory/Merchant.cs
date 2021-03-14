@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class Merchant : MonoBehaviour
 {
     [Header("References")]
-    public Player player;
-    [SerializeField] protected MerchantInventory inventoryAsset;
-    [Header("Runtime")]
-    [SerializeField] public MerchantInventory inventory;
+    [SerializeField] public PlayerInventory inventoryPlayer;
+    [SerializeField] public MerchantInventory inventoryMerchant;
+
+    public PlayerInventory InventoryPlayer { get => inventoryPlayer; }
+    public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
+
+    public MerchantUI merchantUI;
 
     private void Awake() {
-        
-        inventory = ClonableSO.Clone<MerchantInventory>(inventoryAsset);
+        inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
     }
 
     public void EnterInMerchant(GameObject obj)
@@ -29,24 +31,30 @@ public class Merchant : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
     }
 
-    public void ClientBuyItem(Item item, float price, uint count)
+    public void ClientBuyItem(Item item, float price, uint count=1)
     {
-        if (player.inventory.Money >= price)
+        if (inventoryPlayer.Money >= price)
         {
-            player.inventory.Add(item, count);
-            player.inventory.Money -= price * count;
+            inventoryPlayer.Add(item, count);
+            inventoryMerchant.Remove(item, count);
+
+            inventoryPlayer.Money -= price * count;
         }
+        merchantUI.BuildUI();
         //TODO : add to merchant inventory (NOT MANDATORY)
     }
 
     public void ClientSellItem(Item item, float price)
     {
-        InventoryStorage storage = player.inventory.GetStoredItem(item);
+        InventoryStorage storage = inventoryPlayer.GetStoredItem(item);
         if(storage != null && storage.count > 0)
         {
-            player.inventory.Remove(item);
-            player.inventory.Money += price;
+            inventoryPlayer.Remove(item);
+            inventoryMerchant.Add(item);
+            inventoryPlayer.Money += price;
         }
+
+        merchantUI.BuildUI();
         //TODO : remove from merchant inventory (NOT MANDATORY)
     }
 }
