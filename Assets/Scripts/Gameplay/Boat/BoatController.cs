@@ -71,5 +71,15 @@ public class BoatController : MonoBehaviour
         Steer();
         Move();
         Slide();
+        // Float();
+    }
+
+    
+    void Float()
+    {
+        rb.centerOfMass = transform.position;
+        Vector3 rectify = transform.position;
+        rectify.y = 0;
+        transform.position = rectify;
     }
 }

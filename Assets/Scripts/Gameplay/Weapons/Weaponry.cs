@@ -29,7 +29,7 @@ public class Weaponry : MonoBehaviour
     {
         foreach (var weapon in weapons)
         {
-            weapon.ShootAt(target);
+            weapon.Use(target);
         }
     }
 

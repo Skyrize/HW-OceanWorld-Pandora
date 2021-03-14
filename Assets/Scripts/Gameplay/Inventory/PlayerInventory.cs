@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Player")]
-public class PlayerInventory : Inventory<InventoryStorage>
+public class PlayerInventory : BasicInventory
 {
-    public List<InventoryStorage> items = new List<InventoryStorage>();
+    [SerializeField] protected CrewMember playerCharacter = null;
+    public CrewMember PlayerCharacter => playerCharacter;
     public List<CrewMember> crewMembers = new List<CrewMember>();
-    override public List<InventoryStorage> m_content { get { return items; } }
 
     override protected ClonableSO Clone()
     {

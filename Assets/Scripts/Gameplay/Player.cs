@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public Weaponry weaponry = null;
+    [SerializeField] public Post controlPost = null;
+    [SerializeField] public RepairStation repairStation = null;
     [SerializeField] protected PlayerInventory inventoryAsset = null;
     [Header("Runtime")]
     [SerializeField] public PlayerInventory inventory = null;
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour
     {
         if (input == 0 || !isActiveAndEnabled)
             return;
+            Debug.Log("shoot");
         weaponry.ShootAt(Utils.MousePositionOcean);
     }
 
@@ -44,6 +47,10 @@ public class Player : MonoBehaviour
     {
         Item item = obj.GetComponent<ItemObject>().Item;
         inventory.Remove(item);
+    }
+    public void RemoveItem(Item item, uint count = 1)
+    {
+        inventory.Remove(item, count);
     }
 
 }

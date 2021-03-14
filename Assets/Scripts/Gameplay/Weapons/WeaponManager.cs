@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ItemObject))]
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : Post
 {
     [Header("TMP_OldCannonball shoot")]
     public bool TMP_followTarget = true;
@@ -72,7 +72,7 @@ public class WeaponManager : MonoBehaviour
         projectileRb.AddForce(spawnPoint.forward * weaponAsset.Power, ForceMode.Impulse);
     }
 
-    public void ShootAt(Vector3 target)
+    protected void ShootAt(Vector3 target)
     {
         //TODO : reject shoot if angle is too large
         if (!canShoot)
@@ -88,6 +88,11 @@ public class WeaponManager : MonoBehaviour
         }
         canShoot = false;
         StartCoroutine(Reload());
+    }
+
+    override protected void _Use(Vector3 target)
+    {
+        ShootAt(target);
     }
 
 }
