@@ -81,10 +81,7 @@ public class AIController : Controller
 
     private Vector3 getRelativeDirection()
     {
-        Vector3 target = path.corners[currentCornerIdx];
-        Vector3 diff = target - transform.position;
-        Vector3 localDiff = Quaternion.AngleAxis(-transform.rotation.eulerAngles.y, Vector3.up) * diff;
-        return localDiff;
+        return transform.InverseTransformPoint(path.corners[currentCornerIdx]);
     }
 
     public override Vector3 getInput(float currentSpeed)

@@ -7,7 +7,7 @@ public class BoatController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected  float acceleration = 1;
-    [SerializeField] protected  float maxSpeed = 10;
+    [SerializeField] public float maxSpeed { get; protected set; } = 10;
     [SerializeField] protected  float steerSpeed = 1;
     [SerializeField] protected  float maxSteerAngle = 10;
 
