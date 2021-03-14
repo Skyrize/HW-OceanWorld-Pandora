@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
+
+public class SellingEvent : UnityEvent<InventoryStorage, float>
+{
+}
 
 public class MerchantItemUI : MonoBehaviour
 {
@@ -14,22 +16,22 @@ public class MerchantItemUI : MonoBehaviour
     [SerializeField] protected Image image = null;
     [Header("Runtime")]
     [SerializeField] protected InventoryStorage item = null;
-    public InventoryStorageEvent MerchantOnSellItemEvent = new InventoryStorageEvent();
+    public SellingEvent MerchantOnSellItemEvent = new SellingEvent();
 
     public InventoryStorage Item { get { return item; } }
-
+    public float ItemPrice { get; set; }
 
     public void UpdateUI(InventoryStorage item)
     {
         this.item = item;
         nameText.text = "Name : " + this.item.item.Name;
-        costText.text = "Cost : " + this.item.item.Price;
+        costText.text = "Cost : " + ItemPrice;
         quantityText.text = "Quantity :" + this.item.count;
         image.sprite = this.item.item.Icon;
     }
 
     public void OnClick()
     {
-        MerchantOnSellItemEvent.Invoke(this.item);
+        MerchantOnSellItemEvent.Invoke(this.item, ItemPrice);
     }
 }

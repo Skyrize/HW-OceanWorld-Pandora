@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 
 public class MerchantUI : MonoBehaviour
@@ -30,6 +28,7 @@ public class MerchantUI : MonoBehaviour
     public void CreateCard(InventoryStorage item, RectTransform container)
     {
         MerchantItemUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantItemUI>();
+        cardUI.ItemPrice = item.item.Price + item.item.Price * merchant.inventoryMerchant.priceModifier / 100;
         cardUI.UpdateUI(item);
         cardUI.MerchantOnSellItemEvent.AddListener(SellItem);
     }
@@ -37,6 +36,7 @@ public class MerchantUI : MonoBehaviour
     public void CreateCardPlayer(InventoryStorage item, RectTransform container)
     {
         MerchantItemUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantItemUI>();
+        cardUI.ItemPrice = item.item.Price - item.item.Price * merchant.inventoryMerchant.priceModifier / 100;
         cardUI.UpdateUI(item);
         cardUI.MerchantOnSellItemEvent.AddListener(BuyItem);
     }
@@ -62,14 +62,14 @@ public class MerchantUI : MonoBehaviour
             CreateCardPlayer(item.PlayerItem, itemPanelContentPlayer);        
     }
 
-    public void SellItem(InventoryStorage item)
+    public void SellItem(InventoryStorage item, float price)
     {
-        merchant.ClientBuyItem(item.item, item.item.Price) ;
+        merchant.ClientBuyItem(item.item, price) ;
     }
 
-    public void BuyItem(InventoryStorage item)
+    public void BuyItem(InventoryStorage item, float price)
     {
-        merchant.ClientSellItem(item.item, item.item.Price);
+        merchant.ClientSellItem(item.item, price);
     }
 
     public void SetMoney(float money)
