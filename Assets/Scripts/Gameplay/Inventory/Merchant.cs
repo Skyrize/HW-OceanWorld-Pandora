@@ -13,21 +13,29 @@ public class Merchant : MonoBehaviour
     public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
 
     public MerchantUI merchantUI;
-
+    private static bool loaded;
+    
     private void Awake() {
         inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
     }
 
-    public void EnterInMerchant(GameObject obj) 
-    {
-        if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
+    public void EnterInMerchant() 
+    {  
+        if (!loaded)
+        {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
+            loaded = true;
+        }
     }
 
     public void ExitMerchant()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
+        if (loaded)
+        {
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
+            loaded = false;
+        }
+            
     }
 
     public void ClientBuyItem(Item item, float price)
