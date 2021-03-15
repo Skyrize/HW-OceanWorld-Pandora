@@ -10,6 +10,7 @@ public class CrewUI : MonoBehaviour
     [HideInInspector] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform CrewPanelContent = null;
     [SerializeField] protected GameObject CrewMemberCardPrefab = null;
+    [SerializeField] protected ItemPlacer itemPlacer = null;
     [Header("Runtime")]
     [SerializeField] protected CrewMember currentCrewMember = null;
     [SerializeField] public CrewMember CurrentCrewMember => currentCrewMember;
@@ -39,6 +40,10 @@ public class CrewUI : MonoBehaviour
 
     public void SelectCrewMember(CrewMember crewMember)
     {
+        if (itemPlacer.CurrentItem != null) {
+            itemPlacer.CurrentItem = null;
+            itemPlacer.Mode = PlacerToolMode.NONE;
+        }
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
         currentCrewMember = crewMember;
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
