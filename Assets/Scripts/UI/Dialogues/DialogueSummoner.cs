@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class DialogueSummoner : MonoBehaviour
 {
+    [Header("Dialogues")]
     public DialogueUI ui;
-    public Merchant merchant;
     public DialogueIdentifier dialogue;
+
+    [Header("Merchant")]
+    public Merchant merchant;
+
+    [Header("Crew adding")]
+    public CrewMember suit;
+    public InventoryHolder inventoryHolder;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,15 +27,21 @@ public class DialogueSummoner : MonoBehaviour
                     ui.Summon("merchant", merchant.EnterInMerchant);
                     break;
                 case DialogueIdentifier.INTRODUCTION:
-                    ui.Summon("introduction"); //todo add post summon
+                    ui.Summon("introduction", AddSuitToCrew);
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight"); //todo add post summon
+                    ui.Summon("first_fight"); //todo add post summon ?
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
-                    ui.Summon("after_fight"); //todo add post summon
+                    ui.Summon("after_fight"); //todo add post summon ?
                     break;
             }
+    }
+
+    private void AddSuitToCrew()
+    {
+        ((PlayerInventory)inventoryHolder.inventory).AddCrewMember(suit);
+        gameObject.SetActive(false);
     }
 
     private void OnSuitBroughtBack()
