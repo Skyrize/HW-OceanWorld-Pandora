@@ -2724,6 +2724,7 @@ MonoBehaviour:
   CrewPanelContent: {fileID: 1512858539528622776}
   CrewMemberCardPrefab: {fileID: 6238041942671343727, guid: ece55450a14b6284ba198689ee3b55a8,
     type: 3}
+  itemPlacer: {fileID: 1512858539824822340}
   currentCrewMember: {fileID: 0}
 --- !u!1 &1512858540303634615
 GameObject:

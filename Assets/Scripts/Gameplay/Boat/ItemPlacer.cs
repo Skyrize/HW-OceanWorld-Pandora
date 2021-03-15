@@ -5,7 +5,8 @@ using UnityEngine;
 public enum PlacerToolMode
 {
     GHOST,
-    REMOVE
+    REMOVE,
+    NONE
 }
 
 public class ItemPlacer : MonoBehaviour
@@ -48,17 +49,13 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected bool activated = false;
     [SerializeField] protected bool canPlace = false;
     [SerializeField] protected PlacerToolMode mode = PlacerToolMode.REMOVE;
-    [SerializeField] protected PlacerToolMode Mode {
+    [SerializeField] public PlacerToolMode Mode {
         set {
             this.mode = value;
-            switch (mode)
-            {
-                case PlacerToolMode.GHOST:
-                    InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
-                break;
-                case PlacerToolMode.REMOVE:
-                    InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
-                break;
+            if (mode == PlacerToolMode.REMOVE) {
+                InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
+            } else {
+                InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
             }
         }
     }
@@ -82,6 +79,9 @@ public class ItemPlacer : MonoBehaviour
 
     public void SelectPlacableItem(InventoryStorage item)
     {
+        if (postManagerUI.crewUI.CurrentCrewMember) {
+            postManagerUI.crewUI.UnselectCrewMember();
+        }
         CurrentItem = item;
     }
 
@@ -271,6 +271,8 @@ public class ItemPlacer : MonoBehaviour
             break;
             case PlacerToolMode.REMOVE:
                 UpdateRemovePlacer();
+            break;
+            default:
             break;
         }
     }

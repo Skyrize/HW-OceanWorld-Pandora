@@ -5,7 +5,7 @@ using UnityEngine;
 public class PostManagerUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] protected CrewUI crewUI = null;
+    [SerializeField] public CrewUI crewUI = null;
     [SerializeField] protected Player player = null;
     [SerializeField] protected RectTransform PostPanelContent = null;
     [SerializeField] protected GameObject PostCardPrefab = null;
