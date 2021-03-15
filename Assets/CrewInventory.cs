@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/CrewInventory")]
 public class CrewInventory : Inventory
 {
-    [SerializeField] protected uint maxCrewSize = 2;
-    public uint MaxCrewSize => maxCrewSize;
+    [SerializeField] public uint maxCrewSize = 2;
     public List<CrewMember> crewMembers = new List<CrewMember>();
 
     override protected ClonableSO Clone()

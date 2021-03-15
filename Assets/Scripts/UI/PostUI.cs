@@ -25,7 +25,7 @@ public class PostUI : MonoBehaviour
     {
         this.post = post;
         Item postItem = post.GetComponent<ItemObject>().Item;
-        //TODO : status bar here
+        statusBar.UpdateUI(post.Employee);
         button.UpdateUI(post.Employee);
         nameText.text = postItem.Name;
         postIcon.sprite = postItem.Icon;

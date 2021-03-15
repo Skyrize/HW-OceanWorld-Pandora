@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Player")]
 public class PlayerInventory : CrewInventory
 {
-    [SerializeField] protected CrewMember playerCharacter = null;
-    public CrewMember PlayerCharacter => playerCharacter;
+    // [SerializeField] protected CrewMember playerCharacter = null;
+    // public CrewMember PlayerCharacter => playerCharacter;
 
-    override protected ClonableSO Clone()
-    {
-        PlayerInventory clone = base.Clone() as PlayerInventory;
+    // override protected ClonableSO Clone()
+    // {
+    //     PlayerInventory clone = base.Clone() as PlayerInventory;
 
-        clone.playerCharacter = ClonableSO.Clone<CrewMember>(playerCharacter);
-        return clone;
-    }
+    //     clone.playerCharacter = ClonableSO.Clone<CrewMember>(playerCharacter);
+    //     return clone;
+    // }
 }
