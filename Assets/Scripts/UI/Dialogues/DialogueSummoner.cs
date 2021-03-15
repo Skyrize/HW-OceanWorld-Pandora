@@ -10,7 +10,12 @@ public class DialogueSummoner : MonoBehaviour
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
-            ui.Summon(dialogue);
+            ui.Summon(dialogue, LaunchSecond);
+    }
+
+    private void LaunchSecond()
+    {
+        ui.Summon("first_attack");
     }
 
     private void OnTriggerEnter(Collider other)

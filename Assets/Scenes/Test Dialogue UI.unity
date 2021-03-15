@@ -660,7 +660,7 @@ PrefabInstance:
     - target: {fileID: 9015481646860659300, guid: 384f5d22c5250d641a5a8246384f3852,
         type: 3}
       propertyPath: dialogue
-      value: after_attack
+      value: introduction
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 384f5d22c5250d641a5a8246384f3852, type: 3}

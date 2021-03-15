@@ -21,8 +21,9 @@ public class DialogueUI : MonoBehaviour
     public Text content;
 
     private Dialogue current;
-    private int lineIndex = -1;
+    private Action onDialogueFinish;
 
+    private int lineIndex = -1;
     private float delayNext = .5f;
     private float lastNext;
 
@@ -39,7 +40,7 @@ public class DialogueUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canvas.enabled)
+        if (!Enabled)
             return; 
 
         if (!CanNext) { 
@@ -50,23 +51,7 @@ public class DialogueUI : MonoBehaviour
         if (Input.GetButton("Fire1") && HasNextLine)
             LineIndex++;
         else if (Input.GetButton("Fire1") && !HasNextLine)
-            canvas.enabled = false;
-
-        if (Input.GetButton("Fire2"))
-            Summon("exemple");
-    }
-
-    private int LineIndex
-    {
-        get => lineIndex; 
-        set
-        {
-            lineIndex++;
-            lastNext = 0;
-
-            title.text = current.lines[lineIndex].name;
-            content.text = current.lines[lineIndex].text;
-        }
+            Enabled = false;
     }
 
     private void ScrubActors()
@@ -90,6 +75,7 @@ public class DialogueUI : MonoBehaviour
 
     public void Summon(string dialogueId)
     {
+        onDialogueFinish = null;
         current = database.FindDialogue(dialogueId);
 
         ScrubActors();
@@ -99,7 +85,38 @@ public class DialogueUI : MonoBehaviour
         lineIndex = -1;
         LineIndex++;
 
-        canvas.enabled = true;
+        Enabled = true;
+    }
+
+    public void Summon(string dialogueId, Action onFinishDialogue)
+    {
+        Summon(dialogueId);
+        onDialogueFinish = onFinishDialogue;
+    }
+
+    private bool Enabled
+    {
+        get => canvas.enabled;
+        set
+        {
+            canvas.enabled = value;
+
+            if (!value && onDialogueFinish != null)
+                onDialogueFinish();
+        }
+    }
+
+    private int LineIndex
+    {
+        get => lineIndex;
+        set
+        {
+            lineIndex = value;
+            lastNext = 0;
+
+            title.text = current.lines[lineIndex].name;
+            content.text = current.lines[lineIndex].text;
+        }
     }
 
     private bool HasNextLine => current.lines.Count - 1 > lineIndex;
