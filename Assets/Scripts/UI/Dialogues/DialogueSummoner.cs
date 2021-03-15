@@ -40,8 +40,9 @@ public class DialogueSummoner : MonoBehaviour
 
     private void AddSuitToCrew()
     {
-        ((PlayerInventory)inventoryHolder.inventory).AddCrewMember(suit);
-        gameObject.SetActive(false);
+        ((PlayerInventory)inventoryHolder.inventory)
+            .AddCrewMember(suit);
+        ui.Summon("first_fight", () => gameObject.SetActive(false));
     }
 
     private void OnSuitBroughtBack()
