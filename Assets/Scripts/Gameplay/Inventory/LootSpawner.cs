@@ -19,15 +19,6 @@ public class LootSpawner : MonoBehaviour
     public float SpreadForceMax = 100f;
     [Range(0, 360)] public float SpreadAngle = 360f;
 
-    // Temp
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnLoot();
-        }
-    }
-
     public void SpawnLoot()
     {
         foreach (var item in SpawnItems)
