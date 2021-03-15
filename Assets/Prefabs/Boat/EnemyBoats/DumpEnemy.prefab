@@ -67,17 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6140423703629535175, guid: 94c3a013a39a7c945997dc3dace8d04b,
-        type: 3}
-      propertyPath: working
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6140423703629535175, guid: 94c3a013a39a7c945997dc3dace8d04b,
-        type: 3}
-      propertyPath: employee
-      value: 
-      objectReference: {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c3a013a39a7c945997dc3dace8d04b, type: 3}
 --- !u!1001 &6639982168880592585
@@ -147,17 +136,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6140423703629535175, guid: 94c3a013a39a7c945997dc3dace8d04b,
-        type: 3}
-      propertyPath: working
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6140423703629535175, guid: 94c3a013a39a7c945997dc3dace8d04b,
-        type: 3}
-      propertyPath: employee
-      value: 
-      objectReference: {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c3a013a39a7c945997dc3dace8d04b, type: 3}
 --- !u!1001 &6639982169772680613
@@ -167,17 +145,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5519680999360871152}
     m_Modifications:
-    - target: {fileID: 4430252483642483321, guid: 359becf178e63b148b498e46a5d711ef,
-        type: 3}
-      propertyPath: working
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4430252483642483321, guid: 359becf178e63b148b498e46a5d711ef,
-        type: 3}
-      propertyPath: employee
-      value: 
-      objectReference: {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8,
-        type: 2}
     - target: {fileID: 5200536519037643282, guid: 359becf178e63b148b498e46a5d711ef,
         type: 3}
       propertyPath: m_RootOrder
