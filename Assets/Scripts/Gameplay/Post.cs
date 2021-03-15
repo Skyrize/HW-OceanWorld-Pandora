@@ -31,7 +31,7 @@ public class Post : MonoBehaviour
     IEnumerator _SetEmployee(CrewMember newEmployee)
     {
         employee = newEmployee;
-        employee.currentPost = this;
+        employee.Hire(this, "Working", hireTime);
         var employeeObject = Instantiate(employee.prefab, postPlace.position, postPlace.rotation, postPlace);
         yield return timer;
         working = true;

@@ -12,7 +12,7 @@ public class AICrewController : MonoBehaviour
 
         int max = Mathf.Min(inventory.crewMembers.Count, weapons.Count);
         for (int i = 0; i != max; i++) {
-            weapons[i].SetEmployee(inventory.crewMembers[i]);
+            weapons[i].ForceHire(inventory.crewMembers[i]);
         }
     }
 

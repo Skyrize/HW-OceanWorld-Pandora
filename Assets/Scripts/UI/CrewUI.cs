@@ -9,6 +9,7 @@ public class CrewUI : MonoBehaviour
     [Header("References")]
     [HideInInspector] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform CrewPanelContent = null;
+    [SerializeField] protected TMPro.TMP_Text header = null;
     [SerializeField] protected GameObject CrewMemberCardPrefab = null;
     [SerializeField] protected ItemPlacer itemPlacer = null;
     [Header("Runtime")]
@@ -65,7 +66,7 @@ public class CrewUI : MonoBehaviour
     
     public void BuildUI()
     {
-        CreateCard(playerInventory.PlayerCharacter);
+        header.text = $"Crew Members - {playerInventory.crewMembers.Count} / {playerInventory.maxCrewSize}";
         foreach (CrewMember crewMember in playerInventory.crewMembers)
         {
             CreateCard(crewMember);
