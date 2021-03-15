@@ -32,11 +32,13 @@ public class WeaponManager : Post
         }
     }
 
+    [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
     [Header("References")]
     [HideInInspector] protected Weapon weaponAsset;
     [SerializeField] protected Transform spawnPoint = null;
     [Header("Runtime")]
-    [SerializeField] bool canShoot = true;
+    [SerializeField] bool reloaded = true;
+    [HideInInspector] protected Inventory inventory;
     private WaitForSeconds reloadTimer = null;
 
     private void Awake() {
@@ -48,8 +50,9 @@ public class WeaponManager : Post
 
     IEnumerator Reload()
     {
+        reloaded = false;
         yield return reloadTimer;
-        canShoot = true;
+        reloaded = true;
         //TODO : add event for sound binding
     }
 
@@ -72,11 +75,28 @@ public class WeaponManager : Post
         projectileRb.AddForce(spawnPoint.forward * weaponAsset.Power, ForceMode.Impulse);
     }
 
+    bool UseAmmo()
+    {
+        if (!inventory) {
+            inventory = GetComponentInParent<InventoryHolder>().inventory;
+        }
+        InventoryStorage stored = inventory.GetStoredItem(weaponAsset.AmmunitionAsset);
+
+        if (stored == null)
+            return false;
+        inventory.Remove(stored.item);
+        return true;
+    }
+
     protected void ShootAt(Vector3 target)
     {
         //TODO : reject shoot if angle is too large
-        if (!canShoot)
+        if (!reloaded)
             return;
+        if (!UseAmmo()) {
+            onMissingResource.Invoke($"Your {weaponAsset.Name} is out of {weaponAsset.AmmunitionAsset.Name} !");
+            return;
+        }
         var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab, 
             spawnPoint.position, 
             spawnPoint.rotation);
@@ -86,7 +106,6 @@ public class WeaponManager : Post
         } else {
             TMP_DirectShoot(projectile, target);
         }
-        canShoot = false;
         StartCoroutine(Reload());
     }
 

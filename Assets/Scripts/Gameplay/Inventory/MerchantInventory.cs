@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Merchant")]
 public class MerchantInventory : Inventory
 {
-    public List<InventoryStorage> goods = new List<InventoryStorage>();
-    public List<Item> items = new List<Item>();
+    public List<Item> tradableItems = new List<Item>();
     public float priceModifier;
-    override public List<InventoryStorage> m_content { get { return goods; } }
 }

@@ -27,7 +27,6 @@ MonoBehaviour:
   weaponry: {fileID: 2836417399519763239}
   controlPost: {fileID: 6566517847006232868}
   repairStation: {fileID: 4362439678018694695}
-  inventoryAsset: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966, type: 2}
   inventory: {fileID: 0}
 --- !u!1 &8290342628873733893
 GameObject:
@@ -220,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 4708112958596005109, guid: 2a3275d7784744541b7df492b09be2ab,
         type: 3}
       propertyPath: m_Name
-      value: Control Post Prefab
+      value: 'Control Post '
       objectReference: {fileID: 0}
     - target: {fileID: 6357417504425376312, guid: 2a3275d7784744541b7df492b09be2ab,
         type: 3}
@@ -314,6 +313,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74699444170157928, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: inventoryAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966,
+        type: 2}
+    - target: {fileID: 508506239242107533, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: inventoryAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b0b787e041f5e042b6f3543d0b57966,
+        type: 2}
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_RootOrder
@@ -546,6 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7254778364940979009, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
+    - {fileID: 1683671316940604642, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
 --- !u!1 &1960895900246004945 stripped
 GameObject:
@@ -653,7 +665,7 @@ PrefabInstance:
     - target: {fileID: 7519462560788238287, guid: bdc5aa2d105c75d4a80ab0bb0e17c42f,
         type: 3}
       propertyPath: m_Name
-      value: Repair Post Prefab
+      value: Repair Post
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc5aa2d105c75d4a80ab0bb0e17c42f, type: 3}

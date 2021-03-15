@@ -17,13 +17,16 @@ public class PostUI : MonoBehaviour
     [SerializeField] protected Post post = null;
     [SerializeField] public Post CurrentPost => post;
 
+    private void Start() {
+        button.onSelect.AddListener(this.Select);
+    }
+
     public void UpdateUI(Post post)
     {
         this.post = post;
         Item postItem = post.GetComponent<ItemObject>().Item;
         //TODO : status bar here
         button.UpdateUI(post.Employee);
-        button.onSelect.AddListener(this.Select);
         nameText.text = postItem.Name;
         postIcon.sprite = postItem.Icon;
     }

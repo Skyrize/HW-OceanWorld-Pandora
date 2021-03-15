@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2584758412130715173}
   - component: {fileID: 6360339680860309721}
   - component: {fileID: 2561923885569818946}
+  - component: {fileID: 74699444170157928}
   m_Layer: 12
   m_Name: Boat
   m_TagString: Untagged
@@ -183,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
-  maxSpeed: 5
   steerSpeed: 3
   maxSteerAngle: 40
   slideForce: 1
@@ -304,6 +304,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadFromChilds: 1
   weapons: []
+--- !u!114 &74699444170157928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299002694482284212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52740b8ec8fb3524281a914bf722d4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryAsset: {fileID: 11400000, guid: f333824c6d15d074285f36a30e23200f, type: 2}
+  _inventory: {fileID: 0}
 --- !u!1 &2299002695325882047
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,32 +28,31 @@ public class Post : MonoBehaviour
         timer = new WaitForSeconds(hireTime);
     }
 
-    void Hire()
+    IEnumerator _SetEmployee(CrewMember newEmployee)
     {
+        employee = newEmployee;
+        employee.currentPost = this;
         var employeeObject = Instantiate(employee.prefab, postPlace.position, postPlace.rotation, postPlace);
+        yield return timer;
         working = true;
         
         onHire.Invoke();
     }
 
-    IEnumerator _SetEmployee(CrewMember newEmployee)
-    {
-        employee = newEmployee;
-        yield return timer;
-        Hire();
-    }
-
     public void ForceHire(CrewMember newEmployee)
     {
         ClearEmployee();
-        employee = newEmployee;
-        Hire();
+        timer = null;
+        StartCoroutine(_SetEmployee(newEmployee));
+        timer = new WaitForSeconds(hireTime);
     }
 
     public void ClearEmployee()
     {
         onFire.Invoke();
         postPlace.ClearChilds(); // bof
+        if (employee)
+            employee.currentPost = null;
         employee = null;
         working = false;
     }

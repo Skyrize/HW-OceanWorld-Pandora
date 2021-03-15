@@ -54,11 +54,11 @@ public class MerchantUI : MonoBehaviour
     {
         ClearUI();
         SetMoney(playerInventory.Money);
-        foreach (InventoryStorage item in merchantInventory.m_content)
+        foreach (InventoryStorage item in merchantInventory.items)
             CreateCard(item, itemPanelContentMerchant);
 
-        var query = from itemMerchant in merchantInventory.m_content
-                    join itemPlayer in playerInventory.m_content on itemMerchant.item.Name equals itemPlayer.item.Name
+        var query = from itemMerchant in merchantInventory.items
+                    join itemPlayer in playerInventory.items on itemMerchant.item.Name equals itemPlayer.item.Name
                     select new { PlayerItem = itemPlayer, MerchantItem = itemMerchant };
 
         foreach (var item in query)

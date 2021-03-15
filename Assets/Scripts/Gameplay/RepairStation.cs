@@ -23,8 +23,8 @@ public class RepairStation : Post
     [SerializeField] public RepairEvent onRepair = new RepairEvent();
     [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
     [Header("References")]
-    [SerializeField] protected Player player = null; //TODO : modify to allow ennemy to repair by adding inventory holder component
-    [SerializeField] protected Item consumedItem = null; //TODO : modify to allow ennemy to repair by adding inventory holder component
+    [SerializeField] protected InventoryHolder inventoryHolder = null;
+    [SerializeField] protected Item consumedItem = null;
     [Header("Runtime")]
     [SerializeField] protected bool repairing = false;
     
@@ -36,17 +36,20 @@ public class RepairStation : Post
 
     IEnumerator Repair()
     {
+        repairing = true;
         yield return repairTimer;
         repairing = false;
         onRepair.Invoke(repairAmount);
-        player.RemoveItem(consumedItem, consumeQuantity);
+        inventoryHolder.RemoveItem(consumedItem, consumeQuantity);
     }
 
     override protected void _Use()
     {
         if (repairing)
             return;
-        var stored = player.inventory.GetStoredItem(consumedItem);
+        if (!inventoryHolder)
+            inventoryHolder = GetComponentInParent<InventoryHolder>();
+        var stored = inventoryHolder.inventory.GetStoredItem(consumedItem);
         uint count = stored != null ? stored.count : 0;
         if (count < consumeQuantity) {
             onMissingResource.Invoke($"Need {consumeQuantity} {consumedItem.Name} to repair and you only have {count} !");

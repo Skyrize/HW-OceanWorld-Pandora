@@ -30,16 +30,18 @@ public class CrewUI : MonoBehaviour
         GetPlayerInventory();
     }
     
-    public void UnselectCrewMember(CrewMember crewMember) // need that ?
+    public void UnselectCrewMember() // need that ?
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         currentCrewMember = null;
+        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void SelectCrewMember(CrewMember crewMember)
     {
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
         currentCrewMember = crewMember;
+        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void CreateCard(CrewMember crewMember)
@@ -48,12 +50,12 @@ public class CrewUI : MonoBehaviour
 
         cardUI.UpdateUI(crewMember);
         cardUI.onSelect.AddListener(this.SelectCrewMember);
-        cardUI.onUnselect.AddListener(this.UnselectCrewMember);
     }
 
     public void ClearUI()
     {
         CrewPanelContent.ClearChilds(); // TODO: easy but dirty. Maybe remove them along when adding to inventory
+        UnselectCrewMember();
     }
     
     public void BuildUI()

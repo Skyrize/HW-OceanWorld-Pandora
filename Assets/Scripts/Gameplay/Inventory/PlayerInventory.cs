@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Player")]
-public class PlayerInventory : BasicInventory
+public class PlayerInventory : Inventory
 {
     [SerializeField] protected CrewMember playerCharacter = null;
     public CrewMember PlayerCharacter => playerCharacter;
@@ -14,6 +14,7 @@ public class PlayerInventory : BasicInventory
         PlayerInventory clone = base.Clone() as PlayerInventory;
 
         clone.crewMembers.Clear();
+        clone.playerCharacter = ClonableSO.Clone<CrewMember>(playerCharacter);
         foreach (CrewMember crewMember in crewMembers)
         {
             clone.crewMembers.Add(ClonableSO.Clone<CrewMember>(crewMember));

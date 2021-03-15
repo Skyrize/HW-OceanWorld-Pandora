@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7240c1772fbc89842b5f87c8930489cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hireTime: 1
+  hireTime: 0
   onHire:
     m_PersistentCalls:
       m_Calls: []
@@ -51,6 +51,7 @@ MonoBehaviour:
       m_Calls: []
   employee: {fileID: 0}
   postPlace: {fileID: 1144527235187794065}
+  working: 0
 --- !u!1001 &6890896191419650866
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,6 @@ public class CrewMemberUI : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] public CrewMemberEvent onSelect = new CrewMemberEvent();
-    [SerializeField] public CrewMemberEvent onUnselect = new CrewMemberEvent();
     [Header("References")]
     [SerializeField] protected SelectCrewMemberButtonUI button = null;
     [SerializeField] protected StatusBarUI statusBar = null;
@@ -20,7 +19,6 @@ public class CrewMemberUI : MonoBehaviour
 
     private void Start() {
         button.onSelect.AddListener(Select);
-        button.onUnselect.AddListener(Unselect);
     }
 
     public void UpdateUI(CrewMember crewMember)
@@ -35,11 +33,6 @@ public class CrewMemberUI : MonoBehaviour
     public void Select(CrewMember crewMember)
     {
         this.onSelect.Invoke(crewMember);
-    }
-
-    public void Unselect(CrewMember crewMember)
-    {
-        this.onUnselect.Invoke(crewMember);
     }
 
 }

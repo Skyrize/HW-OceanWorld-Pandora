@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] public Weaponry weaponry = null;
     [SerializeField] public Post controlPost = null;
     [SerializeField] public RepairStation repairStation = null;
-    [SerializeField] protected PlayerInventory inventoryAsset = null;
     [Header("Runtime")]
     [SerializeField] public PlayerInventory inventory = null;
 
@@ -17,21 +16,34 @@ public class Player : MonoBehaviour
     {
         if (input == 0 || !isActiveAndEnabled)
             return;
-            Debug.Log("shoot");
         weaponry.ShootAt(Utils.MousePositionOcean);
     }
 
-    private void Awake() {
-        inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
+    public void InitWeapons()
+    {
         if (!weaponry) {
             weaponry = GetComponent<Weaponry>();
         }
         if (weaponry) {
             InputManager.Instance.AddAxisEvent("Fire1", Shoot);
         }
-        if (controlPost)
-            controlPost.ForceHire(inventory.PlayerCharacter);
     }
+
+    public void InitCrew()
+    {
+        if (controlPost) {
+            // CrewMember playerCharacter = GetComponent<InventoryHolder>()
+            controlPost.ForceHire(inventory.PlayerCharacter);
+        }
+
+    }
+
+    private void Awake() {
+        inventory = GetComponent<InventoryHolder>().inventory as PlayerInventory;
+        InitWeapons();
+        InitCrew();
+    }
+
 
     private void Start() {
     }
@@ -39,28 +51,6 @@ public class Player : MonoBehaviour
     private void Update() {
         if (repairStation)
             repairStation.Use();
-    }
-
-    /// <summary>
-    /// Adds an object to the inventory
-    /// </summary>
-    /// <param name="obj">The item to add</param>
-    /// <exception cref="NullReferenceException">The item is not a item</exception>
-    public void CollectItem(GameObject obj)
-    {
-        Item item = obj.GetComponent<ItemObject>().Item;
-        inventory.Add(item);
-        Destroy(obj);
-    }
-
-    public void RemoveItem(GameObject obj)
-    {
-        Item item = obj.GetComponent<ItemObject>().Item;
-        inventory.Remove(item);
-    }
-    public void RemoveItem(Item item, uint count = 1)
-    {
-        inventory.Remove(item, count);
     }
 
 }

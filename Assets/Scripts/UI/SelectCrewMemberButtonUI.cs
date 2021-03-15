@@ -7,7 +7,6 @@ public class SelectCrewMemberButtonUI : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] public CrewMemberEvent onSelect = new CrewMemberEvent();
-    [SerializeField] public CrewMemberEvent onUnselect = new CrewMemberEvent();
     [Header("References")]
     [SerializeField] protected Image icon;
     [Header("Runtime")]
@@ -21,10 +20,5 @@ public class SelectCrewMemberButtonUI : MonoBehaviour
     public void Select()
     {
         onSelect.Invoke(this.crewMember);
-    }
-
-    public void Unselect()
-    {
-        onUnselect.Invoke(this.crewMember);
     }
 }
