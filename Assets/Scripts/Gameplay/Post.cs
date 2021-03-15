@@ -43,7 +43,10 @@ public class Post : MonoBehaviour
     {
         ClearEmployee();
         timer = null;
+        var tmp = hireTime;
+        hireTime = 0;
         StartCoroutine(_SetEmployee(newEmployee));
+        hireTime = tmp;
         timer = new WaitForSeconds(hireTime);
     }
 
