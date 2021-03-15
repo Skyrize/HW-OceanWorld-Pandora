@@ -25,30 +25,32 @@ public class DialogueUI : MonoBehaviour
 
     private float delayNext = .5f;
     private float lastNext;
-    private bool CanNext => lastNext >= delayNext;
+
+    private Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GetComponent<Canvas>();
+
         database.CheckInit();
-        Summon("exemple");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canvas.enabled)
+            return; 
+
         if (!CanNext) { 
             lastNext += Time.deltaTime; 
             return;
         }
 
         if (Input.GetButton("Fire1") && HasNextLine)
-        {
             LineIndex++;
-            lastNext = 0;
-        }
         else if (Input.GetButton("Fire1") && !HasNextLine)
-            gameObject.SetActive(false);
+            canvas.enabled = false;
 
         if (Input.GetButton("Fire2"))
             Summon("exemple");
@@ -60,6 +62,8 @@ public class DialogueUI : MonoBehaviour
         set
         {
             lineIndex++;
+            lastNext = 0;
+
             title.text = current.lines[lineIndex].name;
             content.text = current.lines[lineIndex].text;
         }
@@ -95,8 +99,9 @@ public class DialogueUI : MonoBehaviour
         lineIndex = -1;
         LineIndex++;
 
-        gameObject.SetActive(true);
+        canvas.enabled = true;
     }
 
     private bool HasNextLine => current.lines.Count - 1 > lineIndex;
+    private bool CanNext => lastNext >= delayNext;
 }
