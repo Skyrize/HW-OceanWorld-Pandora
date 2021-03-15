@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,5 +44,11 @@ public class AIVision : MonoBehaviour
                 timeSinceLastSeen = 0f;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0.5f, 0f);
+        Gizmos.DrawWireSphere(transform.position, visionRange);
     }
 }
