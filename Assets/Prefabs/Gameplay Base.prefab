@@ -1391,7 +1391,7 @@ MonoBehaviour:
     m_Bits: 256
   itemMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 5632
   removableItemMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1446,7 +1446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -53.968422}
+  m_AnchoredPosition: {x: 150, y: -53.968506}
   m_SizeDelta: {x: 284, y: 91.936844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1512858539860741543
@@ -2516,7 +2516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512858540219059769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 82.7, y: 0.2, z: -82.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1512858540162488474}
@@ -3284,7 +3284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 224, y: -53.968422}
+  m_AnchoredPosition: {x: 224, y: -53.968506}
   m_SizeDelta: {x: 432, y: 91.936844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1512858540927073409
