@@ -31,7 +31,6 @@ public class DialogueUI : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         GetComponentInChildren<Button>().onClick.AddListener(OnNextLine);
-
         database.CheckInit();
     }
 

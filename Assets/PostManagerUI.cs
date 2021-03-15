@@ -29,38 +29,37 @@ public class PostManagerUI : MonoBehaviour
 
     public void ClickPost(Post post)
     {
-        Debug.Log("ClickPost");
+        // Debug.Log("ClickPost");
         if (crewUI.CurrentCrewMember == null) {
             if (post.Employee != null) {
-                Debug.Log("Select from post !");
+                // Debug.Log("Select from post !");
                 crewUI.SelectCrewMember(post.Employee);
                 return;
             } else {
-                Debug.Log("what");
+                // Debug.Log("clicked with no current");
                 return;
             }
         }
         PostUI target = postCards.Find((postUI) => postUI.CurrentPost == post);
         Post currentPost = crewUI.CurrentCrewMember.currentPost;
-        if (!crewUI.CurrentCrewMember)
-            return;
         if (!post.Employee || post.Employee != crewUI.CurrentCrewMember) {
             if (currentPost != null && post.Employee) {
+                // Debug.Log("exchange");
                 ExchangePost(currentPost, post);
                 return;
             }
             if (currentPost != null) {
                 ClearPost(currentPost);
-                Debug.Log("Clearing current crew post");
+                // Debug.Log("Clearing current crew post");
             }
             if (post.Employee) {
                 post.ClearEmployee();
-                Debug.Log("Clearing selected post");
+                // Debug.Log("Clearing selected post");
             }
             post.SetEmployee(crewUI.CurrentCrewMember);
-            Debug.Log("Assigning current crew to post");
+            // Debug.Log("Assigning current crew to post");
         }
-                Debug.Log("Update UI");
+                // Debug.Log("Update UI");
         target.UpdateUI(post);
         crewUI.UnselectCrewMember();
     }
@@ -92,7 +91,8 @@ public class PostManagerUI : MonoBehaviour
 
     public void ClearUI()
     {
-        PostPanelContent.ClearChilds(); // TODO: easy but dirty. Maybe remove them along when adding to inventory
+        PostPanelContent.ClearChilds();
+        postCards.Clear();
     }
     
     public void BuildUI()
