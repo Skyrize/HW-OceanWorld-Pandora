@@ -21,7 +21,7 @@ public class CrewMember : ClonableSO
     public Sprite icon;
     [Header("Runtime")]
     public Post currentPost;
-    protected string status = "none";
+    protected string status = "Free";
     public string Status => status;
     protected string nextStatus = "";
     protected float hireTime = 1;

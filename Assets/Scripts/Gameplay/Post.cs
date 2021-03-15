@@ -54,8 +54,9 @@ public class Post : MonoBehaviour
     {
         onFire.Invoke();
         postPlace.ClearChilds(); // bof
-        if (employee)
-            employee.currentPost = null;
+        if (employee) {
+            employee.Fire();
+        }
         employee = null;
         working = false;
     }

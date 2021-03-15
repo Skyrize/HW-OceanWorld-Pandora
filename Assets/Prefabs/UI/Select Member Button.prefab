@@ -220,8 +220,5 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls: []
-  onUnselect:
-    m_PersistentCalls:
-      m_Calls: []
   icon: {fileID: 3705718279642575345}
   crewMember: {fileID: 0}

@@ -23,3 +23,4 @@ MonoBehaviour:
   maxCrewSize: 2
   crewMembers:
   - {fileID: 11400000, guid: d96911bc4e008454390872ae7e79a49b, type: 2}
+  - {fileID: 11400000, guid: d96911bc4e008454390872ae7e79a49b, type: 2}
