@@ -18,5 +18,6 @@ public class CrewMember : ClonableSO
     public List<Skill> skills = new List<Skill>();
     [Header("References")]
     public GameObject prefab;
+    public Post currentPost;
     public Sprite icon;
 }

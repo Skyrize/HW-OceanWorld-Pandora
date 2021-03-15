@@ -16,6 +16,9 @@ public class AutomaticColliderBound : MonoBehaviour
             bounds.Encapsulate(rootRenderer.bounds);
         foreach (Renderer renderer in renderers)
         {
+            // Bounds childBounds = renderer.bounds;
+
+            // childBounds.center = renderer.transform.TransformPoint(childBounds.center);
             Debug.Log("Encapsulate " + renderer.gameObject.name);
             bounds.Encapsulate(renderer.bounds);
         }

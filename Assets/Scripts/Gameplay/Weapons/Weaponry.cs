@@ -25,11 +25,17 @@ public class Weaponry : MonoBehaviour
         }
     }
 
+    public List<FireSide> getShootableFireSide()
+    {
+        // TODO use weapon angles to define the shootable side
+        return new List<FireSide>() { FireSide.FRONT, FireSide.LEFT, FireSide.RIGHT };
+    }
+
     public void ShootAt(Vector3 target)
     {
         foreach (var weapon in weapons)
         {
-            weapon.ShootAt(target);
+            weapon.Use(target);
         }
     }
 

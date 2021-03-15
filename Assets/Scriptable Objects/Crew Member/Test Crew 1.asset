@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Batman
   skills:
   - {fileID: 11400000, guid: 67a0893fa9f1cb44787512524ed20fbd, type: 2}
-  prefab: {fileID: 0}
+  prefab: {fileID: 5671611193402473235, guid: f215118de66cd90478abe04b01c343f5, type: 3}
   icon: {fileID: 21300000, guid: 744b39db776f219439bcbd487e2e44f0, type: 3}

@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f82cb63269c6e041966fb96eb4fb5af, type: 3}
   m_Name: Merchant Inventory
   m_EditorClassIdentifier: 
-  TotalWeight: 0
-  goods:
-  - item: {fileID: 11400000, guid: 6d0291fef4aabdb4db5bad728279f6a4, type: 2}
-    count: 1
-  - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
-    count: 100
-  - item: {fileID: 11400000, guid: b362ae32a8fd5974dabfe7e35679a837, type: 2}
-    count: 5
   items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - item: {fileID: 11400000, guid: c0eb82b8eaa9b3d4e91a63f0757d982b, type: 2}
+    count: 100
+  - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: b362ae32a8fd5974dabfe7e35679a837, type: 2}
+    count: 100
+  - item: {fileID: 11400000, guid: 6183bea84be338945bf50d200c9d8817, type: 2}
+    count: 20
+  - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
+    count: 20
+  TotalWeight: 0
+  tradableItems: []
   priceModifier: 0

@@ -24,9 +24,10 @@ public class InventoryStorage {
     }
 }
 
-public abstract class Inventory : ClonableSO
+[CreateAssetMenu(menuName = "Inventory/Basic")]
+public class Inventory : ClonableSO
 {
-    abstract public List<InventoryStorage> m_content { get; }
+    public List<InventoryStorage> items = new List<InventoryStorage>(); //TODO : protected when MerchantUI doesn't use it directly anymore.
     public float Money { get; set; }
 
     [HideInInspector] public float TotalWeight;
@@ -51,7 +52,7 @@ public abstract class Inventory : ClonableSO
         }
 
         if (storage.count == 0) {
-            m_content.Remove(storage);
+            items.Remove(storage);
         }
     }
 
@@ -65,7 +66,7 @@ public abstract class Inventory : ClonableSO
         if (storage == null) {
             InventoryStorage newItem = new InventoryStorage(item, count);
             
-            m_content.Add(newItem);
+            items.Add(newItem);
             return;
         }
 
@@ -80,30 +81,30 @@ public abstract class Inventory : ClonableSO
 
     public InventoryStorage GetStoredItem(Item item)
     {
-        return m_content.Find((stored) => { return item.Equals(stored.item); });;
+        return items.Find((stored) => { return item.Equals(stored.item); });;
     }
 
     override protected ClonableSO Clone()
     {
         Inventory clone = base.Clone() as Inventory;
 
-        for (int i = 0; i != clone.m_content.Count; i++) {
-            clone.m_content[i].item = ClonableSO.Clone<Item>(clone.m_content[i].item);
+        for (int i = 0; i != clone.items.Count; i++) {
+            clone.items[i].item = ClonableSO.Clone<Item>(clone.items[i].item);
         }
         return clone;
     }
 
     public List<InventoryStorage> GetItemsOfType(Type type)
     {
-        List<InventoryStorage> items = new List<InventoryStorage>();
+        List<InventoryStorage> result = new List<InventoryStorage>();
 
-        foreach (InventoryStorage stored in m_content)
+        foreach (InventoryStorage stored in items)
         {
             if (stored.item.GetType() == type) {
-                items.Add(stored);
+                result.Add(stored);
             }
         }
-        return items;
+        return result;
     }
 
 //     /// <summary>

@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public Weaponry weaponry = null;
-    [SerializeField] protected PlayerInventory inventoryAsset = null;
+    [SerializeField] public Post controlPost = null;
+    [SerializeField] public RepairStation repairStation = null;
     [Header("Runtime")]
     [SerializeField] public PlayerInventory inventory = null;
 
@@ -18,8 +19,8 @@ public class Player : MonoBehaviour
         weaponry.ShootAt(Utils.MousePositionOcean);
     }
 
-    private void Awake() {
-        inventory = ClonableSO.Clone<PlayerInventory>(inventoryAsset);
+    public void InitWeapons()
+    {
         if (!weaponry) {
             weaponry = GetComponent<Weaponry>();
         }
@@ -28,22 +29,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Adds an object to the inventory
-    /// </summary>
-    /// <param name="obj">The item to add</param>
-    /// <exception cref="NullReferenceException">The item is not a item</exception>
-    public void CollectItem(GameObject obj)
+    public void InitCrew()
     {
-        Item item = obj.GetComponent<ItemObject>().Item;
-        inventory.Add(item);
-        Destroy(obj);
+        if (controlPost) {
+            // CrewMember playerCharacter = GetComponent<InventoryHolder>()
+            controlPost.ForceHire(inventory.PlayerCharacter);
+        }
+
     }
 
-    public void RemoveItem(GameObject obj)
-    {
-        Item item = obj.GetComponent<ItemObject>().Item;
-        inventory.Remove(item);
+    private void Awake() {
+        inventory = GetComponent<InventoryHolder>().inventory as PlayerInventory;
+        InitWeapons();
+        InitCrew();
+    }
+
+
+    private void Start() {
+    }
+
+    private void Update() {
+        if (repairStation)
+            repairStation.Use();
     }
 
 }

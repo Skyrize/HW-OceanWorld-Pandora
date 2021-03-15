@@ -25,25 +25,22 @@ struct FireInfo
 public class AIFireControl : MonoBehaviour
 {
     [SerializeField] public float attackRange = 20f;
-    public bool FIRE_RIGHT = true;
-    public bool FIRE_LEFT = true;
-    public bool FIRE_FRONT = true;
     public Dictionary<FireSide, bool> availableFireSide { get; private set; } = new Dictionary<FireSide, bool>();
     public OnFire onFire;
 
-
     [Header("References")]
     [SerializeField] private AIVision vision;
-
-    [Header("Tmp fire control")]
-    [SerializeField] private float fireRate = 1f;
-    private float fireTimeout = 0f;
+    [SerializeField] private Weaponry weaponery;
 
     private void Start()
     {
-        availableFireSide.Add(FireSide.FRONT, FIRE_FRONT);
-        availableFireSide.Add(FireSide.LEFT, FIRE_LEFT);
-        availableFireSide.Add(FireSide.RIGHT, FIRE_RIGHT);
+        availableFireSide.Add(FireSide.FRONT, false);
+        availableFireSide.Add(FireSide.LEFT, false);
+        availableFireSide.Add(FireSide.RIGHT, false);
+        foreach (FireSide fireSide in weaponery.getShootableFireSide())
+        {
+            availableFireSide[fireSide] = true;
+        }
     }
 
     public bool IsInAttackRange()
@@ -88,18 +85,12 @@ public class AIFireControl : MonoBehaviour
     public void Fire(FireSide side, GameObject target)
     {
         onFire?.Invoke(side, target.transform.position);
+        weaponery.ShootAt(target.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        fireTimeout -= Time.deltaTime;
-        if (fireTimeout < 0f)
-        {
-            if (handleFire())
-            {
-                fireTimeout = fireRate;
-            }
-        }
+        handleFire();
     }
 }
