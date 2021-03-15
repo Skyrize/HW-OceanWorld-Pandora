@@ -84,12 +84,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f220890000e8d741bce12e941fc3818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useTagFilter: 0
-  useLayerFilter: 1
+  useTagFilter: 1
+  useLayerFilter: 0
   useComponentFilter: 0
   useParentComponentFilter: 0
   useChildComponentFilter: 0
-  tags: []
+  tags:
+  - Lootable
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
