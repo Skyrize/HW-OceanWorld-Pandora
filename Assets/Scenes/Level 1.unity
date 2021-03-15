@@ -1686,6 +1686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015481646860659300, guid: 384f5d22c5250d641a5a8246384f3852,
         type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1668412933}
+    - target: {fileID: 9015481646860659300, guid: 384f5d22c5250d641a5a8246384f3852,
+        type: 3}
       propertyPath: dialogue
       value: 1
       objectReference: {fileID: 0}
@@ -10853,7 +10858,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421858545}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 43.904503, y: 24.49537, z: 117.38208}
