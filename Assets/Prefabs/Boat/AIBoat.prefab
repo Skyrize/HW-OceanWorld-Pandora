@@ -67,6 +67,18 @@ MonoBehaviour:
   SpreadForceMin: 50
   SpreadForceMax: 100
   SpreadAngle: 360
+--- !u!114 &4407839642024581784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f77afcf65421ea4697d8746e578649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4777259050291339304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,12 +144,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74699444170157928, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: inventoryAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ac0718c2ef33fcd4d90a4c641b5e55be,
+        type: 2}
     - target: {fileID: 508506239242107533, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: inventoryAsset
       value: 
-      objectReference: {fileID: 11400000, guid: f333824c6d15d074285f36a30e23200f,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1249033567537922302, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.size
@@ -197,8 +214,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inventoryAsset
       value: 
-      objectReference: {fileID: 11400000, guid: f333824c6d15d074285f36a30e23200f,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_RootOrder
