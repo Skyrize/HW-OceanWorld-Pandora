@@ -19,6 +19,15 @@ public class DialogueSummoner : MonoBehaviour
                 case DialogueIdentifier.MERCHANT:
                     ui.Summon("merchant", merchant.EnterInMerchant);
                     break;
+                case DialogueIdentifier.INTRODUCTION:
+                    ui.Summon("introduction"); //todo add post summon
+                    break;
+                case DialogueIdentifier.FIRST_FIGHT:
+                    ui.Summon("first_fight"); //todo add post summon
+                    break;
+                case DialogueIdentifier.AFTER_FIGHT:
+                    ui.Summon("after_fight"); //todo add post summon
+                    break;
             }
     }
 
