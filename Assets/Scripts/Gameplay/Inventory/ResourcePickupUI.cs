@@ -43,7 +43,7 @@ public class ResourcePickupUI : MonoBehaviour
         lock (m_messageLock)
         {
             while (m_lastMessageTime + MessageCooldown > Time.time)
-                yield return new WaitForSeconds(1 / 60f);
+                yield return new WaitForSeconds(0.001f);
             m_lastMessageTime = Time.time;
         }
 
@@ -63,7 +63,7 @@ public class ResourcePickupUI : MonoBehaviour
 
         while (time < StayTime)
         {
-            yield return new WaitForSeconds(1f / 60f);
+            yield return new WaitForSeconds(0.001f);
             time += Time.deltaTime;
 
             if (!fadingOut && time >= StayTime - FadeOut)

@@ -67,12 +67,12 @@ public class Inventory : ClonableSO
             InventoryStorage newItem = new InventoryStorage(item, count);
             
             items.Add(newItem);
-            return;
         }
-
-        storage.count += count;
-        
-        TotalWeight += item.Weight;
+        else
+        {
+            storage.count += count;
+            TotalWeight += item.Weight;
+        }
         
         if(ResourcePickupUI.Instance) {
             ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");

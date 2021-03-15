@@ -266,7 +266,7 @@ MonoBehaviour:
   tags: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 6144
+    m_Bits: 7936
   componentType: Transform
   parentComponentType: Transform
   childComponentType: Transform
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52740b8ec8fb3524281a914bf722d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryAsset: {fileID: 11400000, guid: f333824c6d15d074285f36a30e23200f, type: 2}
+  inventoryAsset: {fileID: 0}
   _inventory: {fileID: 0}
 --- !u!1 &2299002695325882047
 GameObject:

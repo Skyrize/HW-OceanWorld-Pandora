@@ -19,7 +19,7 @@ public class Weaponry : MonoBehaviour
         }
     }
 
-    private void Start() {
+    private void Awake() {
         if (loadFromChilds) {
             LoadWeaponsFromChilds();
         }
@@ -33,8 +33,10 @@ public class Weaponry : MonoBehaviour
 
     public void ShootAt(Vector3 target)
     {
+        Debug.Log($"Shooting at {target}");
         foreach (var weapon in weapons)
         {
+            Debug.Log("Shooting");
             weapon.Use(target);
         }
     }

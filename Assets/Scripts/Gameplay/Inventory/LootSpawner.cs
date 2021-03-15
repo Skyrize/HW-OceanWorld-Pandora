@@ -19,15 +19,6 @@ public class LootSpawner : MonoBehaviour
     public float SpreadForceMax = 100f;
     [Range(0, 360)] public float SpreadAngle = 360f;
 
-    // Temp
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnLoot();
-        }
-    }
-
     public void SpawnLoot()
     {
         foreach (var item in SpawnItems)
@@ -45,7 +36,7 @@ public class LootSpawner : MonoBehaviour
                 var rotationY = Random.Range(0, 360);
                 var rotation = Quaternion.Euler(new Vector3(0, rotationY, 0));
 
-                var obj = Instantiate(item.item.Prefab, transform);
+                var obj = Instantiate(item.item.Prefab, transform.position, Quaternion.identity);
                 var body = obj.GetComponent<Rigidbody>();
 
                 obj.transform.rotation = rotation;

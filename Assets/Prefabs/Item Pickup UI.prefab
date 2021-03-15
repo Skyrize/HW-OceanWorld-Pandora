@@ -195,4 +195,4 @@ MonoBehaviour:
   FadeOut: 0.5
   StayTime: 2
   MessageCooldown: 0.5
-  EndPositionOffset: {x: 0, y: 150, z: 0}
+  EndPositionOffset: {x: 0, y: 100, z: 0}

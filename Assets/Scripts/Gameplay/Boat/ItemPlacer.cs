@@ -198,6 +198,7 @@ public class ItemPlacer : MonoBehaviour
         RaycastHit placingHit;
 
         if (Physics.Raycast(ray, out placingHit, Mathf.Infinity, itemMask) || !HasRoom()) {
+            // Debug.Log("Invalidate by " + placingHit.collider.gameObject.name);
             InvalidateGhostPlacing();
         } else {
             ValidateGhostPlacing();
