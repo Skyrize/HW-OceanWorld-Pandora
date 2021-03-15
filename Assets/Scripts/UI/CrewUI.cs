@@ -36,7 +36,7 @@ public class CrewUI : MonoBehaviour
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         currentCrewMember = null;
-        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
+        // InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void SelectCrewMember(CrewMember crewMember)
@@ -47,7 +47,7 @@ public class CrewUI : MonoBehaviour
         }
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
         currentCrewMember = crewMember;
-        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
+        // InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void CreateCard(CrewMember crewMember)
@@ -56,6 +56,7 @@ public class CrewUI : MonoBehaviour
 
         cardUI.UpdateUI(crewMember);
         cardUI.onSelect.AddListener(this.SelectCrewMember);
+        cardUI.onUnselect.AddListener(this.UnselectCrewMember);
     }
 
     public void ClearUI()
