@@ -21,4 +21,12 @@ public class PlayerInventory : Inventory
         }
         return clone;
     }
+
+    public void AddCrewMember(CrewMember newCrewMember)
+    {
+        if (crewMembers.Find(crewMember => crewMember.Name == newCrewMember.Name)) {
+            throw new System.Exception($"Can't add two CrewMembers with the same name '{newCrewMember.Name}' for now");
+        }
+        crewMembers.Add(ClonableSO.Clone<CrewMember>(newCrewMember));
+    }
 }
