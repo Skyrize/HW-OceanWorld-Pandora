@@ -33,7 +33,6 @@ public class AttackOnSide : MonoBehaviour
         // if (selectedSide == FireSide.LEFT) offset *= -1;
         Vector3 targetPos = transform.TransformPoint(relativePlayersPos) + offset;
 
-        print($"target={targetPos}");
         controller.setTarget(targetPos);
     }
 

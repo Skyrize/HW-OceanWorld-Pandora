@@ -40,14 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 20
-  FIRE_RIGHT: 1
-  FIRE_LEFT: 1
-  FIRE_FRONT: 1
   onFire:
     m_PersistentCalls:
       m_Calls: []
   vision: {fileID: 695538793}
-  fireRate: 1
+  weaponery: {fileID: 0}
 --- !u!114 &921448119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +61,54 @@ MonoBehaviour:
   controller: {fileID: 695538792}
   boatController: {fileID: 3548607261234545946}
   fireControl: {fileID: 921448116}
+--- !u!114 &2098078993633940903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59712f4572aead47a70f9633ddd8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 20
+  onFire:
+    m_PersistentCalls:
+      m_Calls: []
+  vision: {fileID: 695538793}
+  weaponery: {fileID: 921448120}
+--- !u!114 &4777259050291339304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4b4aea41fbf594bae4aa20d3d2c0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vision: {fileID: 695538793}
+  controller: {fileID: 695538792}
+  boatController: {fileID: 3548607261234545946}
+  fireControl: {fileID: 2098078993633940903}
+--- !u!114 &921448120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac16a8e9815ca264da38fe28824c4d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadFromChilds: 1
+  weapons: []
 --- !u!1 &8959724397437287612
 GameObject:
   m_ObjectHideFlags: 0
