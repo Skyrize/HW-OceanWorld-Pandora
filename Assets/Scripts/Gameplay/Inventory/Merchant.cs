@@ -8,26 +8,39 @@ public class Merchant : MonoBehaviour
     [Header("References")]
     [SerializeField] public Player player;
     [SerializeField] public MerchantInventory inventoryMerchant;
-
+    [SerializeField] public GameObject prefabUI;
     public PlayerInventory InventoryPlayer { get => player.inventory; }
     public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
 
     public MerchantUI merchantUI;
 
+    private static bool loadedScene;
+
     private void Awake() {
-        inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
+        prefabUI.SetActive(false);
+        if(inventoryMerchant != null)
+            inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
     }
 
-    public void EnterInMerchant(GameObject obj) 
+    public void EnterInMerchant() 
     {
-        if(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
+        if (!loadedScene)
+        {
+            prefabUI.SetActive(true);
+            //UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
+            loadedScene = true;
+        }
+            
     }
 
     public void ExitMerchant()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Merchant").isLoaded)
-            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
+        if (loadedScene)
+        {
+            prefabUI.SetActive(false);
+            //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
+            loadedScene = false;
+        }
     }
 
     public void ClientBuyItem(Item item, float price)

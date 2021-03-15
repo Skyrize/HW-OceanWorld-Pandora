@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Merchant.unity
     guid: a5a867681aacbf14c9d14342ca23403e
+  - enabled: 1
+    path: Assets/Scenes/Main Level.unity
+    guid: 87ab2269a96589f43bbf984654614c96
   m_configObjects: {}
