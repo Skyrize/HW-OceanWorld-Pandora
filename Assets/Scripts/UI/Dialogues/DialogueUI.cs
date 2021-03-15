@@ -42,13 +42,8 @@ public class DialogueUI : MonoBehaviour
 
     private void ScrubActors()
     {
-        var toRemove = new List<UnityEngine.Object>();
-        foreach (Transform a in left.transform)
-            toRemove.Add(a.gameObject);
-        foreach (Transform a in right.transform)
-            toRemove.Add(a.gameObject);
-
-        toRemove.ForEach(a => Destroy(a));
+        left.transform.ClearChilds();
+        right.transform.ClearChilds();
     }
 
     private void InstantiateActor(string name, Transform zone)
