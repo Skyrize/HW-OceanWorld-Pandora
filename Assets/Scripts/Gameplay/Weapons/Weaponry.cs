@@ -19,7 +19,7 @@ public class Weaponry : MonoBehaviour
         }
     }
 
-    private void Start() {
+    private void Awake() {
         if (loadFromChilds) {
             LoadWeaponsFromChilds();
         }
