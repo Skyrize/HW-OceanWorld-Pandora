@@ -32,13 +32,16 @@ SpriteAtlas:
     packables:
     - {fileID: -4832981471516900104, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
     - {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+    - {fileID: 5987432161992737575, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+  - {fileID: 5987432161992737575, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   - {fileID: -4832981471516900104, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   m_PackedSpriteNamesToIndex:
   - protraits_45
+  - protraits_58
   - protraits_35
   m_Tag: PortraitsAtlas
   m_IsVariant: 0

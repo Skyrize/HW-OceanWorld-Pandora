@@ -8,8 +8,9 @@ using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
-    [Header("Data")]
+    [Header("Data & Utils")]
     public DialoguesDatabase database;
+    public PauseManager pauseManager;
 
     [Header("Actors")]
     public GameObject actorPrefab;
@@ -21,37 +22,23 @@ public class DialogueUI : MonoBehaviour
     public Text content;
 
     private Dialogue current;
+    private int lineIndex = -1;
+    
+    private Canvas canvas;
     private Action onDialogueFinish;
 
-    private int lineIndex = -1;
-    private float delayNext = .5f;
-    private float lastNext;
-
-    private Canvas canvas;
-
-    // Start is called before the first frame update
     void Start()
     {
         canvas = GetComponent<Canvas>();
+        GetComponentInChildren<Button>().onClick.AddListener(OnNextLine);
 
         database.CheckInit();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnNextLine()
     {
-        if (!Enabled)
-            return; 
-
-        if (!CanNext) { 
-            lastNext += Time.deltaTime; 
-            return;
-        }
-
-        if (Input.GetButton("Fire1") && HasNextLine)
-            LineIndex++;
-        else if (Input.GetButton("Fire1") && !HasNextLine)
-            Enabled = false;
+        if (HasNextLine) LineIndex++;
+        else Enabled = false;
     }
 
     private void ScrubActors()
@@ -101,6 +88,9 @@ public class DialogueUI : MonoBehaviour
         {
             canvas.enabled = value;
 
+            if (value) pauseManager.Pause();
+            else pauseManager.Unpause();
+
             if (!value && onDialogueFinish != null)
                 onDialogueFinish();
         }
@@ -112,13 +102,10 @@ public class DialogueUI : MonoBehaviour
         set
         {
             lineIndex = value;
-            lastNext = 0;
-
             title.text = current.lines[lineIndex].name;
             content.text = current.lines[lineIndex].text;
         }
     }
 
     private bool HasNextLine => current.lines.Count - 1 > lineIndex;
-    private bool CanNext => lastNext >= delayNext;
 }
