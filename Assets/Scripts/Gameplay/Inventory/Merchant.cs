@@ -17,7 +17,7 @@ public class Merchant : MonoBehaviour
     private static bool loadedScene;
 
     private void Awake()
-    {
+    {  
         if (inventoryMerchant != null)
             inventoryMerchant = ClonableSO.Clone(inventoryMerchant);
         else
