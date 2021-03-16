@@ -31,7 +31,7 @@ public class Post : MonoBehaviour
     IEnumerator _SetEmployee(CrewMember newEmployee)
     {
         employee = newEmployee;
-        employee.currentPost = this;
+        employee.Hire(this, "Working", hireTime);
         var employeeObject = Instantiate(employee.prefab, postPlace.position, postPlace.rotation, postPlace);
         yield return timer;
         working = true;
@@ -43,7 +43,10 @@ public class Post : MonoBehaviour
     {
         ClearEmployee();
         timer = null;
+        var tmp = hireTime;
+        hireTime = 0;
         StartCoroutine(_SetEmployee(newEmployee));
+        hireTime = tmp;
         timer = new WaitForSeconds(hireTime);
     }
 
@@ -51,8 +54,9 @@ public class Post : MonoBehaviour
     {
         onFire.Invoke();
         postPlace.ClearChilds(); // bof
-        if (employee)
-            employee.currentPost = null;
+        if (employee) {
+            employee.Fire();
+        }
         employee = null;
         working = false;
     }

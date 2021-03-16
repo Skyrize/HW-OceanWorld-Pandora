@@ -18,8 +18,8 @@ public class PostManagerUI : MonoBehaviour
         CrewMember firstEmployee = first.Employee;
         CrewMember secondEmployee = second.Employee;
 
-        ClearPost(first);
-        ClearPost(second);
+        FreePost(first);
+        FreePost(second);
         first.SetEmployee(secondEmployee);
         second.SetEmployee(firstEmployee);
         firstUI.UpdateUI(first);
@@ -27,7 +27,7 @@ public class PostManagerUI : MonoBehaviour
         crewUI.UnselectCrewMember();
     }
 
-    public void ClickPost(Post post)
+    public void AssignPost(Post post)
     {
         // Debug.Log("ClickPost");
         if (crewUI.CurrentCrewMember == null) {
@@ -49,7 +49,7 @@ public class PostManagerUI : MonoBehaviour
                 return;
             }
             if (currentPost != null) {
-                ClearPost(currentPost);
+                FreePost(currentPost);
                 // Debug.Log("Clearing current crew post");
             }
             if (post.Employee) {
@@ -64,7 +64,13 @@ public class PostManagerUI : MonoBehaviour
         crewUI.UnselectCrewMember();
     }
 
-    public void ClearPost(Post post)
+    public void Unselect(Post post)
+    {
+        FreePost(post);
+        crewUI.UnselectCrewMember();
+    }
+
+    public void FreePost(Post post)
     {
         PostUI target = postCards.Find((postUI) => postUI.CurrentPost == post);
         post.ClearEmployee();
@@ -84,8 +90,9 @@ public class PostManagerUI : MonoBehaviour
         PostUI cardUI = GameObject.Instantiate(PostCardPrefab, PostPanelContent).GetComponent<PostUI>();
 
         cardUI.UpdateUI(post);
-        cardUI.onSelect.AddListener(this.ClickPost);
-        cardUI.onFree.AddListener(this.ClearPost);
+        cardUI.onSelect.AddListener(crewUI.SelectCrewMember);
+        cardUI.onFree.AddListener(this.Unselect);
+        cardUI.onDrop.AddListener(this.AssignPost);
         postCards.Add(cardUI);
     }
 

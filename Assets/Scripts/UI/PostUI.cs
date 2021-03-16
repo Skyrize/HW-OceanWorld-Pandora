@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class PostUI : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] protected Color focusColor = Color.yellow;
     [Header("Events")]
-    [SerializeField] public PostEvent onSelect = new PostEvent();
+    [SerializeField] public CrewMemberEvent onSelect = new CrewMemberEvent();
     [SerializeField] public PostEvent onFree = new PostEvent();
+    [SerializeField] public PostEvent onDrop = new PostEvent();
     [Header("References")]
     [SerializeField] protected SelectCrewMemberButtonUI button = null;
     [SerializeField] protected Image postIcon = null;
@@ -17,15 +20,25 @@ public class PostUI : MonoBehaviour
     [SerializeField] protected Post post = null;
     [SerializeField] public Post CurrentPost => post;
 
+    Color[] tmpColors;
+    Transform meshTransform = null;
     private void Start() {
+        if (CurrentPost) {
+            meshTransform = CurrentPost.transform.Find("Mesh");
+            tmpColors = meshTransform.gameObject.GetColors();
+        }
         button.onSelect.AddListener(this.Select);
+        button.onUnselect.AddListener(this.Free);
+        button.onDrop.AddListener(this.Drop);
     }
 
     public void UpdateUI(Post post)
     {
         this.post = post;
+        // meshTransform = CurrentPost.transform.Find("Mesh");
+        // tmpColors = meshTransform.gameObject.GetColors();
         Item postItem = post.GetComponent<ItemObject>().Item;
-        //TODO : status bar here
+        statusBar.UpdateUI(post.Employee);
         button.UpdateUI(post.Employee);
         nameText.text = postItem.Name;
         postIcon.sprite = postItem.Icon;
@@ -33,11 +46,35 @@ public class PostUI : MonoBehaviour
 
     public void Select(CrewMember crewMember)
     {
-        this.onSelect.Invoke(post);
+        this.onSelect.Invoke(crewMember);
     }
 
     public void Free()
     {
         onFree.Invoke(post);
+    }
+    public void Drop()
+    {
+        onDrop.Invoke(post);
+    }
+
+
+    public void FocusPost()
+    {
+        meshTransform.gameObject.SetColor(focusColor);
+    }
+
+    public void UnfocusPost()
+    {
+        meshTransform.gameObject.SetColors(tmpColors);
+    }
+
+    private void OnDisable() {
+        meshTransform.gameObject.SetColors(tmpColors);
+        
+    }
+
+    private void OnDestroy() {
+        meshTransform.gameObject.SetColors(tmpColors);
     }
 }

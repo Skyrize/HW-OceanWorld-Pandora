@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         if (controlPost) {
             // CrewMember playerCharacter = GetComponent<InventoryHolder>()
-            controlPost.ForceHire(inventory.PlayerCharacter);
+            controlPost.ForceHire(inventory.crewMembers[0]);
         }
 
     }
@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
     private void Update() {
         if (repairStation)
             repairStation.Use();
+        foreach (CrewMember crewMember in inventory.crewMembers)
+        {
+            crewMember.Update();
+        }
     }
 
 }

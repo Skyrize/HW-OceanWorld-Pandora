@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/CrewInventory")]
 public class CrewInventory : Inventory
 {
+    [SerializeField] public uint maxCrewSize = 2;
     public List<CrewMember> crewMembers = new List<CrewMember>();
 
     override protected ClonableSO Clone()
@@ -21,6 +22,9 @@ public class CrewInventory : Inventory
 
     public void AddCrewMember(CrewMember newCrewMember)
     {
+        if (crewMembers.Count == maxCrewSize) {
+            throw new System.Exception($"You have reached your max crew capacity '{maxCrewSize}'.");
+        }
         if (crewMembers.Find(crewMember => crewMember.Name == newCrewMember.Name)) {
             throw new System.Exception($"Can't add two CrewMembers with the same name '{newCrewMember.Name}' for now");
         }

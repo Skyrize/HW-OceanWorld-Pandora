@@ -13,9 +13,15 @@ public class Projectile : MonoBehaviour
         ammunitionAsset = GetComponent<ItemObject>().Item as Ammunition;
     }
 
+
+
     public void Hit(GameObject target)
     {
         HealthComponent health = target.GetComponentInParent<HealthComponent>();
+        HealthComponent ignoreParentTricks = GetComponentInParent<HealthComponent>();
+
+        if (health == ignoreParentTricks)
+            return;
         health.ReduceHealth(ammunitionAsset.Damages);
         Destroy(gameObject);
     }

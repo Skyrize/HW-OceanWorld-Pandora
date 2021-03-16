@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7240c1772fbc89842b5f87c8930489cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hireTime: 0
+  hireTime: 1
   onHire:
     m_PersistentCalls:
       m_Calls: []

@@ -9,6 +9,7 @@ public class CrewUI : MonoBehaviour
     [Header("References")]
     [HideInInspector] protected PlayerInventory playerInventory = null;
     [SerializeField] protected RectTransform CrewPanelContent = null;
+    [SerializeField] protected TMPro.TMP_Text header = null;
     [SerializeField] protected GameObject CrewMemberCardPrefab = null;
     [SerializeField] protected ItemPlacer itemPlacer = null;
     [Header("Runtime")]
@@ -35,7 +36,7 @@ public class CrewUI : MonoBehaviour
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         currentCrewMember = null;
-        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
+        // InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void SelectCrewMember(CrewMember crewMember)
@@ -46,7 +47,7 @@ public class CrewUI : MonoBehaviour
         }
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
         currentCrewMember = crewMember;
-        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
+        // InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 
     public void CreateCard(CrewMember crewMember)
@@ -55,6 +56,7 @@ public class CrewUI : MonoBehaviour
 
         cardUI.UpdateUI(crewMember);
         cardUI.onSelect.AddListener(this.SelectCrewMember);
+        cardUI.onUnselect.AddListener(this.UnselectCrewMember);
     }
 
     public void ClearUI()
@@ -65,7 +67,7 @@ public class CrewUI : MonoBehaviour
     
     public void BuildUI()
     {
-        CreateCard(playerInventory.PlayerCharacter);
+        header.text = $"Crew Members - {playerInventory.crewMembers.Count} / {playerInventory.maxCrewSize}";
         foreach (CrewMember crewMember in playerInventory.crewMembers)
         {
             CreateCard(crewMember);
