@@ -6,10 +6,12 @@ using UnityEditor;
 [CustomEditor(typeof(WaterManager))]
 class WaterManagerEditor : Editor {
 
-    public void Generate(Transform transform, GameObject waterPrefab, uint xSize, uint zSize)
+    public void Generate(GameObject basePrefab, Transform transform, GameObject waterPrefab, uint xSize, uint zSize)
     {
         transform.ClearChilds();
         Vector3 size = waterPrefab.GetComponent<Renderer>().bounds.size;
+        size.x -= 0.05f;
+        size.z -= 0.05f;
         Debug.Log("size" + size.ToString());
         float xStartPos = -(float)xSize / 2.0f * size.x + size.x / 2.0f;
         float zStartPos = -(float)zSize / 2.0f * size.z + size.z / 2.0f;
@@ -23,7 +25,7 @@ class WaterManagerEditor : Editor {
                 //  Instantiate(waterPrefab, pos, Quaternion.identity, transform);
             }
         }
-        EditorUtility.SetDirty(this);
+        EditorUtility.SetDirty(basePrefab);
     }
 
     public override void OnInspectorGUI() {
@@ -31,7 +33,7 @@ class WaterManagerEditor : Editor {
         if(GUILayout.Button("Generate")) {
             WaterManager myScript = (WaterManager)target;
 
-            Generate(myScript.transform, myScript.waterPrefab, myScript.xSize, myScript.zSize);
+            Generate(myScript.GameplayBasePrefab, myScript.transform, myScript.waterPrefab, myScript.xSize, myScript.zSize);
         }
     }
 }

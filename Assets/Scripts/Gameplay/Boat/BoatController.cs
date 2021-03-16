@@ -12,8 +12,6 @@ public class BoatController : MonoBehaviour
     [SerializeField] protected  float maxSteerAngle = 10;
 
     [SerializeField] protected  float slideForce = 1;
-    // [SerializeField] protected  float motorRPM = 0;
-    // [SerializeField] protected  float maxMotorRPM = 10;
 
     [Header("References")]
     [SerializeField] protected Rigidbody rb;

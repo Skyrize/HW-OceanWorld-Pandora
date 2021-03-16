@@ -9,5 +9,6 @@ public class WaterManager : MonoBehaviour
     [SerializeField] public uint xSize = 1 , zSize = 1;
     [Header("References")]
     [SerializeField] public GameObject waterPrefab = null;
+    [SerializeField] public GameObject GameplayBasePrefab = null;
 
 }
