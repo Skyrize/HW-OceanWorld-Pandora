@@ -4748,6 +4748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   inventoryMerchant: {fileID: 0}
+  prefabUI: {fileID: 0}
   merchantUI: {fileID: 6222295946882754611}
 --- !u!222 &6222295947333002639
 CanvasRenderer:
