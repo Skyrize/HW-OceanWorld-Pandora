@@ -5,8 +5,13 @@ using UnityEngine;
 public static class TransformExtension {
     public static Transform ClearChilds(this Transform transform)
     {
-        foreach (Transform child in transform) {
-            GameObject.Destroy(child.gameObject);
+        int count = transform.childCount;
+        for (int i = count - 1; i >= 0; i--) {
+            if (Application.isPlaying) {
+                GameObject.Destroy(transform.GetChild(i).gameObject);
+            } else {
+                GameObject.DestroyImmediate(transform.GetChild(i).gameObject);
+            }
         }
         return transform;
     }
