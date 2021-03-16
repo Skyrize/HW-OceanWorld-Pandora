@@ -81,7 +81,12 @@ PrefabInstance:
     - target: {fileID: 1052080390428628398, guid: a1e9738f0a2931a4d95bef6949621364,
         type: 3}
       propertyPath: m_Name
-      value: Default Loot Prefab Variant
+      value: Default Loot Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052080390428628398, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e9738f0a2931a4d95bef6949621364, type: 3}
