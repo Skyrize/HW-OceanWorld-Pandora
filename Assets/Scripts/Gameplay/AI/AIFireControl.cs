@@ -4,50 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public enum FireSide
-{
-    NONE,
-    LEFT,
-    RIGHT,
-    FRONT
-}
-
-[System.Serializable] public class OnFire : UnityEvent<FireSide, Vector3>
-{
-}
-
-struct FireInfo
-{
-    public FireSide side;
-    public Vector3 direction;
-}
-
 public class AIFireControl : MonoBehaviour
 {
-    [SerializeField] public float attackRange = 20f;
-    public Dictionary<FireSide, bool> availableFireSide { get; private set; } = new Dictionary<FireSide, bool>();
-    public OnFire onFire;
-
     [Header("References")]
     [SerializeField] private AIVision vision;
     [SerializeField] private Weaponry weaponery;
-
-    private void Start()
-    {
-        availableFireSide.Add(FireSide.FRONT, false);
-        availableFireSide.Add(FireSide.LEFT, false);
-        availableFireSide.Add(FireSide.RIGHT, false);
-        foreach (FireSide fireSide in weaponery.getShootableFireSide())
-        {
-            availableFireSide[fireSide] = true;
-        }
-    }
-
-    public bool IsInAttackRange()
+    public bool shouldFire()
     {
         return vision.lastKnownPlayerPos.HasValue &&
-            vision.timeSinceLastSeen == 0 &&
-            Vector3.Distance(vision.lastKnownPlayerPos.Value, transform.position) <= attackRange;
+            vision.timeSinceLastSeen == 0;
     }
 
     public bool isTarget(GameObject target)
@@ -62,35 +27,45 @@ public class AIFireControl : MonoBehaviour
         RaycastHit hit;
         bool didFire = false;
 
-        List<FireInfo> fireInfos = new List<FireInfo>() {
-            new FireInfo() { side = FireSide.LEFT, direction= -transform.right },
-            new FireInfo() { side = FireSide.RIGHT, direction= transform.right },
-            new FireInfo() { side = FireSide.FRONT, direction= transform.forward }
-        };
-
-        fireInfos.ForEach(fireInfo =>
+        foreach (WeaponManager weapon in weaponery.weapons)
         {
-            if (availableFireSide[fireInfo.side] &&
-                Physics.Raycast(transform.position, fireInfo.direction, out hit, attackRange) &&
-                isTarget(hit.collider.gameObject)
-            )
+            if (!weapon.isActiveAndEnabled || !weapon.canShoot())
             {
-                Fire(fireInfo.side, hit.collider.gameObject);
-                didFire = true;
+                continue;
             }
-        });
+            Vector3 originPos = weapon.spawnPoint.transform.position;
+            originPos.y = 0f;
+            Vector3 originForward = weapon.spawnPoint.transform.forward;
+            List<Vector3> testedDirection = new List<Vector3>() {
+                originForward,
+                Quaternion.AngleAxis(-weapon.maxAngle, Vector3.up) * originForward,
+                Quaternion.AngleAxis(weapon.maxAngle, Vector3.up) * originForward,
+            };
+            foreach (Vector3 direction in testedDirection)
+            {
+                if (Physics.Raycast(originPos, direction, out hit, weapon.MaxRange) &&
+                    isTarget(hit.collider.gameObject))
+                {
+                    Fire(hit.collider.gameObject);
+                    didFire = true;
+                    break;
+                }
+            }
+        }
         return didFire;
     }
 
-    public void Fire(FireSide side, GameObject target)
+    public void Fire(GameObject target)
     {
-        onFire?.Invoke(side, target.transform.position);
         weaponery.ShootAt(target.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        handleFire();
+        if (shouldFire())
+        {
+            handleFire();
+        }
     }
 }

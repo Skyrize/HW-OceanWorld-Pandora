@@ -2,8 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum FireSide
+{
+    LEFT,
+    RIGHT,
+    FRONT,
+}
+
 public class AttackOnSide : MonoBehaviour
 {
+    [Header("Settings")]
+    public bool FIRE_RIGHT = true;
+    public bool FIRE_LEFT = true;
+
     [Header("References")]
     [SerializeField] private AIVision vision;
     [SerializeField] private AIController controller;
@@ -20,11 +31,11 @@ public class AttackOnSide : MonoBehaviour
         Vector3 estimatedPlayerPos = vision.estimatedPlayerPosIn(distance / boatController.maxSpeed / 2).Value;
         Vector3 relativePlayersPos = transform.InverseTransformPoint(estimatedPlayerPos);
 
-        FireSide selectedSide = fireControl.availableFireSide[FireSide.RIGHT] ? FireSide.RIGHT : FireSide.LEFT;
-        if (relativePlayersPos.x > 0 && fireControl.availableFireSide[FireSide.RIGHT])
+        FireSide selectedSide = FIRE_RIGHT ? FireSide.RIGHT : FireSide.LEFT;
+        if (relativePlayersPos.x > 0 && FIRE_RIGHT)
         {
             selectedSide = FireSide.RIGHT;
-        } else if (relativePlayersPos.x < 0 && fireControl.availableFireSide[FireSide.LEFT])
+        } else if (relativePlayersPos.x < 0 && FIRE_LEFT)
         {
             selectedSide = FireSide.LEFT;
         }
