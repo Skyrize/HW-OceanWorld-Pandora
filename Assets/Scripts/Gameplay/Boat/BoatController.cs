@@ -7,7 +7,7 @@ public class BoatController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected  float acceleration = 1;
-    [SerializeField] public float maxSpeed { get; protected set; } = 10;
+    [SerializeField] public float maxSpeed = 10;
     [SerializeField] protected  float steerSpeed = 1;
     [SerializeField] protected  float maxSteerAngle = 10;
 
@@ -34,7 +34,7 @@ public class BoatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 controllerInput = controller.getInput(rb.velocity.magnitude).normalized;
+        Vector3 controllerInput = controller.getInput();
         input.y = controllerInput.z;
         input.x = controllerInput.x;
         input.Normalize();

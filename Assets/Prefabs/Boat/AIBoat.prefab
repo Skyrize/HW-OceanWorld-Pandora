@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimalSpeed: 3
-  agent: {fileID: 3548607261234545950}
 --- !u!114 &695538793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,6 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc018f9eb08948445b49b1c05f40bf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   visionRange: 25
 --- !u!114 &921448116
 MonoBehaviour:
@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77afcf65421ea4697d8746e578649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repairStation: {fileID: 0}
+  controlStation: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &4777259050291339304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4b4aea41fbf594bae4aa20d3d2c0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 8
   vision: {fileID: 695538793}
   controller: {fileID: 695538792}
   boatController: {fileID: 3548607261234545946}
@@ -296,12 +300,6 @@ GameObject:
 --- !u!4 &3548607261234545947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2299002694482284208, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3375620843262020523}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &3548607261234545950 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 2299002694482284213, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
     type: 3}
   m_PrefabInstance: {fileID: 3375620843262020523}
   m_PrefabAsset: {fileID: 0}

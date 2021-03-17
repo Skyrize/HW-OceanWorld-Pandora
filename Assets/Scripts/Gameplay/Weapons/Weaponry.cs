@@ -33,10 +33,10 @@ public class Weaponry : MonoBehaviour
 
     public void ShootAt(Vector3 target)
     {
-        Debug.Log($"Shooting at {target}");
+        // Debug.Log($"Shooting at {target}");
         foreach (var weapon in weapons)
         {
-            Debug.Log("Shooting");
+            // Debug.Log("Shooting");
             weapon.Use(target);
         }
     }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 abstract public class Controller : MonoBehaviour
 {
-    abstract public Vector3 getInput(float currentSpeed);
+    abstract public Vector3 getInput();
 }
