@@ -5,19 +5,16 @@ using UnityEngine;
 public class Avoidance : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] protected float multiplier = .5f;
-    [Range(-1f, 1f)]
-    [SerializeField] protected float threshold = .6f;
     [Range(1f, 100f)]
     [SerializeField] protected float avoidanceRadius = 5f;
     [SerializeField] protected LayerMask collisionMask = 1;
-    [SerializeField] protected  bool debug = false;
+    [SerializeField] protected bool debug = false;
 
-    [SerializeField] protected float protectionWidth = 0.2f;
-    [SerializeField] protected float protectionLength = 100f;
-    [SerializeField] protected float protectionAngle = 2f;
-    [SerializeField] protected int nbProtectionRays = 3;
-    [SerializeField] protected float debugProtectionMultiplier = 1f;
+    // [SerializeField] protected float protectionWidth = 0.2f;
+    // [SerializeField] protected float protectionLength = 100f;
+    // [SerializeField] protected float protectionAngle = 2f;
+    // [SerializeField] protected int nbProtectionRays = 3;
+    // [SerializeField] protected float debugProtectionMultiplier = 1f;
 
     //Computation optimisation
 
@@ -31,7 +28,7 @@ public class Avoidance : MonoBehaviour
     //     float length = protectionLength * debugProtectionMultiplier;
     //     Gizmos.color = Color.green;
     //     Gizmos.DrawLine(transform.position, transform.position + transform.forward * length);
-        
+
     //     Gizmos.color = Color.red;
     //     float width = protectionWidth / (nbProtectionRays + 1);
     //     for (int i = 0; i != nbProtectionRays; i++) {
@@ -53,25 +50,30 @@ public class Avoidance : MonoBehaviour
         List<Transform> context = GetNearbyObstacles();
         Vector3 avoidanceMove = Vector3.zero;
         int avoidCount = 0;
+        // Vector3 front = rb.velocity.normalized;
 
         debugPoints.Clear();
+        // if (debug) Debug.DrawRay(transform.position, front * 5f, Color.cyan, Time.deltaTime);
         foreach (Transform item in context)
         {
             Vector3 closestPoint = item.GetComponent<Collider>().ClosestPoint(transform.position);
             Vector3 dist = transform.position - closestPoint;
             Vector3 norm = dist.normalized;
+            // Debug.DrawRay(transform.position, -norm * 5f, Color.magenta, Time.deltaTime);
             float dot = (Vector3.Dot(transform.forward, -norm));
+            dot = (Mathf.Clamp(dot, 0.01f, 1));
             debugPoints.Add(closestPoint);
             avoidCount++;
-            avoidanceMove += (norm * avoidanceRadius - dist) * Mathf.Clamp01(dot);
-            Debug.DrawRay(transform.position, (norm * avoidanceRadius - dist) * Mathf.Clamp01(dot), Color.white);
+            avoidanceMove += (norm * avoidanceRadius - dist) * dot;
+            if (debug) Debug.DrawRay(transform.position, (norm * avoidanceRadius - dist), Color.white, Time.deltaTime);
         }
         if (avoidCount != 0) {
             avoidanceMove /= avoidCount;
         }
+        avoidanceMove.y = 0;
 
-        Debug.DrawRay(transform.position, avoidanceMove * multiplier, Color.yellow);
-        return transform.InverseTransformDirection(avoidanceMove * multiplier);
+        if (debug) Debug.DrawRay(transform.position, avoidanceMove, Color.yellow, Time.deltaTime);
+        return transform.InverseTransformDirection(avoidanceMove);
     }
     // Start is called before the first frame update
     void Start()
@@ -83,9 +85,9 @@ public class Avoidance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public List<Transform> GetNearbyObstacles() 
+    public List<Transform> GetNearbyObstacles()
     {
         Collider[] obstacles = Physics.OverlapSphere(transform.position, avoidanceRadius, collisionMask); // TODO : optimize (regular collider or refresh every x time)
         List<Transform> result = new List<Transform>();
@@ -106,7 +108,7 @@ public class Avoidance : MonoBehaviour
         // float length = protectionLength * debugProtectionMultiplier;
         // Gizmos.color = Color.green;
         // Gizmos.DrawLine(transform.position, transform.position + transform.forward * length);
-        
+
         // Gizmos.color = Color.red;
         // float width = protectionWidth / (nbProtectionRays + 1);
         // for (int i = 0; i != nbProtectionRays; i++) {
@@ -125,7 +127,7 @@ public class Avoidance : MonoBehaviour
         Gizmos.color = Color.magenta;
         foreach (var item in debugPoints)
         {
-            Gizmos.DrawWireSphere(item, 5f);
+            Gizmos.DrawWireSphere(item, .5f);
         }
 
 

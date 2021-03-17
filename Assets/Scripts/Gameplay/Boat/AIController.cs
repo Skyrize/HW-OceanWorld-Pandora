@@ -14,8 +14,11 @@ enum DIRECTION
 public class AIController : Controller
 {
     [Header("AI")]
-    public float multiplier = 1f;
+    public bool debug = true;
+    [SerializeField] protected float avoidWeight = 1f;
+    [SerializeField] protected float followPathWeight = 1f;
     public float minimalSpeed = 1f;
+    public float minimalAcceleration = 0.3f;
     public float stoppingDistance = 1f;
     private float squareMinimalSpeed = 1f;
     private float squareStoppingDistance = 1f;
@@ -110,7 +113,15 @@ public class AIController : Controller
     {
         if (path.corners.Length == 0)
             return Vector3.forward;
-        return transform.InverseTransformPoint(path.corners[1]);
+        Vector3 direction = transform.InverseTransformPoint(path.corners[1]);
+        direction.y = 0;
+        direction.Normalize();
+
+        if (direction.z <= 0) {
+            direction.x = 1 * Mathf.Sign(direction.x);
+        }
+        direction.z = Mathf.Max(Mathf.Abs(direction.z), minimalAcceleration);
+        return direction;
     }
 
     public override Vector3 getInput()
@@ -119,33 +130,21 @@ public class AIController : Controller
         {
             return new Vector3(0, 0, 0);
         }
-        Vector3 avoidanceInput = avoid.CalculateMove();
-        Vector3 simulatedInput = getRelativeDirection().normalized;
-        simulatedInput.y = 0;
-        if (simulatedInput.z <= 0) {
-            simulatedInput.x = 1f * Mathf.Sign(simulatedInput.x);
+        Vector3 avoidanceInput = avoid.CalculateMove() * avoidWeight;
+        Vector3 simulatedInput = getRelativeDirection().normalized * followPathWeight;
+        Vector3 result = simulatedInput + avoidanceInput;
 
-        }
-        // float dot = Vector3.Dot(simulatedInput, Vector3.forward);
-        // if (dot < 0) {
-        //     simulatedInput.x = 1f * Mathf.Sign(simulatedInput.x);
-        // }
-        // if (simulatedInput.z < 0) // we need to go backward
-        // {
-        //     if (rotatingSide == DIRECTION.NONE)
-        //     {
-        //         rotatingSide = simulatedInput.x < 0 ? DIRECTION.LEFT : DIRECTION.RIGHT;
-        //     }
-        //     simulatedInput.x = rotatingSide == DIRECTION.RIGHT ? 1 : -1;
-        //     simulatedInput.z = 0;
-        // }
-        if (rb.velocity.sqrMagnitude < squareMinimalSpeed)
-        {
-            simulatedInput.z = 1f;
-        }
+        result.x = Mathf.Clamp(result.x, -1, 1);
+        result.z = Mathf.Clamp(result.z, -1, 1);
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(simulatedInput + avoidanceInput), Color.black, Time.deltaTime);
-        return (simulatedInput + avoidanceInput).normalized;
+        if (Mathf.Abs(result.z) <= 0.05f && rb.velocity.sqrMagnitude < squareMinimalSpeed) {
+            result.z = 1f;
+            // Debug.Log("--------------------------------------------------------------------------- yup");
+        }
+            // Debug.Log($"final {result.ToString()}");
+
+        if (debug) Debug.DrawRay(transform.position, transform.TransformDirection(result), Color.black, Time.deltaTime);
+        return result;
     }
 
     // Update is called once per frame

@@ -13,6 +13,7 @@ public class AIVision : MonoBehaviour
     public Vector3? lastKnownPlayerRight { get; private set; } = null;
     public float timeSinceLastSeen { get; private set;  } = 0f;
 
+    public Transform viewPoint = null;
     private GameObject player;
     private Rigidbody playerRigidbody;
     private float squareVisionRange = 0f;
@@ -34,11 +35,12 @@ public class AIVision : MonoBehaviour
     void Update()
     {
         timeSinceLastSeen += Time.deltaTime;
-        Vector3 diff = player.gameObject.transform.position - transform.position;
+        Vector3 diff = player.transform.position - viewPoint.position;
         if (diff.sqrMagnitude < squareVisionRange)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, diff, out hit, visionRange)
+            if (debug) Debug.DrawRay(viewPoint.position, diff, Color.red, Time.deltaTime);
+            if (Physics.Raycast(viewPoint.position, diff, out hit, visionRange)
                 && hit.transform.gameObject.CompareTag("Player"))
             {
                 lastKnownPlayerPos = player.transform.position;

@@ -6,7 +6,7 @@ public class AICrewController : MonoBehaviour
 {
     [SerializeField] protected RepairStation repairStation = null;
     [SerializeField] protected Post controlStation = null;
-    [SerializeField] protected CrewInventory inventory = null;
+    protected CrewInventory inventory = null;
 
     public void Assign(List<Post> posts)
     {
@@ -21,8 +21,12 @@ public class AICrewController : MonoBehaviour
     {
         inventory = GetComponent<InventoryHolder>().inventory as CrewInventory;
         var weapons = GetComponent<Weaponry>().weapons;
-        
+        List<Post> posts = new List<Post>();
+        posts.Add(controlStation);
+        posts.Add(repairStation);
+        posts.AddRange(weapons);
 
+        Assign(posts);
     }
 
     private void Update() {

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &181897256205591469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300872002642641315}
+  m_Layer: 12
+  m_Name: View Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &300872002642641315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181897256205591469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3548607261234545947}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &695538792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,7 +42,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ee26f5fe7279e4e8ea7c55057535a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avoidWeight: 0.75
+  followPathWeight: 3
   minimalSpeed: 3
+  minimalAcceleration: 0.3
+  stoppingDistance: 1
 --- !u!114 &695538793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   visionRange: 25
+  viewPoint: {fileID: 300872002642641315}
 --- !u!114 &921448116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,10 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59712f4572aead47a70f9633ddd8b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 20
-  onFire:
-    m_PersistentCalls:
-      m_Calls: []
   vision: {fileID: 695538793}
   weaponery: {fileID: 960768064833702633}
 --- !u!114 &1885499292398724252
@@ -79,9 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77afcf65421ea4697d8746e578649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairStation: {fileID: 0}
-  controlStation: {fileID: 0}
-  inventory: {fileID: 0}
+  repairStation: {fileID: 4334126095343424769}
+  controlStation: {fileID: 2931484266066175818}
 --- !u!114 &4777259050291339304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,10 +125,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 8
+  FIRE_RIGHT: 1
+  FIRE_LEFT: 1
   vision: {fileID: 695538793}
   controller: {fileID: 695538792}
   boatController: {fileID: 3548607261234545946}
   fireControl: {fileID: 921448116}
+--- !u!114 &7024260889857142004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548607261234545951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b5d38325cd81b478845320b518f152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avoidanceRadius: 15
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 10241
+  debug: 1
 --- !u!114 &7828313932310828560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +327,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284209, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299002694482284209, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 695538792}
+    - target: {fileID: 2299002694482284209, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: steerSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299002694482284209, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299002694482284209, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: maxSteerAngle
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2299002694482284212, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_Name
@@ -316,6 +385,11 @@ PrefabInstance:
       propertyPath: weapons.Array.data[3]
       value: 
       objectReference: {fileID: 3598313455206836108}
+    - target: {fileID: 4973438107387252831, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
 --- !u!1 &3548607261234545951 stripped
@@ -352,6 +426,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac16a8e9815ca264da38fe28824c4d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4334126095343424769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1368379595031289514, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375620843262020523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d166264d2928d9a4c817769fc58c7759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2931484266066175818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 465599387918986465, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375620843262020523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7240c1772fbc89842b5f87c8930489cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6740657074556717940
