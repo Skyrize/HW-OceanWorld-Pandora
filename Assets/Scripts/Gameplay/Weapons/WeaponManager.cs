@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ItemObject))]
 public class WeaponManager : Post
 {
+    public float maxAngle = 30f;
     [Header("TMP_OldCannonball shoot")]
     public bool TMP_followTarget = true;
     private float maxRange;
@@ -12,7 +13,7 @@ public class WeaponManager : Post
     // private readonly float maxSideAngle = 45f;
 
     private bool IsInRange => Range > maxRange;
-    private float MaxRange => Mathf.Abs(Mathf.Pow(baseVelocity, 2) / Physics.gravity.y);
+    public float MaxRange => Mathf.Abs(Mathf.Pow(baseVelocity, 2) / Physics.gravity.y);
     private Vector3 Target = Vector3.zero;
 
     private float Range => Vector3.Distance(spawnPoint.position, Target);
@@ -35,7 +36,7 @@ public class WeaponManager : Post
     [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
     [Header("References")]
     [HideInInspector] protected Weapon weaponAsset;
-    [SerializeField] protected Transform spawnPoint = null;
+    [SerializeField] public Transform spawnPoint = null;
     [Header("Runtime")]
     [SerializeField] bool reloaded = true;
     [HideInInspector] protected Inventory inventory;
@@ -83,18 +84,31 @@ public class WeaponManager : Post
         InventoryStorage stored = inventory.GetStoredItem(weaponAsset.AmmunitionAsset);
 
         if (stored == null)
+        {
+            onMissingResource.Invoke($"Your {weaponAsset.Name} is out of {weaponAsset.AmmunitionAsset.Name} !");
             return false;
+        }
         inventory.Remove(stored.item);
         return true;
+    }
+    
+    public bool canShoot()
+    {
+        return reloaded && (!inventory || inventory.GetStoredItem(weaponAsset.AmmunitionAsset) != null);
+    }
+
+    public bool isValidTarget(Vector3 target)
+    {
+        Vector3 shootVector = target - spawnPoint.transform.position;
+        float angle = Vector3.Angle(shootVector, spawnPoint.transform.forward);
+        bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
+        return shootVector.magnitude < MaxRange && isValidAngle;
     }
 
     protected void ShootAt(Vector3 target)
     {
-        //TODO : reject shoot if angle is too large
-        if (!reloaded)
-            return;
-        if (!UseAmmo()) {
-            onMissingResource.Invoke($"Your {weaponAsset.Name} is out of {weaponAsset.AmmunitionAsset.Name} !");
+        if (!reloaded || !isValidTarget(target) || !UseAmmo())
+        {
             return;
         }
         var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab, 

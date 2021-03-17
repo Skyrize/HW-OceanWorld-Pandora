@@ -16,6 +16,6 @@ MonoBehaviour:
   price: 100
   prefab: {fileID: 5200536519037643287, guid: 359becf178e63b148b498e46a5d711ef, type: 3}
   icon: {fileID: 21300000, guid: b9de4a9f0d0d4a741b672699b2422bdf, type: 3}
-  shotsPerSecond: 2
+  shotsPerSecond: 1
   power: 100
   ammunitionAsset: {fileID: 11400000, guid: 71cdef6a0c2c4a241bbfb26e79c842d3, type: 2}

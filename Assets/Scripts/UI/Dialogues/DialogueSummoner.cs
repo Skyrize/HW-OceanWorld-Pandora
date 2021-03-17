@@ -8,10 +8,13 @@ public class DialogueSummoner : MonoBehaviour
     public DialogueUI ui;
     public DialogueIdentifier dialogue;
 
+    [Header("Suit Pickup")]
+    public GameObject boat;
+
     [Header("Merchant")]
     public Merchant merchant;
 
-    [Header("Crew adding")]
+    [Header("Crew management")]
     public CrewMember suit;
     public InventoryHolder inventoryHolder;
 
@@ -30,24 +33,31 @@ public class DialogueSummoner : MonoBehaviour
                     ui.Summon("introduction", AddSuitToCrew);
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight"); //todo add post summon ?
+                    ui.Summon("first_fight", () => Destroy(this));
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
-                    ui.Summon("after_fight"); //todo add post summon ?
+                    ui.Summon("after_fight", () => Destroy(this));
                     break;
             }
     }
 
     private void AddSuitToCrew()
     {
-        ((PlayerInventory)inventoryHolder.inventory)
-            .AddCrewMember(suit);
-        ui.Summon("first_fight", () => gameObject.SetActive(false));
+        Destroy(boat);
+        try
+        {
+            ((PlayerInventory)inventoryHolder.inventory)
+                .AddCrewMember(suit);
+        }
+        catch { print("must not forget to not give any crew member to player so suit doesnt overload the limit"); }
+
+        Destroy(this);
     }
 
     private void OnSuitBroughtBack()
     {
         dialogue = DialogueIdentifier.MERCHANT;
+        print("todo remove suit from player’s crew");
         ui.Summon("merchant_2", merchant.EnterInMerchant);
     }
 }

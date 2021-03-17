@@ -13,13 +13,16 @@ public class Merchant : MonoBehaviour
     public MerchantInventory InventoryMerchant { get => inventoryMerchant; }
 
     public MerchantUI merchantUI;
+    public PauseManager pauseManager;
 
     private static bool loadedScene;
 
-    private void Awake() {
-        prefabUI.SetActive(false);
-        if(inventoryMerchant != null)
-            inventoryMerchant = ClonableSO.Clone<MerchantInventory>(inventoryMerchant);
+    private void Awake()
+    {  
+        if (inventoryMerchant != null)
+            inventoryMerchant = ClonableSO.Clone(inventoryMerchant);
+        else
+            prefabUI.SetActive(false);
     }
 
     public void EnterInMerchant() 
@@ -29,6 +32,8 @@ public class Merchant : MonoBehaviour
             prefabUI.SetActive(true);
             //UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
             loadedScene = true;
+            
+            pauseManager.Pause();
         }
             
     }
@@ -40,6 +45,8 @@ public class Merchant : MonoBehaviour
             prefabUI.SetActive(false);
             //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
             loadedScene = false;
+            
+            pauseManager.Unpause();
         }
     }
 

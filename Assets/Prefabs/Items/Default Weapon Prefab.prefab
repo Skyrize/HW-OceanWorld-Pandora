@@ -21,9 +21,14 @@ MonoBehaviour:
       m_Calls: []
   employee: {fileID: 0}
   postPlace: {fileID: 4988508562133050921}
+  working: 0
+  maxAngle: 30
   TMP_followTarget: 1
+  onMissingResource:
+    m_PersistentCalls:
+      m_Calls: []
   spawnPoint: {fileID: 81389211529252536}
-  canShoot: 1
+  reloaded: 1
 --- !u!1 &8395417727929420640
 GameObject:
   m_ObjectHideFlags: 0
