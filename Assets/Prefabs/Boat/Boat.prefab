@@ -266,7 +266,7 @@ MonoBehaviour:
   tags: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 6912
   componentType: Transform
   parentComponentType: Transform
   childComponentType: Transform
