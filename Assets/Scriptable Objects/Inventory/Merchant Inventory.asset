@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Merchant Inventory
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 11400000, guid: c0eb82b8eaa9b3d4e91a63f0757d982b, type: 2}
+  - item: {fileID: 11400000, guid: 71cdef6a0c2c4a241bbfb26e79c842d3, type: 2}
     count: 100
   - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
     count: 10
