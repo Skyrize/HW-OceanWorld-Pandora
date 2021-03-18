@@ -51,7 +51,7 @@ public class BoatController : MonoBehaviour
     void Steer()
     {
         Quaternion targetAngle = Quaternion.Euler(0, maxSteerAngle * -input.x, 0);
-        float steerSpeed = targetAngle == Quaternion.identity ? Mathf.Pow(1 + this.steerSpeed, 2) : this.steerSpeed;
+        // float steerSpeed = targetAngle == Quaternion.identity ? Mathf.Pow(1 + this.steerSpeed, 2) : this.steerSpeed;
 
         motor.localRotation = Quaternion.Slerp(motor.localRotation, targetAngle, Time.fixedDeltaTime * steerSpeed);
     }
@@ -69,15 +69,15 @@ public class BoatController : MonoBehaviour
         Steer();
         Move();
         Slide();
-        // Float();
+        Float();
     }
 
     
     void Float()
     {
-        rb.centerOfMass = transform.position;
-        Vector3 rectify = transform.position;
-        rectify.y = 0;
-        transform.position = rectify;
+        rb.centerOfMass = Vector3.zero;
+        // Vector3 rectify = transform.position;
+        // rectify.y = 0;
+        // transform.position = rectify;
     }
 }
