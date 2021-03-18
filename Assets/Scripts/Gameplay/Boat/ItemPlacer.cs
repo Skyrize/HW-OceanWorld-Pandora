@@ -29,6 +29,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected Player player = null; //TODO : move to anotherScript
     [SerializeField] protected InventoryStorage currentStored = null;
     [SerializeField] protected Transform postStorage = null;
+    [SerializeField] protected GameObject buttonRotate = null;
     [SerializeField] public InventoryStorage CurrentItem {
         get {
             return currentStored;
@@ -68,7 +69,6 @@ public class ItemPlacer : MonoBehaviour
 
     void SetRemove()
     {
-        
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, RemoveAtMouse);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
     }
@@ -93,6 +93,7 @@ public class ItemPlacer : MonoBehaviour
         if (!player) {
             throw new MissingReferenceException("No Player in scene to hold an inventory. It is need to ensure you don't modify an asset while using inventory.");
         }
+        buttonRotate.SetActive(false);
     }
 
     public void SelectPlacableItem(InventoryStorage item)
@@ -125,7 +126,9 @@ public class ItemPlacer : MonoBehaviour
         Mode = PlacerToolMode.REMOVE;
         Destroy(ghostPlacer);
         ghostPlacer = null;
-        InputManager.Instance.RemoveKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
+        InputManager.Instance.RemoveKeyEvent(KeyCode.D, PressType.HOLD, RotateGhostClockwise);
+        InputManager.Instance.RemoveKeyEvent(KeyCode.A, PressType.HOLD, RotateGhostCounterClockwise);
+        buttonRotate.SetActive(false);
         InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, PlaceFromGhost);
         InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, ClearGhost);
     }
@@ -136,7 +139,9 @@ public class ItemPlacer : MonoBehaviour
         ghostPlacer = Instantiate(currentStored.item.Prefab, Vector3.one * 1000, Quaternion.identity);
         ghostPlacer.SetCollisionActive(false);
         ghostPlacer.name = "GhostPlacer : " + ghostPlacer.name;
-        InputManager.Instance.AddKeyEvent(KeyCode.R, PressType.HOLD, RotateGhost);
+        buttonRotate.SetActive(true);
+        InputManager.Instance.AddKeyEvent(KeyCode.D, PressType.HOLD, RotateGhostClockwise);
+        InputManager.Instance.AddKeyEvent(KeyCode.A, PressType.HOLD, RotateGhostCounterClockwise);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, ClearGhost);
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, PlaceFromGhost);
     }
@@ -185,9 +190,14 @@ public class ItemPlacer : MonoBehaviour
         Destroy(tmp);
     }
 
-    public void RotateGhost()
+    public void RotateGhostClockwise()
     {
         ghostPlacer.transform.Rotate(new Vector3(0, rotationSpeed * Time.unscaledDeltaTime, 0));
+    }
+
+    public void RotateGhostCounterClockwise()
+    {
+        ghostPlacer.transform.Rotate(new Vector3(0, -rotationSpeed * Time.unscaledDeltaTime, 0));
     }
 
     public void ValidateGhostPlacing()
