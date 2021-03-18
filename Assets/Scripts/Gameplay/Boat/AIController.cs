@@ -114,12 +114,13 @@ public class AIController : Controller
         if (path.corners.Length == 0)
             return Vector3.forward;
         Vector3 direction = transform.InverseTransformPoint(path.corners[1]);
+        direction.y = 0;
+        direction.Normalize();
 
         if (direction.z < 0) {
-            // direction.x = 1 * Mathf.Sign(direction.x);
-            direction.z = Mathf.Abs(direction.z);
+            direction.x = 1 * Mathf.Sign(direction.x);
         }
-        // direction.z = Mathf.Max(Mathf.Abs(direction.z), minimalAcceleration);
+        direction.z = Mathf.Max(direction.z, minimalAcceleration);
         return direction;
     }
 
@@ -129,16 +130,18 @@ public class AIController : Controller
         {
             return new Vector3(0, 0, 0);
         }
-        Vector3 avoidanceInput = (avoid.CalculateMove().normalized + Vector3.forward) * avoidWeight;
+        Vector3 avoidanceInput = avoid.CalculateMove() * avoidWeight;
+        // Vector3 avoidanceInput = (avoid.CalculateMove().normalized + Vector3.forward) * avoidWeight;
         Vector3 simulatedInput = getRelativeDirection().normalized * followPathWeight;
-        float dot = Vector3.Dot(avoidanceInput, simulatedInput);
-        Vector3 result = dot <= -0.99f ? simulatedInput : simulatedInput + avoidanceInput;
+        // float dot = Vector3.Dot(avoidanceInput, simulatedInput);
+        // Vector3 result = dot <= -0.99f ? simulatedInput : simulatedInput + avoidanceInput;
+        Vector3 result = simulatedInput + avoidanceInput;
         result.y = 0;
         result.Normalize();
 
 
         if (debug) Debug.DrawRay(transform.position, transform.TransformDirection(simulatedInput) * 10, Color.cyan, Time.deltaTime);
-        if (debug) Debug.DrawRay(transform.position + Vector3.up * 2, transform.TransformDirection(avoidanceInput) * 10, Color.magenta, Time.deltaTime);
+        if (debug) Debug.DrawRay(transform.position + Vector3.up * 2, transform.TransformDirection(avoidanceInput), Color.magenta, Time.deltaTime);
         // result.x = Mathf.Clamp(result.x, -1, 1);
         // result.z = Mathf.Clamp(result.z, -1, 1);
 
@@ -150,6 +153,7 @@ public class AIController : Controller
             Debug.Log($"final {result.ToString()}");
 
         if (debug) Debug.DrawRay(transform.position + Vector3.up * 4, transform.TransformDirection(result) * 15, Color.black, Time.deltaTime);
+        // return Vector3.zero;
         return result.normalized;
     }
 
