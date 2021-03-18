@@ -91,24 +91,25 @@ public class ColliderEvent : MonoBehaviour
         return target.GetComponentInChildren(Type.GetType(componentType)) != null;
     }
 
-    public void FilterCollision(GameObject target, CollisionEvent eventToCall)
+    public bool FilterCollision(GameObject target, CollisionEvent eventToCall)
     {
         if (useTagFilter && !HasTag(target)) {
-            return;
+            return false;
         }
         if (useLayerFilter && !HasLayer(target)) {
-            return;
+            return false;
         }
         if (useComponentFilter && !HasComponent(target)) {
-            return;
+            return false;
         }
         if (useParentComponentFilter && !HasParentComponent(target)) {
-            return;
+            return false;
         }
         if (useChildComponentFilter && !HasChildComponent(target)) {
-            return;
+            return false;
         }
         eventToCall.Invoke(target);
+        return true;
     }
     
     private void OnCollisionEnter(Collision other) {

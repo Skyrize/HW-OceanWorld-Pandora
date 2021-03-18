@@ -22,7 +22,11 @@ public class Projectile : MonoBehaviour
 
         if (health == ignoreParentTricks)
             return;
-        health.ReduceHealth(ammunitionAsset.Damages);
+        if (health) {
+            health.ReduceHealth(ammunitionAsset.Damages);
+        }
+        GetComponent<Rigidbody>().detectCollisions = false;
+        GetComponent<Collider>().enabled = false;
         Destroy(gameObject);
     }
 

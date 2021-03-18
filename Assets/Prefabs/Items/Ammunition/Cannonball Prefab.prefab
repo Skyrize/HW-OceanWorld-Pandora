@@ -109,6 +109,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannonball Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3918343665698984557, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326696190942835027, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4715140373247772491, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: m_LocalScale.x

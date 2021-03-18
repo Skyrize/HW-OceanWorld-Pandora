@@ -21,6 +21,8 @@ public class ColliderEventEditor : Editor
     SerializedProperty childComponentType;
 
     SerializedProperty onCollide;
+    SerializedProperty onStay;
+    SerializedProperty onExit;
     
     void OnEnable()
     {
@@ -37,6 +39,8 @@ public class ColliderEventEditor : Editor
         childComponentType = serializedObject.FindProperty("childComponentType");
 
         onCollide = serializedObject.FindProperty("onCollide");
+        onStay = serializedObject.FindProperty("onStay");
+        onExit = serializedObject.FindProperty("onExit");
     }
 
     public override void OnInspectorGUI()
@@ -72,6 +76,8 @@ public class ColliderEventEditor : Editor
         }
 
         EditorGUILayout.PropertyField(onCollide);
+        EditorGUILayout.PropertyField(onStay);
+        EditorGUILayout.PropertyField(onExit);
 
 
         serializedObject.ApplyModifiedProperties();

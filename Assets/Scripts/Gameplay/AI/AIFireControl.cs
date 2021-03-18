@@ -17,9 +17,7 @@ public class AIFireControl : MonoBehaviour
 
     public bool isTarget(GameObject target)
     {
-        return target.CompareTag("Player") ||
-            (target.transform.parent && target.transform.parent.CompareTag("Player")) ||
-            (target.transform.parent.parent && target.transform.parent.parent.CompareTag("Player"));
+        return target.GetComponentInParent<Player>() != null;
     }
 
     public bool handleFire()
