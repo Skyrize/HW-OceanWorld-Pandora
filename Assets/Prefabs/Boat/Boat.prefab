@@ -442,7 +442,7 @@ BoxCollider:
   m_GameObject: {fileID: 2299002694143326429}
   m_Material: {fileID: 13400000, guid: 48ac51efa2d564746b5c6fe1783d9cf9, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -456,7 +456,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2299002694482284208}
   - component: {fileID: 2299002694482284210}
-  - component: {fileID: 2299002694482284213}
   - component: {fileID: 2299002694482284209}
   - component: {fileID: 1249033567537922302}
   - component: {fileID: 2584758412130715173}
@@ -503,28 +502,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!195 &2299002694482284213
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299002694482284212}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &2299002694482284209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,8 +516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   maxSpeed: 10
-  steerSpeed: 3
-  maxSteerAngle: 40
+  steerSpeed: 6
+  maxSteerAngle: 60
   slideForce: 1
   rb: {fileID: 2299002694482284210}
   motor: {fileID: 2299002695325882044}

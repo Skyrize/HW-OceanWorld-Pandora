@@ -23,6 +23,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected Color invalidGhostColor = new Color(1, 0, 0, 0.5f);
     [SerializeField] protected Color validGhostColor = new Color(0, 1, 0, 0.5f);
     [Header("References")]
+    [SerializeField] protected Sprite removeSprite = null;
     [SerializeField] protected PlacableInventoryUI placableInventoryUI = null;
     [SerializeField] protected PostManagerUI postManagerUI = null;
     [SerializeField] protected Player player = null; //TODO : move to anotherScript
@@ -53,15 +54,29 @@ public class ItemPlacer : MonoBehaviour
         set {
             this.mode = value;
             if (mode == PlacerToolMode.REMOVE) {
-                InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
+                SetRemove();
             } else {
-                InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
+                UnsetRemove();
             }
         }
     }
     [SerializeField] protected Vector3 worldOrigin = Vector3.zero;
     [SerializeField] protected Vector3 worldHalfExtents = Vector3.zero;
     RaycastHit hit;
+
+
+    void SetRemove()
+    {
+        
+        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, RemoveAtMouse);
+    }
+
+    void UnsetRemove()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, RemoveAtMouse);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -158,11 +173,11 @@ public class ItemPlacer : MonoBehaviour
 
     void RemoveAtMouse()
     {
-        if (currentRemovable == null)
+        if (CurrentRemovable == null)
             return;
-        RemoveWeapon(currentRemovable);
-        Destroy(currentRemovable);
-        currentRemovable = null;
+        RemoveWeapon(CurrentRemovable);
+        Destroy(CurrentRemovable);
+        CurrentRemovable = null;
     }
 
     public void RotateGhost()
@@ -230,20 +245,30 @@ public class ItemPlacer : MonoBehaviour
     }
 
     GameObject currentRemovable = null;
+    GameObject CurrentRemovable {
+        get { return currentRemovable; }
+        set {
+            currentRemovable = value;
+            if (!currentRemovable) {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            } else {
+                Cursor.SetCursor(removeSprite.texture, Vector2.zero, CursorMode.Auto);
+            }
+        }
+    }
     Color[] tmpColors;
 
     void FocusRemovableItem(GameObject item)
     {
-        currentRemovable = item;
-        tmpColors = currentRemovable.GetColors();
-        currentRemovable.SetColor(invalidGhostColor);
+        CurrentRemovable = item;
+        tmpColors = CurrentRemovable.GetColors();
+        CurrentRemovable.SetColor(invalidGhostColor);
     }
     void UnfocusRemovableItem()
     {
-        if (!currentRemovable)
-            return;
-        currentRemovable.SetColors(tmpColors);
-        currentRemovable = null;
+        if (CurrentRemovable)
+            CurrentRemovable.SetColors(tmpColors);
+        CurrentRemovable = null;
     }
 
     void UpdateRemovePlacer()
@@ -252,7 +277,7 @@ public class ItemPlacer : MonoBehaviour
         RaycastHit removeHit;
 
         if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask)) {
-            if (currentRemovable != removeHit.collider.gameObject) {
+            if (CurrentRemovable != removeHit.collider.gameObject) {
                 UnfocusRemovableItem();
                 FocusRemovableItem(removeHit.collider.gameObject);
             }
