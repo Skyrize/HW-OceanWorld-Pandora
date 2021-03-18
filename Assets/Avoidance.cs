@@ -62,10 +62,19 @@ public class Avoidance : MonoBehaviour
             // Debug.DrawRay(transform.position, -norm * 5f, Color.magenta, Time.deltaTime);
             float dot = (Vector3.Dot(transform.forward, -norm));
             dot = (Mathf.Clamp(dot, 0.1f, 1));
+            norm = norm * avoidanceRadius - dist;
+            Vector3 trick = transform.InverseTransformDirection(norm);
+            if (trick.z < 0) {
+                float tmp = trick.z;
+                trick.z = Mathf.Abs(trick.x);
+                trick.x = Mathf.Abs(tmp) * Mathf.Sign(trick.x);
+                norm = transform.TransformDirection(trick);
+            }
+            norm *= dot;
             debugPoints.Add(closestPoint);
             avoidCount++;
-            avoidanceMove += (norm * avoidanceRadius - dist) * dot;
-            if (debug) Debug.DrawRay(transform.position, (norm * avoidanceRadius - dist), Color.white, Time.deltaTime);
+            avoidanceMove += norm;
+            if (debug) Debug.DrawRay(transform.position, norm, Color.white, Time.deltaTime);
         }
         if (avoidCount != 0) {
             avoidanceMove /= avoidCount;
