@@ -36,6 +36,7 @@ public class CrewUI : MonoBehaviour
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         currentCrewMember = null;
+        itemPlacer.Mode = PlacerToolMode.REMOVE;
         // InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
 

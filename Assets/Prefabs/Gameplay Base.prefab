@@ -1630,6 +1630,7 @@ MonoBehaviour:
   currentStored:
     item: {fileID: 0}
     count: 0
+  postStorage: {fileID: 371726754088952532}
   ghostPlacer: {fileID: 0}
   cam: {fileID: 1512858540162488478}
   onBoat: 0
@@ -6619,12 +6620,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95ff403c4ba9a247927688651300c69, type: 3}
---- !u!4 &1137230086700945234 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1960895900246004949, guid: b95ff403c4ba9a247927688651300c69,
-    type: 3}
-  m_PrefabInstance: {fileID: 1512858539563719559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3742801819814528967 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2814708807088184384, guid: b95ff403c4ba9a247927688651300c69,
@@ -6649,6 +6644,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21950d4b36e774598a028ab39aff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1137230086700945234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1960895900246004949, guid: b95ff403c4ba9a247927688651300c69,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512858539563719559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &371726754088952532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1285323942883998035, guid: b95ff403c4ba9a247927688651300c69,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512858539563719559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1652154473726207815
 PrefabInstance:
   m_ObjectHideFlags: 0
