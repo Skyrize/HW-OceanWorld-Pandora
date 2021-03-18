@@ -150,7 +150,7 @@ public class AIController : Controller
         //     result.z = 1f;
         //     Debug.Log("--------------------------------------------------------------------------- yup");
         // }
-            Debug.Log($"final {result.ToString()}");
+            // Debug.Log($"final {result.ToString()}");
 
         if (debug) Debug.DrawRay(transform.position + Vector3.up * 4, transform.TransformDirection(result) * 15, Color.black, Time.deltaTime);
         // return Vector3.zero;

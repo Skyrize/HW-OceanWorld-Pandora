@@ -23,7 +23,7 @@ MonoBehaviour:
   postPlace: {fileID: 3927295241128716738}
   working: 0
   repairTime: 1
-  repairAmount: 1
+  repairAmount: 10
   consumeQuantity: 1
   onRepair:
     m_PersistentCalls:
@@ -31,7 +31,7 @@ MonoBehaviour:
   onMissingResource:
     m_PersistentCalls:
       m_Calls: []
-  player: {fileID: 0}
+  inventoryHolder: {fileID: 0}
   consumedItem: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
   repairing: 0
 --- !u!1001 &4135046912123324755
