@@ -28,6 +28,7 @@ public class ItemPlacer : MonoBehaviour
     [SerializeField] protected PostManagerUI postManagerUI = null;
     [SerializeField] protected Player player = null; //TODO : move to anotherScript
     [SerializeField] protected InventoryStorage currentStored = null;
+    [SerializeField] protected Transform postStorage = null;
     [SerializeField] public InventoryStorage CurrentItem {
         get {
             return currentStored;
@@ -69,12 +70,14 @@ public class ItemPlacer : MonoBehaviour
     {
         
         InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, RemoveAtMouse);
+        InputManager.Instance.AddMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
     }
 
     void UnsetRemove()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, RemoveAtMouse);
+        InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.LEFT_BUTTON, PressType.DOWN, RemoveAtMouse);
     }
 
     // Start is called before the first frame update
@@ -167,7 +170,7 @@ public class ItemPlacer : MonoBehaviour
             return;
         }
         GameObject placedItem = GameObject.Instantiate(currentStored.item.Prefab, ghostPlacer.transform.position, ghostPlacer.transform.rotation);
-        placedItem.transform.parent = hit.collider.transform;
+        placedItem.transform.parent = postStorage;
         PlaceWeapon(placedItem);
     }
 
@@ -176,8 +179,10 @@ public class ItemPlacer : MonoBehaviour
         if (CurrentRemovable == null)
             return;
         RemoveWeapon(CurrentRemovable);
-        Destroy(CurrentRemovable);
+        var tmp = CurrentRemovable;
+        tmp.SetActive(false);
         CurrentRemovable = null;
+        Destroy(tmp);
     }
 
     public void RotateGhost()
@@ -213,7 +218,7 @@ public class ItemPlacer : MonoBehaviour
         RaycastHit placingHit;
 
         if (Physics.Raycast(ray, out placingHit, Mathf.Infinity, itemMask) || !HasRoom()) {
-            // Debug.Log("Invalidate by " + placingHit.collider.gameObject.name);
+            // // Debug.Log("Invalidate by " + placingHit.collider.gameObject.name);
             InvalidateGhostPlacing();
         } else {
             ValidateGhostPlacing();
@@ -244,16 +249,18 @@ public class ItemPlacer : MonoBehaviour
         }
     }
 
-    GameObject currentRemovable = null;
+    public GameObject currentRemovable = null;
     GameObject CurrentRemovable {
         get { return currentRemovable; }
         set {
-            currentRemovable = value;
-            if (!currentRemovable) {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            } else {
+            if (value) {
+                // Debug.Log("removeIcon");
                 Cursor.SetCursor(removeSprite.texture, Vector2.zero, CursorMode.Auto);
+            } else if (currentRemovable) {
+                // Debug.Log("normalIcon");
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
+            currentRemovable = value;
         }
     }
     Color[] tmpColors;

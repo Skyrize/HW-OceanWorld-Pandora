@@ -32,7 +32,7 @@ public class AIController : Controller
     private bool destinationReached = true;
     private Vector3? lastTarget;
 
-    private DIRECTION rotatingSide = DIRECTION.NONE;
+    // private DIRECTION rotatingSide = DIRECTION.NONE;
 
     private void Awake() {
         // agent = GetComponent<NavMeshAgent>();
@@ -50,21 +50,21 @@ public class AIController : Controller
         return (path.corners[path.corners.Length - 1] - transform.position).sqrMagnitude < squareStoppingDistance;
     }
 
-    void checkNextCorner(bool shouldUpdateInputManagement)
-    {
-        // while ((path.corners[currentCornerIdx] - transform.position).magnitude < agent.stoppingDistance)
-        // {
-        //     currentCornerIdx += 1;
-        //     if (currentCornerIdx >= path.corners.Length)
-        //     {
-        //         destinationReached = true;
-        //         return;
-        //     } else if (shouldUpdateInputManagement)
-        //     {
-        //         updateInputManagement();
-        //     }
-        // }
-    }
+    // void checkNextCorner(bool shouldUpdateInputManagement)
+    // {
+    //     // while ((path.corners[currentCornerIdx] - transform.position).magnitude < agent.stoppingDistance)
+    //     // {
+    //     //     currentCornerIdx += 1;
+    //     //     if (currentCornerIdx >= path.corners.Length)
+    //     //     {
+    //     //         destinationReached = true;
+    //     //         return;
+    //     //     } else if (shouldUpdateInputManagement)
+    //     //     {
+    //     //         updateInputManagement();
+    //     //     }
+    //     // }
+    // }
 
     public void setTarget(Vector3 target)
     {
@@ -100,14 +100,14 @@ public class AIController : Controller
         }
     }
 
-    void updateInputManagement()
-    {
-        bool needToGoBackward = getRelativeDirection().z < 0f;
-        if (!needToGoBackward)
-        {
-            rotatingSide = DIRECTION.NONE;
-        }
-    }
+    // void updateInputManagement()
+    // {
+    //     bool needToGoBackward = getRelativeDirection().z < 0f;
+    //     if (!needToGoBackward)
+    //     {
+    // //         rotatingSide = DIRECTION.NONE;
+    //     }
+    // }
 
     private Vector3 getRelativeDirection()
     {
