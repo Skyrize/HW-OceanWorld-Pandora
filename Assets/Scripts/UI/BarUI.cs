@@ -7,6 +7,7 @@ public class BarUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected Image image;
+    [SerializeField] protected Image colorImage;
 
     Color color;
     // Start is called before the first frame update
@@ -15,7 +16,7 @@ public class BarUI : MonoBehaviour
         if (!image) {
             image = GetComponent<Image>();
         }
-        color = image.color;
+        color = colorImage.color;
     }
 
     public void UpdateRatio(float ratio)
@@ -24,9 +25,11 @@ public class BarUI : MonoBehaviour
             image = GetComponent<Image>();
         }
         if (ratio <= 0.33f) {
-            image.color = Color.red;
+            colorImage.color = Color.red;
+        } else if (ratio <= 0.5f) {
+            colorImage.color = Color.yellow;
         } else {
-            image.color = color;
+            colorImage.color = color;
         }
         image.fillAmount = ratio;
     }

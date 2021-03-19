@@ -6653,6 +6653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 7743680349690450671}
+  colorImage: {fileID: 3906472765389663437}
 --- !u!114 &15691998414139158
 MonoBehaviour:
   m_ObjectHideFlags: 0

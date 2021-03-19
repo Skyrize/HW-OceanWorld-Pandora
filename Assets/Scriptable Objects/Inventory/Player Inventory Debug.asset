@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45d70f48f1390e4bae3da4b4b85ccb8, type: 3}
+  m_Name: Player Inventory Debug
+  m_EditorClassIdentifier: 
+  items:
+  - item: {fileID: 11400000, guid: 6d0291fef4aabdb4db5bad728279f6a4, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: 71cdef6a0c2c4a241bbfb26e79c842d3, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
+    count: 3
+  TotalWeight: 2807
+  maxCrewSize: 2
+  crewMembers:
+  - {fileID: 11400000, guid: d96911bc4e008454390872ae7e79a49b, type: 2}
+  - {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8, type: 2}
