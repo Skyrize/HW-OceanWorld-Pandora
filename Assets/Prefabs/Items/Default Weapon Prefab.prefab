@@ -22,9 +22,16 @@ MonoBehaviour:
   employee: {fileID: 0}
   postPlace: {fileID: 4988508562133050921}
   working: 0
+  debug: 1
   maxAngle: 30
   TMP_followTarget: 1
+  baseVelocity: 15
+  canRotate: 0
+  rotationSpeed: 5
   onMissingResource:
+    m_PersistentCalls:
+      m_Calls: []
+  onShoot:
     m_PersistentCalls:
       m_Calls: []
   spawnPoint: {fileID: 81389211529252536}

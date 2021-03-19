@@ -10,7 +10,8 @@ public class Projectile : MonoBehaviour
     public UnityEvent onTouchWater = new UnityEvent();
     [Header("References")]
     [HideInInspector] protected Ammunition ammunitionAsset = null;
-    
+    public GameObject parent;
+
     public virtual void Start()
     {
         ammunitionAsset = GetComponent<ItemObject>().Item as Ammunition;
@@ -25,30 +26,32 @@ public class Projectile : MonoBehaviour
         rb.useGravity = false;
     }
 
-    public void Kill()
+    public IEnumerator Kill()
     {
+        yield return null;
         Destroy(this.gameObject);
     }
 
     public void Hit(GameObject target)
     {
         HealthComponent health = target.GetComponentInParent<HealthComponent>();
-        HealthComponent ignoreParentTricks = GetComponentInParent<HealthComponent>();
 
-        Debug.Log($"hit {target.name}");
-        if (health == ignoreParentTricks)
+        if (parent == health.gameObject) {
             return;
+        } else {
+            Debug.Log($"parent {parent.name} != target {target.name}");
+        }
         if (health) {
             health.ReduceHealth(ammunitionAsset.Damages);
         }
         onHit.Invoke();
-        Kill();
+        StartCoroutine(Kill());
     }
 
     private void Update() {
         if (transform.position.y < 0) {
             onTouchWater.Invoke();
-            Kill();
+            StartCoroutine(Kill());
         }
     }
 }

@@ -81,7 +81,7 @@ public class AIController : Controller
         // currentCornerIdx = 0;
         // if (!agent.CalculatePath(target, path)) {
         if (!NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path)) {
-            Debug.LogError("Failed to calculate path for AIController");
+            if (debug) Debug.LogError("Failed to calculate path for AIController");
         }
         destinationReached = HasArrived();
         // destinationReached = false;

@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &797567973831041648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7617363198277974606}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9f5494411813e42b553c3c9d7931f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6944401017116311483
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,15 +590,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee274b3ea9430394f934d67ebbd72453, type: 3}
---- !u!1 &7617363198277974606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7535860815393195148, guid: ee274b3ea9430394f934d67ebbd72453,
-    type: 3}
-  m_PrefabInstance: {fileID: 81783892221230786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7617363198277974595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7535860815393195137, guid: ee274b3ea9430394f934d67ebbd72453,
+    type: 3}
+  m_PrefabInstance: {fileID: 81783892221230786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7617363198277974592 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7535860815393195138, guid: ee274b3ea9430394f934d67ebbd72453,
     type: 3}
   m_PrefabInstance: {fileID: 81783892221230786}
   m_PrefabAsset: {fileID: 0}
@@ -736,7 +724,7 @@ PrefabInstance:
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
@@ -757,12 +745,17 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 5811298839382069828}
+      objectReference: {fileID: 7617363198277974592}
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 797567973831041648}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
@@ -781,12 +774,17 @@ PrefabInstance:
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: Kill
+      value: Stop
       objectReference: {fileID: 0}
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4425507846150460328, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
@@ -831,15 +829,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6395555146840419905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5811298839382069828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
-    type: 3}
-  m_PrefabInstance: {fileID: 6395555146840419905}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf47bcbdbd41ed4ba2de62d3c5f2db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

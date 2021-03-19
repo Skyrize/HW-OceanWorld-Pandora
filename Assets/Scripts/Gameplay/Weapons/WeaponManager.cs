@@ -6,11 +6,12 @@ using UnityEngine.Events;
 [RequireComponent(typeof(ItemObject))]
 public class WeaponManager : Post
 {
+    public bool debug = true;
     public float maxAngle = 30f;
     [Header("TMP_OldCannonball shoot")]
     public bool TMP_followTarget = true;
     private float maxRange;
-    private readonly float baseVelocity = 10f;
+    [SerializeField] private float baseVelocity = 10f;
     // private readonly float maxSideAngle = 45f;
 
     private bool IsInRange => Range > maxRange;
@@ -63,12 +64,13 @@ public class WeaponManager : Post
     }
 
     Camera cam = null;  // cached because Camera.main is slow, so we only call it once.
+    GameObject parent = null;
     void Start()
     {
+        parent = GetComponentInParent<HealthComponent>().gameObject;
         cam = Camera.main;
         baseRotation = transform.localRotation;
         baseForward = transform.parent.InverseTransformDirection(spawnPoint.forward);
-        Debug.Log($"base rot{baseRotation.ToString()}");
         maxRotationLeft = Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
         maxRotationRight = Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
     }
@@ -139,7 +141,7 @@ public class WeaponManager : Post
         var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab,
             spawnPoint.position,
             spawnPoint.rotation);
-
+        projectile.GetComponent<Projectile>().parent = parent;
         if (TMP_followTarget) {
             TMP_FollowTargetShoot(projectile, target);
         } else {
@@ -170,6 +172,14 @@ public class WeaponManager : Post
             else
                 transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationRight, Time.deltaTime * rotationSpeed);
         }
+    }
+
+    private void OnDrawGizmos() {
+        if (!debug)
+            return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(spawnPoint.position, spawnPoint.forward * MaxRange);
+        // Gizmos.DrawWireSphere(transform.position, MaxRange);
     }
 
 }
