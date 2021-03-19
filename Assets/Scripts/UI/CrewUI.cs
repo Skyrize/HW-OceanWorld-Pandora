@@ -31,11 +31,14 @@ public class CrewUI : MonoBehaviour
     private void Awake() {
         GetPlayerInventory();
     }
+
+    private bool activated = false;
     
     public void UnselectCrewMember() // need that ?
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         currentCrewMember = null;
+        if (activated)
         itemPlacer.Mode = PlacerToolMode.REMOVE;
         // InputManager.Instance.RemoveMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);
     }
@@ -76,10 +79,12 @@ public class CrewUI : MonoBehaviour
     }
 
     private void OnEnable() {
+        activated = true;
         BuildUI();
     }
 
     private void OnDisable() {
+        activated = false;
         ClearUI();
     }
 }

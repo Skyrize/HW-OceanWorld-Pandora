@@ -114,12 +114,15 @@ public class ItemPlacer : MonoBehaviour
     public void Activate()
     {
         activated = true;
+        Mode = PlacerToolMode.REMOVE;
     }
 
     public void Desactivate()
     {
         activated = false;
         CurrentItem = null;
+        UnfocusRemovableItem();
+        Mode = PlacerToolMode.NONE;
     }
 
     public void ClearGhost()
