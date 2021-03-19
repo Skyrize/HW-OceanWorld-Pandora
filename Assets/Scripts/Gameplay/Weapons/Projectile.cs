@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     public UnityEvent onTouchWater = new UnityEvent();
     [Header("References")]
     [HideInInspector] protected Ammunition ammunitionAsset = null;
-    public GameObject parent;
+    [HideInInspector] public GameObject parent;
 
     public virtual void Start()
     {
