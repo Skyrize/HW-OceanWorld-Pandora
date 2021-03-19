@@ -15,7 +15,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &3835032661844443792
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -85,6 +85,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf47bcbdbd41ed4ba2de62d3c5f2db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4425507846150460328}
+        m_MethodName: CallEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTouchWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4425507846150460328}
+        m_MethodName: CallEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4425507846150460328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918343665698984557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71e644e8cfbe794cba125cdf7e53218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - name: Destroy
+    timer: 0
+    evt:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 604733613121616901}
+          m_MethodName: Freeze
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4326696190942835027}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 604733613121616901}
+          m_MethodName: Kill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &4105450282564241347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,6 +243,12 @@ PrefabInstance:
 --- !u!1 &3918343665698984557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1052080390428628398, guid: a1e9738f0a2931a4d95bef6949621364,
+    type: 3}
+  m_PrefabInstance: {fileID: 4105450282564241347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4326696190942835027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 356626617128859280, guid: a1e9738f0a2931a4d95bef6949621364,
     type: 3}
   m_PrefabInstance: {fileID: 4105450282564241347}
   m_PrefabAsset: {fileID: 0}

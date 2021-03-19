@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     private void Update() {
         if (repairStation)
             repairStation.Use();
+        weaponry.RotateToward(Utils.MousePositionOcean);
         foreach (CrewMember crewMember in inventory.crewMembers)
         {
             crewMember.Update();

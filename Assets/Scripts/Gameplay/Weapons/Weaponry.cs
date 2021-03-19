@@ -25,6 +25,15 @@ public class Weaponry : MonoBehaviour
         }
     }
 
+    public void RotateToward(Vector3 target)
+    {
+        foreach (var weapon in weapons)
+        {
+            weapon.RotateToward(target);
+        }
+
+    }
+
     public void ShootAt(Vector3 target)
     {
         foreach (var weapon in weapons)

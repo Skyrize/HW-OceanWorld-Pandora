@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(ItemObject))]
 public class WeaponManager : Post
@@ -21,7 +22,7 @@ public class WeaponManager : Post
 
     private float V2 => Mathf.Pow(baseVelocity, 2);
 
-    
+
     private float ZRotatingAngle
     {
         get
@@ -33,7 +34,10 @@ public class WeaponManager : Post
         }
     }
 
+    [SerializeField] protected bool canRotate = false;
+    [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
+    [SerializeField] public UnityEvent onShoot = new UnityEvent();
     [Header("References")]
     [HideInInspector] protected Weapon weaponAsset;
     [SerializeField] public Transform spawnPoint = null;
@@ -41,12 +45,22 @@ public class WeaponManager : Post
     [SerializeField] bool reloaded = true;
     [HideInInspector] protected Inventory inventory;
     private WaitForSeconds reloadTimer = null;
+    private Quaternion baseRotation = Quaternion.identity;
+    private Vector3 baseForward = Vector3.zero;
 
     private void Awake() {
         weaponAsset = GetComponent<ItemObject>().Item as Weapon;
         if (!weaponAsset)
             throw new System.Exception($"ItemObject on WeaponManager '{gameObject.name}' has an invalid item (null or not Weapon).");
         reloadTimer = new WaitForSeconds(1.0f / weaponAsset.ShotsPerSecond);
+    }
+
+    Camera cam = null;  // cached because Camera.main is slow, so we only call it once.
+    void Start()
+    {
+        cam = Camera.main;
+        baseRotation = transform.rotation;
+        baseForward = spawnPoint.forward;
     }
 
     IEnumerator Reload()
@@ -72,8 +86,9 @@ public class WeaponManager : Post
     public void TMP_DirectShoot(GameObject projectile, Vector3 target)
     {
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-        
-        projectileRb.AddForce(spawnPoint.forward * weaponAsset.Power, ForceMode.Impulse);
+        Vector3 forward = (target - spawnPoint.position).normalized;
+
+        projectileRb.AddForce(forward * weaponAsset.Power, ForceMode.Impulse);
     }
 
     bool UseAmmo()
@@ -91,7 +106,7 @@ public class WeaponManager : Post
         inventory.Remove(stored.item);
         return true;
     }
-    
+
     public bool canShoot()
     {
         return reloaded && (!inventory || inventory.GetStoredItem(weaponAsset.AmmunitionAsset) != null);
@@ -99,8 +114,8 @@ public class WeaponManager : Post
 
     public bool isValidTarget(Vector3 target)
     {
-        Vector3 shootVector = target - spawnPoint.transform.position;
-        float angle = Vector3.Angle(shootVector, spawnPoint.transform.forward);
+        Vector3 shootVector = target - spawnPoint.position;
+        float angle = Vector3.Angle(shootVector, baseForward);
         bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
         return shootVector.magnitude < MaxRange && isValidAngle;
     }
@@ -111,8 +126,8 @@ public class WeaponManager : Post
         {
             return;
         }
-        var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab, 
-            spawnPoint.position, 
+        var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab,
+            spawnPoint.position,
             spawnPoint.rotation);
 
         if (TMP_followTarget) {
@@ -120,12 +135,31 @@ public class WeaponManager : Post
         } else {
             TMP_DirectShoot(projectile, target);
         }
+        onShoot.Invoke();
         StartCoroutine(Reload());
     }
 
     override protected void _Use(Vector3 target)
     {
         ShootAt(target);
+    }
+
+    public void RotateToward(Vector3 target)
+    {
+        if (!canRotate || !employee)
+            return;
+        Vector3 forward = target - transform.position;
+        forward.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(forward, Vector3.up);
+
+        if (Quaternion.Angle(targetRotation, baseRotation) <= maxAngle) {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        } else {
+            if (transform.InverseTransformDirection(forward).x < 0)
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(-maxAngle, Vector3.up), Time.deltaTime * rotationSpeed);
+            else
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(maxAngle, Vector3.up), Time.deltaTime * rotationSpeed);
+        }
     }
 
 }
