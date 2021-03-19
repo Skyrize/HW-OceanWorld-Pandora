@@ -21,6 +21,10 @@ MonoBehaviour:
     count: 10
   - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
     count: 3
+  - item: {fileID: 11400000, guid: 3fc26f40c0164aa4088671f542d4952d, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: c0eb82b8eaa9b3d4e91a63f0757d982b, type: 2}
+    count: 1000
   TotalWeight: 2807
   maxCrewSize: 2
   crewMembers:
