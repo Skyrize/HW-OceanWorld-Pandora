@@ -25,6 +25,7 @@ public class Post : MonoBehaviour
     WaitForSeconds timer;
 
     private void Awake() {
+        hireTime = 0;
         timer = new WaitForSeconds(hireTime);
     }
 

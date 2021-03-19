@@ -1180,11 +1180,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
         type: 3}
-      propertyPath: TMP_followTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
-        type: 3}
       propertyPath: onShoot.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

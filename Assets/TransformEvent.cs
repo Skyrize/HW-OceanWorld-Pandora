@@ -9,5 +9,6 @@ public class TransformEvent : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = y;
         transform.position = pos;
+        transform.rotation = Quaternion.identity;
     }
 }
