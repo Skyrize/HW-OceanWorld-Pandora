@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7753297596692932474}
   - component: {fileID: 2076262356569981363}
   - component: {fileID: 9015481646860659300}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: DialogueSummoner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
   dialogue: 3
+  boat: {fileID: 0}
   merchant: {fileID: 0}
   suit: {fileID: 0}
   inventoryHolder: {fileID: 0}
