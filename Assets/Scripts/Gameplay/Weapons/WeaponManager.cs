@@ -67,12 +67,14 @@ public class WeaponManager : Post
     GameObject parent = null;
     void Start()
     {
-        parent = GetComponentInParent<HealthComponent>().gameObject;
-        cam = Camera.main;
-        baseRotation = transform.localRotation;
-        baseForward = transform.parent.InverseTransformDirection(spawnPoint.forward);
-        maxRotationLeft = Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
-        maxRotationRight = Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
+        if (parent) {
+            parent = GetComponentInParent<HealthComponent>().gameObject;
+            cam = Camera.main;
+            baseRotation = transform.localRotation;
+            baseForward = transform.parent.InverseTransformDirection(spawnPoint.forward);
+            maxRotationLeft = Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
+            maxRotationRight = Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
+        }
     }
 
     IEnumerator Reload()

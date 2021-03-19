@@ -35,9 +35,9 @@ Material:
     - _ChromaticAberration: 0.1
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Depth: 0.0025
+    - _Depth: 0.0020833334
     - _Depth1: 2
-    - _DepthRange: 0.457
+    - _DepthRange: 0.914
     - _DepthRange1: 0
     - _DepthRange2: 0.761
     - _Dist: 0.04
@@ -56,7 +56,7 @@ Material:
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
     - _ScaleNoise: 0.1
-    - _SizeFoam: 0.002857143
+    - _SizeFoam: 0.0014285715
     - _Specular: 0.2
     - _Speed: 0.2
     - _SrcBlend: 1
