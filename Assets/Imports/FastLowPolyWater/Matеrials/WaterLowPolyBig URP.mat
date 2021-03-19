@@ -35,7 +35,7 @@ Material:
     - _ChromaticAberration: 0.1
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Depth: 3
+    - _Depth: 0.0025
     - _Depth1: 2
     - _DepthRange: 0.457
     - _DepthRange1: 0
