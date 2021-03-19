@@ -44,8 +44,8 @@ public class CrewUI : MonoBehaviour
     {
         if (itemPlacer.CurrentItem != null) {
             itemPlacer.CurrentItem = null;
-            itemPlacer.Mode = PlacerToolMode.NONE;
         }
+        itemPlacer.Mode = PlacerToolMode.NONE;
         Cursor.SetCursor(crewMember.icon.texture, Vector2.zero, CursorMode.Auto);
         currentCrewMember = crewMember;
         // InputManager.Instance.AddMouseButtonEvent(MouseButtonType.RIGHT_BUTTON, PressType.DOWN, UnselectCrewMember);

@@ -1687,6 +1687,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15394a5cb9fa87443b9d3b4ac0bcbf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlace:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7086124741189084939}
+        m_MethodName: BuildUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRemove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7086124741189084939}
+        m_MethodName: BuildUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rotationSpeed: 180
   placableMask:
     serializedVersion: 2

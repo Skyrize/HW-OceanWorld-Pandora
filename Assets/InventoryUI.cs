@@ -21,6 +21,8 @@ public class InventoryUI : MonoBehaviour
 
     public void BuildUI()
     {
+        if (itemsBarContent.transform.childCount != 0)
+            ClearUI();
         foreach (InventoryStorage stored in playerInventory.items)
         {
             ItemUI itemUI = GameObject.Instantiate(itemUIPrefab, itemsBarContent).GetComponent<ItemUI>(); // TODO: easy but dirty. Maybe add them along when adding to inventory

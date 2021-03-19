@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum PlacerToolMode
 {
@@ -12,9 +13,9 @@ public enum PlacerToolMode
 public class ItemPlacer : MonoBehaviour
 {
     //TODO : maybe implement to replace static ref
-    // [Header("Events")]
-    // [SerializeField] public ItemEvent onPlace = new ItemEvent();
-    // [SerializeField] public ItemEvent onRemove = new ItemEvent();
+    [Header("Events")]
+    [SerializeField] public UnityEvent onPlace = new UnityEvent();
+    [SerializeField] public UnityEvent onRemove = new UnityEvent();
     [Header("Settings")]
     [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] protected LayerMask placableMask = 1;
@@ -154,6 +155,7 @@ public class ItemPlacer : MonoBehaviour
         }
         player.weaponry.weapons.Add(weapon.GetComponent<WeaponManager>());
         postManagerUI.AddPost(weapon.GetComponent<WeaponManager>());
+        onPlace.Invoke();
     }
 
     //TODO : move to anotherScript
@@ -162,6 +164,7 @@ public class ItemPlacer : MonoBehaviour
         placableInventoryUI.RemoveItem(weapon.GetComponent<ItemObject>().Item);
         player.weaponry.weapons.Remove(weapon.GetComponent<WeaponManager>());
         postManagerUI.RemovePost(weapon.GetComponent<WeaponManager>());
+        onRemove.Invoke();
     }
 
     public void PlaceFromGhost()
