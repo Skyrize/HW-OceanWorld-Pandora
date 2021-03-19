@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public static class GameObjectExtension {
     public static void SetColor(this GameObject gameObject, Color color)
     {
@@ -45,6 +46,15 @@ public static class GameObjectExtension {
         foreach (var col in childColliders)
         {
             col.enabled = activated;
+        }
+    }
+
+    public static void Suicide(this GameObject gameObject)
+    {
+        if (Application.isPlaying) {
+            GameObject.Destroy(gameObject);
+        } else {
+            GameObject.DestroyImmediate(gameObject);
         }
     }
 }

@@ -40,13 +40,20 @@ public class WeaponManager : Post
     [SerializeField] public UnityEvent onShoot = new UnityEvent();
     [Header("References")]
     [HideInInspector] protected Weapon weaponAsset;
-    [SerializeField] public Transform spawnPoint = null;
+    [SerializeField] protected Transform spawnPoint = null;
     [Header("Runtime")]
     [SerializeField] bool reloaded = true;
     [HideInInspector] protected Inventory inventory;
     private WaitForSeconds reloadTimer = null;
     private Quaternion baseRotation = Quaternion.identity;
+    public Quaternion BaseRotation => transform.parent.rotation * baseRotation;
     private Vector3 baseForward = Vector3.zero;
+    public Vector3 BaseForward => transform.parent.TransformDirection(baseForward);
+    public Vector3 BasePosition => spawnPoint.position;
+    private Quaternion maxRotationLeft = Quaternion.identity;
+    private Quaternion maxRotationRight = Quaternion.identity;
+    public Quaternion MaxRotationLeft => Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
+    public Quaternion MaxRotationRight => Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
 
     private void Awake() {
         weaponAsset = GetComponent<ItemObject>().Item as Weapon;
@@ -59,8 +66,11 @@ public class WeaponManager : Post
     void Start()
     {
         cam = Camera.main;
-        baseRotation = transform.rotation;
-        baseForward = spawnPoint.forward;
+        baseRotation = transform.localRotation;
+        baseForward = transform.parent.InverseTransformDirection(spawnPoint.forward);
+        Debug.Log($"base rot{baseRotation.ToString()}");
+        maxRotationLeft = Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
+        maxRotationRight = Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
     }
 
     IEnumerator Reload()
@@ -115,7 +125,7 @@ public class WeaponManager : Post
     public bool isValidTarget(Vector3 target)
     {
         Vector3 shootVector = target - spawnPoint.position;
-        float angle = Vector3.Angle(shootVector, baseForward);
+        float angle = Vector3.Angle(shootVector, BaseForward);
         bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
         return shootVector.magnitude < MaxRange && isValidAngle;
     }
@@ -152,13 +162,13 @@ public class WeaponManager : Post
         forward.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(forward, Vector3.up);
 
-        if (Quaternion.Angle(targetRotation, baseRotation) <= maxAngle) {
+        if (Quaternion.Angle(targetRotation, BaseRotation) <= maxAngle) {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         } else {
             if (transform.InverseTransformDirection(forward).x < 0)
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(-maxAngle, Vector3.up), Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationLeft, Time.deltaTime * rotationSpeed);
             else
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(maxAngle, Vector3.up), Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationRight, Time.deltaTime * rotationSpeed);
         }
     }
 

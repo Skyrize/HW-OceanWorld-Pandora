@@ -31,9 +31,9 @@ public class AIFireControl : MonoBehaviour
             {
                 continue;
             }
-            Vector3 originPos = weapon.spawnPoint.transform.position;
+            Vector3 originPos = weapon.BasePosition;
             originPos.y = 0f;
-            Vector3 originForward = weapon.spawnPoint.transform.forward;
+            Vector3 originForward = weapon.BaseForward;
             List<Vector3> testedDirection = new List<Vector3>() {
                 originForward,
                 Quaternion.AngleAxis(-weapon.maxAngle, Vector3.up) * originForward,
@@ -63,6 +63,7 @@ public class AIFireControl : MonoBehaviour
     {
         if (shouldFire())
         {
+            weaponery.RotateToward(vision.lastKnownPlayerPos.Value);
             handleFire();
         }
     }

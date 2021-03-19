@@ -42,11 +42,13 @@ public class Projectile : MonoBehaviour
             health.ReduceHealth(ammunitionAsset.Damages);
         }
         onHit.Invoke();
+        Kill();
     }
 
     private void Update() {
         if (transform.position.y < 0) {
             onTouchWater.Invoke();
+            Kill();
         }
     }
 }
