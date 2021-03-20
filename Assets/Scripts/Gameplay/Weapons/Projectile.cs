@@ -36,12 +36,10 @@ public class Projectile : MonoBehaviour
     {
         HealthComponent health = target.GetComponentInParent<HealthComponent>();
 
-        if (parent == health.gameObject) {
-            return;
-        } else {
-            Debug.Log($"parent {parent.name} != target {target.name}");
-        }
         if (health) {
+            if (parent == health.gameObject) {
+                return;
+            }
             health.ReduceHealth(ammunitionAsset.Damages);
         }
         onHit.Invoke();

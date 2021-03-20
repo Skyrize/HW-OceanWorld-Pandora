@@ -44,7 +44,7 @@ MonoBehaviour:
   useTagFilter: 0
   useLayerFilter: 0
   useComponentFilter: 0
-  useParentComponentFilter: 1
+  useParentComponentFilter: 0
   useChildComponentFilter: 0
   tags: []
   layerMask:
@@ -113,6 +113,7 @@ MonoBehaviour:
           m_StringArgument: Destroy
           m_BoolArgument: 0
         m_CallState: 2
+  parent: {fileID: 0}
 --- !u!114 &4425507846150460328
 MonoBehaviour:
   m_ObjectHideFlags: 0
