@@ -21,7 +21,8 @@ public class Merchant : MonoBehaviour
     {  
         if (inventoryMerchant != null)
             inventoryMerchant = ClonableSO.Clone(inventoryMerchant);
-        if (prefabUI.activeInHierarchy) prefabUI.SetActive(false);
+        else 
+            prefabUI.SetActive(false);
     }
 
     public void EnterInMerchant() 
