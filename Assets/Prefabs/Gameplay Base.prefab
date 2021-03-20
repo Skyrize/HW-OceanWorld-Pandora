@@ -2898,7 +2898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7228f98ed9d0a8f4bb73cb7ad5bee784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 5
+  scrollSpeed: 10
   zoomMin: 1
   zoomMax: 25
   cam: {fileID: 1512858540162488478}
