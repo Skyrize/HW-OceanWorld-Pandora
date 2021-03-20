@@ -9,9 +9,19 @@ enum FireSide
     FRONT,
 }
 
+[System.Serializable]
+public enum AttackType
+{
+    ORBIT_ATTACK,
+    FRONTAL_ATTACK,
+    SIDE_ATTACK
+}
+
 public class AttackOnSide : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] protected bool debug = true;
+    [SerializeField] protected AttackType attackType = AttackType.SIDE_ATTACK;
     [SerializeField] protected float attackRange = 5;
     public bool FIRE_RIGHT = true;
     public bool FIRE_LEFT = true;
@@ -24,6 +34,66 @@ public class AttackOnSide : MonoBehaviour
 
     public readonly float updateRate = 0.5f;
     private float updateTimeout = 0f;
+
+    void SetFrontAttack()
+    {
+        Vector3 targetPos = vision.lastKnownPlayerPos.Value;
+        Vector3 aimDirection = (transform.position - targetPos).normalized;
+        float dot = Vector3.Dot(-aimDirection, transform.forward);
+        Vector3 aimPos;
+
+        if (dot < 0.8f) {
+            aimPos = targetPos + aimDirection * attackRange * 3;
+
+        } else {
+            aimPos = targetPos + aimDirection * attackRange;
+        }
+        if (debug) Debug.DrawLine(aimPos, aimPos + Vector3.up * 100f, Color.magenta, updateRate);
+        controller.setTarget(aimPos);
+    }
+
+    void SetOrbitAttack()
+    {
+        Vector3 targetPos = vision.lastKnownPlayerPos.Value;
+        Vector3 aimDirection = (transform.position - targetPos).normalized;
+        Vector3 aimPos = targetPos + aimDirection * attackRange;
+
+        if (debug) Debug.DrawLine(aimPos, aimPos + Vector3.up * 100f, Color.magenta, updateRate);
+        controller.setTarget(aimPos);
+    }
+
+    void SetSideAttack()
+    {
+        Vector3 targetPos = vision.lastKnownPlayerPos.Value;
+        Vector3 targetRight = vision.lastKnownPlayerRight.Value;
+        Vector3 targetForward = vision.lastKnownPlayerForward.Value;
+        Vector3 rightPoint = Vector3.zero;
+        Vector3 leftPoint = Vector3.zero;        
+        
+        float dot = Vector3.Dot(targetForward, transform.forward);
+        if (dot >= 0.5f || dot <= -0.5f) { // Coming from front or back
+            rightPoint = targetPos + targetRight * attackRange;
+            leftPoint = targetPos - targetRight * attackRange;
+        } else { // coming from left or right
+            rightPoint = targetPos + targetForward * attackRange;
+            leftPoint = targetPos - targetForward * attackRange;
+        }
+
+        Vector3 leftDir = leftPoint - transform.position;
+        Vector3 rightDir = rightPoint - transform.position;
+
+        float dotLeft = Vector3.Dot(leftDir.normalized, transform.forward);
+        float dotRight = Vector3.Dot(rightDir.normalized, transform.forward);
+
+        if (dotLeft > dotRight) {
+            if (debug) Debug.DrawLine(rightPoint, rightPoint + Vector3.up * 100f, Color.magenta, updateRate);
+            controller.setTarget(leftPoint);
+        } else {
+            if (debug) Debug.DrawLine(leftPoint, leftPoint + Vector3.up * 100f, Color.magenta, updateRate);
+            controller.setTarget(rightPoint);
+        }
+
+    }
 
     void updateStartegy()
     {
@@ -41,58 +111,18 @@ public class AttackOnSide : MonoBehaviour
             selectedSide = FireSide.LEFT;
         }
         
-
-        Vector3 offset = Quaternion.AngleAxis(-90, Vector3.up) * vision.lastKnownPlayerForward.Value * 5;
-        // if (selectedSide == FireSide.LEFT) offset *= -1;
-        // Vector3 targetPos = transform.TransformPoint(relativePlayersPos) + offset;
-        Vector3 targetPos = vision.lastKnownPlayerPos.Value;
-        Vector3 targetRight = vision.lastKnownPlayerRight.Value;
-        Vector3 targetForward = vision.lastKnownPlayerForward.Value;
-        Vector3 rightPoint = Vector3.zero;
-        Vector3 leftPoint = Vector3.zero;        
-        
-        float dot = Vector3.Dot(targetForward, transform.forward);
-        if (dot >= 0.5f || dot <= -0.5f) { // Coming from front or back
-            rightPoint = targetPos + targetRight * attackRange;
-            leftPoint = targetPos - targetRight * attackRange;
-        } else { // coming from left or right
-            rightPoint = targetPos + targetForward * attackRange;
-            leftPoint = targetPos - targetForward * attackRange;
+        switch (attackType)
+        {
+            case AttackType.FRONTAL_ATTACK:
+            SetFrontAttack();
+            break;
+            case AttackType.ORBIT_ATTACK:
+            SetOrbitAttack();
+            break;
+            case AttackType.SIDE_ATTACK:
+            SetSideAttack();
+            break;
         }
-
-
-        Vector3 leftDir = leftPoint - transform.position;
-        Vector3 rightDir = rightPoint - transform.position;
-
-        //Debug
-        // Vector3 pos = transform.position + Vector3.up * 5;
-        // Debug.DrawLine(pos, pos + leftDir, Color.blue, updateRate);
-        // Debug.DrawLine(pos, pos + rightDir, Color.red, updateRate);
-        // Debug.DrawLine(pos, pos + transform.forward * 5, Color.yellow, updateRate);
-
-        //TODO : si on arrive sur le côté -> viser avant ou arrière
-        // Si on arrive sur l'avant ou l'arrière, viser droite ou gauche
-
-        float dotLeft = Vector3.Dot(leftDir.normalized, transform.forward);
-        float dotRight = Vector3.Dot(rightDir.normalized, transform.forward);
-
-        if (dotLeft > dotRight) {
-            Debug.DrawLine(rightPoint, rightPoint + Vector3.up * 100f, Color.magenta, updateRate);
-            controller.setTarget(leftPoint);
-        } else {
-            Debug.DrawLine(leftPoint, leftPoint + Vector3.up * 100f, Color.magenta, updateRate);
-            controller.setTarget(rightPoint);
-        }
-        // if (transform.InverseTransformPoint(targetPos).x > 0) {
-        //     Debug.DrawLine(rightPoint, rightPoint + Vector3.up * 100f, Color.magenta, updateRate);
-        //     Debug.DrawLine(leftPoint, leftPoint + Vector3.up * 100f, Color.cyan, updateRate);
-        //     controller.setTarget(leftPoint);
-        // } else {
-        //     Debug.DrawLine(rightPoint, rightPoint + Vector3.up * 100f, Color.cyan, updateRate);
-        //     Debug.DrawLine(leftPoint, leftPoint + Vector3.up * 100f, Color.magenta, updateRate);
-        //     controller.setTarget(rightPoint);
-        // }
-
     }
 
     void Update()

@@ -33,6 +33,18 @@ public static class GameObjectExtension {
         }
         return colors;
     }
+    public static Color[] GetSharedColors(this GameObject gameObject)
+    {
+        MeshRenderer[] meshes = gameObject.GetComponentsInChildren<MeshRenderer>();
+        if (meshes.Length == 0)
+            return null;
+        Color[] colors = new Color[meshes.Length];
+
+        for (int i = 0; i != meshes.Length; i++) {
+            colors[i] = meshes[i].sharedMaterial.color;
+        }
+        return colors;
+    }
 
     public static void SetCollisionActive(this GameObject gameObject, bool activated)
     {
