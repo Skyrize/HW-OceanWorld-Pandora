@@ -25,7 +25,7 @@ public class PostUI : MonoBehaviour
     private void Start() {
         if (CurrentPost) {
             meshTransform = CurrentPost.transform.Find("Mesh");
-            tmpColors = meshTransform.gameObject.GetColors();
+            tmpColors = CurrentPost.originPrefab.transform.Find("Mesh").gameObject.GetSharedColors();
         }
         button.onSelect.AddListener(this.Select);
         button.onUnselect.AddListener(this.Free);

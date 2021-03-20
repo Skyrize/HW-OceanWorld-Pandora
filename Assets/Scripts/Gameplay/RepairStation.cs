@@ -25,7 +25,8 @@ public class RepairStation : Post
     
     private WaitForSeconds repairTimer = null;
 
-    private void Awake() {
+    override public void Awake() {
+        base.Awake();
         repairTimer = new WaitForSeconds(repairTime);
         parentHealth = GetComponentInParent<HealthComponent>();
     }

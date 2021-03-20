@@ -279,7 +279,7 @@ public class ItemPlacer : MonoBehaviour
             currentRemovable = value;
         }
     }
-    Color[] tmpColors;
+    public Color[] tmpColors;
 
     void FocusRemovableItem(GameObject item)
     {
@@ -289,8 +289,9 @@ public class ItemPlacer : MonoBehaviour
     }
     void UnfocusRemovableItem()
     {
-        if (CurrentRemovable)
-            CurrentRemovable.SetColors(tmpColors);
+        if (!CurrentRemovable)
+            return;
+        CurrentRemovable.SetColors(tmpColors);
         CurrentRemovable = null;
     }
 

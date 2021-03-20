@@ -17,6 +17,7 @@ public class Post : MonoBehaviour
     [SerializeField] public UnityEvent onHire = new UnityEvent();
     [SerializeField] public UnityEvent onFire = new UnityEvent();
     [Header("References")]
+    public GameObject originPrefab = null;
     [SerializeField] protected CrewMember employee = null;
     [SerializeField] public CrewMember Employee => employee;
     [SerializeField] protected Transform postPlace = null;
@@ -24,9 +25,10 @@ public class Post : MonoBehaviour
 
     WaitForSeconds timer;
 
-    private void Awake() {
+    virtual public void Awake() {
         hireTime = 0;
         timer = new WaitForSeconds(hireTime);
+        originPrefab = GetComponent<ItemObject>().Item.Prefab;
     }
 
     IEnumerator _SetEmployee(CrewMember newEmployee)
