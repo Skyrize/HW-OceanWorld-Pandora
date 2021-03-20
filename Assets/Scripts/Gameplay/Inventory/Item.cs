@@ -25,7 +25,7 @@ public class Item : ClonableSO
     [SerializeField] protected Sprite icon;
     public Sprite Icon => icon;
 
-    protected string _name = "default";
+    [SerializeField] protected string _name = "default";
     public string Name => _name;
 
     public bool Equals(Item other)
@@ -61,6 +61,10 @@ public class Item : ClonableSO
         clone._name = this.Name;
         return clone;
     }
-    
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 
 }

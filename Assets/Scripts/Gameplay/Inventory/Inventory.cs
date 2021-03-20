@@ -22,6 +22,11 @@ public class InventoryStorage {
     public InventoryStorage()
     {
     }
+
+    public override string ToString()
+    {
+        return $"{item.ToString()}]x{count}";
+    }
 }
 
 [CreateAssetMenu(menuName = "Inventory/Basic")]
@@ -104,6 +109,18 @@ public class Inventory : ClonableSO
                 result.Add(stored);
             }
         }
+        return result;
+    }
+
+    override public string ToString()
+    {
+        string result = "";
+
+        foreach (var store in items)
+        {
+            result += $"[{store.ToString()}]\n";
+        }
+
         return result;
     }
 
