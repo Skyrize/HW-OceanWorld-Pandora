@@ -15,13 +15,18 @@ public class Merchant : MonoBehaviour
     public MerchantUI merchantUI;
     public PauseManager pauseManager;
 
+    public static int goldModifier = 5;
+    public static int woodModifier = 15;
+    public static int scrapsModifier = 10;
+
     private static bool loadedScene;
 
     private void Awake()
     {  
         if (inventoryMerchant != null)
             inventoryMerchant = ClonableSO.Clone(inventoryMerchant);
-        if (prefabUI.activeInHierarchy) prefabUI.SetActive(false);
+        else 
+            prefabUI.SetActive(false);
     }
 
     public void EnterInMerchant() 
@@ -73,5 +78,17 @@ public class Merchant : MonoBehaviour
         }
 
         merchantUI.BuildUI();
+    }
+
+    public void UpgradeBoatPlayer()
+    {
+        int boatNextLevel = player.LevelBoat + 1;
+        if (goldModifier * boatNextLevel <= player.inventory.Money
+            && scrapsModifier * boatNextLevel <= player.inventory.CountItem("Scraps Item")
+            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank Item"))
+        {
+            player.Upgrade();
+            merchantUI.BuildUI();
+        }
     }
 }

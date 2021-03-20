@@ -25,4 +25,7 @@ MonoBehaviour:
     count: 20
   TotalWeight: 0
   tradableItems: []
-  priceModifier: 0
+  priceModifier: 5
+  goldModifier: 5
+  woodModifier: 15
+  scrapsModifier: 10

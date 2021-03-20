@@ -6,5 +6,6 @@ using UnityEngine;
 public class MerchantInventory : Inventory
 {
     public List<Item> tradableItems = new List<Item>();
+    [Header("Price modifier for items")]
     public float priceModifier;
 }

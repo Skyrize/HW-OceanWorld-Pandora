@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 [System.Serializable]
 public class InventoryStorageEvent : UnityEvent<InventoryStorage>
@@ -86,7 +87,12 @@ public class Inventory : ClonableSO
 
     public InventoryStorage GetStoredItem(Item item)
     {
-        return items.Find((stored) => { return item.Equals(stored.item); });;
+        return items.Find((stored) => { return item.Equals(stored.item); });
+    }
+
+    public uint CountItem(string name)
+    {
+        return items.Find((stored) => { return name.Equals(stored.item.Name); }).count;
     }
 
     override protected ClonableSO Clone()
