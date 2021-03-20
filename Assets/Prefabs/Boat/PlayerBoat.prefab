@@ -28,6 +28,7 @@ MonoBehaviour:
   controlPost: {fileID: 191146276743181956}
   repairStation: {fileID: 1597730403951379663}
   inventory: {fileID: 0}
+  boatMeshes: []
 --- !u!114 &2388268006660514486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryHolder: {fileID: 421174612580693261}
-  LowAmmoText: {fileID: 0}
+  AmmoText: {fileID: 0}
   LowAmmoThreshold: 5
   NoAmmoGradient:
     serializedVersion: 2
@@ -145,6 +146,7 @@ MonoBehaviour:
   onExit:
     m_PersistentCalls:
       m_Calls: []
+  LastCollisionLocation: {x: 0, y: 0, z: 0}
 --- !u!1001 &347114358618626661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,11 +278,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
-      propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
-        type: 3}
       propertyPath: events.Array.data[1].evt.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -288,11 +285,6 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[2].evt.m_PersistentCalls.m_Calls.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
-        type: 3}
-      propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
@@ -334,11 +326,6 @@ PrefabInstance:
       propertyPath: events.Array.data[2].evt.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1909906539764042456}
-    - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
-        type: 3}
-      propertyPath: events.Array.data[0].evt.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2584758412130715173, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: events.Array.data[1].evt.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
