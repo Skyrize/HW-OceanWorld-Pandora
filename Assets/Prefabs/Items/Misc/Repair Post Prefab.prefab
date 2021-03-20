@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d166264d2928d9a4c817769fc58c7759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hireTime: 1
+  hireTime: 0
   onHire:
     m_PersistentCalls:
       m_Calls: []
@@ -22,18 +22,16 @@ MonoBehaviour:
   employee: {fileID: 0}
   postPlace: {fileID: 3927295241128716738}
   working: 0
-  repairTime: 1
+  repairTime: 3
   repairAmount: 10
   consumeQuantity: 1
-  onRepair:
-    m_PersistentCalls:
-      m_Calls: []
   onMissingResource:
     m_PersistentCalls:
       m_Calls: []
   inventoryHolder: {fileID: 0}
   consumedItem: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
   repairing: 0
+  parentHealth: {fileID: 0}
 --- !u!1001 &4135046912123324755
 PrefabInstance:
   m_ObjectHideFlags: 0
