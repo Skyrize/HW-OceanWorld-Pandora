@@ -7,6 +7,8 @@ public class Avoidance : MonoBehaviour
     [Header("Settings")]
     [Range(1f, 100f)]
     [SerializeField] protected float avoidanceRadius = 5f;
+    [SerializeField] protected float sleepSpeed = 0.1f;
+    [SerializeField] protected float blockCheckLength = 3f;
     [SerializeField] protected LayerMask collisionMask = 1;
     [SerializeField] protected bool debug = false;
 
@@ -44,6 +46,35 @@ public class Avoidance : MonoBehaviour
 
     //     return avoidanceMove;
     // }
+
+    public Vector3 GetReverseDirection()
+    {
+        Vector3 result = new Vector3(0.075f, 0, -1).normalized;
+        // Vector3 frontLeft = (transform.forward - transform.right).normalized;
+        // Vector3 frontRight = (transform.forward + transform.right).normalized;
+        // RaycastHit hitLeft;
+
+        // if (Physics.Raycast(transform.position, frontLeft, out hitLeft, blockCheckLength, collisionMask)) {
+        //     return true;
+        // }
+
+        // RaycastHit hitRight;
+
+        return result;
+    }
+
+    public bool IsBlocked()
+    {
+        bool result = false;
+
+        if (rb.velocity.magnitude < sleepSpeed) {
+            if (Physics.Raycast(transform.position, transform.forward, blockCheckLength, collisionMask)) {
+                return true;
+            }
+        }
+
+        return result;
+    }
 
     public Vector3 CalculateMove()
     {
@@ -138,6 +169,7 @@ public class Avoidance : MonoBehaviour
         {
             Gizmos.DrawWireSphere(item, .5f);
         }
+        Gizmos.DrawRay(transform.position, transform.forward * blockCheckLength);
 
 
     }

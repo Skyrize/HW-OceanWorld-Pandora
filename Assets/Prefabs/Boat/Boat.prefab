@@ -547,11 +547,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475b4244110fb984e9ac4a76f9b2390b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10
+  acceleration: 20
+  backwardAcceleration: 30
   maxSpeed: 10
-  steerSpeed: 6
+  steerSpeed: 20
   maxSteerAngle: 60
-  slideForce: 1
+  slideForce: 6
   rb: {fileID: 2299002694482284210}
   motor: {fileID: 2299002695325882044}
   controller: {fileID: 0}
@@ -629,7 +630,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 1
+            m_FloatArgument: 0.1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2

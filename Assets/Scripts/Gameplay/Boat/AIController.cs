@@ -124,8 +124,35 @@ public class AIController : Controller
         return direction;
     }
 
+    [SerializeField] private bool reverse = false;
+    [SerializeField] private float reverseTime = 1f;
+
+    WaitForSeconds timer = null;
+
+    private void Start() {
+        timer = new WaitForSeconds(reverseTime);
+    }
+
+    IEnumerator EndReverse()
+    {
+        yield return timer;
+        reverse = false;
+    }
+
+    void CheckReverse()
+    {
+        if (avoid.IsBlocked() && !reverse) {
+            reverse = true;
+            StartCoroutine(EndReverse());
+        }
+    }
+
     public override Vector3 getInput()
     {
+        CheckReverse();
+        if (reverse) {
+            return avoid.GetReverseDirection();
+        }
         if (destinationReached)
         {
             return new Vector3(0, 0, 0);

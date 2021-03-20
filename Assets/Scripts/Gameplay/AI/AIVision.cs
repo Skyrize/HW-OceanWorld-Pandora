@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AIVision : MonoBehaviour
@@ -13,6 +11,7 @@ public class AIVision : MonoBehaviour
     public Vector3? lastKnownPlayerRight { get; private set; } = null;
     public float timeSinceLastSeen { get; private set;  } = 0f;
     public bool seePlayer = false;
+    public LayerMask visionLayer = 1;
 
     public Transform viewPoint = null;
     private GameObject player;
@@ -37,12 +36,12 @@ public class AIVision : MonoBehaviour
     {
         timeSinceLastSeen += Time.deltaTime;
         Vector3 diff = player.transform.position - viewPoint.position;
-        diff.y = 0;
+        // diff.y = player.transform.position.y;
         if (diff.sqrMagnitude < squareVisionRange)
         {
             RaycastHit hit;
             if (debug) Debug.DrawRay(viewPoint.position, diff, Color.red, Time.deltaTime);
-            if (Physics.Raycast(viewPoint.position, diff, out hit, visionRange)
+            if (Physics.Raycast(viewPoint.position, diff, out hit, visionRange, visionLayer)
                 && hit.transform.gameObject.GetComponentInParent<Player>())
             {
                 lastKnownPlayerPos = player.transform.position;
@@ -51,7 +50,11 @@ public class AIVision : MonoBehaviour
                 lastKnownPlayerRight = player.transform.right;
                 timeSinceLastSeen = 0f;
                 seePlayer = true;
-            } else seePlayer = false;
+            } else {
+            seePlayer = false;
+            if (debug && hit.collider) Debug.Log($"{hit.collider.gameObject.name}");
+            }
+                
         }
     }
 

@@ -7,6 +7,7 @@ public class BoatController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected  float acceleration = 1;
+    [SerializeField] protected  float backwardAcceleration = 5;
     [SerializeField] public float maxSpeed = 10;
     [SerializeField] protected  float steerSpeed = 1;
     [SerializeField] protected  float maxSteerAngle = 10;
@@ -42,7 +43,8 @@ public class BoatController : MonoBehaviour
 
     void Move()
     {
-        Vector3 accelerationForce = motor.forward * input.y * acceleration;
+        Vector3 accelerationForce = motor.forward * input.y * (input.y >= 0 ? acceleration : backwardAcceleration);
+        Debug.Log($"AccelerationForce :{accelerationForce}");
 
         rb.AddForceAtPosition(accelerationForce, motor.position, ForceMode.Force);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
