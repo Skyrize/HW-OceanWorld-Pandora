@@ -67,7 +67,7 @@ public class WeaponManager : Post
     GameObject parent = null;
     void Start()
     {
-        if (parent) {
+        if (transform.parent) {
             parent = GetComponentInParent<HealthComponent>().gameObject;
             cam = Camera.main;
             baseRotation = transform.localRotation;
