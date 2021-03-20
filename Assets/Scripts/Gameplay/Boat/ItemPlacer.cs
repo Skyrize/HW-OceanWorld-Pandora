@@ -300,7 +300,7 @@ public class ItemPlacer : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit removeHit;
 
-        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask)) {
+        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask) && removeHit.collider.GetComponentInParent<Player>() != null) {
             if (CurrentRemovable != removeHit.collider.gameObject) {
                 UnfocusRemovableItem();
                 FocusRemovableItem(removeHit.collider.gameObject);
