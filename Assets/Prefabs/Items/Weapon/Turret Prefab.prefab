@@ -1170,8 +1170,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
         type: 3}
+      propertyPath: maxAngle
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
+        type: 3}
       propertyPath: canRotate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
+        type: 3}
+      propertyPath: baseVelocity
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7977880681690925130, guid: 742672000588b6149b379ff5d24ced77,
         type: 3}
