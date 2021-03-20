@@ -128,7 +128,9 @@ public class WeaponManager : Post
 
     public bool isValidTarget(Vector3 target)
     {
-        Vector3 shootVector = target - spawnPoint.position;
+        Vector3 pos = spawnPoint.position;
+        pos.y = target.y;
+        Vector3 shootVector = target - pos;
         float angle = Vector3.Angle(shootVector, BaseForward);
         bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
         return shootVector.magnitude < MaxRange && isValidAngle;
@@ -169,10 +171,11 @@ public class WeaponManager : Post
         if (Quaternion.Angle(targetRotation, BaseRotation) <= maxAngle) {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         } else {
-            if (transform.InverseTransformDirection(forward).x < 0)
-                transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationLeft, Time.deltaTime * rotationSpeed);
-            else
-                transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationRight, Time.deltaTime * rotationSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, BaseRotation, Time.deltaTime * rotationSpeed);
+            // if (transform.InverseTransformDirection(forward).x < 0)
+                // transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationLeft, Time.deltaTime * rotationSpeed);
+            // else
+                // transform.rotation = Quaternion.Lerp(transform.rotation, MaxRotationRight, Time.deltaTime * rotationSpeed);
         }
     }
 

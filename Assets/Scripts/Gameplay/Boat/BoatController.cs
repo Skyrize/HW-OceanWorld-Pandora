@@ -44,7 +44,6 @@ public class BoatController : MonoBehaviour
     void Move()
     {
         Vector3 accelerationForce = motor.forward * input.y * (input.y >= 0 ? acceleration : backwardAcceleration);
-        Debug.Log($"AccelerationForce :{accelerationForce}");
 
         rb.AddForceAtPosition(accelerationForce, motor.position, ForceMode.Force);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);

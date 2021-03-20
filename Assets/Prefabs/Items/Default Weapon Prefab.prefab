@@ -23,7 +23,7 @@ MonoBehaviour:
   postPlace: {fileID: 4988508562133050921}
   working: 0
   debug: 1
-  maxAngle: 30
+  maxAngle: 45
   TMP_followTarget: 1
   baseVelocity: 15
   canRotate: 0
