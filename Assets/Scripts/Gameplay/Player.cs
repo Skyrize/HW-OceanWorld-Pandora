@@ -58,9 +58,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private int upgrade = 0;
+    private int _upgrade = 1;
+    public int LevelBoat { get => _upgrade;}
     [SerializeField]
     private GameObject[] boatMeshes;
+
     public void Upgrade()
     {
         // TODO : change mesh Boat (upgrade),
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
         // TODO : Increase HP MAX
         // TODO : Increase max crew
         // TODO : repair boat
-        upgrade++;
+        _upgrade++;
     }
 
 
