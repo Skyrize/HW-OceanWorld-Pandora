@@ -26,4 +26,12 @@ public class FlamesManager : MonoBehaviour
             }
         }
     }
+
+    public void ReplaceFlames(Vector3[] placements) {
+        if (placements.Length != flames.Length)
+            throw new System.Exception("Placement length need to match flames length");
+        
+        for (int i = 0; i != placements.Length; i++)
+            flames[i].flame.transform.position = placements[i];
+    }
 }

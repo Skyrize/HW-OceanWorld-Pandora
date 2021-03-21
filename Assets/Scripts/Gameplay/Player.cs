@@ -65,11 +65,6 @@ public class Player : MonoBehaviour
 
     public void Upgrade()
     {
-        // TODO : change mesh Boat (upgrade),
-        // TODO : reset les posts
-        // TODO : Increase HP MAX
-        // TODO : Increase max crew
-        // TODO : repair boat
         _upgrade++;
     }
 

@@ -29,7 +29,7 @@ public class AIController : Controller
 
     private NavMeshPath path;
     // private int currentCornerIdx = 0;
-    private bool destinationReached = true;
+    [SerializeField] private bool destinationReached = true;
     private Vector3? lastTarget;
 
     // private DIRECTION rotatingSide = DIRECTION.NONE;
@@ -45,6 +45,7 @@ public class AIController : Controller
 
     bool HasArrived()
     {
+        Debug.Log(path.corners.Length);
         if (path.corners.Length == 0)
             return true;
         return (path.corners[path.corners.Length - 1] - transform.position).sqrMagnitude < squareStoppingDistance;
@@ -155,6 +156,7 @@ public class AIController : Controller
         }
         if (destinationReached)
         {
+            Debug.Log("Reached");
             return new Vector3(0, 0, 0);
         }
         Vector3 avoidanceInput = avoid.CalculateMove() * avoidWeight;
