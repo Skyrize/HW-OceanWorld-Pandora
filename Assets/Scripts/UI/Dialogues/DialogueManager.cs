@@ -40,6 +40,9 @@ public class DialogueManager : MonoBehaviour
                 case DialogueIdentifier.QUARTERMASTER:
                     ui.Summon("quartermaster", merchant.EnterInMerchant);
                     break;
+                case DialogueIdentifier.MERCHANT:
+                    ui.Summon("merchant", merchant.EnterInMerchant);
+                    break;
                 case DialogueIdentifier.INTRODUCTION:
                     ui.Summon("introduction", AddCrewMember);
                     break;
@@ -101,4 +104,5 @@ public enum DialogueIdentifier
     DOOR_BLOCKED,
     OLDS_SPEAKING,
     QUARTERMASTER,
+    MERCHANT,
 }
