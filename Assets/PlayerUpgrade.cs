@@ -57,6 +57,9 @@ public class PlayerUpgrade : MonoBehaviour
     void SetRipple()
     {
         motorRipple.localPosition = upgrades[currentUpgrade].motorPlacement;
+        if (currentUpgrade == 1)
+        upgrades[0].boatRipple.SetActive(false);
+
         if (boatRippleStart.activeInHierarchy) boatRippleStart.SetActive(false);
         upgrades[currentUpgrade].boatRipple.SetActive(true);
     }
