@@ -32,6 +32,6 @@ public class FlamesManager : MonoBehaviour
             throw new System.Exception("Placement length need to match flames length");
         
         for (int i = 0; i != placements.Length; i++)
-            flames[i].flame.transform.position = placements[i];
+            flames[i].flame.transform.localPosition = placements[i];
     }
 }

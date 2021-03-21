@@ -56,16 +56,16 @@ public class PlayerUpgrade : MonoBehaviour
 
     void SetRipple()
     {
-        motorRipple.position = upgrades[currentUpgrade].motorPlacement;
+        motorRipple.localPosition = upgrades[currentUpgrade].motorPlacement;
         if (boatRippleStart.activeInHierarchy) boatRippleStart.SetActive(false);
         upgrades[currentUpgrade].boatRipple.SetActive(true);
     }
 
     void SetPosts()
     {
-        motor.position = upgrades[currentUpgrade].motorPlacement;
-        controlPost.position = upgrades[currentUpgrade].controlPostPlacement;
-        repairStation.position = upgrades[currentUpgrade].repairStationPlacement;
+        motor.localPosition = upgrades[currentUpgrade].motorPlacement;
+        controlPost.localPosition = upgrades[currentUpgrade].controlPostPlacement;
+        repairStation.localPosition = upgrades[currentUpgrade].repairStationPlacement;
     }
 
     void SetAvoidance()
@@ -85,8 +85,10 @@ public class PlayerUpgrade : MonoBehaviour
         health.SetMaxHealth(upgrades[currentUpgrade].newHPMax); // In last for event invoke
     }
 
-    public void Upgrade()
+    public int Upgrade()
     {
+        if (currentUpgrade == upgrades.Length)
+            return currentUpgrade - 1;
         SetBoatMesh();
         SetFlames();
         SetRipple();
@@ -94,5 +96,7 @@ public class PlayerUpgrade : MonoBehaviour
         SetAvoidance();
         SetCrewSize();
         SetMaxHP();
+        currentUpgrade++;
+        return currentUpgrade;
     }
 }
