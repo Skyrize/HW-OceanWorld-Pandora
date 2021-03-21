@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8565db35df2f4458e18c013e9a9286, type: 3}
   m_Name: Suit
   m_EditorClassIdentifier: 
-  _name: Suit
+  _name: ???
   skills:
-  - {fileID: 11400000, guid: 67a0893fa9f1cb44787512524ed20fbd, type: 2}
+  - {fileID: 11400000, guid: f76b6e449e6d7434d877af2a38224c4e, type: 2}
   prefab: {fileID: 5671611193402473235, guid: f215118de66cd90478abe04b01c343f5, type: 3}
   icon: {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   currentPost: {fileID: 0}

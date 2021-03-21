@@ -13,13 +13,14 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Progress check")]
     public HealthComponent firstFoe;
+    public GameObject door;
     private bool ready = false;
 
     [Header("Merchant")]
     public Merchant merchant;
 
     [Header("Crew management")]
-    public CrewMember suit;
+    public CrewMember crew;
     public InventoryHolder inventoryHolder;
 
     private void Start()
@@ -34,16 +35,25 @@ public class DialogueManager : MonoBehaviour
             switch (dialogue)
             {
                 case DialogueIdentifier.SUIT_BACK:
-                    ui.Summon("merchant_1", OnSuitBroughtBack);
+                    ui.Summon("quarter_1", OnSuitBroughtBack);
                     break;
-                case DialogueIdentifier.MERCHANT:
-                    ui.Summon("merchant", merchant.EnterInMerchant);
+                case DialogueIdentifier.QUARTERMASTER:
+                    ui.Summon("quartermaster", merchant.EnterInMerchant);
                     break;
                 case DialogueIdentifier.INTRODUCTION:
-                    ui.Summon("introduction", AddSuitToCrew);
+                    ui.Summon("introduction", AddCrewMember);
+                    break;
+                case DialogueIdentifier.OLDS_SPEAKING:
+                    ui.Summon("olds_talking", () => Destroy(this));
+                    break;
+                case DialogueIdentifier.DOOR_BLOCKED:
+                    ui.Summon("door_blocked");
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
                     ui.Summon("first_fight", () => { crewManager.Enter(); Destroy(this); });
+                    break;
+                case DialogueIdentifier.RECRUIT_BATMAN:
+                    ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
@@ -52,6 +62,7 @@ public class DialogueManager : MonoBehaviour
             }
     }
 
+
     private void PrepareAfterFight(GameObject go)
     {
         GetComponent<ParticleSystem>().Stop();
@@ -59,12 +70,12 @@ public class DialogueManager : MonoBehaviour
         ready = true;
     }
 
-    private void AddSuitToCrew()
+    private void AddCrewMember()
     {
         try
         {
             ((PlayerInventory)inventoryHolder.inventory)
-                .AddCrewMember(suit);
+                .AddCrewMember(crew);
         }
         catch { print("must not forget to not give any crew member to player so suit doesnt overload the limit"); }
 
@@ -73,10 +84,10 @@ public class DialogueManager : MonoBehaviour
 
     private void OnSuitBroughtBack()
     {
-        dialogue = DialogueIdentifier.MERCHANT;
+        dialogue = DialogueIdentifier.QUARTERMASTER;
         ((PlayerInventory)inventoryHolder.inventory)
-            .RemoveCrewMember(suit);
-        ui.Summon("merchant_2", merchant.EnterInMerchant);
+            .RemoveCrewMember(crew);
+        ui.Summon("quarter_2", merchant.EnterInMerchant);
     }
 }
 
@@ -86,5 +97,8 @@ public enum DialogueIdentifier
     FIRST_FIGHT,
     AFTER_FIGHT,
     SUIT_BACK,
-    MERCHANT,
+    RECRUIT_BATMAN,
+    DOOR_BLOCKED,
+    OLDS_SPEAKING,
+    QUARTERMASTER,
 }
