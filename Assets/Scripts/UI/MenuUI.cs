@@ -6,23 +6,16 @@ using UnityEngine.SceneManagement;
 public class MenuUI : MonoBehaviour
 {
     public PauseManager pauseManager;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static bool isInMenu;
 
     public void EnterInMenu()
     {
-        pauseManager.Pause();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        if (!isInMenu)
+        {
+            pauseManager.Pause();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+            isInMenu = true;
+        }
     }
 
     public void ExitMenu()
@@ -35,6 +28,7 @@ public class MenuUI : MonoBehaviour
         }
         else
             UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1 copy");
+        isInMenu = false;
 
     }
 
