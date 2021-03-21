@@ -17,7 +17,7 @@ public class ScenesTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(healthPlayer.Health <= 90 && !isLoaded)
+        if(healthPlayer.Health <= 0 && !isLoaded)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene", LoadSceneMode.Additive);
             isLoaded = true;
