@@ -1345,9 +1345,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ExitMenu
+      - m_Target: {fileID: 625656673}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_MethodName: DisplayGoal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseManager: {fileID: 221084919}
   controlMenu: {fileID: 1478723304}
-  goalMenu: {fileID: 0}
+  goalMenu: {fileID: 1181434866}
   mainMenu: {fileID: 780866662}
 --- !u!114 &625656674
 MonoBehaviour:
@@ -3328,7 +3328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1181434867
 CanvasRenderer:
   m_ObjectHideFlags: 0
