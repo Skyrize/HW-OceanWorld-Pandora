@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
     public PauseManager pauseManager;
+    public GameObject controlMenu;
+    public GameObject goalMenu;
+    public GameObject mainMenu;
     public static bool isInMenu;
 
     public void EnterInMenu()
@@ -35,5 +36,18 @@ public class MenuUI : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void DisplayControls()
+    {
+        controlMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void MainMenu()
+    {
+        controlMenu.SetActive(false);
+        //goalMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }
