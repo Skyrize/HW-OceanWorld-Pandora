@@ -61,6 +61,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1376400266976002919, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862678169576859963, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862678169576859963, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955969804353525545, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.164
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955969804353525545, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975745192770363718, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.231
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975745192770363718, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 3548607261234545947, guid: 3d724fee9b70e4f4abb3018cc440689c,
         type: 3}
       propertyPath: m_RootOrder
@@ -120,6 +155,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Small AI Boat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947897934095112309, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947897934095112309, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784528007850245740, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784528007850245740, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d724fee9b70e4f4abb3018cc440689c, type: 3}

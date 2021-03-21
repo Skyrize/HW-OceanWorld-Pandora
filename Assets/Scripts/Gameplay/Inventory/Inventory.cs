@@ -81,7 +81,7 @@ public class Inventory : ClonableSO
         }
         
         if(ResourcePickupUI.Instance) {
-            ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");
+            ResourcePickupUI.Instance.PopMessage($"+{count} {item.Name}");
         }
     }
 
