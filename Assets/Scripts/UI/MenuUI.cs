@@ -9,6 +9,13 @@ public class MenuUI : MonoBehaviour
     public GameObject mainMenu;
     public static bool isInMenu;
 
+    private void Awake()
+    {
+        goalMenu.SetActive(false);
+        controlMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+    
     public void EnterInMenu()
     {
         if (!isInMenu)
@@ -44,10 +51,16 @@ public class MenuUI : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
+    public void DisplayGoal()
+    {
+        goalMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
     public void MainMenu()
     {
         controlMenu.SetActive(false);
-        //goalMenu.SetActive(false);
+        goalMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 }
