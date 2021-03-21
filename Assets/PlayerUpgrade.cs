@@ -7,6 +7,7 @@ public class Upgrade {
     public string name = "Default";
     public float newHPMax = 100f;
     public uint newCrewSize = 2;
+    public float acceleration = 15;
 
     public GameObject boatMesh;
 
@@ -40,6 +41,7 @@ public class PlayerUpgrade : MonoBehaviour
     public CapsuleCollider avoidanceCollider = null;
     public HealthComponent health = null;
     public InventoryHolder inventoryHolder = null;
+    public BoatController controller = null;
 
     int currentUpgrade = 0;
 
@@ -83,6 +85,11 @@ public class PlayerUpgrade : MonoBehaviour
         PlayerInventory inventory = inventoryHolder.inventory as PlayerInventory;
         inventory.maxCrewSize = upgrades[currentUpgrade].newCrewSize;
     }
+
+    void SetAcceleration()
+    {
+        controller.acceleration = upgrades[currentUpgrade].acceleration;
+    }
     void SetMaxHP()
     {
         health.SetMaxHealth(upgrades[currentUpgrade].newHPMax); // In last for event invoke
@@ -98,6 +105,7 @@ public class PlayerUpgrade : MonoBehaviour
         SetPosts();
         SetAvoidance();
         SetCrewSize();
+        SetAcceleration();
         SetMaxHP();
         currentUpgrade++;
         return currentUpgrade;

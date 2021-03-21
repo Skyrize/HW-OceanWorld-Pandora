@@ -16,6 +16,7 @@ MonoBehaviour:
   - name: Medium
     newHPMax: 200
     newCrewSize: 5
+    acceleration: 20
     boatMesh: {fileID: 8163180137080054021, guid: a6543979852665244a37c150548883a8,
       type: 3}
     motorPlacement: {x: 0, y: 0, z: -2.25}
@@ -33,6 +34,7 @@ MonoBehaviour:
   - name: Large
     newHPMax: 300
     newCrewSize: 9
+    acceleration: 25
     boatMesh: {fileID: 5515841281939669226, guid: 64992b7931f3b5c4fa32cdbfa4193147,
       type: 3}
     motorPlacement: {x: 0, y: 0, z: -2.7}
@@ -57,6 +59,7 @@ MonoBehaviour:
   avoidanceCollider: {fileID: 6619410819780176568}
   health: {fileID: 1550443074302614171}
   inventoryHolder: {fileID: 421174612580693261}
+  controller: {fileID: 1960895900246004948}
 --- !u!114 &1875295820042714056
 MonoBehaviour:
   m_ObjectHideFlags: 0

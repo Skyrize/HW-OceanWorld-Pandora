@@ -60,8 +60,8 @@ public class Player : MonoBehaviour
             crewMember.Update();
         }
 
-        // if (Input.GetKeyDown(KeyCode.U))
-        //     Upgrade();
+        if (Input.GetKeyDown(KeyCode.U))
+            Upgrade();
     }
 
     private int _upgrade = 1;
