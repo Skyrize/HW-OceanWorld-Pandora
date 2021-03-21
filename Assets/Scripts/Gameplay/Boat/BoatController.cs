@@ -77,6 +77,8 @@ public class BoatController : MonoBehaviour
     void Float()
     {
         rb.centerOfMass = Vector3.zero;
+        var rot = rb.rotation.eulerAngles;
+        rb.rotation = Quaternion.Euler(0, rot.y, 0);
         // Vector3 rectify = transform.position;
         // rectify.y = 0;
         // transform.position = rectify;
