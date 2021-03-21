@@ -101,6 +101,7 @@ MonoBehaviour:
   controlPost: {fileID: 191146276743181956}
   repairStation: {fileID: 1597730403951379663}
   inventory: {fileID: 0}
+  _upgrade: 0
 --- !u!114 &2388268006660514486
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,12 +64,12 @@ public class Player : MonoBehaviour
             Upgrade();
     }
 
-    public int _upgrade = 0;
+    int _upgrade = 1;
     public int LevelBoat { get => _upgrade;}
 
     public void Upgrade()
     {
-        _upgrade = upgrader.Upgrade();
+        _upgrade = upgrader.Upgrade() + 1;
     }
 
 

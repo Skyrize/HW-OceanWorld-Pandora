@@ -98,7 +98,7 @@ public class PlayerUpgrade : MonoBehaviour
     public int Upgrade()
     {
         if (currentUpgrade == upgrades.Length)
-            return currentUpgrade - 1;
+            return currentUpgrade;
         SetBoatMesh();
         SetFlames();
         SetRipple();
