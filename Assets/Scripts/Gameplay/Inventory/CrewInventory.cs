@@ -22,12 +22,22 @@ public class CrewInventory : Inventory
 
     public void AddCrewMember(CrewMember newCrewMember)
     {
-        if (crewMembers.Count == maxCrewSize) {
+        if (crewMembers.Count == maxCrewSize)
+        {
             throw new System.Exception($"You have reached your max crew capacity '{maxCrewSize}'.");
         }
-        if (crewMembers.Find(crewMember => crewMember.Name == newCrewMember.Name)) {
+        if (crewMembers.Find(crewMember => crewMember.Name == newCrewMember.Name))
+        {
             throw new System.Exception($"Can't add two CrewMembers with the same name '{newCrewMember.Name}' for now");
         }
         crewMembers.Add(ClonableSO.Clone<CrewMember>(newCrewMember));
+    }
+
+    public void RemoveCrewMember(CrewMember toRemove)
+    {
+        if (!crewMembers.Remove(crewMembers.Find(crew => crew.Name.Equals(toRemove.Name))))
+        {
+            throw new System.Exception($"Can’t remove member '{toRemove.Name}' not in crew");
+        }
     }
 }

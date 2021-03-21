@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c8565db35df2f4458e18c013e9a9286, type: 3}
-  m_Name: Player Character
+  m_Name: Suit
   m_EditorClassIdentifier: 
-  _name: Player
-  skills: []
-  prefab: {fileID: 3928145817644792157, guid: b894c9e310bf9124589197e28be25f94, type: 3}
-  icon: {fileID: -4832981471516900104, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+  _name: Suit
+  skills:
+  - {fileID: 11400000, guid: 67a0893fa9f1cb44787512524ed20fbd, type: 2}
+  prefab: {fileID: 5671611193402473235, guid: f215118de66cd90478abe04b01c343f5, type: 3}
+  icon: {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   currentPost: {fileID: 0}

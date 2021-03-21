@@ -9,7 +9,11 @@ public class DialogueSummoner : MonoBehaviour
     public DialogueIdentifier dialogue;
 
     [Header("Suit Pickup")]
-    public GameObject boat;
+    public CrewManager crewManager;
+
+    [Header("Progress check")]
+    public HealthComponent firstFoe;
+    private bool ready = false;
 
     [Header("Merchant")]
     public Merchant merchant;
@@ -17,6 +21,12 @@ public class DialogueSummoner : MonoBehaviour
     [Header("Crew management")]
     public CrewMember suit;
     public InventoryHolder inventoryHolder;
+
+    private void Start()
+    {
+        if (firstFoe != null)
+            firstFoe.onDeathEvent.AddListener(PrepareAfterFight);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,17 +43,24 @@ public class DialogueSummoner : MonoBehaviour
                     ui.Summon("introduction", AddSuitToCrew);
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight", () => Destroy(this));
+                    ui.Summon("first_fight", () => { crewManager.Enter(); Destroy(this); });
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
+                    if (!ready) break;
                     ui.Summon("after_fight", () => Destroy(this));
                     break;
             }
     }
 
+    private void PrepareAfterFight(GameObject go)
+    {
+        GetComponent<ParticleSystem>().Stop();
+        GetComponent<BoxCollider>().isTrigger = true;
+        ready = true;
+    }
+
     private void AddSuitToCrew()
     {
-        Destroy(boat);
         try
         {
             ((PlayerInventory)inventoryHolder.inventory)
@@ -51,13 +68,14 @@ public class DialogueSummoner : MonoBehaviour
         }
         catch { print("must not forget to not give any crew member to player so suit doesnt overload the limit"); }
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     private void OnSuitBroughtBack()
     {
         dialogue = DialogueIdentifier.MERCHANT;
-        print("todo remove suit from player’s crew");
+        ((PlayerInventory)inventoryHolder.inventory)
+            .RemoveCrewMember(suit);
         ui.Summon("merchant_2", merchant.EnterInMerchant);
     }
 }
