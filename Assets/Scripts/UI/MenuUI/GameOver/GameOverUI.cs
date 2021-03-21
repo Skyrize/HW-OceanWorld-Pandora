@@ -21,9 +21,15 @@ public class GameOverUI : MonoBehaviour
             if (UnityEngine.SceneManagement.SceneManager.GetSceneByName(scene).isLoaded)
             {
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("GameOverScene");
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
             }
 
         }
+    }
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("WinScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
     }
 }

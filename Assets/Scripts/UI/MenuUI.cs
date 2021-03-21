@@ -11,9 +11,12 @@ public class MenuUI : MonoBehaviour
 
     private void Awake()
     {
-        goalMenu.SetActive(false);
-        controlMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        if(goalMenu != null && controlMenu != null && mainMenu != null)
+        {
+            goalMenu.SetActive(false);
+            controlMenu.SetActive(false);
+            mainMenu.SetActive(true);
+        }
     }
     
     public void EnterInMenu()
