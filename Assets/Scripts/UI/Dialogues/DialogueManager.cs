@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueSummoner : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogues")]
     public DialogueUI ui;
@@ -47,7 +47,7 @@ public class DialogueSummoner : MonoBehaviour
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
-                    ui.Summon("after_fight", () => Destroy(this));
+                    ui.Summon("after_fight", () => ui.Summon("after_fight_suit", () => Destroy(gameObject)));
                     break;
             }
     }

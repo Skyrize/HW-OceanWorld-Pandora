@@ -21,6 +21,8 @@ public class DialogueUI : MonoBehaviour
     public Text title;
     public Text content;
 
+    private List<Actor> currentActors = new List<Actor>();
+
     private Dialogue current;
     private int lineIndex = -1;
     
@@ -42,15 +44,16 @@ public class DialogueUI : MonoBehaviour
 
     private void ScrubActors()
     {
-        left.transform.ClearChilds();
-        right.transform.ClearChilds();
+        currentActors.ForEach(actor => Destroy(actor.gameObject));
+        currentActors = new List<Actor>();
     }
 
     private void InstantiateActor(string name, Transform zone)
     {
         GameObject newActor = Instantiate(actorPrefab, zone);
+        currentActors.Add(newActor.GetComponent<Actor>());
 
-        newActor.GetComponent<Actor>().subject = database.FindCharacter(name);
+        currentActors[currentActors.Count - 1].subject = database.FindCharacter(name);
         newActor.SetActive(true);
     }
 
@@ -98,6 +101,14 @@ public class DialogueUI : MonoBehaviour
             lineIndex = value;
             title.text = current.lines[lineIndex].name;
             content.text = current.lines[lineIndex].text;
+
+            currentActors.ForEach(actor =>
+            {
+                actor.GetComponentInChildren<Image>()
+                                .color = actor.subject.name.Equals(title.text)
+                                ? Color.white
+                                : Color.gray;
+            });
         }
     }
 
