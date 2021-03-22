@@ -75,6 +75,9 @@ public class DialogueManager : MonoBehaviour
                 case DialogueIdentifier.FABIENNE:
                     ui.Summon("fabienne", AddCrewMember);
                     break;
+                case DialogueIdentifier.BOSS_FIGHT:
+                    ui.Summon("boss_fight");
+                    break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
                     ui.Summon("after_fight", () => ui.Summon("after_fight_suit", () => Destroy(gameObject)));
@@ -129,4 +132,5 @@ public enum DialogueIdentifier
     MERCHANT,
     ARK_GUARD,
     FISHERMAN,
+    BOSS_FIGHT,
 }
