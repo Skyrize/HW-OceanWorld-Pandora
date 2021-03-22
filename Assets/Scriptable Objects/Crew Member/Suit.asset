@@ -16,5 +16,5 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: f76b6e449e6d7434d877af2a38224c4e, type: 2}
   prefab: {fileID: 5671611193402473235, guid: f215118de66cd90478abe04b01c343f5, type: 3}
-  icon: {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+  icon: {fileID: 21300000, guid: bb57f3259f44d774e8fc54e24b164a7c, type: 3}
   currentPost: {fileID: 0}

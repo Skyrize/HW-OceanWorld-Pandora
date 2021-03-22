@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Player
   skills: []
   prefab: {fileID: 3928145817644792157, guid: b894c9e310bf9124589197e28be25f94, type: 3}
-  icon: {fileID: -4832981471516900104, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+  icon: {fileID: 21300000, guid: f259673c91a24de47ae0eeb86971e5c1, type: 3}
   currentPost: {fileID: 0}
