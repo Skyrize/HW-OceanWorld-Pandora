@@ -22,6 +22,8 @@ public class MerchantUI : MonoBehaviour
     [SerializeField] protected GameObject itemCardPrefab = null;
     [SerializeField] protected GameObject itemCardPrefabPlayer = null;
 
+    [SerializeField] protected GameObject unavailable = null;
+
     private MerchantInventory merchantInventory;
     private PlayerInventory playerInventory;
 
@@ -33,7 +35,6 @@ public class MerchantUI : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("lol");
         GetInventory();
     }
 
@@ -46,7 +47,6 @@ public class MerchantUI : MonoBehaviour
 
     public void CreateCardPlayer(InventoryStorage item, InventoryStorage itemPlayer, RectTransform container)
     {
-        Debug.Log(container);
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
         cardUI.InventoryItem = itemPlayer;
         cardUI.UpdateUI(item);
@@ -65,6 +65,8 @@ public class MerchantUI : MonoBehaviour
         ClearUI();
         SetMoney(playerInventory.Money);
         SetLevelBoat(player.LevelBoat);
+        SetCostNextAmeliorationBoat(player.LevelBoat);
+
         foreach (InventoryStorage item in merchantInventory.items)
             CreateCard(item, itemPanelContentMerchant);
 
@@ -73,7 +75,12 @@ public class MerchantUI : MonoBehaviour
                     select new { PlayerItem = itemPlayer, MerchantItem = itemMerchant };
 
         foreach (var item in query)
-            CreateCardPlayer(item.MerchantItem, item.PlayerItem, itemPanelContentPlayer);        
+            CreateCardPlayer(item.MerchantItem, item.PlayerItem, itemPanelContentPlayer);
+
+        if (player.MaxBoatUpgrade < player.LevelBoat)
+            unavailable.SetActive(true);
+        else
+            unavailable.SetActive(false);
     }
 
     public void SellItem(InventoryStorage item)
@@ -100,9 +107,12 @@ public class MerchantUI : MonoBehaviour
 
     public void SetCostNextAmeliorationBoat(int level)
     {
-        costAmeliorationMoney.SetText((level * Merchant.goldModifier).ToString());
-        costAmeliorationWood.SetText((level * Merchant.woodModifier).ToString());
-        costAmeliorationScraps.SetText((level * Merchant.scrapsModifier).ToString());
+        int gold = level * Merchant.goldModifier;
+        int wood = level * Merchant.woodModifier;
+        int scraps = level * Merchant.scrapsModifier;
+        costAmeliorationMoney.SetText(gold.ToString());
+        costAmeliorationWood.SetText((wood).ToString());
+        costAmeliorationScraps.SetText((scraps).ToString());
     }
 
     private void OnEnable()

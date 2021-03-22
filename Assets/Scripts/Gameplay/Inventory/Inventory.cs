@@ -89,6 +89,11 @@ public class Inventory : ClonableSO
     {
         return items.Find((stored) => { return item.Equals(stored.item); });
     }
+    
+    public Item GetStoredItemByName(string item)
+    {
+        return items.Find((stored) => { return item.Equals(stored.item.Name); }).item;
+    }
 
     public uint CountItem(string name)
     {
