@@ -12,6 +12,8 @@ public class MerchantUI : MonoBehaviour
     [SerializeField] protected RectTransform itemPanelContentPlayer = null;
     [SerializeField] protected TMPro.TMP_Text moneyPlayer = null;
     [SerializeField] protected TMPro.TMP_Text boatLevel = null;
+    [SerializeField] protected TMPro.TMP_Text boatNextLevel = null;
+
     [SerializeField] protected TMPro.TMP_Text costAmeliorationMoney = null;
     [SerializeField] protected TMPro.TMP_Text costAmeliorationWood = null;
     [SerializeField] protected TMPro.TMP_Text costAmeliorationScraps = null;
@@ -31,6 +33,7 @@ public class MerchantUI : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("lol");
         GetInventory();
     }
 
@@ -43,6 +46,7 @@ public class MerchantUI : MonoBehaviour
 
     public void CreateCardPlayer(InventoryStorage item, InventoryStorage itemPlayer, RectTransform container)
     {
+        Debug.Log(container);
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
         cardUI.InventoryItem = itemPlayer;
         cardUI.UpdateUI(item);
@@ -90,14 +94,15 @@ public class MerchantUI : MonoBehaviour
     public void SetLevelBoat(int level)
     {
         boatLevel.SetText(level.ToString());
+        boatNextLevel.SetText((level + 1).ToString());
         SetCostNextAmeliorationBoat(level);
     }
 
     public void SetCostNextAmeliorationBoat(int level)
     {
-        costAmeliorationMoney.SetText("Money : " + (level * Merchant.goldModifier).ToString());
-        costAmeliorationWood.SetText("Wood : " + (level * Merchant.woodModifier).ToString());
-        costAmeliorationScraps.SetText("Scraps : " + (level * Merchant.scrapsModifier).ToString());
+        costAmeliorationMoney.SetText((level * Merchant.goldModifier).ToString());
+        costAmeliorationWood.SetText((level * Merchant.woodModifier).ToString());
+        costAmeliorationScraps.SetText((level * Merchant.scrapsModifier).ToString());
     }
 
     private void OnEnable()
