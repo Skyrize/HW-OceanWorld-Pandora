@@ -834,6 +834,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103a67db97b490c4188871e2bcc6f0be, type: 3}
+--- !u!114 &13288275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2352663075985456831, guid: b2ff764dc9c02b643aa93835c09b90f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 524517883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8faff92853901864aa371e7c1698917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &15581403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18368,6 +18380,18 @@ Transform:
   m_Father: {fileID: 1382925692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487944036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2352663075985456831, guid: b2ff764dc9c02b643aa93835c09b90f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724661202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8faff92853901864aa371e7c1698917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &488036422
 GameObject:
   m_ObjectHideFlags: 0
@@ -29332,6 +29356,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: affd384383b317c4fbe632f9c7e36efb, type: 3}
+--- !u!114 &797963123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8451445053594693244, guid: 1159bf12bbc07e147ac68aa58c8a8425,
+    type: 3}
+  m_PrefabInstance: {fileID: 973127755}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8faff92853901864aa371e7c1698917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798337963
 GameObject:
   m_ObjectHideFlags: 0
@@ -65758,9 +65794,9 @@ MonoBehaviour:
   crewManager: {fileID: 0}
   firstFoe: {fileID: 0}
   foes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 797963123}
+  - {fileID: 487944036}
+  - {fileID: 13288275}
   door: {fileID: 0}
   merchant: {fileID: 0}
   crew: {fileID: 0}
