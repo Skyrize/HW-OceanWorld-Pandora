@@ -214,10 +214,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227534821132093576, guid: da89286c8ad611a49bc6109da8372e7d,
+        type: 3}
+      propertyPath: maxHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227534821132093576, guid: da89286c8ad611a49bc6109da8372e7d,
+        type: 3}
+      propertyPath: _actualHealth
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 2286654087018251970, guid: da89286c8ad611a49bc6109da8372e7d,
         type: 3}
       propertyPath: m_Name
-      value: Large AI Boat Variant
+      value: Large Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2286654087018251974, guid: da89286c8ad611a49bc6109da8372e7d,
         type: 3}

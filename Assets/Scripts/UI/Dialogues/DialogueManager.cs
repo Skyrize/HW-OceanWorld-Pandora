@@ -30,7 +30,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (firstFoe != null)
             firstFoe.onDeathEvent.AddListener(PrepareAfterFight);
-
         if (foes != null)
             foes.ForEach(foe => foe.onDeathEvent.AddListener(FoeElimination));
     }

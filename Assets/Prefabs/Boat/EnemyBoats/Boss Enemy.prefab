@@ -686,7 +686,17 @@ PrefabInstance:
     - target: {fileID: 6040026619753864628, guid: d3c744593d3279742916b6721a6267b1,
         type: 3}
       propertyPath: m_Name
-      value: Boss AI Boat Variant
+      value: Boss Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728584113252357118, guid: d3c744593d3279742916b6721a6267b1,
+        type: 3}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728584113252357118, guid: d3c744593d3279742916b6721a6267b1,
+        type: 3}
+      propertyPath: _actualHealth
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c744593d3279742916b6721a6267b1, type: 3}
