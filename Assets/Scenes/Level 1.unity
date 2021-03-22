@@ -3155,6 +3155,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c54abb93a0290ff48901b7f4617b7079, type: 3}
+--- !u!114 &174344441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6998099022999665502, guid: 5479811e6cb3a68439ac7c2a8610ed46,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118598125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176746785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4b3f3c74e492d3349a990d175438bc54,
@@ -14609,7 +14621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryHolder: {fileID: 2118598127}
-  AmmoText: {fileID: 240068624}
+  ConnonAmmoText: {fileID: 240068624}
+  BulletAmmoText: {fileID: 174344441}
   LowAmmoThreshold: 5
   NoAmmoGradient:
     serializedVersion: 2
@@ -33484,7 +33497,8 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 136
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3880437989271320881, guid: 5479811e6cb3a68439ac7c2a8610ed46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5479811e6cb3a68439ac7c2a8610ed46, type: 3}
 --- !u!114 &2118598126 stripped
 MonoBehaviour:
