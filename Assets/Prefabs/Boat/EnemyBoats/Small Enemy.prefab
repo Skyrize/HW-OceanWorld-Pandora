@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4310241075575700860, guid: 1e77878ce974491418bfdcdc2f37089c,
+        type: 3}
+      propertyPath: avoidanceRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7289029091876707037, guid: 1e77878ce974491418bfdcdc2f37089c,
         type: 3}
       propertyPath: maxHealth

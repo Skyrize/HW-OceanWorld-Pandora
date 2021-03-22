@@ -38,7 +38,7 @@ public class AttackOnSide : MonoBehaviour
     void SetFrontAttack()
     {
         Vector3 targetPos = vision.lastKnownPlayerPos.Value;
-        Vector3 aimDirection = (transform.position - targetPos).normalized;
+        Vector3 aimDirection = (targetPos - transform.position).normalized;
         float dot = Vector3.Dot(-aimDirection, transform.forward);
         Vector3 aimPos;
 
