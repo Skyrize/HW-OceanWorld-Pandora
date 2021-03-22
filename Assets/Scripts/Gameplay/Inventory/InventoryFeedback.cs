@@ -8,7 +8,7 @@ public class InventoryFeedback : MonoBehaviour
     [Header("Inventory")]
     public InventoryHolder inventoryHolder;
 
-    public Text ConnonAmmoText;
+    public Text CannonAmmoText;
     public Text BulletAmmoText;
 
     public uint LowAmmoThreshold = 5;
@@ -20,7 +20,7 @@ public class InventoryFeedback : MonoBehaviour
 
     private void Awake()
     {
-        ConnonAmmoText.text = "";
+        CannonAmmoText.text = "";
         BulletAmmoText.text = "";
     }
 
@@ -52,17 +52,17 @@ public class InventoryFeedback : MonoBehaviour
             {
                 if (ammo.Value == 0)
                 {
-                    ConnonAmmoText.text = "No cannon balls";
-                    ConnonAmmoText.color = NoAmmoGradient.Evaluate(delta);
+                    CannonAmmoText.text = "No cannon balls";
+                    CannonAmmoText.color = NoAmmoGradient.Evaluate(delta);
                 }
                 else if (ammo.Value <= LowAmmoThreshold)
                 {
-                    ConnonAmmoText.text = "Low cannon balls";
-                    ConnonAmmoText.color = LowAmmoGradient.Evaluate(delta);
+                    CannonAmmoText.text = "Low cannon balls";
+                    CannonAmmoText.color = LowAmmoGradient.Evaluate(delta);
                 }
                 else
                 {
-                    ConnonAmmoText.text = "";
+                    CannonAmmoText.text = "";
                 }
             }
         }
