@@ -30,6 +30,6 @@ public class GameOverUI : MonoBehaviour
     public void RestartGame()
     {
         UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("WinScene");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1 Refactor");
     }
 }

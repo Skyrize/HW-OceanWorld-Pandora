@@ -31,14 +31,14 @@ public class MenuUI : MonoBehaviour
 
     public void ExitMenu()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Level 1").isLoaded)
+        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Level 1 Refactor").isLoaded)
         {      
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainMenu");
             PauseManager pause = (PauseManager)GameObject.Find("Pause Manager").GetComponent(typeof(PauseManager));
             pause.Unpause();
         }
         else
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1 Refactor");
         isInMenu = false;
 
     }
