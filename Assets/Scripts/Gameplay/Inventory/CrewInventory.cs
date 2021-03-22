@@ -35,7 +35,9 @@ public class CrewInventory : Inventory
 
     public void RemoveCrewMember(CrewMember toRemove)
     {
-        if (!crewMembers.Remove(crewMembers.Find(crew => crew.Name.Equals(toRemove.Name))))
+        var fdp = crewMembers.Find(crew => crew.Name.Equals(toRemove.Name));
+        fdp.Quit();
+        if (!crewMembers.Remove(fdp))
         {
             throw new System.Exception($"Can’t remove member '{toRemove.Name}' not in crew");
         }

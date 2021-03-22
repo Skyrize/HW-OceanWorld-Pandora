@@ -61,4 +61,9 @@ public class CrewMember : ClonableSO
         status = "Free";
         nextStatus = "";
     }
+
+    public void Quit()
+    {
+        this.currentPost.ClearEmployee();
+    }
 }
