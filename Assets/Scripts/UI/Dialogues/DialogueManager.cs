@@ -62,15 +62,18 @@ public class DialogueManager : MonoBehaviour
                     ui.Summon("fisherman");
                     break;
                 case DialogueIdentifier.ARK_GUARD:
-                    if (accumulator == foes.Count) 
-                        ui.Summon("ark_opened", () => Destroy(gameObject));
+                    if (accumulator == foes.Count)
+                        ui.Summon("ark_opened", () => { AddCrewMember(); Destroy(gameObject); });
                     else ui.Summon("ark_closed");
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight", () => { crewManager.Toggle(); Destroy(this); });
+                    ui.Summon("first_fight", () => { crewManager.Enter(); Destroy(this); });
                     break;
                 case DialogueIdentifier.RECRUIT_BATMAN:
                     ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });
+                    break;
+                case DialogueIdentifier.FABIENNE:
+                    ui.Summon("fabienne", () => { AddCrewMember(); Destroy(door); });
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
@@ -122,6 +125,7 @@ public enum DialogueIdentifier
     DOOR_BLOCKED,
     OLDS_SPEAKING,
     QUARTERMASTER,
+    FABIENNE,
     MERCHANT,
     ARK_GUARD,
     FISHERMAN,
