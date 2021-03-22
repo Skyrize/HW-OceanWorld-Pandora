@@ -19,7 +19,6 @@ public class ControlsMenuUI : MonoBehaviour
 
     public void CreateCard(KeyBind item, RectTransform container)
     {
-        Debug.Log(itemCardPrefab);
         KeyBindUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<KeyBindUI>();
         cardUI.UpdateUI(item);
     }
