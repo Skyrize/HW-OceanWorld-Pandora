@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Prefabs/Level/PeaksPack.prefab.meta
-guid: f8d046ad6c6e26e4a96a7ce2cad227f4
-PrefabImporter:
-=======
-guid: 4688581759596ef41a1c6dca95f2cd19
+guid: 0e536043aa6b7d949a40a408b3ce642e
 folderAsset: yes
 DefaultImporter:
->>>>>>> main:Assets/Prefabs/Boat/AI Boats.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

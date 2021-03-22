@@ -33,7 +33,7 @@ public class MerchantUI : MonoBehaviour
         playerInventory = merchant.InventoryPlayer;
     }
 
-    private void Awake()
+    private void Start()
     {
         GetInventory();
     }
@@ -117,6 +117,8 @@ public class MerchantUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!playerInventory)
+            GetInventory();
         BuildUI();
     }
 

@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scriptable Objects/Crew Member/Fabienne.asset.meta
-guid: f193447aa833f234bace5805222565e3
-NativeFormatImporter:
-=======
-guid: dcc81dd2af688c941bd0239500dd9c8d
+guid: ee988d27aac8cc842a4c26fc451b5041
 folderAsset: yes
 DefaultImporter:
->>>>>>> main:Assets/Prefabs/UI/MenuUI.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 
