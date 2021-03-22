@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Security.Cryptography;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] public RepairStation repairStation = null;
     [Header("Runtime")]
     [SerializeField] public PlayerInventory inventory = null;
+    PlayerUpgrade upgrader = null;
+
+    public int MaxBoatUpgrade { get => upgrader.upgrades.Length; }
 
     public void Shoot(float input)
     {
@@ -40,6 +44,7 @@ public class Player : MonoBehaviour
 
     private void Awake() {
         inventory = GetComponent<InventoryHolder>().inventory as PlayerInventory;
+        upgrader = GetComponent<PlayerUpgrade>();
         InitWeapons();
         InitCrew();
     }
@@ -56,21 +61,17 @@ public class Player : MonoBehaviour
         {
             crewMember.Update();
         }
+
+        if (Input.GetKeyDown(KeyCode.U))
+            Upgrade();
     }
 
-    private int _upgrade = 1;
+    int _upgrade = 1;
     public int LevelBoat { get => _upgrade;}
-    [SerializeField]
-    private GameObject[] boatMeshes;
 
     public void Upgrade()
     {
-        // TODO : change mesh Boat (upgrade),
-        // TODO : reset les posts
-        // TODO : Increase HP MAX
-        // TODO : Increase max crew
-        // TODO : repair boat
-        _upgrade++;
+        _upgrade = upgrader.Upgrade() + 1;
     }
 
 

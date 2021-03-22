@@ -6,8 +6,8 @@ using UnityEngine;
 public class BoatController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] protected  float acceleration = 1;
-    [SerializeField] protected  float backwardAcceleration = 5;
+    [SerializeField] public  float acceleration = 1;
+    [SerializeField] protected  float backwardAcceleration => acceleration + 10;
     [SerializeField] public float maxSpeed = 10;
     [SerializeField] protected  float steerSpeed = 1;
     [SerializeField] protected  float maxSteerAngle = 10;
@@ -77,6 +77,8 @@ public class BoatController : MonoBehaviour
     void Float()
     {
         rb.centerOfMass = Vector3.zero;
+        var rot = rb.rotation.eulerAngles;
+        rb.rotation = Quaternion.Euler(0, rot.y, 0);
         // Vector3 rectify = transform.position;
         // rectify.y = 0;
         // transform.position = rectify;

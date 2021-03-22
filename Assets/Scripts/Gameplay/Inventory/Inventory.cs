@@ -81,13 +81,18 @@ public class Inventory : ClonableSO
         }
         
         if(ResourcePickupUI.Instance) {
-            ResourcePickupUI.Instance.PopMessage($"+{count} {item.name}");
+            ResourcePickupUI.Instance.PopMessage($"+{count} {item.Name}");
         }
     }
 
     public InventoryStorage GetStoredItem(Item item)
     {
         return items.Find((stored) => { return item.Equals(stored.item); });
+    }
+    
+    public Item GetStoredItemByName(string item)
+    {
+        return items.Find((stored) => { return item.Equals(stored.item.Name); }).item;
     }
 
     public uint CountItem(string name)

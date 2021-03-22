@@ -7,7 +7,6 @@ using System;
 public class MerchantItemUI : MonoBehaviour
 {
     [Header("References")]
-    //[SerializeField] protected SelectCrewMemberButtonUI button = null;
     [SerializeField] protected TMPro.TMP_Text nameText = null;
     [SerializeField] protected TMPro.TMP_Text costText = null;
     [SerializeField] protected TMPro.TMP_Text quantityText = null;
@@ -22,7 +21,6 @@ public class MerchantItemUI : MonoBehaviour
     public virtual void UpdateUI(InventoryStorage item)
     {
         this.item = item;
-        //button.UpdateUI(this.crewMember);
         nameText.text = "Name : " + this.item.item.Name;
         costText.text = "Cost : " + this.item.item.Price;
         image.sprite = this.item.item.Icon;

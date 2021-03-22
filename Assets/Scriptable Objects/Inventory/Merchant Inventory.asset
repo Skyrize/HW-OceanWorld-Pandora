@@ -17,11 +17,7 @@ MonoBehaviour:
     count: 100
   - item: {fileID: 11400000, guid: 9dcd98815d6eb7f42aa07f6204a612dc, type: 2}
     count: 10
-  - item: {fileID: 11400000, guid: b362ae32a8fd5974dabfe7e35679a837, type: 2}
-    count: 100
   - item: {fileID: 11400000, guid: 6183bea84be338945bf50d200c9d8817, type: 2}
-    count: 20
-  - item: {fileID: 11400000, guid: 85ca7390f721ead4fa7e5eafc5ab48a4, type: 2}
     count: 20
   TotalWeight: 0
   tradableItems: []

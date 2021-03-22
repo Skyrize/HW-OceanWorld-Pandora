@@ -29,7 +29,7 @@ public class AIController : Controller
 
     private NavMeshPath path;
     // private int currentCornerIdx = 0;
-    private bool destinationReached = true;
+    [SerializeField] private bool destinationReached = true;
     private Vector3? lastTarget;
 
     // private DIRECTION rotatingSide = DIRECTION.NONE;
