@@ -107,9 +107,9 @@ public class MerchantUI : MonoBehaviour
 
     public void SetCostNextAmeliorationBoat(int level)
     {
-        int gold = level * Merchant.goldModifier;
-        int wood = level * Merchant.woodModifier;
-        int scraps = level * Merchant.scrapsModifier;
+        int gold = (level + 1) * Merchant.goldModifier;
+        int wood = (level + 1) * Merchant.woodModifier;
+        int scraps = (level + 1) * Merchant.scrapsModifier;
         costAmeliorationMoney.SetText(gold.ToString());
         costAmeliorationWood.SetText((wood).ToString());
         costAmeliorationScraps.SetText((scraps).ToString());
