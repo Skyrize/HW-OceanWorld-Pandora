@@ -156,6 +156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small AI Boat
       objectReference: {fileID: 0}
+    - target: {fileID: 4777259050291339304, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: attackType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4947897934095112309, guid: 3d724fee9b70e4f4abb3018cc440689c,
         type: 3}
       propertyPath: InitialModule.startSize.scalar

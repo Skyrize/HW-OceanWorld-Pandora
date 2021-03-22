@@ -18,7 +18,18 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 71cdef6a0c2c4a241bbfb26e79c842d3, type: 2}
     count: 999999
   TotalWeight: 0
+  maxCrewSize: 2
   crewMembers:
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
+  - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
   - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
   - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
   - {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
