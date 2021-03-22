@@ -37,10 +37,12 @@ SpriteAtlas:
     - {fileID: 8712743741490344280, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
     - {fileID: -8863038426184499370, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
     - {fileID: 8984668239199173922, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+    - {fileID: -1736522125628890565, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 3267140350990995554, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
+  - {fileID: -1736522125628890565, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   - {fileID: -9101892293307855319, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   - {fileID: 5987432161992737575, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   - {fileID: 8984668239199173922, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
@@ -49,6 +51,7 @@ SpriteAtlas:
   - {fileID: 8712743741490344280, guid: c8a6094caff056f489b49e1ce6038dfc, type: 3}
   m_PackedSpriteNamesToIndex:
   - protraits_65
+  - protraits_10
   - protraits_45
   - protraits_58
   - protraits_40

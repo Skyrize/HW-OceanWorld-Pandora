@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -13,8 +14,10 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Progress check")]
     public HealthComponent firstFoe;
+    public List<HealthComponent> foes;
     public GameObject door;
     private bool ready = false;
+    private int accumulator = 0;
 
     [Header("Merchant")]
     public Merchant merchant;
@@ -27,6 +30,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (firstFoe != null)
             firstFoe.onDeathEvent.AddListener(PrepareAfterFight);
+
+        if (foes != null)
+            foes.ForEach(foe => foe.onDeathEvent.AddListener(FoeElimination));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +58,14 @@ public class DialogueManager : MonoBehaviour
                 case DialogueIdentifier.DOOR_BLOCKED:
                     ui.Summon("door_blocked");
                     break;
+                case DialogueIdentifier.FISHERMAN:
+                    ui.Summon("fisherman");
+                    break;
+                case DialogueIdentifier.ARK_GUARD:
+                    if (accumulator == foes.Count) 
+                        ui.Summon("ark_opened", () => Destroy(gameObject));
+                    else ui.Summon("ark_closed");
+                    break;
                 case DialogueIdentifier.FIRST_FIGHT:
                     ui.Summon("first_fight", () => { crewManager.Enter(); Destroy(this); });
                     break;
@@ -65,12 +79,16 @@ public class DialogueManager : MonoBehaviour
             }
     }
 
-
     private void PrepareAfterFight(GameObject go)
     {
         GetComponent<ParticleSystem>().Stop();
         GetComponent<BoxCollider>().isTrigger = true;
         ready = true;
+    }
+
+    private void FoeElimination(GameObject go)
+    {
+        accumulator++;
     }
 
     private void AddCrewMember()
@@ -105,4 +123,6 @@ public enum DialogueIdentifier
     OLDS_SPEAKING,
     QUARTERMASTER,
     MERCHANT,
+    ARK_GUARD,
+    FISHERMAN,
 }
