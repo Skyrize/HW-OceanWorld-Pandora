@@ -16,4 +16,5 @@ MonoBehaviour:
   price: 20
   prefab: {fileID: 7971744387904044076, guid: 14b6205b428aab843852c67c37aea0d0, type: 3}
   icon: {fileID: 21300000, guid: e207f12a6506ffc42b651432092f556f, type: 3}
-  damages: 2.3
+  _name: CannonBall Ammunition
+  damages: 3

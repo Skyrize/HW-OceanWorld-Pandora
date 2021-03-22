@@ -234,7 +234,6 @@ public class ItemPlacer : MonoBehaviour
         RaycastHit placingHit;
 
         if (Physics.Raycast(ray, out placingHit, Mathf.Infinity, itemMask) || !HasRoom()) {
-            // // Debug.Log("Invalidate by " + placingHit.collider.gameObject.name);
             InvalidateGhostPlacing();
         } else {
             ValidateGhostPlacing();
@@ -279,7 +278,7 @@ public class ItemPlacer : MonoBehaviour
             currentRemovable = value;
         }
     }
-    Color[] tmpColors;
+    public Color[] tmpColors;
 
     void FocusRemovableItem(GameObject item)
     {
@@ -289,8 +288,9 @@ public class ItemPlacer : MonoBehaviour
     }
     void UnfocusRemovableItem()
     {
-        if (CurrentRemovable)
-            CurrentRemovable.SetColors(tmpColors);
+        if (!CurrentRemovable)
+            return;
+        CurrentRemovable.SetColors(tmpColors);
         CurrentRemovable = null;
     }
 
@@ -299,7 +299,7 @@ public class ItemPlacer : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit removeHit;
 
-        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask)) {
+        if (Physics.Raycast(ray, out removeHit, Mathf.Infinity, removableItemMask) && removeHit.collider.GetComponentInParent<Player>() != null) {
             if (CurrentRemovable != removeHit.collider.gameObject) {
                 UnfocusRemovableItem();
                 FocusRemovableItem(removeHit.collider.gameObject);

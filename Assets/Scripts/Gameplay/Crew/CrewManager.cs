@@ -29,6 +29,8 @@ public class CrewManager : MonoBehaviour
 
     public void Toggle()
     {
+        if (!toggle && Time.timeScale == 0)
+            return;
         toggle = !toggle;
         if (toggle) {
             Enter();

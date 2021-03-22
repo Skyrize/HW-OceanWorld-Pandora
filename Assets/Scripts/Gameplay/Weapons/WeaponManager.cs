@@ -56,7 +56,8 @@ public class WeaponManager : Post
     public Quaternion MaxRotationLeft => Quaternion.LookRotation(Quaternion.AngleAxis(-maxAngle, Vector3.up) * BaseForward, Vector3.up);
     public Quaternion MaxRotationRight => Quaternion.LookRotation(Quaternion.AngleAxis(maxAngle, Vector3.up) * BaseForward, Vector3.up);
 
-    private void Awake() {
+    override public void Awake() {
+        base.Awake();
         weaponAsset = GetComponent<ItemObject>().Item as Weapon;
         if (!weaponAsset)
             throw new System.Exception($"ItemObject on WeaponManager '{gameObject.name}' has an invalid item (null or not Weapon).");

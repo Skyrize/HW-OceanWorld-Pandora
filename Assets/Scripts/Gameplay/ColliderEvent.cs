@@ -44,6 +44,8 @@ public class ColliderEvent : MonoBehaviour
     [SerializeField] private CollisionEvent onStay = new CollisionEvent();
     [SerializeField] private CollisionEvent onExit = new CollisionEvent();
 
+    public Vector3 LastCollisionLocation = Vector3.zero;
+
     public void ValidateType(string type)
     {
         if (Type.GetType(type) == null) {
@@ -113,7 +115,8 @@ public class ColliderEvent : MonoBehaviour
     }
     
     private void OnCollisionEnter(Collision other) {
-        FilterCollision(other.gameObject, onCollide);
+        if (FilterCollision(other.gameObject, onCollide))
+            LastCollisionLocation = other.contacts[0].point;
     }
     private void OnCollisionStay(Collision other) {
         FilterCollision(other.gameObject, onStay);

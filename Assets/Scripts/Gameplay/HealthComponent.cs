@@ -121,4 +121,10 @@ public class HealthComponent : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void SetMaxHealth(float newMax)
+    {
+        this.maxHealth = newMax;
+        this._actualHealth = newMax;
+    }
+
 }

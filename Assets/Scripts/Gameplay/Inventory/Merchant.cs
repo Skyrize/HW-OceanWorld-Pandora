@@ -15,13 +15,18 @@ public class Merchant : MonoBehaviour
     public MerchantUI merchantUI;
     public PauseManager pauseManager;
 
+    public static int goldModifier = 5;
+    public static int woodModifier = 15;
+    public static int scrapsModifier = 10;
+
     private static bool loadedScene;
 
     private void Awake()
     {  
         if (inventoryMerchant != null)
             inventoryMerchant = ClonableSO.Clone(inventoryMerchant);
-        if (prefabUI.activeInHierarchy) prefabUI.SetActive(false);
+        else 
+            prefabUI.SetActive(false);
     }
 
     public void EnterInMerchant() 
@@ -29,9 +34,7 @@ public class Merchant : MonoBehaviour
         if (!loadedScene)
         {
             prefabUI.SetActive(true);
-            //UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
-            loadedScene = true;
-            
+            loadedScene = true;           
             pauseManager.Pause();
         }
             
@@ -42,7 +45,6 @@ public class Merchant : MonoBehaviour
         if (loadedScene)
         {
             prefabUI.SetActive(false);
-            //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
             loadedScene = false;
             
             pauseManager.Unpause();
@@ -73,5 +75,26 @@ public class Merchant : MonoBehaviour
         }
 
         merchantUI.BuildUI();
+    }
+
+    public void UpgradeBoatPlayer()
+    {
+
+        int boatNextLevel = player.LevelBoat + 1;
+
+        if (goldModifier * boatNextLevel <= player.inventory.Money
+            && scrapsModifier * boatNextLevel <= player.inventory.CountItem("Scraps Item")
+            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank Item")
+            && player.MaxBoatUpgrade <= boatNextLevel)
+        {
+            player.Upgrade();
+            uint scraps = (uint)(scrapsModifier * boatNextLevel);
+            uint wood = (uint)(woodModifier * boatNextLevel);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Scraps Item"), scraps);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Wood Plank Item"), wood);
+            player.inventory.Money -= goldModifier * boatNextLevel;
+            
+            merchantUI.BuildUI();
+        }
     }
 }
