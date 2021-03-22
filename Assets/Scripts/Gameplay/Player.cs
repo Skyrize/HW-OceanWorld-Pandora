@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] public PlayerInventory inventory = null;
     PlayerUpgrade upgrader = null;
 
+    public int MaxBoatUpgrade { get => upgrader.upgrades.Length; }
+
     public void Shoot(float input)
     {
         if (input == 0 || !isActiveAndEnabled)

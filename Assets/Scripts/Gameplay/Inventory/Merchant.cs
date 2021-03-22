@@ -34,9 +34,7 @@ public class Merchant : MonoBehaviour
         if (!loadedScene)
         {
             prefabUI.SetActive(true);
-            //UnityEngine.SceneManagement.SceneManager.LoadScene("Merchant", LoadSceneMode.Additive);
-            loadedScene = true;
-            
+            loadedScene = true;           
             pauseManager.Pause();
         }
             
@@ -47,7 +45,6 @@ public class Merchant : MonoBehaviour
         if (loadedScene)
         {
             prefabUI.SetActive(false);
-            //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Merchant");
             loadedScene = false;
             
             pauseManager.Unpause();
@@ -82,12 +79,21 @@ public class Merchant : MonoBehaviour
 
     public void UpgradeBoatPlayer()
     {
+
         int boatNextLevel = player.LevelBoat + 1;
+
         if (goldModifier * boatNextLevel <= player.inventory.Money
             && scrapsModifier * boatNextLevel <= player.inventory.CountItem("Scraps Item")
-            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank Item"))
+            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank Item")
+            && player.MaxBoatUpgrade <= boatNextLevel)
         {
             player.Upgrade();
+            uint scraps = (uint)(scrapsModifier * boatNextLevel);
+            uint wood = (uint)(woodModifier * boatNextLevel);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Scraps Item"), scraps);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Wood Plank Item"), wood);
+            player.inventory.Money -= goldModifier * boatNextLevel;
+            
             merchantUI.BuildUI();
         }
     }
