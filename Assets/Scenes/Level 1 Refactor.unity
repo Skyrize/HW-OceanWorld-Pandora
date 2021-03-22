@@ -3937,6 +3937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrewBatman
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5160,6 +5164,10 @@ PrefabInstance:
     - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
       propertyPath: m_Name
       value: Suit Merchant Boat
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
       propertyPath: m_NavMeshLayer
@@ -20139,7 +20147,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ae8e856e8ce15864cbb292ef8928353f, type: 3}
       propertyPath: m_Name
-      value: Exit Barrier
+      value: Tornado
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ae8e856e8ce15864cbb292ef8928353f, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ae8e856e8ce15864cbb292ef8928353f, type: 3}
       propertyPath: m_RootOrder
@@ -33804,6 +33816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fisherma
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -36425,6 +36441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fabienne
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -36527,8 +36547,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 23.742487
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 28.261724
+  m_Center: {x: 4.51924, y: -6.810755e-15, z: -0.000000033916173}
 --- !u!1001 &940154461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42179,6 +42199,10 @@ PrefabInstance:
     - target: {fileID: 100014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
       propertyPath: m_Name
       value: Random
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: e30cc732ec6a2a04ab4da2cd7e818e32, type: 3}
       propertyPath: m_RootOrder
@@ -48313,6 +48337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArkDoor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fc11e5df41421a4d89d60b60992b9c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc11e5df41421a4d89d60b60992b9c0, type: 3}
@@ -58078,6 +58107,10 @@ PrefabInstance:
     - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
       propertyPath: m_Name
       value: Elyseum Merchant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 22dd0366bbdabec4aa2d0758c455c6fd, type: 3}
       propertyPath: m_NavMeshLayer
@@ -81723,7 +81756,7 @@ PrefabInstance:
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -113
+      value: -116
       objectReference: {fileID: 0}
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -81733,7 +81766,7 @@ PrefabInstance:
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -109
+      value: -108
       objectReference: {fileID: 0}
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -82038,7 +82071,7 @@ PrefabInstance:
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -113
+      value: -116
       objectReference: {fileID: 0}
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -82048,7 +82081,7 @@ PrefabInstance:
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -109
+      value: -108
       objectReference: {fileID: 0}
     - target: {fileID: 1512858540775253196, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}

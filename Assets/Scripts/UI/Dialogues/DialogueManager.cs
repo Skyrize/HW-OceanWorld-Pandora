@@ -73,7 +73,7 @@ public class DialogueManager : MonoBehaviour
                     ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });
                     break;
                 case DialogueIdentifier.FABIENNE:
-                    ui.Summon("fabienne", () => { AddCrewMember(); Destroy(door); });
+                    ui.Summon("fabienne", AddCrewMember);
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
