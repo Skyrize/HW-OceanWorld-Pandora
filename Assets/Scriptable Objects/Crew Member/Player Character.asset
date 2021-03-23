@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Player
   skills: []
-  prefab: {fileID: 3928145817644792157, guid: b894c9e310bf9124589197e28be25f94, type: 3}
+  prefab: {fileID: 3928145817644792157, guid: 68e00d988f693f249ad257040488308d, type: 3}
   icon: {fileID: 21300000, guid: f259673c91a24de47ae0eeb86971e5c1, type: 3}
   currentPost: {fileID: 0}
