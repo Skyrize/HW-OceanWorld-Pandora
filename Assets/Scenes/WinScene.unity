@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfLevelScenes:
-  - Level 1
+  - Level 1 Refactor
 --- !u!1 &1666442347
 GameObject:
   m_ObjectHideFlags: 0
