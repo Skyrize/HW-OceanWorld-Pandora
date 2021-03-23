@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public struct Audio {
     public string name;
     public AudioClip clip;
-    public float maxVolume;
-    public float minVolume;
-    public float maxPitch;
+    [Range(0f, 1f)] public float minVolume;
+    [Range(0f, 1f)] public float maxVolume;
     public float minPitch;
+    public float maxPitch;
     
     public override bool Equals(object obj)
     {
