@@ -6047,6 +6047,18 @@ MonoBehaviour:
     minVolume: 10
     maxPitch: 1
     minPitch: 1
+  - name: pickup
+    clip: {fileID: 8300000, guid: f2bf48b34053d964f94f2c8e250f4fc1, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: collision
+    clip: {fileID: 8300000, guid: 5aaa9e0cf840ace4e831914dd27ec009, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
 --- !u!1 &6979450755545236355
 GameObject:
   m_ObjectHideFlags: 0

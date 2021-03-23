@@ -16,11 +16,7 @@ public class InventoryHolder : MonoBehaviour
             return _inventory;
         }
     }
-    /// <summary>
-    /// Adds an object to the inventory
-    /// </summary>
-    /// <param name="obj">The item to add</param>
-    /// <exception cref="NullReferenceException">The item is not a item</exception>
+
     public void CollectItem(GameObject obj)
     {
         Item item = obj.GetComponent<ItemObject>().Item;
