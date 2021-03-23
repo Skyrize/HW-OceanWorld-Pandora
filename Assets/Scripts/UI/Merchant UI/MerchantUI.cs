@@ -45,10 +45,10 @@ public class MerchantUI : MonoBehaviour
         cardUI.MerchantOnSellItemEvent.AddListener(this.SellItem);
     }
 
-    public void CreateCardPlayer(InventoryStorage item, InventoryStorage itemPlayer, RectTransform container)
+    public void CreateCardPlayer(InventoryStorage item, RectTransform container)
     {
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
-        cardUI.InventoryItem = itemPlayer;
+        cardUI.InventoryItem = item;
         cardUI.UpdateUI(item);
         cardUI.MerchantOnSellItemEvent.AddListener(this.BuyItem);
     }
@@ -70,12 +70,8 @@ public class MerchantUI : MonoBehaviour
         foreach (InventoryStorage item in merchantInventory.items)
             CreateCard(item, itemPanelContentMerchant);
 
-        var query = from itemMerchant in merchantInventory.items
-                    join itemPlayer in playerInventory.items on itemMerchant.item.Name equals itemPlayer.item.Name
-                    select new { PlayerItem = itemPlayer, MerchantItem = itemMerchant };
-
-        foreach (var item in query)
-            CreateCardPlayer(item.MerchantItem, item.PlayerItem, itemPanelContentPlayer);
+        foreach (var item in playerInventory.items)
+            CreateCardPlayer(item, itemPanelContentPlayer);
 
         if (player.MaxBoatUpgrade < player.LevelBoat)
             unavailable.SetActive(true);
