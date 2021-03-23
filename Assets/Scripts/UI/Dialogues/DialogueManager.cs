@@ -75,11 +75,11 @@ public class DialogueManager : MonoBehaviour
                     ui.Summon("fabienne", AddCrewMember);
                     break;
                 case DialogueIdentifier.BOSS_FIGHT:
-                    ui.Summon("boss_fight");
+                    ui.Summon("boss_fight", () => Destroy(gameObject));
                     break;
                 case DialogueIdentifier.AFTER_FIGHT:
                     if (!ready) break;
-                    ui.Summon("after_fight", () => ui.Summon("after_fight_suit", () => Destroy(gameObject)));
+                    ui.Summon("after_fight", () => ui.Summon("after_fight_suit", () => { crewManager.Toggle(); Destroy(gameObject); }));
                     break;
             }
     }
@@ -102,10 +102,13 @@ public class DialogueManager : MonoBehaviour
         {
             ((PlayerInventory)inventoryHolder.inventory)
                 .AddCrewMember(crew);
+            Destroy(gameObject);
         }
-        catch { print("must not forget to not give any crew member to player so suit doesnt overload the limit"); }
+        catch
+        {
+            ui.Summon("cant_pickup");
+        }
 
-        Destroy(gameObject);
     }
 
     private void OnSuitBroughtBack()

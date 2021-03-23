@@ -61,7 +61,6 @@ public class DialogueUI : MonoBehaviour
     {
         onDialogueFinish = null;
         current = database.FindDialogue(dialogueId);
-        print(current.charactersLeft);
 
         ScrubActors();
         current.charactersLeft.ForEach(c => InstantiateActor(c, left.transform));
@@ -102,6 +101,9 @@ public class DialogueUI : MonoBehaviour
             lineIndex = value;
             title.text = current.lines[lineIndex].name;
             content.text = current.lines[lineIndex].text;
+
+            if (title.text.Equals("Game"))
+                return;
 
             currentActors.ForEach(actor =>
             {
