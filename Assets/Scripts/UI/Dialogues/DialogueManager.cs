@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
                     else ui.Summon("ark_closed");
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight", () => { crewManager.Enter(); Destroy(this); });
+                    ui.Summon("first_fight", () => { crewManager.Toggle(); Destroy(this); });
                     break;
                 case DialogueIdentifier.RECRUIT_BATMAN:
                     ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });
