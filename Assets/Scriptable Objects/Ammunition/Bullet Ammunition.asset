@@ -15,6 +15,6 @@ MonoBehaviour:
   weight: 0
   price: 1
   prefab: {fileID: 1976278532390955069, guid: 7d7c750fab6a0354f9e955588449ba70, type: 3}
-  icon: {fileID: 21300000, guid: 79ef48f37fe33bb43b3f73d14685ab0d, type: 3}
+  icon: {fileID: 21300000, guid: 2234d462a8831704cabc081509cf5261, type: 3}
   _name: Bullet Ammunition
   damages: 1
