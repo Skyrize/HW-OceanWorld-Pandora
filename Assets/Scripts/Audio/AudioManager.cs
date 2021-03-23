@@ -51,12 +51,12 @@ public class AudioManager : MonoBehaviour
         return audio.clip;
     }
 
-    public float GetClipLenght()
+    public float GetClipLength()
     {
         return source.clip.length;
     }
 
-    public float GetClipLenght(string clipName)
+    public float GetClipLength(string clipName)
     {
         Audio audio = audios.Find((a) => a.name == clipName);
         

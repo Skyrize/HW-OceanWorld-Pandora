@@ -22,7 +22,7 @@ public class MusicManager : MonoBehaviour
 
             if (timer <= 0) {
                 audioManager.Play(musicIndex);
-                timer = audioManager.GetClipLenght();
+                timer = audioManager.GetClipLength();
                 musicIndex++;
             if (musicIndex == 4)
                 musicIndex = 0;

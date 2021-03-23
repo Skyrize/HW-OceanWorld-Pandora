@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     [HideInInspector] protected Ammunition ammunitionAsset = null;
     [HideInInspector] public GameObject parent;
 
+    private bool touchedWater = false;
+
     public virtual void Start()
     {
         ammunitionAsset = GetComponent<ItemObject>().Item as Ammunition;
@@ -47,7 +49,9 @@ public class Projectile : MonoBehaviour
     }
 
     private void Update() {
-        if (transform.position.y < 0) {
+        if (transform.position.y < 0 && !touchedWater)
+        {
+            touchedWater = true;
             onTouchWater.Invoke();
             StartCoroutine(Kill());
         }

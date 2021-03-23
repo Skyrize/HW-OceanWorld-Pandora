@@ -558,6 +558,7 @@ Transform:
   - {fileID: 5887812976031031066}
   - {fileID: 5996245655176712678}
   - {fileID: 8911115798426864256}
+  - {fileID: 5933540653451313866}
   m_Father: {fileID: 1512858540775253197}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5867,6 +5868,185 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1 &6661727469737032252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5933540653451313866}
+  - component: {fileID: 4680869573897656554}
+  - component: {fileID: 3739846035215767577}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5933540653451313866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661727469737032252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1512858539475193047}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4680869573897656554
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661727469737032252}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3739846035215767577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661727469737032252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2f3a896efb8ba439433b2b11d6ca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizeVolume: 1
+  randomizePitch: 0
+  audios:
+  - name: turret_fire
+    clip: {fileID: 8300000, guid: 6b57483a12c06c648a80aed3a7455b07, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: cannon_fire
+    clip: {fileID: 8300000, guid: aa9e155ce76e0e14cba7d46229635a2e, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: water_big_splash
+    clip: {fileID: 8300000, guid: 4c0382a9244c15544a6c4bf5bbe03da7, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: water_small_splash
+    clip: {fileID: 8300000, guid: b2541c05fc883474781b3daee0b4599c, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: bullet_impact
+    clip: {fileID: 8300000, guid: e8995debdd41f634e93d4f3950176c9c, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
+  - name: explosion
+    clip: {fileID: 8300000, guid: 17b894df7ffd2bf41a5cb9d6d9c9d81d, type: 3}
+    maxVolume: 10
+    minVolume: 10
+    maxPitch: 1
+    minPitch: 1
 --- !u!1 &6979450755545236355
 GameObject:
   m_ObjectHideFlags: 0

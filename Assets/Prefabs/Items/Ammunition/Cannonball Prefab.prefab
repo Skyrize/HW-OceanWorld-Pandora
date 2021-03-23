@@ -932,12 +932,12 @@ PrefabInstance:
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
@@ -951,6 +951,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4889368361526914547}
@@ -959,6 +964,11 @@ PrefabInstance:
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 5327791744281050739}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 5109109002316685668}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -971,6 +981,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: KILL
       objectReference: {fileID: 0}
@@ -978,6 +993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PlaySound
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
@@ -996,6 +1016,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 6410719370599523392}
@@ -1011,6 +1036,11 @@ PrefabInstance:
       objectReference: {fileID: 2999137509071559978}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 5109109002316685668}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1022,6 +1052,11 @@ PrefabInstance:
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
@@ -1041,13 +1076,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_StringArgument
+      value: water_big_splash
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
@@ -1057,6 +1112,11 @@ PrefabInstance:
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
@@ -1072,6 +1132,11 @@ PrefabInstance:
     - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
         type: 3}
       propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 604733613121616901, guid: d90fdd2170a120449bb6e6074d7dad44,
+        type: 3}
+      propertyPath: onTouchWater.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 969156373571932012, guid: d90fdd2170a120449bb6e6074d7dad44,
@@ -1289,3 +1354,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6395555146840419905}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5109109002316685668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2172599881721319205, guid: d90fdd2170a120449bb6e6074d7dad44,
+    type: 3}
+  m_PrefabInstance: {fileID: 6395555146840419905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27cef5d274f400c990cee354067ecbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

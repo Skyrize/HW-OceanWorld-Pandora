@@ -19,6 +19,7 @@ MonoBehaviour:
   onFire:
     m_PersistentCalls:
       m_Calls: []
+  originPrefab: {fileID: 0}
   employee: {fileID: 0}
   postPlace: {fileID: 4988508562133050921}
   working: 0
@@ -36,6 +37,18 @@ MonoBehaviour:
       m_Calls: []
   spawnPoint: {fileID: 81389211529252536}
   reloaded: 1
+--- !u!114 &8737059822852741147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008692803621716004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27cef5d274f400c990cee354067ecbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8395417727929420640
 GameObject:
   m_ObjectHideFlags: 0
