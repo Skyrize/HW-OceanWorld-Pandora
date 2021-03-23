@@ -66,4 +66,14 @@ public class MenuUI : MonoBehaviour
         goalMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
+    public void LaunchWinning()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
+    }
+
+    public void LaunchGameOver()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene", LoadSceneMode.Additive);
+    }
 }
