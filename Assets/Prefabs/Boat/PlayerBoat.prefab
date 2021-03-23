@@ -13,6 +13,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &502755646362208747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960895900246004945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22826336a1144408a5171cfbc1ea1789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1770313799047519031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +113,51 @@ MonoBehaviour:
   controlPost: {fileID: 191146276743181956}
   repairStation: {fileID: 1597730403951379663}
   inventory: {fileID: 0}
+--- !u!114 &3871280284066189075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960895900246004945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f220890000e8d741bce12e941fc3818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useTagFilter: 0
+  useLayerFilter: 1
+  useComponentFilter: 0
+  useParentComponentFilter: 0
+  useChildComponentFilter: 0
+  tags: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 262144
+  componentType: Transform
+  parentComponentType: Transform
+  childComponentType: Transform
+  onCollide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 502755646362208747}
+        m_MethodName: SetLastCheckpoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+  LastCollisionLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &7719008882853436633
 MonoBehaviour:
   m_ObjectHideFlags: 0
