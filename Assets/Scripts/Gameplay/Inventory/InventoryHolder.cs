@@ -23,7 +23,14 @@ public class InventoryHolder : MonoBehaviour
     /// <exception cref="NullReferenceException">The item is not a item</exception>
     public void CollectItem(GameObject obj)
     {
-        Item item = obj.GetComponent<ItemObject>().Item;
+        var itemObject = obj.GetComponent<ItemObject>();
+
+        if (!itemObject || itemObject.PickedUp)
+            return;
+
+        var item = itemObject.Item;
+
+        itemObject.PickedUp = true;
         inventory.Add(item);
         Destroy(obj);
     }
