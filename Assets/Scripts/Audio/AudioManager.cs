@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public struct Audio {
@@ -108,5 +110,18 @@ public class AudioManager : MonoBehaviour
         }
         Play(audio);
     }
-    
+
+    public Audio GetAudioClip(string audioName)
+    {
+        var result = audios.Find(a => a.name == audioName);
+
+        if (result == null)
+            throw new NullReferenceException($"Audio file {audioName} not found");
+        return result;
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return source;
+    }
 }

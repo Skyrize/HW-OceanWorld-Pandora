@@ -3508,10 +3508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &65792112
@@ -7631,10 +7627,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &153089740
@@ -8719,10 +8711,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -13121,10 +13109,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -23697,10 +23681,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!1 &583607742 stripped
@@ -23858,10 +23838,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -27902,10 +27878,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -35312,10 +35284,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &898022501
@@ -36596,10 +36564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -40473,10 +40437,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!1001 &1030927340
@@ -40685,10 +40645,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -52250,10 +52206,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &1413395197
@@ -53115,10 +53067,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -55904,10 +55852,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -60029,10 +59973,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -69868,10 +69808,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &1827760593
@@ -70967,10 +70903,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -72166,10 +72098,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PeaksPack (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
 --- !u!4 &1882289064
@@ -72564,10 +72492,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -75043,10 +74967,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
@@ -83574,10 +83494,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PeaksPack
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d046ad6c6e26e4a96a7ce2cad227f4, type: 3}
