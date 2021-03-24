@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 20
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -3962,6 +3962,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 2831ac6a9d2b65c4aa6467d68de60247, type: 3}
+--- !u!1 &74791959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: beca96187d33b6d4f9bcbf420499a905,
+    type: 3}
+  m_PrefabInstance: {fileID: 1541281688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &74791962
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74791959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: beca96187d33b6d4f9bcbf420499a905, type: 3}
 --- !u!1001 &77370514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37761,26 +37781,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433565130}
     m_Modifications:
-    - target: {fileID: 5831840248173806005, guid: 1159bf12bbc07e147ac68aa58c8a8425,
-        type: 3}
-      propertyPath: SpawnItems.Array.data[0].CountMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831840248173806005, guid: 1159bf12bbc07e147ac68aa58c8a8425,
-        type: 3}
-      propertyPath: SpawnItems.Array.data[0].CountMin
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831840248173806005, guid: 1159bf12bbc07e147ac68aa58c8a8425,
-        type: 3}
-      propertyPath: SpawnItems.Array.data[1].CountMax
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831840248173806005, guid: 1159bf12bbc07e147ac68aa58c8a8425,
-        type: 3}
-      propertyPath: SpawnItems.Array.data[1].CountMin
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 8933830852888305714, guid: 1159bf12bbc07e147ac68aa58c8a8425,
         type: 3}
       propertyPath: m_RootOrder
@@ -81232,7 +81232,7 @@ PrefabInstance:
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 224.9
+      value: 225.9
       objectReference: {fileID: 0}
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -81242,7 +81242,7 @@ PrefabInstance:
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -216.6
+      value: -211.6
       objectReference: {fileID: 0}
     - target: {fileID: 1137230086700945234, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -81552,7 +81552,7 @@ PrefabInstance:
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 224.9
+      value: 225.9
       objectReference: {fileID: 0}
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
@@ -81562,7 +81562,7 @@ PrefabInstance:
     - target: {fileID: 1512858540219059767, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -216.6
+      value: -211.6
       objectReference: {fileID: 0}
     - target: {fileID: 1512858540775253196, guid: 5479811e6cb3a68439ac7c2a8610ed46,
         type: 3}
