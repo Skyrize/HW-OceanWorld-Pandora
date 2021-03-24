@@ -7,6 +7,11 @@ using UnityEngine.Events;
 public class ErrorEvent : UnityEvent<string>
 {
 }
+[System.Serializable]
+public class RepairEvent : UnityEvent<float, uint, Item>
+{
+}
+
 
 public class RepairStation : Post
 {
@@ -15,14 +20,14 @@ public class RepairStation : Post
     [SerializeField] protected float repairAmount = 1f;
     [SerializeField] protected uint consumeQuantity = 0;
     [Header("Events")]
-    [SerializeField] public ErrorEvent onRepairing = new ErrorEvent();
-    [SerializeField] public ErrorEvent onRepairDone = new ErrorEvent();
+    [SerializeField] public RepairEvent onRepairDone = new RepairEvent();
     [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
     [Header("References")]
     [SerializeField] protected InventoryHolder inventoryHolder = null;
     [SerializeField] protected Item consumedItem = null;
     [Header("Runtime")]
     [SerializeField] protected bool repairing = false;
+    public bool IsRepairing => repairing;
     [SerializeField] protected HealthComponent parentHealth = null;
     
     private WaitForSeconds repairTimer = null;
@@ -35,10 +40,9 @@ public class RepairStation : Post
 
     IEnumerator Repair()
     {
-        onRepairing.Invoke("Repairing ..");
         repairing = true;
         yield return repairTimer;
-        onRepairing.Invoke($"Repaired !\n(+{repairAmount} hp, -{consumeQuantity} {consumedItem.Name})");
+        onRepairDone.Invoke(repairAmount, consumeQuantity, consumedItem);
         repairing = false;
         parentHealth.IncreaseHealth(repairAmount);
         inventoryHolder.RemoveItem(consumedItem, consumeQuantity);
