@@ -135,7 +135,7 @@ public class WeaponManager : Post
         Vector3 shootVector = target - pos;
         float angle = Vector3.Angle(shootVector, BaseForward);
         bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
-        return shootVector.magnitude < MaxRange && isValidAngle;
+        return isValidAngle;
     }
 
     protected void ShootAt(Vector3 target)
