@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     [HideInInspector] protected Ammunition ammunitionAsset = null;
     [HideInInspector] public GameObject parent;
 
+    public float? damages = null;
+
     private bool touchedWater = false;
 
     public virtual void Start()
@@ -42,7 +44,7 @@ public class Projectile : MonoBehaviour
             if (parent == health.gameObject) {
                 return;
             }
-            health.ReduceHealth(ammunitionAsset.Damages);
+            health.ReduceHealth(damages.HasValue ? damages.Value : ammunitionAsset.Damages);
         }
         onHit.Invoke();
         StartCoroutine(Kill());

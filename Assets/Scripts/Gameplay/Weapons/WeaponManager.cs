@@ -11,6 +11,7 @@ public class WeaponManager : Post
     [Header("TMP_OldCannonball shoot")]
     public bool TMP_followTarget = true;
     private float maxRange;
+    [SerializeField] protected float damagesMultiplier = 1f;
     [SerializeField] private float baseVelocity = 10f;
     // private readonly float maxSideAngle = 45f;
 
@@ -134,7 +135,7 @@ public class WeaponManager : Post
         Vector3 shootVector = target - pos;
         float angle = Vector3.Angle(shootVector, BaseForward);
         bool isValidAngle = angle < maxAngle || angle > 360f - maxAngle;
-        return shootVector.magnitude < MaxRange && isValidAngle;
+        return isValidAngle;
     }
 
     protected void ShootAt(Vector3 target)
@@ -146,7 +147,9 @@ public class WeaponManager : Post
         var projectile = Instantiate(weaponAsset.AmmunitionAsset.Prefab,
             spawnPoint.position,
             spawnPoint.rotation);
-        projectile.GetComponent<Projectile>().parent = parent;
+        Projectile projectileComponent = projectile.GetComponent<Projectile>();
+        projectileComponent.parent = parent;
+        projectileComponent.damages = weaponAsset.AmmunitionAsset.Damages * damagesMultiplier;
         if (TMP_followTarget) {
             TMP_FollowTargetShoot(projectile, target);
         } else {

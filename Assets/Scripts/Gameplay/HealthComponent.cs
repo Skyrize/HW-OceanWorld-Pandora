@@ -59,6 +59,8 @@ public class HealthComponent : MonoBehaviour
     private float _actualHealth = 100;
     [SerializeField]
     private float maxHealth = 100;
+    [SerializeField]
+    private float damageReceiveMultiplicator = 1f;
 
     [Header("Events")]
     public HealEvent onHealEvent = new HealEvent();
@@ -103,6 +105,7 @@ public class HealthComponent : MonoBehaviour
     {
         if (IsDead)
             return;
+        amount *= damageReceiveMultiplicator;
         actualHealth -= amount;
         onDamageEvent.Invoke(amount);
         if (IsDead)

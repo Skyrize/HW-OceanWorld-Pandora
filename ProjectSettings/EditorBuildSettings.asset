@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level 1 Refactor.unity
-    guid: 1db022923cedeb2478525029dfa6f068
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 692973c6068480447b272077081a864c
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Refactor.unity
+    guid: 1db022923cedeb2478525029dfa6f068
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 8522fc39ca02bcb46b3cbda4dd5a2384

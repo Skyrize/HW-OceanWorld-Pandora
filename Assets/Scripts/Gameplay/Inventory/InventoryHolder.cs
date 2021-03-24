@@ -19,7 +19,14 @@ public class InventoryHolder : MonoBehaviour
 
     public void CollectItem(GameObject obj)
     {
-        Item item = obj.GetComponent<ItemObject>().Item;
+        var itemObject = obj.GetComponent<ItemObject>();
+
+        if (!itemObject || itemObject.PickedUp)
+            return;
+
+        var item = itemObject.Item;
+
+        itemObject.PickedUp = true;
         inventory.Add(item);
         Destroy(obj);
     }
