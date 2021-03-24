@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.692
       objectReference: {fileID: 0}
+    - target: {fileID: 1885499292398724252, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885499292398724252, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885499292398724252, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[1].CountMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885499292398724252, guid: 3d724fee9b70e4f4abb3018cc440689c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[1].CountMin
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2862678169576859958, guid: 3d724fee9b70e4f4abb3018cc440689c,
         type: 3}
       propertyPath: m_IsActive

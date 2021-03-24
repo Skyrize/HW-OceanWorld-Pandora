@@ -15,9 +15,9 @@ public class Merchant : MonoBehaviour
     public MerchantUI merchantUI;
     public PauseManager pauseManager;
 
-    public static int goldModifier = 5;
-    public static int woodModifier = 15;
-    public static int scrapsModifier = 10;
+    public static int goldModifier = 250;
+    public static int woodModifier = 10;
+    public static int scrapsModifier = 2;
 
     private static bool loadedScene;
 

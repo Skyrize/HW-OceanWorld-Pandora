@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wood Plank Item
   m_EditorClassIdentifier: 
   weight: 5
-  price: 5
+  price: 20
   prefab: {fileID: 1743682101183440680, guid: e6097ab801d7a0a4da9053590a6c3e4d, type: 3}
   icon: {fileID: 21300000, guid: 6028175ea16d5704bb4e08442f2d54f6, type: 3}
+  _name: Wood Plank Item

@@ -299,6 +299,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249033567537922302, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
+        type: 3}
+      propertyPath: damageReceiveMultiplicator
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2276033587960649235, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_Layer

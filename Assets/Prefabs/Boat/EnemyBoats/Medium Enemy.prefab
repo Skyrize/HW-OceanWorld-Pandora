@@ -205,6 +205,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2791680013756166913, guid: c10059b69f6635848a8251558e320389,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791680013756166913, guid: c10059b69f6635848a8251558e320389,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMin
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10059b69f6635848a8251558e320389, type: 3}
 --- !u!4 &2400154677967436857 stripped
