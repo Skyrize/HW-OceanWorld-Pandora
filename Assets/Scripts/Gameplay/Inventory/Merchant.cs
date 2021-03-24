@@ -14,6 +14,7 @@ public class Merchant : MonoBehaviour
 
     public MerchantUI merchantUI;
     public PauseManager pauseManager;
+    public GameObject inputManager;
 
     public static int goldModifier = 250;
     public static int woodModifier = 10;
@@ -36,6 +37,7 @@ public class Merchant : MonoBehaviour
             prefabUI.SetActive(true);
             loadedScene = true;           
             pauseManager.Pause();
+            inputManager.SetActive(false);
         }
             
     }
@@ -48,6 +50,7 @@ public class Merchant : MonoBehaviour
             loadedScene = false;
             
             pauseManager.Unpause();
+            inputManager.SetActive(true);
         }
     }
 
