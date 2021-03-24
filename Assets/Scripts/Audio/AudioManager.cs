@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public struct Audio {
     public string name;
     public AudioClip clip;
+    public bool loop;
     [Range(0f, 1f)] public float minVolume;
     [Range(0f, 1f)] public float maxVolume;
     public float minPitch;

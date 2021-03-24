@@ -26,6 +26,7 @@ public class AudioPlayer : MonoBehaviour
         source.volume = Random.Range(audioClip.minVolume, audioClip.maxVolume);
         source.pitch = Random.Range(audioClip.minPitch, audioClip.maxPitch);
         
+        source.loop = audioClip.loop;
         source.priority = m_defaultSource.priority;
         source.spatialBlend = m_defaultSource.spatialBlend;
         source.panStereo = m_defaultSource.panStereo;
