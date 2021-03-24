@@ -53,7 +53,7 @@ public class Post : MonoBehaviour
         timer = new WaitForSeconds(hireTime);
     }
 
-    public void ClearEmployee()
+    virtual public void ClearEmployee()
     {
         onFire.Invoke();
         postPlace.ClearChilds(); // bof

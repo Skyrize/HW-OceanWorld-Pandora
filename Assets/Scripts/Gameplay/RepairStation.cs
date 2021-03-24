@@ -48,6 +48,16 @@ public class RepairStation : Post
         inventoryHolder.RemoveItem(consumedItem, consumeQuantity);
     }
 
+    override public void ClearEmployee()
+    {
+        base.ClearEmployee();
+        if (repairing) {
+            StopAllCoroutines();
+            repairing = false;
+        }
+    }
+
+
     override protected void _Use()
     {
         if (repairing || parentHealth.IsFullHealth)
