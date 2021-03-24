@@ -15,6 +15,8 @@ public class RepairStation : Post
     [SerializeField] protected float repairAmount = 1f;
     [SerializeField] protected uint consumeQuantity = 0;
     [Header("Events")]
+    [SerializeField] public ErrorEvent onRepairing = new ErrorEvent();
+    [SerializeField] public ErrorEvent onRepairDone = new ErrorEvent();
     [SerializeField] public ErrorEvent onMissingResource = new ErrorEvent();
     [Header("References")]
     [SerializeField] protected InventoryHolder inventoryHolder = null;
@@ -33,8 +35,10 @@ public class RepairStation : Post
 
     IEnumerator Repair()
     {
+        onRepairing.Invoke("Repairing ..");
         repairing = true;
         yield return repairTimer;
+        onRepairing.Invoke($"Repaired !\n(+{repairAmount} hp, -{consumeQuantity} {consumedItem.Name})");
         repairing = false;
         parentHealth.IncreaseHealth(repairAmount);
         inventoryHolder.RemoveItem(consumedItem, consumeQuantity);
@@ -42,7 +46,7 @@ public class RepairStation : Post
 
     override protected void _Use()
     {
-        if (repairing)
+        if (repairing || parentHealth.IsFullHealth)
             return;
         if (!inventoryHolder)
             inventoryHolder = GetComponentInParent<InventoryHolder>();

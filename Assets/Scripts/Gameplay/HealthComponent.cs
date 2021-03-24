@@ -101,6 +101,8 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public bool IsFullHealth => actualHealth == maxHealth;
+
     public void ReduceHealth(float amount)
     {
         if (IsDead)
