@@ -86,15 +86,15 @@ public class Merchant : MonoBehaviour
         int boatNextLevel = player.LevelBoat + 1;
 
         if (goldModifier * boatNextLevel <= player.inventory.Money
-            && scrapsModifier * boatNextLevel <= player.inventory.CountItem("Scraps Item")
-            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank Item")
+            && scrapsModifier * boatNextLevel <= player.inventory.CountItem("Scraps")
+            && woodModifier * boatNextLevel <= player.inventory.CountItem("Wood Plank")
             && player.MaxBoatUpgrade <= boatNextLevel)
         {
             player.Upgrade();
             uint scraps = (uint)(scrapsModifier * boatNextLevel);
             uint wood = (uint)(woodModifier * boatNextLevel);
-            player.inventory.Remove(player.inventory.GetStoredItemByName("Scraps Item"), scraps);
-            player.inventory.Remove(player.inventory.GetStoredItemByName("Wood Plank Item"), wood);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Scraps"), scraps);
+            player.inventory.Remove(player.inventory.GetStoredItemByName("Wood Plank"), wood);
             player.inventory.Money -= goldModifier * boatNextLevel;
             
             merchantUI.BuildUI();
