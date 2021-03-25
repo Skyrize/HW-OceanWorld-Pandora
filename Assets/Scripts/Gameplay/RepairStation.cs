@@ -25,6 +25,7 @@ public class RepairStation : Post
     [Header("References")]
     [SerializeField] protected InventoryHolder inventoryHolder = null;
     [SerializeField] protected Item consumedItem = null;
+    public Item ConsumedItem => consumedItem;
     [Header("Runtime")]
     [SerializeField] protected bool repairing = false;
     public bool IsRepairing => repairing;
@@ -32,6 +33,7 @@ public class RepairStation : Post
     
     private WaitForSeconds repairTimer = null;
 
+    public bool hasResource = false;
     override public void Awake() {
         base.Awake();
         repairTimer = new WaitForSeconds(repairTime);
@@ -72,8 +74,10 @@ public class RepairStation : Post
         uint count = stored != null ? stored.count : 0;
         if (count < consumeQuantity) {
             onMissingResource.Invoke($"Need {consumeQuantity} {consumedItem.Name} to repair and you only have {count} !");
-            return;
+            hasResource = false;
+        } else {
+            hasResource = true;
+            StartCoroutine(Repair());
         }
-        StartCoroutine(Repair());
     }
 }

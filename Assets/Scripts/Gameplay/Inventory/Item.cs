@@ -51,7 +51,7 @@ public class Item : ClonableSO
             }
 
         }
-        _name = name;
+        _name = name.Replace(" Item", "");
     }
 
     override protected ClonableSO Clone()

@@ -26,8 +26,11 @@ public class RepairStationUI : MonoBehaviour
         floatingText.SetActive(false);
     }
 
+    Item consummed = null;
+
     public void PopMessage(float health, uint amount, Item itemConsummed)
     {
+        consummed = itemConsummed;
         StartCoroutine(DoPopMessage(health, amount, itemConsummed));
     }
 
@@ -53,9 +56,8 @@ public class RepairStationUI : MonoBehaviour
         var healthText = obj.transform.Find("Health").GetComponent<Text>();
         var itemText = obj.transform.Find("Item").GetComponent<Text>();
 
-        string itemName = itemConsummed.Name;
         healthText.text = $"+{health} HP";
-        itemText.text = $"-{amount} {itemName.Replace("Item", "")}";
+        itemText.text = $"-{amount} {itemConsummed.Name}";
 
         healthText.CrossFadeAlpha(0, 0, false);
         healthText.CrossFadeAlpha(1, FadeIn, false);
@@ -81,19 +83,24 @@ public class RepairStationUI : MonoBehaviour
         Destroy(obj);
     }
 
-
     private void Update()
     {
         var delta = (Mathf.Cos(6f * Time.time) + 1f) / 2f;
 
-        if (repairStation.IsRepairing)
-        {
-            repairText.text = "Repairing ..";
-            repairText.color = gradient.Evaluate(delta);
-        }
-        else
-        {
-            repairText.text = "";
+        if (repairStation.IsWorking) {
+            if (repairStation.IsRepairing)
+            {
+                repairText.text = "Repairing ..";
+                repairText.color = gradient.Evaluate(delta);
+            }
+            else if (!repairStation.hasResource)
+            {
+                repairText.text = $"Not enough {repairStation.ConsumedItem.Name}";
+            } else {
+                repairText.text = "";
+            }
+        } else {
+                repairText.text = "";
         }
     }
 }

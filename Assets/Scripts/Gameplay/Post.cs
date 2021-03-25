@@ -22,6 +22,7 @@ public class Post : MonoBehaviour
     [SerializeField] public CrewMember Employee => employee;
     [SerializeField] protected Transform postPlace = null;
     [SerializeField] protected bool working = false;
+    public bool IsWorking => working;
 
     WaitForSeconds timer;
 
