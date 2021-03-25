@@ -48,7 +48,7 @@ public class RepairStationUI : MonoBehaviour
         var time = 0f;
         var fadingOut = false;
 
-        var posBegin = rectComp.position;
+        var posBegin = rectComp.localPosition;
         var posEnd = posBegin + EndPositionOffset;
         var healthText = obj.transform.Find("Health").GetComponent<Text>();
         var itemText = obj.transform.Find("Item").GetComponent<Text>();
@@ -75,9 +75,9 @@ public class RepairStationUI : MonoBehaviour
                 itemText.CrossFadeAlpha(0, FadeOut, false);
             }
 
-            rectComp.position = Vector3.Lerp(posBegin, posEnd, time / StayTime);
+            rectComp.localPosition = Vector3.Lerp(posBegin, posEnd, time / StayTime);
         }
-        rectComp.position = posBegin;
+        rectComp.localPosition = posBegin;
         Destroy(obj);
     }
 

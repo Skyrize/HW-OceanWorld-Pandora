@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  visionRange: 40
+  visionRange: 30
   seePlayer: 0
   visionLayer:
     serializedVersion: 2
@@ -794,7 +794,7 @@ PrefabInstance:
     - target: {fileID: 4973438107387252831, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8073169074309350097, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
@@ -804,7 +804,7 @@ PrefabInstance:
     - target: {fileID: 9181056200574355907, guid: d69712ebbd3fe7d4daa3103ed1f9b36e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d69712ebbd3fe7d4daa3103ed1f9b36e, type: 3}
