@@ -66,7 +66,9 @@ public class DialogueManager : MonoBehaviour
                     else if (accumulator == -1) ui.Summon("ark_closed", () => accumulator = 0);
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight", () => ui.Summon("tuto_cannon", () => { crewManager.Toggle(); Destroy(gameObject); }));
+                    ui.Summon("first_fight", () => 
+                        ui.Summon("tuto_cannon", () => 
+                            { crewManager.Toggle(); Destroy(gameObject); }));
                     break;
                 case DialogueIdentifier.RECRUIT_BATMAN:
                     ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });
