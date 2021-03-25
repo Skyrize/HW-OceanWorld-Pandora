@@ -57,10 +57,14 @@ public class RepairStation : Post
         }
     }
 
+    bool IsRepairNeeded()
+    {
+        return parentHealth.MaxHealth - parentHealth.Health >= repairAmount / 2.0f;
+    }
 
     override protected void _Use()
     {
-        if (repairing || parentHealth.IsFullHealth)
+        if (repairing || !IsRepairNeeded())
             return;
         if (!inventoryHolder)
             inventoryHolder = GetComponentInParent<InventoryHolder>();
