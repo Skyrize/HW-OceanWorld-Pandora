@@ -4990,6 +4990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actualHealth: 100
   maxHealth: 100
+  damageReceiveMultiplicator: 1
   onHealEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5161,7 +5162,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e30ec209cdee7cd4f84ee64e7680ec3a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.125
+  m_Volume: 0.33333334
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5169,7 +5170,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 256
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -5205,7 +5206,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5258,8 +5259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinPitch: 1
-  MaxPitch: 2
-  MaxPitchAtSpeed: 17
+  MaxPitch: 2.15
+  MaxPitchAtSpeed: 15
 --- !u!114 &6186346353743937038
 MonoBehaviour:
   m_ObjectHideFlags: 0

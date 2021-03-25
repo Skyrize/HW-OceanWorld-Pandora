@@ -29,6 +29,8 @@ public class InventoryHolder : MonoBehaviour
         itemObject.PickedUp = true;
         inventory.Add(item);
         Destroy(obj);
+        
+        GetComponent<AudioPlayer>().PlaySound("pickup");
     }
 
     public void RemoveItem(GameObject obj)

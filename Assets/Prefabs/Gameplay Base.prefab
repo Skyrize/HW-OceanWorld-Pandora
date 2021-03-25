@@ -2028,7 +2028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -60.073685}
+  m_AnchoredPosition: {x: 225, y: -60.07373}
   m_SizeDelta: {x: 434, y: 104.14737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1512858539860741543
@@ -3868,7 +3868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -60.073685}
+  m_AnchoredPosition: {x: 225, y: -60.07373}
   m_SizeDelta: {x: 434, y: 104.14737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1512858540927073409
@@ -6013,48 +6013,64 @@ MonoBehaviour:
   audios:
   - name: turret_fire
     clip: {fileID: 8300000, guid: 6b57483a12c06c648a80aed3a7455b07, type: 3}
+    loop: 0
+    priority: 1
     minVolume: 0.25
     maxVolume: 0.25
     minPitch: 1
     maxPitch: 1
   - name: cannon_fire
     clip: {fileID: 8300000, guid: aa9e155ce76e0e14cba7d46229635a2e, type: 3}
+    loop: 0
+    priority: 1
     minVolume: 0.25
     maxVolume: 0.25
     minPitch: 1
     maxPitch: 1
   - name: water_big_splash
     clip: {fileID: 8300000, guid: 4c0382a9244c15544a6c4bf5bbe03da7, type: 3}
-    minVolume: 0.6666667
-    maxVolume: 0.6666667
+    loop: 0
+    priority: 0
+    minVolume: 0.33333334
+    maxVolume: 0.3333333
     minPitch: 0.9
     maxPitch: 1.1
   - name: water_small_splash
     clip: {fileID: 8300000, guid: b2541c05fc883474781b3daee0b4599c, type: 3}
-    minVolume: 0.5
-    maxVolume: 0.5
+    loop: 0
+    priority: 0
+    minVolume: 0.3333333
+    maxVolume: 0.3333333
     minPitch: 0.9
     maxPitch: 1.1
   - name: bullet_impact
     clip: {fileID: 8300000, guid: e8995debdd41f634e93d4f3950176c9c, type: 3}
+    loop: 0
+    priority: 0
     minVolume: 0.1
     maxVolume: 0.1
     minPitch: 0.75
     maxPitch: 1.3
   - name: explosion
     clip: {fileID: 8300000, guid: 17b894df7ffd2bf41a5cb9d6d9c9d81d, type: 3}
+    loop: 0
+    priority: 0
     minVolume: 0.17
     maxVolume: 0.17
     minPitch: 0.75
     maxPitch: 1.3
   - name: pickup
     clip: {fileID: 8300000, guid: f2bf48b34053d964f94f2c8e250f4fc1, type: 3}
+    loop: 0
+    priority: 128
     minVolume: 0.5
     maxVolume: 0.5
     minPitch: 0.75
     maxPitch: 1.3
   - name: collision
     clip: {fileID: 8300000, guid: 5aaa9e0cf840ace4e831914dd27ec009, type: 3}
+    loop: 0
+    priority: 2
     minVolume: 0.33333334
     maxVolume: 0.33333334
     minPitch: 0.75
