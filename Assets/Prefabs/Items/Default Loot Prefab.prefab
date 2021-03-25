@@ -58,7 +58,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4527847025092426837
 PrefabInstance:
@@ -452,6 +452,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1052080390428628392, guid: a1e9738f0a2931a4d95bef6949621364,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1052080390428628395, guid: a1e9738f0a2931a4d95bef6949621364,
         type: 3}
       propertyPath: m_RootOrder
