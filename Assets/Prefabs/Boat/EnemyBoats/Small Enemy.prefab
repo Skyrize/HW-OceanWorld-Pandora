@@ -12,6 +12,21 @@ PrefabInstance:
       propertyPath: avoidanceRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4647889526592320788, guid: 1e77878ce974491418bfdcdc2f37089c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647889526592320788, guid: 1e77878ce974491418bfdcdc2f37089c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[0].CountMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647889526592320788, guid: 1e77878ce974491418bfdcdc2f37089c,
+        type: 3}
+      propertyPath: SpawnItems.Array.data[1].CountMin
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7289029091876707037, guid: 1e77878ce974491418bfdcdc2f37089c,
         type: 3}
       propertyPath: maxHealth
