@@ -34,7 +34,27 @@ public class AttackOnSide : MonoBehaviour
 
     public readonly float updateRate = 0.5f;
     private float updateTimeout = 0f;
+/*
 
+
+        Vector3 targetPos = vision.lastKnownPlayerPos.Value;
+        Vector3 targetForward = vision.lastKnownPlayerForward.Value;
+        float dot = Vector3.Dot(targetForward, transform.forward);
+        Vector3 aimDirection = dot >= 0.3f ? (targetPos - transform.position).normalized : (transform.position - targetPos).normalized;
+        float aimDot = Vector3.Dot(-aimDirection, transform.forward);
+        Vector3 aimPos;
+
+        if (aimDot < 0.9f) {
+            aimPos = targetPos + aimDirection * attackRange * 1.5f;
+
+        } else {
+            aimPos = targetPos + aimDirection * attackRange;
+        }
+        if (debug) Debug.DrawLine(aimPos, aimPos + Vector3.up * 100f, Color.magenta, updateRate);
+        controller.setTarget(aimPos);
+*/
+
+    bool frontAttack = true;
     void SetFrontAttack()
     {
         Vector3 targetPos = vision.lastKnownPlayerPos.Value;
@@ -42,12 +62,19 @@ public class AttackOnSide : MonoBehaviour
         float dot = Vector3.Dot(-aimDirection, transform.forward);
         Vector3 aimPos;
 
-        if (dot < 0.8f) {
-            aimPos = targetPos + aimDirection * attackRange * 1.5f;
-
-        } else {
-            aimPos = targetPos + aimDirection * attackRange;
+        if (frontAttack) { // Want to front attack
+            if (dot < 0.8f) { // isn't facing
+                aimPos = targetPos - aimDirection * attackRange; // aiming behind target
+            } else { // is facing
+                aimPos = targetPos + aimDirection * attackRange; // aiming in front of target
+            }
+        } else { // want to flee
+            aimPos = targetPos + aimDirection * attackRange * 1.5f; // Aiming away from target
         }
+        if (Vector3.Distance(aimPos, transform.position) < 0.5f) {
+            frontAttack = !frontAttack;
+        }
+
         if (debug) Debug.DrawLine(aimPos, aimPos + Vector3.up * 100f, Color.magenta, updateRate);
         controller.setTarget(aimPos);
     }

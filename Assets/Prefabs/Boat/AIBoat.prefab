@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  avoidWeight: 1
+  avoidWeight: 1.2
   followPathWeight: 1
   minimalSpeed: 3
-  minimalAcceleration: 0.3
+  minimalAcceleration: 1
   stoppingDistance: 1
   destinationReached: 1
   reverse: 0
