@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eb5615c444acd14c9fcda3fae67086f, type: 3}
-  m_Name: Suit Skill
+  m_Name: Fledermaus Skill
   m_EditorClassIdentifier: 
-  _name: The Stranger
-  description: But a stranger claiming to have a reward, which changes a lot of things
+  _name: The Adventurer
+  description: Went sailing more exciting and arguably shorter life, away from boredom.
