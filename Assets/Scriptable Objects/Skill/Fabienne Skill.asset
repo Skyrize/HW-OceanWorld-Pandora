@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eb5615c444acd14c9fcda3fae67086f, type: 3}
-  m_Name: Suit Skill
+  m_Name: Fabienne Skill
   m_EditorClassIdentifier: 
-  _name: The Stranger
-  description: But a stranger claiming to have a reward, which changes a lot of things
+  _name: The Kid
+  description: "Just a kid, but already a sharp-shooter; she wasn\u2019t tailored
+    for living in a (drowning) castle."

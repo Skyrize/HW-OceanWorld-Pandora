@@ -59,10 +59,8 @@ public class DialogueUI : MonoBehaviour
 
     public void Summon(string dialogueId)
     {
-        // print(dialogueId);
         onDialogueFinish = null;
         current = database.FindDialogue(dialogueId);
-        // print(current.lines[0].name);
 
         ScrubActors();
         current.charactersLeft.ForEach(c => InstantiateActor(c, left.transform));
