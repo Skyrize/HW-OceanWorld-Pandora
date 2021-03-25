@@ -53,7 +53,7 @@ public class AIVision : MonoBehaviour
                 seePlayer = true;
             } else {
             seePlayer = false;
-            if (debug && hit.collider) Debug.Log($"{hit.collider.gameObject.name}");
+            // if (debug && hit.collider) Debug.Log($"{hit.collider.gameObject.name}");
             }
                 
         }

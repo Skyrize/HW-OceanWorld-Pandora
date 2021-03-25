@@ -7,7 +7,6 @@ public class AudioPlayer : MonoBehaviour
     private static GameObject s_root;
 
     private AudioManager m_manager;
-    private AudioSource m_defaultSource;
 
     private void Awake()
     {
@@ -18,15 +17,13 @@ public class AudioPlayer : MonoBehaviour
 
         if (!m_manager)
             throw new NullReferenceException("Could not find the Audio Manager");
-
-        m_defaultSource = m_manager.GetAudioSource();
     }
 
     public void PlaySound(string soundName)
     {
         if (!m_manager)
             m_manager = FindObjectOfType<AudioManager>();
-        
+
         var audioClip = m_manager.GetAudioClip(soundName);
         var soundObj = new GameObject {name = $"Sound {soundName}"};
         var source = soundObj.AddComponent<AudioSource>();
@@ -40,10 +37,6 @@ public class AudioPlayer : MonoBehaviour
 
         source.loop = audioClip.loop;
         source.priority = audioClip.priority;
-        source.spatialBlend = m_defaultSource.spatialBlend;
-        source.panStereo = m_defaultSource.panStereo;
-        source.reverbZoneMix = m_defaultSource.reverbZoneMix;
-        source.outputAudioMixerGroup = m_defaultSource.outputAudioMixerGroup;
 
         source.PlayOneShot(source.clip);
         Destroy(soundObj, audioClip.clip.length);
