@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     public List<HealthComponent> foes;
     public GameObject door;
     private bool ready = false;
-    private int accumulator = -1;
+    [SerializeField] private int accumulator = -1;
 
     [Header("Merchant")]
     public Merchant merchant;
