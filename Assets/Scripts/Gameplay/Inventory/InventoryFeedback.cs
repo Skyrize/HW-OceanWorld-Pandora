@@ -18,6 +18,9 @@ public class InventoryFeedback : MonoBehaviour
 
     public Gradient LowAmmoGradient;
 
+    private bool m_hadBullets;
+    private bool m_hadCannonBalls;
+
     private void Awake()
     {
         CannonAmmoText.text = "";
@@ -28,42 +31,56 @@ public class InventoryFeedback : MonoBehaviour
     {
         var ammoList = CountAmmunition();
         var delta = (Mathf.Cos(6f * Time.time) + 1f) / 2f;
+        var bullets = 0u;
+        var cannonBalls = 0u;
 
         foreach (var ammo in ammoList)
         {
             if (ammo.Key.ToLower().Contains("bullet"))
             {
-                if (ammo.Value == 0)
-                {
-                    BulletAmmoText.text = "No bullets";
-                    BulletAmmoText.color = NoAmmoGradient.Evaluate(delta);
-                }
-                else if (ammo.Value <= LowAmmoThreshold)
-                {
-                    BulletAmmoText.text = "Low bullets";
-                    BulletAmmoText.color = LowAmmoGradient.Evaluate(delta);
-                }
-                else
-                {
-                    BulletAmmoText.text = "";
-                }
+                bullets += ammo.Value;
+                m_hadBullets = true;
+            }
+            else if (ammo.Key.ToLower().Contains("cannonball"))
+            {
+                cannonBalls += ammo.Value;
+                m_hadCannonBalls = true;
+            }
+        }
+
+        if (m_hadBullets)
+        {
+            if (bullets == 0)
+            {
+                BulletAmmoText.text = "No bullets";
+                BulletAmmoText.color = NoAmmoGradient.Evaluate(delta);
+            }
+            else if (bullets <= LowAmmoThreshold)
+            {
+                BulletAmmoText.text = "Low bullets";
+                BulletAmmoText.color = LowAmmoGradient.Evaluate(delta);
             }
             else
             {
-                if (ammo.Value == 0)
-                {
-                    CannonAmmoText.text = "No cannon balls";
-                    CannonAmmoText.color = NoAmmoGradient.Evaluate(delta);
-                }
-                else if (ammo.Value <= LowAmmoThreshold)
-                {
-                    CannonAmmoText.text = "Low cannon balls";
-                    CannonAmmoText.color = LowAmmoGradient.Evaluate(delta);
-                }
-                else
-                {
-                    CannonAmmoText.text = "";
-                }
+                BulletAmmoText.text = "";
+            }
+        }
+
+        if (m_hadCannonBalls)
+        {
+            if (cannonBalls == 0)
+            {
+                CannonAmmoText.text = "No cannon balls";
+                CannonAmmoText.color = NoAmmoGradient.Evaluate(delta);
+            }
+            else if (cannonBalls <= LowAmmoThreshold)
+            {
+                CannonAmmoText.text = "Low cannon balls";
+                CannonAmmoText.color = LowAmmoGradient.Evaluate(delta);
+            }
+            else
+            {
+                CannonAmmoText.text = "";
             }
         }
     }
