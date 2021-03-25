@@ -12,9 +12,7 @@ public class AudioPlayer : MonoBehaviour
     private void Awake()
     {
         if (!s_root)
-        {
             s_root = new GameObject {name = "Sounds"};
-        }
 
         m_manager = FindObjectOfType<AudioManager>();
 
@@ -26,6 +24,9 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlaySound(string soundName)
     {
+        if (!m_manager)
+            m_manager = FindObjectOfType<AudioManager>();
+        
         var audioClip = m_manager.GetAudioClip(soundName);
         var soundObj = new GameObject {name = $"Sound {soundName}"};
         var source = soundObj.AddComponent<AudioSource>();
