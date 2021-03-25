@@ -49,6 +49,7 @@ public class AIVision : MonoBehaviour
                 lastKnownVelocity = playerRigidbody.velocity;
                 lastKnownPlayerRight = player.transform.right;
                 timeSinceLastSeen = 0f;
+                visionRange = 60f;
                 seePlayer = true;
             } else {
             seePlayer = false;

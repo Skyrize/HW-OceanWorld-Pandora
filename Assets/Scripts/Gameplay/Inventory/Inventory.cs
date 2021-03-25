@@ -33,6 +33,7 @@ public class InventoryStorage {
 [CreateAssetMenu(menuName = "Inventory/Basic")]
 public class Inventory : ClonableSO
 {
+    [SerializeField] protected bool display = false;
     public List<InventoryStorage> items = new List<InventoryStorage>(); //TODO : protected when MerchantUI doesn't use it directly anymore.
     public float Money { get; set; }
 
@@ -80,7 +81,7 @@ public class Inventory : ClonableSO
             TotalWeight += item.Weight;
         }
         
-        if(ResourcePickupUI.Instance) {
+        if(display && ResourcePickupUI.Instance) {
             ResourcePickupUI.Instance.PopMessage($"+{count} {item.Name}");
         }
     }

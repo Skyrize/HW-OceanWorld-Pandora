@@ -22,6 +22,7 @@ public class Post : MonoBehaviour
     [SerializeField] public CrewMember Employee => employee;
     [SerializeField] protected Transform postPlace = null;
     [SerializeField] protected bool working = false;
+    public bool IsWorking => working;
 
     WaitForSeconds timer;
 
@@ -53,7 +54,7 @@ public class Post : MonoBehaviour
         timer = new WaitForSeconds(hireTime);
     }
 
-    public void ClearEmployee()
+    virtual public void ClearEmployee()
     {
         onFire.Invoke();
         postPlace.ClearChilds(); // bof

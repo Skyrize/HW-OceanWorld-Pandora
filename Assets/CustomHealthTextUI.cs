@@ -15,6 +15,6 @@ public class CustomHealthTextUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = $"{(int)health.Health} / {(int)health.MaxHealth}";
+        healthText.text = $"{Mathf.CeilToInt(health.Health)} / {Mathf.CeilToInt(health.MaxHealth)}";
     }
 }

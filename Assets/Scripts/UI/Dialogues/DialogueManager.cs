@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     public List<HealthComponent> foes;
     public GameObject door;
     private bool ready = false;
-    private int accumulator = 0;
+    [SerializeField] private int accumulator = -1;
 
     [Header("Merchant")]
     public Merchant merchant;
@@ -63,10 +63,12 @@ public class DialogueManager : MonoBehaviour
                 case DialogueIdentifier.ARK_GUARD:
                     if (accumulator == foes.Count)
                         ui.Summon("ark_opened", () => { AddCrewMember(); Destroy(gameObject); });
-                    else ui.Summon("ark_closed");
+                    else if (accumulator == -1) ui.Summon("ark_closed", () => accumulator = 0);
                     break;
                 case DialogueIdentifier.FIRST_FIGHT:
-                    ui.Summon("first_fight", () => { crewManager.Toggle(); Destroy(this); });
+                    ui.Summon("first_fight", () => 
+                        ui.Summon("tuto_cannon", () => 
+                            { crewManager.Toggle(); Destroy(gameObject); }));
                     break;
                 case DialogueIdentifier.RECRUIT_BATMAN:
                     ui.Summon("recruit_batman", () => { AddCrewMember(); Destroy(door); });

@@ -101,6 +101,8 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public bool IsFullHealth => actualHealth == maxHealth;
+
     public void ReduceHealth(float amount)
     {
         if (IsDead)
@@ -127,7 +129,7 @@ public class HealthComponent : MonoBehaviour
     public void SetMaxHealth(float newMax)
     {
         this.maxHealth = newMax;
-        this._actualHealth = newMax;
+        this.actualHealth = newMax;
     }
 
 }

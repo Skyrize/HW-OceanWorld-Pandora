@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45d70f48f1390e4bae3da4b4b85ccb8, type: 3}
   m_Name: Player Inventory Debug
   m_EditorClassIdentifier: 
+  display: 1
   items:
   - item: {fileID: 11400000, guid: 6d0291fef4aabdb4db5bad728279f6a4, type: 2}
     count: 1000

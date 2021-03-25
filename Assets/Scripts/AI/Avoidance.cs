@@ -49,31 +49,43 @@ public class Avoidance : MonoBehaviour
 
     public Vector3 GetReverseDirection()
     {
-        Vector3 result = new Vector3(0.075f, 0, -1).normalized;
-        // Vector3 frontLeft = (transform.forward - transform.right).normalized;
-        // Vector3 frontRight = (transform.forward + transform.right).normalized;
-        // RaycastHit hitLeft;
+        if ((blockedFront && !blockedLeft && !blockedRight) || (blockedFront && blockedLeft && blockedRight))
+            return -Vector3.forward;
 
-        // if (Physics.Raycast(transform.position, frontLeft, out hitLeft, blockCheckLength, collisionMask)) {
-        //     return true;
-        // }
-
-        // RaycastHit hitRight;
-
-        return result;
+        if (blockedLeft) {
+            reverseSide.x = Mathf.Abs(reverseSide.x);
+            return reverseSide;
+        }
+        reverseSide.x = -Mathf.Abs(reverseSide.x);
+        return reverseSide;
     }
+
+    Vector3 reverseSide = new Vector3(0.075f, 0, -1).normalized;
+    Vector3 reverseFront = new Vector3(0, 0, -1);
+    bool blockedLeft = false;
+    bool blockedRight = false;
+    bool blockedFront = false;
 
     public bool IsBlocked()
     {
-        bool result = false;
-
-        if (rb.velocity.magnitude < sleepSpeed) {
+        if (rb.velocity.magnitude < sleepSpeed && transform.InverseTransformDirection(rb.velocity).z > 0) {
             if (Physics.Raycast(transform.position, transform.forward, blockCheckLength, collisionMask)) {
-                return true;
-            }
+                blockedFront = true;
+            } else blockedFront = false;
+            if (Physics.Raycast(transform.position, transform.right, blockCheckLength, collisionMask)) {
+                
+                blockedRight = true;
+            } else blockedRight = false;
+            if (Physics.Raycast(transform.position, -transform.right, blockCheckLength, collisionMask)) {
+                blockedLeft = true;
+            } else blockedLeft = false;
+        } else {
+            blockedFront = false;
+            blockedRight = false;
+            blockedFront = false;
         }
 
-        return result;
+        return blockedFront || blockedLeft || blockedRight;
     }
 
     public Vector3 CalculateMove()
