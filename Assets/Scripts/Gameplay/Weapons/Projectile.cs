@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
 {
     public UnityEvent onHit = new UnityEvent();
     public UnityEvent onTouchWater = new UnityEvent();
+    public UnityEvent onHitSuccess = new UnityEvent();
+    public UnityEvent onHitMissed = new UnityEvent();
+    
     [Header("References")]
     [HideInInspector] protected Ammunition ammunitionAsset = null;
     [HideInInspector] public GameObject parent;
@@ -39,14 +42,22 @@ public class Projectile : MonoBehaviour
     public void Hit(GameObject target)
     {
         HealthComponent health = target.GetComponentInParent<HealthComponent>();
+        bool success = false;
 
         if (health) {
             if (parent == health.gameObject) {
                 return;
             }
             health.ReduceHealth(damages.HasValue ? damages.Value : ammunitionAsset.Damages);
+            success = true;
         }
         onHit.Invoke();
+
+        if (success)
+            onHitSuccess.Invoke();
+        else
+            onHitMissed.Invoke();
+        
         StartCoroutine(Kill());
     }
 

@@ -6075,6 +6075,14 @@ MonoBehaviour:
     maxVolume: 0.33333334
     minPitch: 0.75
     maxPitch: 1.3
+  - name: bullet_impact_metal
+    clip: {fileID: 8300000, guid: 384955b199b978a4698fc7c20b6d1eb8, type: 3}
+    loop: 0
+    priority: 0
+    minVolume: 0.1
+    maxVolume: 0.1
+    minPitch: 0.75
+    maxPitch: 1.3
 --- !u!1 &6979450755545236355
 GameObject:
   m_ObjectHideFlags: 0
