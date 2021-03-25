@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Player Character
   m_EditorClassIdentifier: 
   _name: Player
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 5b69bf5b1bb50dd40b3729807c6ee798, type: 2}
   prefab: {fileID: 3928145817644792157, guid: 68e00d988f693f249ad257040488308d, type: 3}
   icon: {fileID: 21300000, guid: f259673c91a24de47ae0eeb86971e5c1, type: 3}
   currentPost: {fileID: 0}
