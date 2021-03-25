@@ -4104,6 +4104,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 374113900}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 11400000, guid: f4829148a3ab95642b722486136b56a8, type: 2}
   inventoryHolder: {fileID: 2118598127}
@@ -5415,6 +5416,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 96392867}
   crew: {fileID: 11400000, guid: 4e617bfdbc2ca4c408ac526e514ca4d0, type: 2}
   inventoryHolder: {fileID: 2118598127}
@@ -16841,6 +16843,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -26686,6 +26689,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -31282,6 +31286,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -34139,6 +34144,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -36622,6 +36628,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 11400000, guid: ec6188b6d7ca8744c83a2fe0882831c7, type: 2}
   inventoryHolder: {fileID: 2118598127}
@@ -38167,6 +38174,7 @@ MonoBehaviour:
   firstFoe: {fileID: 461375126}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -42456,6 +42464,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -47009,6 +47018,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -50405,6 +50415,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -53229,6 +53240,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 11400000, guid: 4e617bfdbc2ca4c408ac526e514ca4d0, type: 2}
   inventoryHolder: {fileID: 2118598127}
@@ -60423,6 +60435,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}
@@ -70647,6 +70660,7 @@ MonoBehaviour:
   - {fileID: 487944036}
   - {fileID: 13288275}
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 0}
   crew: {fileID: 11400000, guid: c7d669720d6772847bdd034e8de914ea, type: 2}
   inventoryHolder: {fileID: 2118598127}
@@ -75163,6 +75177,7 @@ MonoBehaviour:
   firstFoe: {fileID: 0}
   foes: []
   door: {fileID: 0}
+  accumulator: -1
   merchant: {fileID: 1944370773}
   crew: {fileID: 0}
   inventoryHolder: {fileID: 0}

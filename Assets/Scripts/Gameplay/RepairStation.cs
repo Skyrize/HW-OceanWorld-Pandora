@@ -36,6 +36,7 @@ public class RepairStation : Post
     public bool hasResource = false;
     override public void Awake() {
         base.Awake();
+        hasResource = true;
         repairTimer = new WaitForSeconds(repairTime);
         parentHealth = GetComponentInParent<HealthComponent>();
     }
