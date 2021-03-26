@@ -7,9 +7,9 @@ public class PlayerForSaleItemsUI : MerchantItemUI
 {
     public InventoryStorage InventoryItem { get; set; }
 
-    public override void UpdateUI(InventoryStorage item)
+    public override void UpdateUI(InventoryStorage item, MerchantUI merchant)
     {
-        base.UpdateUI(item);
+        base.UpdateUI(item, merchant);
         quantityText.text = "Quantity :" + this.InventoryItem.count;
     }
 }

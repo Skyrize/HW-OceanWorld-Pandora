@@ -21,10 +21,11 @@ public class MerchantItemUI : MonoBehaviour
 
     public InventoryStorage Item { get { return item; } }
 
-    public MerchantUI merchant;
+    private MerchantUI merchant;
 
-    public virtual void UpdateUI(InventoryStorage item)
+    public virtual void UpdateUI(InventoryStorage item, MerchantUI merchant)
     {
+        this.merchant = merchant;
         this.item = item;
         nameText.text = "Name : " + this.item.item.Name;
         costText.text = "Cost : " + this.item.item.Price;

@@ -41,7 +41,7 @@ public class MerchantUI : MonoBehaviour
     public void CreateCard(InventoryStorage item, RectTransform container)
     {
         MerchantForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefab, container).GetComponent<MerchantForSaleItemsUI>();
-        cardUI.UpdateUI(item);
+        cardUI.UpdateUI(item, this);
         cardUI.MerchantOnSellItemEvent.AddListener(this.SellItem);
     }
 
@@ -49,7 +49,7 @@ public class MerchantUI : MonoBehaviour
     {
         PlayerForSaleItemsUI cardUI = GameObject.Instantiate(itemCardPrefabPlayer, container).GetComponent<PlayerForSaleItemsUI>();
         cardUI.InventoryItem = item;
-        cardUI.UpdateUI(item);
+        cardUI.UpdateUI(item, this);
         cardUI.MerchantOnSellItemEvent.AddListener(this.BuyItem);
     }
 
@@ -81,6 +81,7 @@ public class MerchantUI : MonoBehaviour
 
     public void SellItem(InventoryStorage item)
     {
+        Debug.Log("sell");
         merchant.ClientBuyItem(item.item, item.item.Price) ;
     }
 
