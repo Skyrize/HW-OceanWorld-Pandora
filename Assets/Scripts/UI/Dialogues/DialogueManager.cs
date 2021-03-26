@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
                     ui.Summon("door_blocked");
                     break;
                 case DialogueIdentifier.FISHERMAN:
-                    ui.Summon("fisherman");
+                    ui.Summon("fisherman", () => Destroy(this));
                     break;
                 case DialogueIdentifier.ARK_GUARD:
                     if (accumulator == foes.Count)
