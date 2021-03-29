@@ -4088,9 +4088,9 @@ MonoBehaviour:
   itemCardPrefab: {fileID: 7523586843458516791, guid: 53f9e43831fa34640bb3476d157ec39f,
     type: 3}
   keybind:
-  - key: Z
+  - key: W
     description: Move forward the player boat.
-  - key: Q
+  - key: A
     description: Move the player boat on the left.
   - key: D
     description: Move the player boat on the right.
